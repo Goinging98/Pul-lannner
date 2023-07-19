@@ -26,7 +26,7 @@
     <meta name="msapplication-config" content="/resources/assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="white">
     <!-- Theme mode-->
-    <script>
+    <script>          <!--김민준 주석 통한 push 시험-->
       let mode = window.localStorage.getItem('mode'),
           root = document.getElementsByTagName('html')[0];
       if (mode !== undefined && mode === 'dark') {
