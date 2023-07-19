@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +17,13 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/resources/assets/favicon/site.webmanifest">
     <link rel="mask-icon" color="#6366f1" href="/resources/assets/favicon/safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#080032">
-    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="msapplication-config" content="/resources/assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="white">
     <!-- Theme mode-->
     <script>
@@ -165,57 +166,49 @@
               <svg version="1.1" width="35" height="32" viewBox="0 0 36 33" xmlns="http://www.w3.org/2000/svg">
                 <path fill="currentColor" d="M35.6,29c-1.1,3.4-5.4,4.4-7.9,1.9c-2.3-2.2-6.1-3.7-9.4-3.7c-3.1,0-7.5,1.8-10,4.1c-2.2,2-5.8,1.5-7.3-1.1c-1-1.8-1.2-4.1,0-6.2l0.6-1.1l0,0c0.6-0.7,4.4-5.2,12.5-5.7c0.5,1.8,2,3.1,3.9,3.1c2.2,0,4.1-1.9,4.1-4.2s-1.8-4.2-4.1-4.2c-2,0-3.6,1.4-4,3.3H7.7c-0.8,0-1.3-0.9-0.9-1.6l5.6-9.8c2.5-4.5,8.8-4.5,11.3,0L35.1,24C36,25.7,36.1,27.5,35.6,29z"></path>
               </svg></span>PUL-LANNER</a>
-        <a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex" href="https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/" target="_blank" rel="noopener"><i class="ai-user fs-xl me-2 ms-n1"></i>ë¡ê·¸ì¸</a>
+        <a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex" href="https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/" target="_blank" rel="noopener"><i class="ai-user fs-xl me-2 ms-n1"></i>로그인</a>
           <button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
           <nav class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">ìë¬¼ê²ì</a>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물검색</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="account-overview.html">ê½</a></li>
-                  <li><a class="dropdown-item" href="account-overview.html">ì¤ë´ì ìì©</a></li>
-                  <li><a class="dropdown-item" href="account-overview.html">ë¤ì¡ì´</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">꽃</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">실내정원용</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">다육이</a></li>
                 </ul>
               </li>
-              
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">ìë¬¼ë¶ì</a>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물분양</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="account-overview.html">ìë¬¼íë§¤</a></li>
-                  <li><a class="dropdown-item" href="account-overview.html">ì¨ìë¶ì</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">식물판매</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">씨앗분양</a></li>
                 </ul>
               </li>
-
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">ìë¬¼ê´ë¦¬</a>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물관리</a>
                 <ul class="dropdown-menu">
-                  <li class="dropdown"><a class="dropdown-item" href="#" data-bs-toggle="dropdown" aria-expanded="false">ìë¬¼ì¬ì¡ì¼ì§</a>
+                  <li class="dropdown"><a class="dropdown-item" href="#" data-bs-toggle="dropdown" aria-expanded="false">식물사육일지</a>
                   </li>
-                  <li><a class="dropdown-item" href="account-overview.html">ìºë¦°ë</a></li>
-                  <li><a class="dropdown-item" href="account-settings.html">ë¤ì´ì´ë¦¬</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">캘린더</a></li>
+                  <li><a class="dropdown-item" href="account-settings.html">다이어리</a></li>
                 </ul>
               </li>
-
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">ìë¬¼ëªì</a>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물명소</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="account-overview.html">ìë¬¼ì</a></li>
-                  <li><a class="dropdown-item" href="account-overview.html">ì²/ì°</a></li>
-                  <li><a class="dropdown-item" href="account-settings.html">êµ­ë¦½ê³µì</a></li>
-                  <li><a class="dropdown-item" href="account-settings.html">í´ìë¦¼</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">식물원</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">숲/산</a></li>
+                  <li><a class="dropdown-item" href="account-settings.html">국립공원</a></li>
+                  <li><a class="dropdown-item" href="account-settings.html">휴양림</a></li>
                 </ul>
               </li>
-
-
-
-
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">ì»¤ë®¤ëí°</a>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="account-overview.html">ìë¬¼ìë</a></li>
-                  <li><a class="dropdown-item" href="account-overview.html">ìë¬¼ê¸°ë¥´ê¸°ê¿í</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">식물자랑</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">식물기르기꿀팁</a></li>
                 </ul>
               </li>
-
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">ìì´íì¼í</a>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">아이템쇼핑</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="account-overview.html">íë¶êµ¬ë§¤</a></li>
-                  <li><a class="dropdown-item" href="account-overview.html">ê´ë¦¬ì©íêµ¬ë§¤</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">화분구매</a></li>
+                  <li><a class="dropdown-item" href="account-overview.html">관리용품구매</a></li>
                 </ul>
               </li>
             </ul>
@@ -223,6 +216,17 @@
           </nav>
         </div>
       </header>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <!-- Page content-->
       <!-- Hero + Features-->
       <section class=" position-relative pt-lg-3 pt-xl-4 pt-xxl-5" style="color:#fef7d8;">
@@ -249,19 +253,19 @@
             <div class="col-sm-6 col-lg-4 order-lg-1 overflow-hidden mt-lg-4 pt-xl-3">
             
               <!-- Left app sceen-->
-              <b><p class=" mx-4 " style="font-size: 23px; color:#568A75;">íëë,</b><br><b>ê±´ê°í ë°ë ¤ìë¬¼ì í¤ì°ë ìµê´</p></b>
+              <b><p class=" mx-4 " style="font-size: 23px; color:#568A75;">플래너,</b><br><b>건강한 반려식물을 키우는 습관</p></b>
               <h1 class="display-2 mt-3 text-uppercase mx-4 mb-sm-4" style="color:#568A75;">
               <span class='fw-bold' >pul-<br>Lanner</span></h1>
              <div class="mx-auto mx-md-0" style="max-width: 400px;">
 
-              <!-- ê²ìì°½ -->
+              <!-- 검색창 -->
               <div class="input-group">
                 <span class="input-group-text text-muted">
                 <i class="ai-flower">
                 </i>
               </span>
                 <input class="form-control" type="text" placeholder="Search">
-                <button class="btn btn-outline-warning "  type="button">ê²ì</button>
+                <button class="btn btn-outline-warning "  type="button">검색</button>
               </div>
             
 
@@ -278,8 +282,8 @@
                 </div>
 
                 <a href="http://www.naver.com">
-                <h2 class="h4 text-white mb-2 mb-lg-3" >ê²ì ìë¹ì¤</h2></a>
-                <p class="text-white opacity-80 mb-0">ìë¬¼ ê²ì ìë¹ì¤ë ì¬ì©ìë¤ìê² ìë¬¼ì ê´í ì ë³´ë¥¼ ê²ìíê³  ì ê³µíë ìë¹ì¤ìëë¤. ì´ ìë¹ì¤ë ë¤ìí ìë¬¼ì ëí ì ë³´ë¥¼ ì°¾ê³ ì íë ì¬ëë¤ìê² ëìì ì¤ëë¤. </p>
+                <h2 class="h4 text-white mb-2 mb-lg-3" >검색 서비스</h2></a>
+                <p class="text-white opacity-80 mb-0">식물 검색 서비스는 사용자들에게 식물에 관한 정보를 검색하고 제공하는 서비스입니다. 이 서비스는 다양한 식물에 대한 정보를 찾고자 하는 사람들에게 도움을 줍니다. </p>
               </div>
 
               <div class="mb-5 mx-auto mx-sm-0 pb-lg-2 pb-xl-4" style="max-width: 340px;" data-aos="fade-right" data-aos-delay="200" data-aos-offset="250" data-aos-easing="ease-out-back" data-disable-parallax-down="lg">
@@ -291,15 +295,15 @@
 
                 <a href="http://www.naver.com">
                   
-                <h2 class="h4 text-white mb-2 mb-lg-3">ìë¬¼ ê´ë¦¬ ìë¹ì¤</h2></a>
-                <p class="text-white opacity-80 mb-0">ìë¬¼ ê´ë¦¬ ìë¹ì¤ë ì¬ì©ìë¤ì´ ìë¬¼ì í¨ê³¼ì ì¼ë¡ ê´ë¦¬íê³  ì±ì¥ìí¬ ì ìëë¡ ëìì£¼ë ìë¹ì¤ìëë¤. ìë¬¼ì ì±ì¥ ìíë¥¼ ì¶ì íê³  ê¸°ë¡íì¬ ë³´ë¤ í¨ê³¼ì ì¸ ê´ë¦¬ë¥¼ í  ì ììµëë¤.</p>
+                <h2 class="h4 text-white mb-2 mb-lg-3">식물 관리 서비스</h2></a>
+                <p class="text-white opacity-80 mb-0">식물 관리 서비스는 사용자들이 식물을 효과적으로 관리하고 성장시킬 수 있도록 도와주는 서비스입니다. 식물의 성장 상태를 추적하고 기록하여 보다 효과적인 관리를 할 수 있습니다.</p>
               </div>
             </div>
             <div class="col-sm-6 col-lg-4 order-lg-3 overflow-hidden mt-lg-4 pt-xl-3">
               <!-- Right app screen-->
-              <b><p class=" mx-4 " style="font-size: 37px; color:#568A75;">Pul-Lannerì í¨ê»</b><br><b>ì¤ë¹íê³  í¤ìë³´ì¸ì!</p></b>
+              <b><p class=" mx-4 " style="font-size: 37px; color:#568A75;">Pul-Lanner와 함께</b><br><b>준비하고 키워보세요!</p></b>
              <p class=" mx-4 " style="font-size: 15px; color:#7c807ffb;">
-              ì´ë³´ pul-lannerë¶ë¤ì ìí ìë¬¼ì ëª¨ë ê²ì´ ë´ê²¨ ìë ê³³ìëë¤. ë°ë ¤ ìë¬¼ ë¶ì, ëì¬ ëë ì¨ì êµ¬ë§¤ì ììëêµ¬ êµ¬ë§¤ë ê°ë¥íë©° ìë¬¼ì ëí ì ë³´ì ê¸°ë¥´ëë° íìí ê¿íë¤ì ì ê³µí©ëë¤.</p>
+              초보 pul-lanner분들을 위한 식물의 모든것이 담겨 있는 곳입니다. 반려 식물 분양, 대여 또는 씨앗 구매와 원예도구 구매도 가능하며 식물에 대한 정보와 기르는데 필요한 꿀팁들을 제공합니다.</p>
             
               <div class="d-none d-xxl-block" style="height: 520px;"></div>
               <div class="d-none d-xl-block d-xxl-none" style="height: 490px;"></div>
@@ -313,8 +317,8 @@
                 </div>
 
                 <a href="http://www.naver.com">
-                <h2 class="h4 text-white mb-2 mb-lg-3">ìë¬¼, ì¨ì êµ¬ë§¤</h2></a>
-                <p class="text-white opacity-80 mb-0">ìë¬¼ íë§¤ ìë¹ì¤ë ì¬ëë¤ìê² ë¤ìí ì¢ë¥ì ìë¬¼ì íë§¤íë ìë¹ì¤ìëë¤. ë¤ìí ì¢ë¥ì íì¢ì ìë¬¼ì ì íí  ì ììµëë¤. ê°ë³ì ì¸ ì·¨í¥ê³¼ íê²½ì ë§ë ìë¬¼ì ì°¾ì ì ìì¼ë©°, ìíë ëª©ì ì ë§ê² ìë¬¼ì ì íí  ì ììµëë¤.</p>
+                <h2 class="h4 text-white mb-2 mb-lg-3">식물, 씨앗 구매</h2></a>
+                <p class="text-white opacity-80 mb-0">식물 판매 서비스는 사람들에게 다양한 종류의 식물을 판매하는 서비스입니다. 다양한 종류와 품종의 식물을 선택할 수 있습니다. 개별적인 취향과 환경에 맞는 식물을 찾을 수 있으며, 원하는 목적에 맞게 식물을 선택할 수 있습니다.</p>
               </div>
               <div class="mb-5 mx-auto me-sm-0 pb-lg-2 pb-xl-4" style="max-width: 340px;" data-aos="fade-left" data-aos-offset="200" data-aos-delay="600" data-aos-easing="ease-out-back" data-disable-parallax-down="lg">
                 <div class="d-table bg-faded-dark rounded-1 p-2 mb-3 mb-lg-4">
@@ -324,8 +328,8 @@
                 </div>
 
                 <a href="http://www.naver.com">
-                <h2 class="h4 text-white mb-2 mb-lg-3">ììëêµ¬ êµ¬ë§¤</h2></a>
-                <p class="text-white opacity-80 mb-0">ììëêµ¬ íë§¤ ìë¹ì¤ë ì¬ëë¤ìê² ìì ììì ìííë ë° íìí ë¤ìí ëêµ¬ì ì©íì íë§¤íë ìë¹ì¤ìëë¤. ì¬ì©ìë ë¤ìí ì íì ì½ê² ì°¾ê³ , ì ë¢°í  ì ìë íì§ê³¼ ì±ë¥ì ê°ì§ ì íì ì íí  ì ììµëë¤.</p>
+                <h2 class="h4 text-white mb-2 mb-lg-3">원예도구 구매</h2></a>
+                <p class="text-white opacity-80 mb-0">원예도구 판매 서비스는 사람들에게 원예 작업을 수행하는 데 필요한 다양한 도구와 용품을 판매하는 서비스입니다. 사용자는 다양한 제품을 쉽게 찾고, 신뢰할 수 있는 품질과 성능을 가진 제품을 선택할 수 있습니다.</p>
               </div>
             </div>
           </div>
@@ -335,15 +339,15 @@
   <!-- Page title-->
   <div class="masonry-filterable py-5 mt-5">
 
-    <h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-5 mb-lg-4">ì§ì  ìì í ë°ë ¤ìë¬¼</h3>
+    <h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-5 mb-lg-4">직접 엄선한 반려식물</h3>
 
 
       <!-- Classes (Tabs)-->
       <section class="container">
         <!-- Nav tabs-->
         <ul class="nav nav-tabs flex-nowrap overflow-auto text-nowrap fs-sm flex-nowrap overflow-auto text-nowrap w-100 mx-auto pb-4 mb-5 mb-sm-3" style="max-width: 227px;">
-          <li class="nav-item mb-0"><a class="nav-link active bor" href="#beginners" data-bs-toggle="tab" role="tab">ìë¬¼ë¶ì</a></li>
-          <li class="nav-item mb-0"><a class="nav-link " href="#stretching" data-bs-toggle="tab" role="tab">ì¨ìë¶ì</a></li>
+          <li class="nav-item mb-0"><a class="nav-link active bor" href="#beginners" data-bs-toggle="tab" role="tab">식물분양</a></li>
+          <li class="nav-item mb-0"><a class="nav-link " href="#stretching" data-bs-toggle="tab" role="tab">씨앗분양</a></li>
           
         </ul>
         <!-- Tab content-->
@@ -359,7 +363,7 @@
             <div class="zoom-effect-img"><img src="https://cdn.imweb.me/upload/S201905295cee7c0f94cee/003a9e2fc6189.jpeg" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
           </div>
           <div class="pt-4 mt-lg-2">
-            <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">ê°ì¸íë¦¬ì</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+            <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">가울테리아</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
           </div>
         </div>
       </div>
@@ -371,7 +375,7 @@
       <div class="zoom-effect-img"><img src="https://www.flowerrepublic.co.kr/shopimages/sungmo9160/0090010004832.jpg?1665473103" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
     </div>
     <div class="pt-4 mt-lg-2">
-      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">ê°ì´ì£½</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">개운죽</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
     </div>
   </div>
 </div>
@@ -382,7 +386,7 @@
       <div class="zoom-effect-img"><img src="https://cb.scene7.com/is/image/Crate/PottedZZPlantSHS20/$web_pdp_main_carousel_low$/191217102319/potted-zz-plant.jpg" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
     </div>
     <div class="pt-4 mt-lg-2">
-      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">ê³µìì¼ì</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">공작야자</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
     </div>
   </div>
 </div>
@@ -393,7 +397,7 @@
       <div class="zoom-effect-img"><img src="https://media.istockphoto.com/id/1372896722/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%ED%99%94%EB%B6%84-%EB%B0%94%EB%82%98%EB%82%98-%EC%8B%9D%EB%AC%BC.jpg?s=612x612&w=0&k=20&c=R_oZjWbJwOnW8oR6ORnkQrYHQmg1NL1NzCqnAYpiFCc=" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
     </div>
     <div class="pt-4 mt-lg-2">
-      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">ê¸ëª©ì</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">금목서</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
     </div>
   </div>
 </div>
@@ -405,7 +409,7 @@
         <img src="https://img.freepik.com/free-photo/monstera-deliciosa-plant-in-a-pot_53876-133119.jpg" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
     </div>
     <div class="pt-4 mt-lg-2">
-      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">ê¸ì¬ì² ëë¬´</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">금사철나무</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
     </div>
   </div>
 </div>
@@ -416,7 +420,7 @@
       <div class="zoom-effect-img"><img src="https://media.istockphoto.com/id/1330360581/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EB%83%84%EB%B9%84%EC%97%90-%EC%8B%A4%EB%82%B4-%EC%8B%9D%EB%AC%BC.jpg?s=612x612&w=0&k=20&c=UkMXBZroGOsdZ_IGczcfYkrYuMrB11F9FW7oYENwBbw=" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
     </div>
     <div class="pt-4 mt-lg-2">
-      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">ëëíë</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Product design</span><span class="fs-sm text-muted d-sm-none">Product design</span>
+      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">나도풍란</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Product design</span><span class="fs-sm text-muted d-sm-none">Product design</span>
     </div>
   </div>
 </div>
@@ -427,7 +431,7 @@
       <div class="zoom-effect-img"><img src="https://img.freepik.com/free-photo/calathea-plant-in-a-jug_53876-134281.jpg?w=2000" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
     </div>
     <div class="pt-4 mt-lg-2">
-      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">ëíì¡</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Packaging design</span><span class="fs-sm text-muted d-sm-none">Packaging design</span>
+      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_3plant-parcel-out.html">나한송</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Packaging design</span><span class="fs-sm text-muted d-sm-none">Packaging design</span>
     </div>
   </div>
 </div>
@@ -438,7 +442,7 @@
       <div class="zoom-effect-img"><img src="https://ll9flower.cafe24.com/prog/goods/imgz/st_d/d600/st_d600z02.jpg" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
     </div>
     <div class="pt-4 mt-lg-2">
-      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav " href="/Around/02_3plant-parcel-out.html">ê½ë² ê³ ëì</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Cover design</span><span class="fs-sm text-muted d-sm-none">Cover design</span>
+      <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav " href="/Around/02_3plant-parcel-out.html">꽃베고니아</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Cover design</span><span class="fs-sm text-muted d-sm-none">Cover design</span>
     </div>
   </div>
 </div>
@@ -457,7 +461,7 @@
           <div class="zoom-effect-img"><img src="https://cdn.imweb.me/upload/S201905295cee7c0f94cee/003a9e2fc6189.jpeg" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
         </div>
         <div class="pt-4 mt-lg-2">
-          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">ê°ì¸íë¦¬ì</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">가울테리아</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
         </div>
       </div>
     </div>
@@ -468,7 +472,7 @@
           <div class="zoom-effect-img"><img src="https://www.flowerrepublic.co.kr/shopimages/sungmo9160/0090010004832.jpg?1665473103" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
         </div>
         <div class="pt-4 mt-lg-2">
-          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">ê°ì´ì£½</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">개운죽</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
         </div>
       </div>
     </div>
@@ -479,7 +483,7 @@
           <div class="zoom-effect-img"><img src="https://cb.scene7.com/is/image/Crate/PottedZZPlantSHS20/$web_pdp_main_carousel_low$/191217102319/potted-zz-plant.jpg" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
         </div>
         <div class="pt-4 mt-lg-2">
-          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">ê³µìì¼ì</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">공작야자</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
         </div>
       </div>
     </div>
@@ -490,7 +494,7 @@
           <div class="zoom-effect-img"><img src="https://media.istockphoto.com/id/1372896722/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%ED%99%94%EB%B6%84-%EB%B0%94%EB%82%98%EB%82%98-%EC%8B%9D%EB%AC%BC.jpg?s=612x612&w=0&k=20&c=R_oZjWbJwOnW8oR6ORnkQrYHQmg1NL1NzCqnAYpiFCc=" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
         </div>
         <div class="pt-4 mt-lg-2">
-          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">ê¸ëª©ì</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">금목서</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
         </div>
       </div>
     </div>
@@ -504,7 +508,7 @@
             <img src="https://img.freepik.com/free-photo/monstera-deliciosa-plant-in-a-pot_53876-133119.jpg" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
         </div>
         <div class="pt-4 mt-lg-2">
-          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">ê¸ì¬ì² ëë¬´</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">금사철나무</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Branding, Strategy</span><span class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
         </div>
       </div>
     </div>
@@ -515,7 +519,7 @@
           <div class="zoom-effect-img"><img src="https://media.istockphoto.com/id/1330360581/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EB%83%84%EB%B9%84%EC%97%90-%EC%8B%A4%EB%82%B4-%EC%8B%9D%EB%AC%BC.jpg?s=612x612&w=0&k=20&c=UkMXBZroGOsdZ_IGczcfYkrYuMrB11F9FW7oYENwBbw=" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
         </div>
         <div class="pt-4 mt-lg-2">
-          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">ëëíë</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Product design</span><span class="fs-sm text-muted d-sm-none">Product design</span>
+          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="/Around/02_2seed-parcel-out.html">나도풍란</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Product design</span><span class="fs-sm text-muted d-sm-none">Product design</span>
         </div>
       </div>
     </div>
@@ -526,7 +530,7 @@
           <div class="zoom-effect-img"><img src="https://img.freepik.com/free-photo/calathea-plant-in-a-jug_53876-134281.jpg?w=2000" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
         </div>
         <div class="pt-4 mt-lg-2">
-          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="portfolio-single-v1.html">ëíì¡</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Packaging design</span><span class="fs-sm text-muted d-sm-none">Packaging design</span>
+          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav" href="portfolio-single-v1.html">나한송</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Packaging design</span><span class="fs-sm text-muted d-sm-none">Packaging design</span>
         </div>
       </div>
     </div>
@@ -537,7 +541,7 @@
           <div class="zoom-effect-img"><img src="https://ll9flower.cafe24.com/prog/goods/imgz/st_d/d600/st_d600z02.jpg" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;"></div>
         </div>
         <div class="pt-4 mt-lg-2">
-          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav " href="/Around/02_2seed-parcel-out.html">ê½ë² ê³ ëì</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Cover design</span><span class="fs-sm text-muted d-sm-none">Cover design</span>
+          <h2 class="h5 mb-2" style="text-align:center;"><a class="stretched-link text-nav " href="/Around/02_2seed-parcel-out.html">꽃베고니아</a></h2><span class="fs-sm text-muted opacity-0 d-none d-sm-block" style="text-align:center;">Cover design</span><span class="fs-sm text-muted d-sm-none">Cover design</span>
         </div>
       </div>
 </div>
@@ -562,7 +566,7 @@
       <div class="accordion accordion-alt" id="industries">
         <div class="accordion-item mb-n3 mb-lg-n2 mb-xl-1 mt-sm-3">
           <h2 class="accordion-header" style="color: rgb(0, 0, 0);">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-binded-content="#finance-img" data-bs-target="#finance" aria-expanded="true" aria-controls="finance">ê½ë² ê³ ëì</button>
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-binded-content="#finance-img" data-bs-target="#finance" aria-expanded="true" aria-controls="finance">꽃베고니아</button>
           </h2>
           <div class="accordion-collapse collapse show" id="finance" data-bs-parent="#industries">
             <div class="accordion-body">Sit purus platea nunc semper auctor integer semper et ac odio eget a lacus eu duis ante sed molestie varius tempus gravida libero pretium sit etiam morbi orci et vestibulum velit.</div>
@@ -583,23 +587,23 @@
     
     <div class="col-md-4 col-lg-4 col-xl-4 offset-1 d-none d-sm-none d-md-block" style="margin-top: -100px;">
       <div class="ps-lg-4 ps-xl-0">
-        <h2 >ì¤ëì ê½ ëë¤ì´ ì¥ì ì¶ì²</h2>
+        <h2 >오늘의 꽃 나들이 장소 추천</h2>
         <div class="position-relative d-flex align-items-center mb-4">
           <img class="rounded"  src="https://i.namu.wiki/i/rLVLCqzMl8LdATocQsOXyFOLgUASgznbOQbK4SkPNpO5ZpVZfHFW7So-U8w4P94WFm7SGd16xzypYYPcNyqGKw.webp" style="max-width: 110px; max-height: 110px; min-width: 110px; min-height: 110px;" alt="Post image">
           <div class="ps-3">
-            <h4 class="h5 mb-2"><a class="stretched-link" href="blog-single-v1.html">ì¸ì¢ìë¬¼ì</a></h4><span class="text-muted" style="font-size : 16px;">17:00ì ì´ì ì¢ë£</span>
+            <h4 class="h5 mb-2"><a class="stretched-link" href="blog-single-v1.html">세종식물원</a></h4><span class="text-muted" style="font-size : 16px;">17:00에 운영 종료</span>
           </div>
         </div>
         <article class="position-relative d-flex align-items-center mb-4">
           <img class="rounded" src="https://img.newspim.com/news/2020/10/15/2010151646296730.jpg" style="max-width: 110px; max-height: 110px; min-width: 110px; min-height: 110px;" alt="Post image">
           <div class="ps-3">
-            <h4 class="h5 mb-2"><a class="stretched-link" href="blog-single-v2.html">ííìë¬¼ì</a></h4><span class="text-muted" style="font-size : 16px;">17:00ì ì´ì ì¢ë£</span>
+            <h4 class="h5 mb-2"><a class="stretched-link" href="blog-single-v2.html">한택식물원</a></h4><span class="text-muted" style="font-size : 16px;">17:00에 운영 종료</span>
           </div>
         </article>
         <article class="position-relative d-flex align-items-center">
           <img class="rounded" src="https://50plus.or.kr/upload/im/2020/07/3bebe063-4899-4dce-bc1a-0048f6af1e49.jpg" style="max-width: 110px; max-height: 110px; min-width: 110px; min-height: 110px;" alt="Post image">
           <div class="ps-3">
-            <h4 class="h5 mb-2"><a class="stretched-link" href="blog-single-v3.html">ìë¬¼ìë¤ê½ì¸ì</a></h4><span class="text-muted" style="font-size : 16px;">17:00ì ì´ì ì¢ë£</span>
+            <h4 class="h5 mb-2"><a class="stretched-link" href="blog-single-v3.html">식물원들꽃세상</a></h4><span class="text-muted" style="font-size : 16px;">17:00에 운영 종료</span>
           </div>
         </article>
       </div>
@@ -610,7 +614,7 @@
       <!-- Resources (Blog)-->
       <section class="bg-faded-primary py-5 mt-5">
         <div class="container py-sm-2 pt-md-3 py-lg-2 py-xl-4 py-xxl-5">
-          <h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-3 mb-lg-4">ìë¬¼ ìë</h3>
+          <h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-3 mb-lg-4">식물 자랑</h3>
           <!-- Swiper-->
           <div class="swiper" data-swiper-options="
         {
@@ -631,10 +635,10 @@
                 <div class="card border-0 h-100">
                   <div class="card-body pb-4">
                     <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">August 13, 2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Inspiration</a></div>
-                    <h3 class="h4 card-title"><a href="#">ëë¥¼ ìì§ì¬ë¡ ë§ë¤ì´ì¤ í¼ì¬ë³¸ í¬ì¤ì´ ðµ</a></h3>
-                    <p class="card-text">í¬ì¤ì´ê° ì°ë¦¬ì§ì ì¨ì§ íë¬ì§¸ ëë ë  ð
-                      ìì§ì ë§ì´ ë¶ì¡±í ì´ë³´ ìì§ì¬ì§ë§ .. ð¥¹
-                      ë¤íí ê³¼ìµë ì¤ì§ìê³  ê·¸ ì¬ì´ ìë¡ì´ ìê¸° ìêµ¬ê° ì¬ë¼ì¨ ê±° ê°ì ìë§ë ?</p>
+                    <h3 class="h4 card-title"><a href="#">나를 식집사로 만들어준 피쉬본 포실이 🌵</a></h3>
+                    <p class="card-text">포실이가 우리집에 온지 한달째 되는 날 💚
+                      아직은 많이 부족한 초보 식집사지만 .. 🥹
+                      다행히 과습도 오지않고 그 사이 새로운 아기 자구가 올라온 거 같아 아마도 ?</p>
                   </div>
                   <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/10.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Guy Hawkins</h6></a></div>
@@ -645,9 +649,9 @@
                 <div class="card border-0 h-100">
                   <div class="card-body pb-4">
                     <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">July 25, 2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Inspiration</a></div>
-                    <h3 class="h4 card-title"><a href="#">ê³ ì¬ë¸ê¸° ì´ë§¤ê° ë¹¨ê°ê² ìµìì´ì</a></h3>
-                    <p class="card-text">2ê°ë ê½¤ë í¼ì¤íê² ì ìµìê±° ê°ìì ê°ì¥ ìì 1ê°ë ë°ì ë¨¹ì´ë³´ë ì­ì ë¨ë§ì ìëë¤ìð¤£ ë¬¼í¸ë  ììì ë¥¼ ì¤ì¼íëê±¸ê¹ ì¶ì´ì
-                      ì§ê¸ì ìë¹ë£ë§ ì¹ì´ë¨ì´ì</p>
+                    <h3 class="h4 card-title"><a href="#">고슬딸기 열매가 빨갛게 익었어요</a></h3>
+                    <p class="card-text">2개는 꽤나 튼실하게 잘 익은거 같아요 가장 작은 1개는 따서 먹어보니 역시 단맛은 안나네요🤣 물푸레 영양제를 줘야하는걸까 싶어요
+                      지금은 알비료만 얹어놨어요</p>
                   </div>
                   <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/07.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Cody Fisher</h6></a></div>
@@ -658,8 +662,8 @@
                 <div class="card border-0 h-100">
                   <div class="card-body pb-4">
                     <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">July 08, 2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Inspiration</a></div>
-                    <h3 class="h4 card-title"><a href="#">ë¹ ìë°ì  ë¯¸ëë©ë¦¬ì¤í¸ê° ëìë¤ð¿ð</a></h3>
-                    <p class="card-text">ì´ëì ìë¬¼ë¤ì´ ë´ íì¥ëë¥¼ ì ë ¹íë¤ð¥¹ ì¥ë§ì ë¬´ëìë¡ ì¸í´ ë² ëë¤ ìë¬¼ë¤ì íëëì© ë°©ì¼ë¡ í¼ì ìí¨ê² ììì´ìë¤. ê·¸ë¬ë©´ìë ìë¬¼ê³µë¶ë¥¼ íë©° </p>
+                    <h3 class="h4 card-title"><a href="#">비 자발적 미니멀리스트가 되었다🌿😐</a></h3>
+                    <p class="card-text">어느새 식물들이 내 화장대를 점령했다🥹 장마와 무더위로 인해 베란다 식물들을 하나둘씩 방으로 피신시킨게 시작이었다. 그러면서도 식물공부를 하며 </p>
                   </div>
                   <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/09.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Jane Cooper</h6></a></div>
@@ -670,13 +674,13 @@
             <div class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
           </div>
           <!-- Read more button-->
-          <div class="text-center pt-4 pb-sm-2 pb-md-4 py-lg-5 my-2 mt-lg-0"><a class="btn btn-outline-primary" href="#">ìë¬¼ìë ëë³´ê¸°</a></div>
+          <div class="text-center pt-4 pb-sm-2 pb-md-4 py-lg-5 my-2 mt-lg-0"><a class="btn btn-outline-primary" href="#">식물자랑 더보기</a></div>
 
           
       <div class="container position-relative zindex-5 py-sm-4 py-lg-5 ">
         <!-- Text + button-->
         <div class="d-flex align-items-center justify-content-between mb-3">
-          <div class="fw-medium text-black text-uppercase">ëë§ ëª°ëë ìì§ì¬ì íìí</div>
+          <div class="fw-medium text-black text-uppercase">나만 몰랐던 식집사의 필수템</div>
           <!-- Slider prev/next buttons-->
           <div class="d-flex">
             <button class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle me-2"  type="button" id="popular-prev"><i class="ai-arrow-left"></i></button>
@@ -710,8 +714,8 @@
                 <div class="card-body p-4 px-sm-3 px-md-4">
                   <div class="d-flex align-items-center"><img src="https://punggok.kr/shopimages/punggok337/0080120000103.jpg?1563931569" width="97" alt="Product">
                     <div class="ps-3 ps-md-4">
-                      <h3 class="fs-sm mb-2">ëª¨ì¢ì½(ë¹ììì¡ì´)</h3>
-                      <p class="fs-sm mb-0">3,000ì</p>
+                      <h3 class="fs-sm mb-2">모종삽(녹색손잡이)</h3>
+                      <p class="fs-sm mb-0">3,000원</p>
                     </div>
                   </div>
                 </div>
@@ -722,9 +726,9 @@
                 <div class="card-body p-4 px-sm-3 px-md-4">
                   <div class="d-flex align-items-center"><img src="https://www.myplant.co.kr/shopimages/myplant/0020010001382.jpg?1618471791" width="97" alt="Product">
                     <div class="ps-3 ps-md-4">
-                      <h3 class="fs-sm mb-2">ë¶ê°ì´ ë§¤í¸ ëí íë¶ë¶ê°ì´ ë¶ê°ì´í 
+                      <h3 class="fs-sm mb-2">분갈이 매트 대형 화분분갈이 분갈이흙 
                       </h3>
-                      <p class="fs-sm mb-0">2,500ì <del class='text-muted fs-xs'>3,000ì</del></p>
+                      <p class="fs-sm mb-0">2,500원 <del class='text-muted fs-xs'>3,000원</del></p>
                     </div>
                   </div>
                 </div>
@@ -736,8 +740,8 @@
                   <div class="d-flex align-items-center"><img src="https://www.nousbo.com/files/thumbnails/995/046/300x300.ratio.jpg?20220627102917" width="97" alt="Product">
                     <div class="ps-4">
                       <h3 class="fs-sm mb-2">
-                        íë¦¬ë¯¸ì ë¶ê°ì´í</h3>
-                      <p class="fs-sm mb-0">6,000ì</p>
+                        프리미엄 분갈이흙</h3>
+                      <p class="fs-sm mb-0">6,000원</p>
                     </div>
                   </div>
                 </div></a></div>
@@ -746,8 +750,8 @@
                 <div class="card-body p-4 px-sm-3 px-md-4">
                   <div class="d-flex align-items-center"><img src="https://papa-garden.com/web/product/big/202011/5bde755495839e39f6f89922727e599a.jpg" width="97" alt="Product">
                     <div class="ps-3 ps-md-4">
-                      <h3 class="fs-sm mb-2">ë¶ê°ì´ ì¸í¸</h3>
-                      <p class="fs-sm mb-0">15,000ì</p>
+                      <h3 class="fs-sm mb-2">분갈이 세트</h3>
+                      <p class="fs-sm mb-0">15,000원</p>
                     </div>
                   </div>
                 </div></a></div>
@@ -777,7 +781,7 @@
                 <svg version="1.1" width="35" height="32" viewBox="0 0 36 33" xmlns="http://www.w3.org/2000/svg">
                   <path fill="currentColor" d="M35.6,29c-1.1,3.4-5.4,4.4-7.9,1.9c-2.3-2.2-6.1-3.7-9.4-3.7c-3.1,0-7.5,1.8-10,4.1c-2.2,2-5.8,1.5-7.3-1.1c-1-1.8-1.2-4.1,0-6.2l0.6-1.1l0,0c0.6-0.7,4.4-5.2,12.5-5.7c0.5,1.8,2,3.1,3.9,3.1c2.2,0,4.1-1.9,4.1-4.2s-1.8-4.2-4.1-4.2c-2,0-3.6,1.4-4,3.3H7.7c-0.8,0-1.3-0.9-0.9-1.6l5.6-9.8c2.5-4.5,8.8-4.5,11.3,0L35.1,24C36,25.7,36.1,27.5,35.6,29z"></path>
                 </svg></span><span>PUL-LANNER</span></a>
-            <p class="fs-sm pb-2 pb-md-3 mb-3">ê±´ê°í ë°ë ¤ìë¬¼ì í¤ì°ë ìµê´</p>
+            <p class="fs-sm pb-2 pb-md-3 mb-3">건강한 반려식물을 키우는 습관</p>
             <div class="d-flex"><a class="btn btn-icon btn-sm btn-secondary btn-facebook rounded-circle me-3" href="#">
               <i class="ai-slack"></i></a>
               <a class="btn btn-icon btn-sm btn-secondary btn-instagram rounded-circle me-3" href="#"><i class="ai-discord"></i></a>
@@ -788,37 +792,37 @@
 						<div class="row row-cols-sm-4 row-cols-1">
 							<div class="col">
                 <ul class="nav flex-column mb-0">
-									<li class="nav-item mb-2"><a class="nav-link p-0" href="#">ìë¬¼ê²ì</a></li>
-                  <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/pharm/search">ê½</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">ì¤ë´ì ìì©</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">ë¤ì¡ì´</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0" href="#">식물검색</a></li>
+                  <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/pharm/search">꽃</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">실내정원용</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">다육이</a></li>
 								</ul>
 								</ul>
 							</div>
 							<div class="col">
 								<ul class="nav flex-column mb-0">
-									<li class="nav-item mb-2"><a class="nav-link p-0" href="#">ìë¬¼ë¶ì</a></li>
-                  <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/pharm/search">ìë¬¼íë§¤</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">ì¨ìë¶ì</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0" href="#">식물분양</a></li>
+                  <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/pharm/search">식물판매</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">씨앗분양</a></li>
 								</ul>
 								</ul>
 							</div>
 							<div class="col">
 								<ul class="nav flex-column mb-0">
-									<li class="nav-item mb-2"><a class="nav-link p-0" href="#">ìë¬¼ê´ë¦¬</a></li>
-                  <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/pharm/search">ì¬ì¡ì¼ì§</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">ìºë¦°ë</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">ë¤ì´ì´ë¦¬</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0" href="#">식물관리</a></li>
+                  <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/pharm/search">사육일지</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">캘린더</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">다이어리</a></li>
 								</ul>
 								</ul>
 							</div>
               <div class="col">
 								<ul class="nav flex-column mb-0">
-									<li class="nav-item mb-2"><a class="nav-link p-0" href="#">ìë¬¼ëªì</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/pharm/search">ìë¬¼ì</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">ì²/ì°</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">êµ­ë¦½ê³µì</a></li>
-									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">í´ìë¦¼</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0" href="#">식물명소</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/pharm/search">식물원</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">숲/산</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">국립공원</a></li>
+									<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal" href="${path}/aidkit_k/asearch">휴양림</a></li>
 								</ul>
 							</div>
 						
