@@ -23,4 +23,5 @@ public class Member {
 	private Date enrollDate;
 	private Date modifyDate;
 //	임윤정테스트
+	//임윤정테스트2
 }
