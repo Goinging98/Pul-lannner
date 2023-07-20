@@ -189,7 +189,7 @@
               </li>
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물분양</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="account-overview.html">식물판매</a></li>
+                  <li><a class="dropdown-item" href="${path}/PlantShop">식물판매</a></li>
                   <li><a class="dropdown-item" href="account-overview.html">씨앗분양</a></li>
                 </ul>
               </li>
