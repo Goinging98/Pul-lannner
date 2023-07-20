@@ -22,7 +22,7 @@ public class PlantShopController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PlantShopController.class);
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/PlantShop", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome plantshop! The client locale is {}.", locale);
 //		Member loginMember = memberService.login("admin", "1212");
