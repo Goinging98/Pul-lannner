@@ -211,7 +211,7 @@
               </li>
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="account-overview.html">식물자랑</a></li>
+                  <li><a class="dropdown-item" href="${path}/PlantProud">식물자랑</a></li>
                   <li><a class="dropdown-item" href="account-overview.html">식물기르기꿀팁</a></li>
                   <li><a class="dropdown-item" href="account-overview.html">관찰일지</a></li>
                 </ul>
