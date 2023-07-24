@@ -160,7 +160,7 @@
     <!-- Page wrapper-->
     <main class="page-wrapper" style="color:#fef7d8;">
       <!-- Navbar. Remove 'fixed-top' class to make the navigation bar scrollable with the page-->
-      <header class="navbar navbar-expand-lg fixed-top">
+      <header class="navbar navbar-expand-lg fixed-top" style="background-color: #ffffff;">
         <div class="container">
           <a class="navbar-brand pe-sm-3" href="index.html">
           <span class="text-primary flex-shrink-0 me-2">

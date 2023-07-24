@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Footer-->
-<footer class="footer bg-secondary py-5">
+<footer class="footer bg-secondary py-5" style="background-color: #ffffff;">
 	<div class="container pt-md-2 pt-lg-3 pt-xl-4">
 		<div class="row pb-4 pb-md-5 pt-sm-2 mb-lg-2">
 			<div class="col-md-4 col-lg-3 pb-2 pb-md-0 mb-4 mb-md-0">
@@ -85,14 +85,14 @@
 	</svg><i class="ai-arrow-up"></i>
 </a>
 <!-- Vendor scripts: js libraries and plugins-->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="assets/vendor/parallax-js/dist/parallax.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/aos/dist/aos.js"></script>
-<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="assets/vendor/shufflejs/dist/shuffle.min.js"></script>
+<script src="/resources/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="/resources/assets/vendor/parallax-js/dist/parallax.min.js"></script>
+<script src="/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/resources/assets/vendor/aos/dist/aos.js"></script>
+<script src="/resources/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/resources/assets/vendor/shufflejs/dist/shuffle.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Main theme script-->
-<script src="assets/js/theme.min.js"></script>
+<script src="/resources/assets/js/theme.min.js"></script>
 </html>
