@@ -7,6 +7,8 @@
 
 
  <!-- Page content-->
+ <body style="background-color: #FCFBED">
+ 
  <!-- Hero + Features-->
  <section class=" position-relative pt-lg-3 pt-xl-4 pt-xxl-5" style="color:#fef7d8;">
 	 <div class=" position-absolute start-0 bottom-0 w-100 d-none d-xl-block" style="background-color: #568A75; height: 900px;"></div>
@@ -112,7 +114,7 @@
       <!-- Classes (Tabs)-->
       <section class="container">
         <!-- Nav tabs-->
-        <ul class="nav nav-tabs flex-nowrap overflow-auto text-nowrap fs-sm flex-nowrap overflow-auto text-nowrap w-100 mx-auto pb-4 mb-5 mb-sm-3" style="max-width: 227px;">
+        <ul class="nav nav-tabs flex-nowrap overflow-auto text-nowrap fs-sm flex-nowrap overflow-auto text-nowrap w-100 mx-auto pb-4 mb-5 mb-sm-3" style="max-width: 250px;">
           <li class="nav-item mb-0"><a class="nav-link active bor" href="#beginners" data-bs-toggle="tab" role="tab">식물분양</a></li>
           <li class="nav-item mb-0"><a class="nav-link " href="#stretching" data-bs-toggle="tab" role="tab">씨앗분양</a></li>
           
@@ -537,5 +539,5 @@
       </div>
     </div>
   </section>
-
+</body>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

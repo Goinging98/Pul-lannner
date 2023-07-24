@@ -145,7 +145,6 @@
 
 
 <!-- Body-->
-<body style="background-color: #FCFBED">
 	<!-- Page loading spinner-->
 	<div class="page-loading active">
 		<div class="page-loading-inner">
