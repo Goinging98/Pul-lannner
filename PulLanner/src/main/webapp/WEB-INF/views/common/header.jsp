@@ -215,9 +215,9 @@
 							data-bs-toggle="dropdown" data-bs-auto-close="outside"
 							aria-expanded="false">식물검색</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="account-overview.html">꽃</a></li>
-								<li><a class="dropdown-item" href="account-overview.html">실내정원용</a></li>
-								<li><a class="dropdown-item" href="account-overview.html">다육이</a></li>
+								<li><a class="dropdown-item" href="${path}/PlantSearch">꽃</a></li>
+								<li><a class="dropdown-item" href="${path}/PlantSearch">실내정원용</a></li>
+								<li><a class="dropdown-item" href="${path}/PlantSearch">다육이</a></li>
 							</ul></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
