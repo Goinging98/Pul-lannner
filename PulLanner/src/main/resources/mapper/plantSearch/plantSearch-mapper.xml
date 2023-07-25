@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 
-<mapper namespace="경로 적어넣기 매퍼.자바">
+<mapper namespace="com\multi\bbs\gardenSearch\model\mapper\gardenSearchMapper.java">
+
+		<select id="" resultType="">
+		
+		</select>
+
 
 	
 
