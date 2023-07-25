@@ -170,27 +170,135 @@
             <input class="form-control" type="text" id="fl-text" placeholder="Title">
               <label for="fl-text">Title</label>
         </div>
-
-        <!-- File input -->
-        <div class="mb-3">
-          <label for="file-input" class="form-label">첨부파일</label>
-          <input class="form-control" type="file" id="file-input">
-        </div>
+        
 
         <!-- Floating label: Textarea -->
         <label class="form-label">내용</label>
-        <div class="form-floating mb-4">
+        <div class="form-floating mb-2">
           <textarea class="form-control" id="fl-textarea" style="height: 120px;" placeholder="Your message"></textarea>
           <label for="fl-textarea">내 풀을 자랑해보세요!</label>
         </div>
-        <button type="button" class="btn btn-outline-primary btn-sm" style="margin:auto; display: block;">자랑하기!</button>
+        
+        
+        <!-- file input -->
+        <label class="form-label">파일</label>
+		<div class="insert mb-4">
+		    <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
+		        <input type="file" onchange="addFile(this);" multiple />
+		        <div class="file-list"></div>
+		    </form>
+		</div>
+		
+		<script>
+		var fileNo = 0;
+		var filesArr = new Array();
+
+		/* 첨부파일 추가 */
+		function addFile(obj){
+		    var maxFileCnt = 5;   // 첨부파일 최대 개수
+		    var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
+		    var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
+		    var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
+
+		    // 첨부파일 개수 확인
+		    if (curFileCnt > remainFileCnt) {
+		        alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+		    } else {
+		        for (const file of obj.files) {
+		            // 첨부파일 검증
+		            if (validation(file)) {
+		                // 파일 배열에 담기
+		                var reader = new FileReader();
+		                reader.onload = function () {
+		                    filesArr.push(file);
+		                };
+		                reader.readAsDataURL(file);
+
+		                // 목록 추가
+		                let htmlData = '';
+		                htmlData += '<div id="file' + fileNo + '" class="filebox">';
+		                htmlData += '   <div class="name">' + file.name;
+		                htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><i class="far ai-circle-minus"></i></a></div>';
+		                htmlData += '</div>';
+		                $('.file-list').append(htmlData);
+		                fileNo++;
+		            } else {
+		                continue;
+		            }
+		        }
+		    }
+		    // 초기화
+		    document.querySelector("input[type=file]").value = "";
+		}
+
+		/* 첨부파일 검증 */
+		function validation(obj){
+		    const fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
+		    if (obj.name.length > 100) {
+		        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+		        return false;
+		    } else if (obj.size > (100 * 1024 * 1024)) {
+		        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+		        return false;
+		    } else if (obj.name.lastIndexOf('.') == -1) {
+		        alert("확장자가 없는 파일은 제외되었습니다.");
+		        return false;
+		    } else if (!fileTypes.includes(obj.type)) {
+		        alert("첨부가 불가능한 파일은 제외되었습니다.");
+		        return false;
+		    } else {
+		        return true;
+		    }
+		}
+
+		/* 첨부파일 삭제 */
+		function deleteFile(num) {
+		    document.querySelector("#file" + num).remove();
+		    filesArr[num].is_delete = true;
+		}
+
+		/* 폼 전송 */
+		function submitForm() {
+		    // 폼데이터 담기
+		    var form = document.querySelector("form");
+		    var formData = new FormData(form);
+		    for (var i = 0; i < filesArr.length; i++) {
+		        // 삭제되지 않은 파일만 폼데이터에 담기
+		        if (!filesArr[i].is_delete) {
+		            formData.append("attach_file", filesArr[i]);
+		        }
+		    }
+
+		    $.ajax({
+		        method: 'POST',
+		        url: '/register',
+		        dataType: 'json',
+		        data: formData,
+		        async: true,
+		        timeout: 30000,
+		        cache: false,
+		        headers: {'cache-control': 'no-cache', 'pragma': 'no-cache'},
+		        success: function () {
+		            alert("파일업로드 성공");
+		        },
+		        error: function (xhr, desc, err) {
+		            alert('에러가 발생 하였습니다.');
+		            return;
+		        }
+		    })
+		}
+		</script>
+		<button type="button" class="btn btn-outline-primary btn-sm" style="margin:auto; display: block;">자랑하기!</button>
       </div>
-    </div>
+	</div>
+
+
     
     <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll>
       <svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"></circle>
       </svg><i class="ai-arrow-up"></i></a>
+      
     <!-- Vendor scripts: js libraries and plugins-->
     <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
