@@ -1,4 +1,4 @@
-package com.multi.bbs.plant.model.vo;
+package com.multi.bbs.plantSearch.model.vo;
 
 public class DryGardenList {
 	public int cntntsNo;
