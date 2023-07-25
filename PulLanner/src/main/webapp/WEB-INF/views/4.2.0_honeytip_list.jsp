@@ -31,19 +31,19 @@
                     <h3 class="h4 card-title"><a href="blog-single-v3.html">산세베리아는 이게 정석입니다.</a></h3>
                     <p class="card-text">Pharetra in morbi quis is massa maecenas arcu vulputate pulvinar elit non nullage a, duis tortor mi massa ipsum in eu eu eget libero pulvinar elit vulputate...</p>
                   </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/05.jpg" width="48" alt="Post author">
+                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/05.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Darlene Robertson</h6></a></div>
                 </div>
               </article>
               <!-- Post-->
               <article class="masonry-grid-item">
-                <div class="card border-0 bg-secondary"><a href="blog-single-v3.html"><img class="card-img-top" src="assets/img/blog/grid/01.jpg" alt="Post image"></a>
+                <div class="card border-0 bg-secondary"><a href="blog-single-v3.html"><img class="card-img-top" src="resources/assets/img/blog/grid/01.jpg" alt="Post image"></a>
                   <div class="card-body pb-4">
                     <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">12 hours ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Books</a></div>
                     <h3 class="h4 card-title"><a href="blog-single-v3.html">세번 죽이고 네번째 분양 드디어 성공</a></h3>
                     <p class="card-text">Vulputate auctor lacus imperdiet facilisi tristique nisl pulvinar porta diam duis odio</p>
                   </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/06.jpg" width="48" alt="Post author">
+                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/06.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Jenny Wilson</h6></a></div>
                 </div>
               </article>
@@ -55,7 +55,7 @@
                     <h3 class="h4 card-title"><a href="blog-single-v3.html">분갈이는 함부로 해선 안돼요</a></h3>
                     <p class="card-text">Pharetra in morbi quis is massa maecenas arcu vulputate pulvinar elit non nullage a, duis tortor mi massa ipsum in eu eu eget libero pulvinar elit vulputate...</p>
                   </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/12.jpg" width="48" alt="Post author">
+                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/12.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Guy Hawkins</h6></a></div>
                 </div>
               </article>
@@ -67,19 +67,19 @@
                     <h3 class="h4 card-title"><a href="blog-single-v3.html">풀래너 모두 취업 잘 될거야!</a></h3>
                     <p class="card-text">Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque proin lectus et massa fames ac scelerisque sit commodo dignissim...</p>
                   </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/11.jpg" width="48" alt="Post author">
+                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/11.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Lillia Black</h6></a></div>
                 </div>
               </article>
               <!-- Post-->
               <article class="masonry-grid-item">
-                <div class="card border-0 bg-secondary"><a href="blog-single-v3.html"><img class="card-img-top" src="assets/img/blog/grid/02.jpg" alt="Post image"></a>
+                <div class="card border-0 bg-secondary"><a href="blog-single-v3.html"><img class="card-img-top" src="resources/assets/img/blog/grid/02.jpg" alt="Post image"></a>
                   <div class="card-body pb-4">
                     <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">January 9, 2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Travel</a></div>
                     <h3 class="h4 card-title"><a href="blog-single-v3.html">이번 프로젝트 잘해봅시다!</a></h3>
                     <p class="card-text">Duis consectetur quis enim iaculis eu sagittis posuere imperdiet scelerisque</p>
                   </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/05.jpg" width="48" alt="Post author">
+                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/05.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Darlene Robertson</h6></a></div>
                 </div>
               </article>
@@ -91,11 +91,12 @@
                     <h3 class="h4 card-title"><a href="blog-single-v3.html">시들어 버린 잎사귀만 제거하는 방법</a></h3>
                     <p class="card-text">Non purus odio venenatis velit sed tellus sed ultrices neque adipiscing sit turpis vel nisl lacus, aenean sed luctus adipiscing ut orci molestie arcu, sapien sed felis...</p>
                   </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="assets/img/avatar/06.jpg" width="48" alt="Post author">
+                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/06.jpg" width="48" alt="Post author">
                       <h6 class="ps-3 mb-0">Jenny Wilson</h6></a></div>
                 </div>
               </article>
             </div>
+            
             <!-- Pagination-->
             <div class="row gy-3 align-items-center">
               <div class="col col-md-4 col-6 order-md-1 order-1">
@@ -124,6 +125,7 @@
               </div>
             </div>
           </div>
+          
           <!-- Sidebar (offcanvas on sreens < 992px)-->
           <aside class="col-lg-3 offset-xl-1">
             <div class="offcanvas-lg offcanvas-end" id="sidebarBlog">
@@ -136,13 +138,14 @@
                 <div class="position-relative mb-4 mb-lg-5"><i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                   <input class="form-control ps-5" type="search" placeholder="Enter keyword">
                 </div>
+                
                 <!-- Category links-->
                 <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
                 <ul class="nav flex-column mb-lg-5 mb-4">
-                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="#">All categories<span class="fs-sm text-muted ms-2">(110)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="blog-list-sidebar.html">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(34)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="blog-grid-sidebar.html">기르기 꿀팁<span class="fs-sm text-muted ms-2">(8)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="blog-list-sidebar-v2.html">관찰일지<span class="fs-sm text-muted ms-2">(45)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="#">All categories<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
                 </ul>
                 <!-- Featured posts widget-->
                 <h4 class="pt-3 pt-lg-0 pb-1">인기글</h4>

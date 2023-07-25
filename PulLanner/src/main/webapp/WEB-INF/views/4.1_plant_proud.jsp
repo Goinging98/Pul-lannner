@@ -118,9 +118,9 @@
                 <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
                 <ul class="nav flex-column mb-lg-5 mb-4">
                   <li class="mb-2"><a class="nav-link d-flex p-0" href="#">All categories<span class="fs-sm text-muted ms-2">(110)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="blog-list-sidebar.html">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(34)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="blog-grid-sidebar.html">기르기 꿀팁<span class="fs-sm text-muted ms-2">(8)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="blog-list-sidebar-v2.html">관찰일지<span class="fs-sm text-muted ms-2">(45)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(34)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(8)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(45)</span></a></li>
                 </ul>
                 <!-- Featured posts widget-->
                 <h4 class="pt-3 pt-lg-0 pb-1">인기글</h4>

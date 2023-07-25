@@ -25,7 +25,7 @@
             <!-- Post-->
             <article class="row g-0 border-0 mb-4 ">
               <a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" 
-              style="background-image: url(assets/img/blog/list/01.jpg); min-height: 14rem"></a>
+              style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
               <div class="col-sm-7">
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                   <h3><a href="blog-single-v4.html">선인장 관찰일지</a></h3>
@@ -37,7 +37,7 @@
             <!-- Post-->
             <article class="row g-0 border-0 mb-4 ">
               <a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" 
-              style="background-image: url(assets/img/blog/list/01.jpg); min-height: 14rem"></a>
+              style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
               <div class="col-sm-7">
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                   <h3><a href="blog-single-v4.html">선인장 관찰일지</a></h3>
@@ -49,7 +49,7 @@
             <!-- Post-->
             <article class="row g-0 border-0 mb-4 ">
               <a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" 
-              style="background-image: url(assets/img/blog/list/01.jpg); min-height: 14rem"></a>
+              style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
               <div class="col-sm-7">
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                   <h3><a href="blog-single-v4.html">선인장 관찰일지</a></h3>
@@ -61,7 +61,7 @@
             <!-- Post-->
             <article class="row g-0 border-0 mb-4 ">
               <a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" 
-              style="background-image: url(assets/img/blog/list/01.jpg); min-height: 14rem"></a>
+              style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
               <div class="col-sm-7">
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                   <h3><a href="blog-single-v4.html">선인장 관찰일지</a></h3>
@@ -73,7 +73,7 @@
             <!-- Post-->
             <article class="row g-0 border-0 mb-4 ">
               <a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" 
-              style="background-image: url(assets/img/blog/list/01.jpg); min-height: 14rem"></a>
+              style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
               <div class="col-sm-7">
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                   <h3><a href="blog-single-v4.html">선인장 관찰일지</a></h3>
@@ -127,26 +127,26 @@
                 <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
                 <ul class="nav flex-column mb-lg-5 mb-4">
                   <li class="mb-2"><a class="nav-link d-flex p-0" href="#">All categories<span class="fs-sm text-muted ms-2">(board count)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="blog-list-sidebar.html">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(board count)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="blog-grid-sidebar.html">기르기 꿀팁<span class="fs-sm text-muted ms-2">(board count)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="blog-list-sidebar-v2.html">관찰일지<span class="fs-sm text-muted ms-2">(board count)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(board count)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(board count)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(board count)</span></a></li>
                 </ul>
                 <!-- Featured posts widget-->
                 <h4 class="pt-3 pt-lg-0 pb-1">인기글</h4>
                 <div class="mb-lg-5 mb-4">
-                  <article class="position-relative d-flex align-items-center mb-4"><img class="rounded" src="assets/img/blog/sidebar/01.jpg" width="92" alt="Post image">
+                  <article class="position-relative d-flex align-items-center mb-4"><img class="rounded" src="resources/assets/img/blog/sidebar/01.jpg" width="92" alt="Post image">
                     <div class="ps-3">
-                      <h4 class="h6 mb-2"><a class="stretched-link" href="blog-single-v1.html">Instagram trends that will definitely work</a></h4><span class="fs-sm text-muted">13 hours ago</span>
+                      <h4 class="h6 mb-2"><a class="stretched-link" href="${path}/ObserveDetail">Instagram trends that will definitely work</a></h4><span class="fs-sm text-muted">13 hours ago</span>
                     </div>
                   </article>
-                  <article class="position-relative d-flex align-items-center mb-4"><img class="rounded" src="assets/img/blog/sidebar/02.jpg" width="92" alt="Post image">
+                  <article class="position-relative d-flex align-items-center mb-4"><img class="rounded" src="resources/assets/img/blog/sidebar/02.jpg" width="92" alt="Post image">
                     <div class="ps-3">
-                      <h4 class="h6 mb-2"><a class="stretched-link" href="blog-single-v2.html">A session with a psychologist</a></h4><span class="fs-sm text-muted">May 12, 2022</span>
+                      <h4 class="h6 mb-2"><a class="stretched-link" href="${path}/ObserveDetail">A session with a psychologist</a></h4><span class="fs-sm text-muted">May 12, 2022</span>
                     </div>
                   </article>
-                  <article class="position-relative d-flex align-items-center"><img class="rounded" src="assets/img/blog/sidebar/03.jpg" width="92" alt="Post image">
+                  <article class="position-relative d-flex align-items-center"><img class="rounded" src="resources/assets/img/blog/sidebar/03.jpg" width="92" alt="Post image">
                     <div class="ps-3">
-                      <h4 class="h6 mb-2"><a class="stretched-link" href="blog-single-v3.html">How to look for inspiration for new goals</a></h4><span class="fs-sm text-muted">June 10, 2022</span>
+                      <h4 class="h6 mb-2"><a class="stretched-link" href="${path}/ObserveDetail">How to look for inspiration for new goals</a></h4><span class="fs-sm text-muted">June 10, 2022</span>
                     </div>
                   </article>
                 </div>
@@ -157,7 +157,7 @@
                 <div class="position-relative mb-3">
                   <div class="ignore-dark-mode position-absolute w-100 text-center top-0 start-50 translate-middle-x pt-4" style="max-width: 15rem;">
                     <h3 class="h2 pt-3 mb-0">Your banner here!</h3>
-                  </div><img class="rounded-5" src="assets/img/blog/sidebar/banner.jpg" alt="Banner">
+                  </div><img class="rounded-5" src="/resources/assets/img/blog/sidebar/banner.jpg" alt="Banner">
                 </div>
               </div>
             </div>
