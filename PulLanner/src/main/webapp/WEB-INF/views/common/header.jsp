@@ -155,7 +155,7 @@
 
 
 	<!-- Page wrapper-->
-	<main class="page-wrapper" style="color: #fef7d8;">
+	<main class="page-wrapper">
 		<!-- Navbar. Remove 'fixed-top' class to make the navigation bar scrollable with the page-->
 		<header class="navbar navbar-expand-lg fixed-top" style="background-color: #ffffff;">
 			<div class="container">
@@ -177,6 +177,7 @@
 				</c:if>
 				<c:if test="${loginMember != null}">
 					<!-- User signed in state. Account dropdown on screens > 576px-->
+					<ul>
 					<li class="nav-item dropdown d-sm-none border-top mt-2 pt-2">
 						<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
 							<img class="border rounded-circle" src="assets/img/avatar/01.jpg" width="48" alt="Isabella Bocouse">
@@ -199,6 +200,7 @@
 				            <a class="dropdown-item" href="account-signin.html"><i class="ai-logout fs-lg opacity-70 me-2"></i>Sign out</a>
 			          	</div>
 		        	</li>
+		        	</ul>
 				</c:if>
 
 

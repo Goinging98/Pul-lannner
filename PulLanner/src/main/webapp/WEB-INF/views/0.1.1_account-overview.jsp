@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+<jsp:include page="/WEB-INF/views/common/header_login.jsp" />
       <body style="background-color: #F6F9FC ">
       <!-- Page content-->
       <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">

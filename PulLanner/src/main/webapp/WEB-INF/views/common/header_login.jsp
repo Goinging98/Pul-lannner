@@ -23,20 +23,9 @@
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="msapplication-config" content="/resources/assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="white">
-    <!-- Theme mode-->
-    <script>
-      let mode = window.localStorage.getItem('mode'),
-          root = document.getElementsByTagName('html')[0];
-      if (mode !== undefined && mode === 'dark') {
-        root.classList.add('dark-mode');
-      } else {
-        root.classList.remove('dark-mode');
-      }
 
-    </script>
+
     <!-- Page loading styles-->
-
-
     <style>
       .page-loading {
         position: fixed;
@@ -152,7 +141,7 @@
   
   
   <!-- Body-->
-  <body>
+  <body class = "bg-secondary">
     <!-- Page loading spinner-->
     <div class="page-loading active">
       <div class="page-loading-inner">
