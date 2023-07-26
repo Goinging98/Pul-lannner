@@ -167,16 +167,21 @@
               			</svg>
 					</span> PUL-LANNER
 				</a>
-
-				<c:if test="${loginMember == null}">
+<a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex"
+						href="/login" target="_blank" rel="noopener">
+						<i class="ai-user fs-xl me-2 ms-n1"></i>로그인
+					</a>
+				<!--<c:if test="${loginMember == null}">
 					<a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex"
-						href="https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/"
-						target="_blank" rel="noopener">
+						href="/login" target="_blank" rel="noopener">
 						<i class="ai-user fs-xl me-2 ms-n1"></i>로그인
 					</a>
 				</c:if>
+				
+				
+				<!-- 로그인 관련 수정 예정 
 				<c:if test="${loginMember != null}">
-					<!-- User signed in state. Account dropdown on screens > 576px-->
+					<!-- User signed in state. Account dropdown on screens > 576px
 					<ul>
 					<li class="nav-item dropdown d-sm-none border-top mt-2 pt-2">
 						<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -202,7 +207,10 @@
 		        	</li>
 		        	</ul>
 				</c:if>
-
+ 				-->
+ 				
+ 				
+ 				
 
 				<button class="navbar-toggler ms-sm-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarNav">

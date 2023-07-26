@@ -22,7 +22,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 //		Member loginMember = memberService.login("admin", "1212");
@@ -30,11 +30,5 @@ public class HomeController {
 //		test();
 		return "0.0_main";
 	}
-	
-//	public void test() {
-//		Map<String, String> map = new HashMap<>();
-//		PageInfo info = new PageInfo(1, 10, service.getBoardCount(map), 10);
-//		logger.info("board List : " + service.getBoardList(info, map));
-//	}
-	
+
 }

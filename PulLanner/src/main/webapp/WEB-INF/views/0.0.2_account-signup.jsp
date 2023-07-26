@@ -1,8 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Around | Account - Sign In</title>
+    <title>Pul-Lanner</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Around - Multipurpose Bootstrap HTML Template">
     <meta name="keywords" content="bootstrap, business, corporate, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, saas, multipurpose, product landing, shop, software, ui kit, web studio, landing, dark mode, html5, css3, javascript, gallery, slider, touch, creative">
@@ -18,18 +24,7 @@
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="white">
-    <!-- Theme mode-->
-    <script>
-      let mode = window.localStorage.getItem('mode'),
-          root = document.getElementsByTagName('html')[0];
-      if (mode !== undefined && mode === 'dark') {
-        root.classList.add('dark-mode');
-      } else {
-        root.classList.remove('dark-mode');
-      }
-      
-      
-    </script>
+
     <!-- Page loading styles-->
     <style>
       .page-loading {
@@ -153,34 +148,39 @@
       <!-- Page content-->
       <div class="d-lg-flex position-relative h-100">
         <!-- Home button--><a class="text-nav btn btn-icon bg-light border rounded-circle position-absolute top-0 end-0 p-0 mt-3 me-3 mt-sm-4 me-sm-4" href="index.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Back to home"><i class="ai-home"></i></a>
-        <!-- Sign in form-->
+        <!-- Sign up form-->
         <div class="d-flex flex-column align-items-center w-lg-50 h-100 px-3 px-lg-5 pt-5">
           <div class="w-100 mt-auto" style="max-width: 526px;">
-            <h1>Sign in to Around</h1>
-            <p class="pb-3 mb-3 mb-lg-4">Don't have an account yet?&nbsp;&nbsp;<a href='account-signup.html'>Register here!</a></p>
+            <h1>No account? Sign up</h1>
+            <p class="pb-3 mb-3 mb-lg-4">Have an account already?&nbsp;&nbsp;<a href='account-signin.html'>Sign in here!</a></p>
             <form class="needs-validation" novalidate>
-              <div class="pb-3 mb-3">
-                <div class="position-relative"><i class="ai-mail fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                  <input class="form-control form-control-lg ps-5" type="email" placeholder="Email address" required>
+              <div class="row row-cols-1 row-cols-sm-2">
+                <div class="col mb-4">
+                  <input class="form-control form-control-lg" type="text" placeholder="Your name" required>
+                </div>
+                <div class="col mb-4">
+                  <input class="form-control form-control-lg" type="email" placeholder="Email address" required>
                 </div>
               </div>
-              <div class="mb-4">
-                <div class="position-relative"><i class="ai-lock-closed fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                  <div class="password-toggle">
-                    <input class="form-control form-control-lg ps-5" type="password" placeholder="Password" required>
-                    <label class="password-toggle-btn" aria-label="Show/hide password">
-                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                    </label>
-                  </div>
+              <div class="password-toggle mb-4">
+                <input class="form-control form-control-lg" type="password" placeholder="Password" required>
+                <label class="password-toggle-btn" aria-label="Show/hide password">
+                  <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                </label>
+              </div>
+              <div class="password-toggle mb-4">
+                <input class="form-control form-control-lg" type="password" placeholder="Confirm password" required>
+                <label class="password-toggle-btn" aria-label="Show/hide password">
+                  <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                </label>
+              </div>
+              <div class="pb-4">
+                <div class="form-check my-2">
+                  <input class="form-check-input" type="checkbox" id="terms">
+                  <label class="form-check-label ms-1" for="terms">I agree to <a href="#">Terms &amp; Conditions</a></label>
                 </div>
               </div>
-              <div class="d-flex flex-wrap align-items-center justify-content-between pb-4">
-                <form-check class="my-1">
-                  <input class="form-check-input" type="checkbox" id="keep-signedin">
-                  <label class="form-check-label ms-1" for="keep-signedin">Keep me signed in</label>
-                </form-check><a class="fs-sm fw-semibold text-decoration-none my-1" href="account-password-recovery.html">Forgot password?</a>
-              </div>
-              <button class="btn btn-lg btn-primary w-100 mb-4" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary w-100 mb-4" type="submit">Sign up</button>
               <h2 class="h6 text-center pt-3 pt-lg-4 mb-4">Or sign in with your social account</h2>
               <div class="row row-cols-1 row-cols-sm-2 gy-3">
                 <div class="col"><a class="btn btn-icon btn-outline-secondary btn-google btn-lg w-100" href="#"><i class="ai-google fs-xl me-2"></i>Google</a></div>
