@@ -181,11 +181,10 @@
         
         
         <!-- file input -->
-        <label class="form-label">파일</label>
-		<div class="insert mb-4">
-		    <form method="POST" onsubmit="return false;" enctype="multipart/form-data">
-		        <input type="file" onchange="addFile(this);" multiple />
-		        <div class="file-list"></div>
+		<div class="insert mb-2">
+		    <form method="POST" onsubmit="return false;" enctype="multipart/form-data" class="file-list" style="display: flex; flex-wrap: wrap; gap: 10px;">
+		        <input type="file" id="upfile" style="display: none;" onchange="addFile(this);" multiple />
+		        <label for="upfile"><button class="btn btn-primary" onclick="document.getElementById('upfile').click();">첨부파일</button></label>
 		    </form>
 		</div>
 		
@@ -195,7 +194,7 @@
 
 		/* 첨부파일 추가 */
 		function addFile(obj){
-		    var maxFileCnt = 5;   // 첨부파일 최대 개수
+		    var maxFileCnt = 3;   // 첨부파일 최대 개수
 		    var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
 		    var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
 		    var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
