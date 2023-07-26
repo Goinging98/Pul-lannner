@@ -12,14 +12,18 @@
 	            AND title LIKE CONCAT('%', #{searchValue}, '%')
 	        </if>
 	    </where>
-	    ORDER BY cntntsNo
-	    LIMIT #{limit} OFFSET #{offset}
+	    ORDER BY cntntsNo DESC LIMIT ${limit} OFFSET ${offset}
 		</select>
+		
+		
+		
 		
 		<select id="selectGardenCount" parameterType="map" resultType="int">
 		    SELECT COUNT(*)
 		    FROM gardenDtl
 		</select>
+		
+
 		
 		
 </mapper>
