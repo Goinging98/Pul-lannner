@@ -298,3 +298,132 @@ CREATE TABLE REPLY(
 
 COMMIT;
 SELECT * FROM REPLY;
+
+
+------------------------------------------------------------------
+------------------------- Shop 관련 테이블 -------------------------
+------------------------------------------------------------------
+create table Product
+(
+	  pNo int auto_increment primary key,
+	  title varchar(1000), 
+	  link varchar(1000),
+	  image varchar(1000),
+	  lprice int,
+	  hprice int,
+	  mallName varchar(1000),
+	  productId varchar(1000),
+	  productType varchar(1000),
+	  maker varchar(1000),
+	  brand varchar(1000),
+	  category1 varchar(1000),
+	  category2 varchar(1000),
+	  category3 varchar(1000),
+	  category4 varchar(1000),
+      scoreAVG double
+);
+
+create table News
+(
+	nNo int auto_increment primary key,
+	title varchar(1000),
+	originallink varchar(1000),
+	link varchar(1000),
+	description varchar(1000),
+	pubDate datetime
+);
+
+create table Cart
+(
+	mNo int,
+    pNo int,
+    amount int,
+	foreign key (mNo) references Member(mNo),
+	foreign key (pNo) references Product(pNo),
+    primary key (mNo, pNo)
+);
+
+
+create table ProductReply
+(
+	rNo int auto_increment primary key,
+	mNo int,
+    pNo int,
+    content varchar(1000),
+    score int, 
+    createDate timestamp DEFAULT CURRENT_TIMESTAMP,
+    foreign key (mNo) references Member(mNo),
+	foreign key (pNo) references Product(pNo)
+);
+
+
+-- DML  시작
+insert into Member (mNo, id, password, name, email) values(0, 'admin', '1212', '홍길동', 'admin@email.com');
+insert into Member (mNo, id, password, name, email) values(0, 'test1', '1212', '최길동', 'test2@email.com');
+insert into Member (mNo, id, password, name, email) values(0, 'test2', '1212', '박길동', 'test2@email.com');
+select * from Member;
+
+
+
+-- 여기까지만 초기화로 돌리세요!!
+
+insert into Product 
+	(pNo, title, link, image, lprice, hprice, mallName, 
+	productId, productType, maker, brand, category1, category2, category3, category4) 
+values(0, '키보드1', null,  null, 50000, 0, '키보드 전문샵', 'test1', '1', '웨이코스', '씽크웨이', 
+'디지털/가전','주변기기','키보드','유선키보드');
+
+insert into Product 
+	(pNo, title, link, image, lprice, hprice, mallName, 
+	productId, productType, maker, brand, category1, category2, category3, category4) 
+values(0, '키보드2', null,  null, 50000, 0, '키보드 전문샵', 'test1', '1', '웨이코스', '씽크웨이', 
+'디지털/가전','주변기기','키보드','유선키보드');
+select * from Product;
+select * from Product LIMIT 0, 10; 
+
+insert into News (nNo, title, originallink, link, description, pubDate) values(0, '뉴스1', null, null, '뉴스 내용1', sysdate());
+insert into News (nNo, title, originallink, link, description, pubDate) values(0, '뉴스2', null, null, '뉴스 내용2', sysdate());
+select * from News;
+
+
+insert into CART (mNo, pNo, amount) values (1,1,1);
+UPDATE CART set amount = 2 where mNo = 1 and pNo = 1;
+SELECT * FROM CART;
+
+SELECT * FROM Cart 
+INNER JOIN Product ON Cart.pNo = Product.pNo
+INNER JOIN Member ON Cart.mNo = Member.mNo;
+
+insert into ProductReply (rNo, mNo, pNo, content, score, createDate) values (0,1,1, '좋은 제품입니다.', 5, default);
+SELECT * FROM ProductReply;
+
+SELECT * FROM ProductReply 
+INNER JOIN Member ON Reply.mNo = Member.mNo
+WHERE pNo = 1;
+
+commit;
+
+
+SELECT AVG(score) FROM ProductReply where pno = 1;
+
+UPDATE product set scoreAVG = (SELECT AVG(score) FROM ProductReply where pno = 1) where pNo = 1;
+
+select * from product where pno = 1;
+
+SELECT  
+	*
+FROM Product 
+left outer JOIN Cart  ON Cart.pno = Product.pno
+left outer JOIN Member ON Cart.mNo = Member.mNo
+where Cart.mNo = 1;
+
+
+SELECT * FROM Cart 
+INNER JOIN Product ON Cart.pNo = Product.pNo
+INNER JOIN Member ON Cart.mNo = Member.mNo
+where Member.mno = 1;
+
+
+
+
+
