@@ -34,10 +34,7 @@ public class MemberController {
 	private MemberService service;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpSession session) {
-//		Member loginMember = memberService.login("admin", "1212");
-//		session.setAttribute("loginMember", loginMember);
-//		test();
+	public String login(Locale locale, Model model, HttpSession session) {
 		return "0.0.1_account-signin";
 	}
 	@PostMapping("/login")
