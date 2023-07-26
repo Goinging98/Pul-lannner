@@ -17,91 +17,117 @@
           </ol>
         </nav>
         <div class="row mb-md-2 mb-xl-4">
+        
           <!-- Blog posts-->
           <div class="col-lg-9 pe-lg-4 pe-xl-5">
-            <h1 class="pb-3 pb-lg-4">내 식물 자랑하기</h1>
-            <!-- Post-->
-            <article class="row g-0 border-0 mb-4 ">
-              <a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" 
-              style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
-              <div class="col-sm-7">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                  <h3><a href="blog-single-v1.html">내 책상엔 이런 식물이 있지!</a></h3>
-                  <p class="d-sm-none d-md-block">Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque proin lectus et massa fames ac scelerisque fames velit diam sit...</p>
-                  <div class="d-flex flex-wrap align-items-center mt-n2"><a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">6<i class="ai-share fs-lg ms-1"></i></a><a class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2" href="#">12<i class="ai-message fs-lg ms-1"></i></a><span class="fs-xs opacity-20 mt-2 mx-3">|</span><span class="fs-sm text-muted mt-2">8 hours ago</span><span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">Business</a></div>
-                </div>
-              </div>
-            </article> 
-            <!-- Post-->
-            <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4">
-              <a class="col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v2.html" 
-              style="background-image: url(resources/assets/img/blog/list/02.jpg); min-height: 14rem"></a>
-              <div class="col-sm-7">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                  <h3><a href="blog-single-v2.html">저는 스투키가 참 좋아요</a></h3>
-                  <p class="d-sm-none d-md-block">Sapien ultrices egestas at faucibus eu diam velit diam id amet nibh quam rutrum fermentum diam natoque scelerisque viverra viverra molestie fames...</p>
-                  <div class="d-flex flex-wrap align-items-center mt-n2"><a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">10<i class="ai-share fs-lg ms-1"></i></a><a class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2" href="#">4<i class="ai-message fs-lg ms-1"></i></a><span class="fs-xs opacity-20 mt-2 mx-3">|</span><span class="fs-sm text-muted mt-2">12 hours ago</span><span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">Books</a></div>
-                </div>
-              </div>
-            </article>
-            <!-- Post-->
-            <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v3.html" style="background-image: url(resources/assets/img/blog/list/03.jpg); min-height: 14rem"></a>
-              <div class="col-sm-7">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                  <h3><a href="blog-single-v3.html">꽃보다는 선인장이지~</a></h3>
-                  <p class="d-sm-none d-md-block">Sapien ultrices egestas at faucibus eu diam velit diam id amet nibh quam rutrum diam fermentum diam natoque scelerisque viverra molestie fames...</p>
-                  <div class="d-flex flex-wrap align-items-center mt-n2"><a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">8<i class="ai-share fs-lg ms-1"></i></a><a class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2" href="#">5<i class="ai-message fs-lg ms-1"></i></a><span class="fs-xs opacity-20 mt-2 mx-3">|</span><span class="fs-sm text-muted mt-2">April 25, 2022</span><span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">Travel</a></div>
-                </div>
-              </div>
-            </article>
-            <!-- Post-->
-            <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" style="background-image: url(resources/assets/img/blog/list/04.jpg); min-height: 14rem"></a>
-              <div class="col-sm-7">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                  <h3><a href="blog-single-v1.html">처음 키워본 식물입니다.</a></h3>
-                  <p class="d-sm-none d-md-block">Pharetra in morbi quis is massa maecenas arcu vulputate pulvinar elit non nullage a, duis tortor mi massa ipsum in eu eu eget libero pulvinar elit...</p>
-                  <div class="d-flex flex-wrap align-items-center mt-n2"><a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">11<i class="ai-share fs-lg ms-1"></i></a><a class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2" href="#">3<i class="ai-message fs-lg ms-1"></i></a><span class="fs-xs opacity-20 mt-2 mx-3">|</span><span class="fs-sm text-muted mt-2">May 12, 2022</span><span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">Marketing</a></div>
-                </div>
-              </div>
-            </article>
-            <!-- Post-->
-            <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v2.html" style="background-image: url(resources/assets/img/blog/list/05.jpg); min-height: 14rem"></a>
-              <div class="col-sm-7">
-                <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                  <h3><a href="blog-single-v2.html">다시 살아났어요!!!</a></h3>
-                  <p class="d-sm-none d-md-block">Egestas in neque scelerisque semper sit at eu cursus faucibus velit cras at aliquam sed dictum at at orci curabitur dictumst viverra non pharetra etiam non, vitae tristique eu in morbi felis morbi nulla fermentum diam natoque...</p>
-                  <div class="d-flex flex-wrap align-items-center mt-n2"><a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">19<i class="ai-share fs-lg ms-1"></i></a><a class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2" href="#">7<i class="ai-message fs-lg ms-1"></i></a><span class="fs-xs opacity-20 mt-2 mx-3">|</span><span class="fs-sm text-muted mt-2">December 15, 2022</span><span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">TV shows</a></div>
-                </div>
-              </div>
-            </article>
-            <!-- Pagination-->
+			<h1 class="pb-3 pb-lg-4">
+				내 식물 자랑하기
+
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-secondary btn-icon" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 60%">
+					<i class="ai-edit-alt"></i>
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<label class="form-label mt-3">
+								<h3>글쓰기</h3>
+							</label>
+							<form method="post" action="${path}/PlantProud" enctype="multipart/form-data">
+							<div class="form-floating mb-2">
+								<input class="form-control" type="text" id="fl-text" placeholder="Title">
+									<label for="fl-text">제목</label>
+							</div>
+							<textarea class="form-control" id="fl-textarea" style="height: 100px;" placeholder="자랑해주세요!"></textarea>
+							<!-- file input -->
+							<div class="insert mb-2">
+									<input type="file" id="upfile" style="display: none;" onchange="addFile(this);" multiple />
+										<div class="file-list"></div>
+										<label for="upfile"><button class="btn btn-primary" onclick="document.getElementById('upfile').click();">첨부파일</button>
+										</label>
+							</div>
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+								<button type="submit" class="btn btn-primary">등록</button>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</h1>
+
+
+        	<c:if test="${empty list}">
+				<tr>
+					<td colspan="6">조회된 글이 없습니다.</td>
+				</tr>
+			</c:if>
+			
+			<!-- Post-->
+			<c:if test="${not empty list}">
+				<c:forEach var="item" items="${list}">
+					<article class="row g-0 border-0 mb-4 ">
+						<a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" 
+							style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
+						<div class="col-sm-7">
+							<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
+								<h3>
+									<c:out value="${item.title}"></c:out>
+								</h3>
+								<p class="d-sm-none d-md-block">
+									<c:out value="${item.content}"></c:out>
+								</p>
+								<div class="d-flex flex-wrap align-items-center mt-n2">
+									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">6 <i class="ai-share fs-lg ms-1"></i></a>
+									<a class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2" href="#">12<i class="ai-message fs-lg ms-1"></i></a>
+									<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
+									<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span>
+									<span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">Business</a>
+								</div>
+							</div>
+						</div>
+					</article>
+				</c:forEach>
+			</c:if>
+
+
+
+
+			<!-- Pagination-->
             <div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
               <div class="col col-md-4 col-6 order-md-1 order-1">
-                <div class="d-flex align-items-center"><span class="text-muted fs-sm">Show</span>
-                  <select class="form-select form-select-flush w-auto">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="25">25</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col col-md-4 col-12 order-md-2 order-3 text-center">
-                <button class="btn btn-primary w-md-auto w-100" type="button">Load more posts</button>
               </div>
               <div class="col col-md-4 col-6 order-md-3 order-2">
                 <nav aria-label="Page navigation">
                   <ul class="pagination pagination-sm justify-content-end">
-                    <li class="page-item active" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item active" aria-current="page">
+                    <!-- 처음 페이지 -->
+					<button onclick="movePage(1)">&lt;&lt;</button>
+					<!-- 이전 페이지 -->
+					<button onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+					<!-- 10개 페이지가 보여지는 부분 -->
+					<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
+						<c:if test="${status.current == pageInfo.currentPage}">
+							<button disabled>${status.current}</button>
+						</c:if>
+						<c:if test="${status.current != pageInfo.currentPage}">
+							<button onclick="movePage(${status.current})">
+								${status.current}
+							</button>
+						</c:if>
+					</c:forEach>
+                    <!-- 다음 페이지 -->
+					<button onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+					<!-- 마지막 페이지 -->
+					<button onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button></li>
                   </ul>
                 </nav>
               </div>
             </div>
           </div>
+          
           <!-- Sidebar (offcanvas on sreens < 992px)-->
           <aside class="col-lg-3">
             <div class="offcanvas-lg offcanvas-end" id="sidebarBlog">
@@ -118,10 +144,11 @@
                 <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
                 <ul class="nav flex-column mb-lg-5 mb-4">
                   <li class="mb-2"><a class="nav-link d-flex p-0" href="#">All categories<span class="fs-sm text-muted ms-2">(110)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(34)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(8)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(45)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(${pBoardCount})</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(${hBoardCount})</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(${oBoardCount})</span></a></li>
                 </ul>
+
                 <!-- Featured posts widget-->
                 <h4 class="pt-3 pt-lg-0 pb-1">인기글</h4>
                 <div class="mb-lg-5 mb-4">
@@ -158,35 +185,6 @@
       <!-- Sidebar toggle button-->
       <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarBlog"><i class="ai-layout-column me-2"></i>Sidebar</button>
     </main>
-
-    <!-- Insert post-->
-    <div class="container pb-md-4 pb-2 my-5">
-      <h1 class="pb-3 pb-lg-4">내 식물 자랑하기</h1>
-      <div class="col-lg-9 pe-lg-4 pe-xl-5">
-        
-        <!-- Floating label: Text input -->
-        <label class="form-label">제목</label>
-          <div class="form-floating mb-2">
-            <input class="form-control" type="text" id="fl-text" placeholder="Title">
-              <label for="fl-text">Title</label>
-        </div>
-        
-
-        <!-- Floating label: Textarea -->
-        <label class="form-label">내용</label>
-        <div class="form-floating mb-2">
-          <textarea class="form-control" id="fl-textarea" style="height: 120px;" placeholder="Your message"></textarea>
-          <label for="fl-textarea">내 풀을 자랑해보세요!</label>
-        </div>
-        
-        
-        <!-- file input -->
-		<div class="insert mb-2">
-		    <form method="POST" onsubmit="return false;" enctype="multipart/form-data" class="file-list" style="display: flex; flex-wrap: wrap; gap: 10px;">
-		        <input type="file" id="upfile" style="display: none;" onchange="addFile(this);" multiple />
-		        <label for="upfile"><button class="btn btn-primary" onclick="document.getElementById('upfile').click();">첨부파일</button></label>
-		    </form>
-		</div>
 		
 		<script>
 		var fileNo = 0;
@@ -216,7 +214,7 @@
 		                // 목록 추가
 		                let htmlData = '';
 		                htmlData += '<div id="file' + fileNo + '" class="filebox">';
-		                htmlData += '   <div class="name">' + file.name;
+		                htmlData += '   <div class="fs-6 name">' + file.name;
 		                htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><i class="far ai-circle-minus"></i></a></div>';
 		                htmlData += '</div>';
 		                $('.file-list').append(htmlData);
@@ -287,9 +285,13 @@
 		    })
 		}
 		</script>
-		<button type="button" class="btn btn-outline-primary btn-sm" style="margin:auto; display: block;">자랑하기!</button>
-      </div>
-	</div>
+		
+<script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+</script>
 
 
     

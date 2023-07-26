@@ -2,7 +2,130 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 
-<mapper namespace="com.multi.bbs.communityBoard.model.mapper.CommunityBoardMapper">
+<mapper namespace="com.multi.bbs.communityBoard.model.mapper.ProudBoardMapper">
+
+	<resultMap type="ProudBoard" id="pBoardListResultMap">
+		<result property="pNo" column="pNo" />
+		<result property="mno" column="mNo" />
+		<result property="writerId" column="ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="type" column="TYPE" />
+		<result property="originalFileName" column="ORIGINAL_FILENAME" />
+		<result property="renamedFileName" column="RENAMED_FILENAME" />
+		<result property="readCount" column="READCOUNT" />
+		<result property="status" column="STATUS" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="modifyDate" column="MODIFY_DATE" />
+	</resultMap>
+	
+	<resultMap type="ProudBoard" id="pBoardDetailResultMap" extends="pBoardListResultMap">
+		<collection property="replyList" javaType="arrayList" columnPrefix="R_"
+													resultMap="pBoardReplyResultMap"/>
+	</resultMap>
+
+	<select id="selectPBoardList" resultMap="pBoardListResultMap" parameterType="map">
+		SELECT  
+			DISTINCT C.PNO, C.TITLE, C.CREATE_DATE, C.ORIGINAL_FILENAME, C.READCOUNT, C.STATUS
+		FROM COMMBOARD C
+		LEFT OUTER JOIN MEMBER M1 ON C.MNO = M1.MNO
+		WHERE C.STATUS = 'Y' AND C.TYPE = 'PROUD'
+		<if test="title != null">
+			AND C.TITLE LIKE '%${title}%' 
+		</if>		
+		<if test="content != null">
+			AND C.CONTENT LIKE '%${content}%' 
+		</if>		
+		<if test="all != null">
+			AND(
+				c.title like 			'%${all}%' 
+				OR c.content like 		'%${all}%'
+				OR m1.id like 			'%${all}%'
+				OR r.content like 		'%${all}%'
+				OR m2.id like 			'%${all}%'
+			)
+		</if>		
+		ORDER BY C.PNO DESC LIMIT ${limit} OFFSET ${offset}
+	</select>
+	
+	
+	<select id="selectPBoardCount" resultType="int" parameterType="map">
+		SELECT  
+			 COUNT(DISTINCT C.PNO)
+		FROM COMMBOARD C
+		LEFT OUTER JOIN MEMBER M1 ON C.MNO = M1.MNO
+		WHERE C.STATUS = 'Y' AND TYPE = 'PROUD'
+		<if test="writer != null">
+			AND M1.ID LIKE '%${writer}%' 
+		</if>		
+		<if test="title != null">
+			AND C.TITLE LIKE '%${title}%' 
+		</if>		
+		<if test="content != null">
+			AND C.CONTENT LIKE '%${content}%' 
+		</if>		
+		<if test="all != null">
+			AND(
+				c.title like 			'%${all}%' 
+				OR c.content like 		'%${all}%'
+				OR m1.id like 			'%${all}%'
+				OR m2.id like 			'%${all}%'
+			)
+		</if>		
+	</select>
+	
+	
+	<select id="selectPBoardByNo" parameterType="int" resultMap="pBoardDetailResultMap">
+		SELECT  C.pNO, C.TYPE, C.TITLE, M.ID, C.READCOUNT, C.ORIGINAL_FILENAME, C.RENAMED_FILENAME, C.CONTENT, C.CREATE_DATE, C.MODIFY_DATE,
+				R.rNO as R_RNO, 
+		        R.pNO as R_PNO, 
+		        R.CONTENT as R_CONTENT, 
+		        M2.ID as R_ID, 
+		        R.CREATE_DATE as R_CREATE_DATE, 
+		        R.MODIFY_DATE as R_MODIFY_DATE
+		FROM COMMBOARD C
+		JOIN MEMBER M ON(C.mNO = M.mNO)
+		LEFT OUTER JOIN REPLY R ON(R.bNO = C.pNO)
+		LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
+		WHERE C.STATUS = 'Y' AND  C.pNO= #{pno}
+	</select>
+
+
+	<insert id="insertPBoard" parameterType="ProudBoard">
+		INSERT INTO BOARD(
+			PNO, MNO, TITLE,
+			CONTENT, ORIGINAL_FILENAME,
+			RENAMED_FILENAME, READCOUNT, STATUS,
+			CREATE_DATE, MODIFY_DATE, TYPE	
+		) VALUES (
+			0, #{mNo}, #{title}, 
+			#{content}, #{originalFileName}, 
+			#{renamedFileName}, DEFAULT, DEFAULT, 
+			DEFAULT, DEFAULT, DEFAULT			
+		)
+	</insert>
+	
+	
+	<update id="updatePBoard" parameterType="ProudBoard">
+		UPDATE COMMBOARD
+		SET 
+			TITLE = #{title},
+			CONTENT = #{content},
+			<if test="originalFileName != null">
+				ORIGINAL_FILENAME = #{originalFileName},
+			</if>
+			<if test="renamedFileName != null">
+				RENAMED_FILENAME = #{renamedFileName},
+			</if>
+			MODIFY_DATE = CURRENT_TIMESTAMP
+		WHERE 
+			PNO=#{pNo}
+	</update>
+	
+	
+	<update id="deletePBoard" parameterType="int">
+		UPDATE COMMBOARD SET STATUS='N' WHERE PNO=#{pNo}
+	</update>
 
 
 </mapper>
