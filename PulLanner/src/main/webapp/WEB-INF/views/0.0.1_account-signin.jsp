@@ -166,23 +166,23 @@
 				title="Back to home"><i class="ai-home"></i></a>
 			<!-- Sign in form-->
 			<div class="d-flex flex-column align-items-center w-lg-50 h-100 px-3 px-lg-5 pt-5">
-				<div class="w-100 mt-auto" style="max-width: 526px;">
+				<div class="w-100" style="max-width: 526px; margin-top: 200px;">
 					<h1>풀레너에 로그인하세요!</h1>
 					<p class="pb-3 mb-3 mb-lg-4">
-						아직 계정이 없으신가요?&nbsp;&nbsp;<a href='signup'>회원가입하세요!</a>
+						아직 계정이 없으신가요?&nbsp;&nbsp;<a href='/signup'>회원가입하세요!</a>
 					</p>
 					<form class="needs-validation" novalidate>
 						<div class="pb-3 mb-3">
 							<div class="position-relative">
 								<i class="ai-mail fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-								<input class="form-control form-control-lg ps-5" type="email" placeholder="Email address" required>
+								<input class="form-control form-control-lg ps-5" type="email" id="email" placeholder="이메일" required>
 							</div>
 						</div>
 						<div class="mb-4">
 							<div class="position-relative">
 								<i class="ai-lock-closed fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
 								<div class="password-toggle">
-									<input class="form-control form-control-lg ps-5" type="password" placeholder="Password" required> 
+									<input class="form-control form-control-lg ps-5" type="password" id="password" placeholder="Password" required> 
 									<label class="password-toggle-btn" aria-label="Show/hide password">
 										<input class="password-toggle-check" type="checkbox">
 										<span class="password-toggle-indicator"></span>
@@ -190,10 +190,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="d-flex flex-wrap align-items-center justify-content-between pb-4">
+						<!-- <div class="d-flex flex-wrap align-items-center justify-content-between pb-4">
 							<a class="fs-sm fw-semibold text-decoration-none my-1"
 								href="account-password-recovery.html">비밀번호를 잊으셨나요?</a>
 						</div>
+						 -->
 						<button class="btn btn-lg btn-primary w-100 mb-4" type="submit">로그인</button>
 						<!--  
 						<h2 class="h6 text-center pt-3 pt-lg-4 mb-4">Or sign in with your social account</h2>
@@ -215,7 +216,7 @@
 			<div class="w-50 bg-size-cover bg-repeat-0 bg-position-center" style="background-image: url(/resources/assets/img/account/cover.jpg);"></div>
 		</div>
 	</main>
-	
+		
 	<!-- Back to top button-->
 	<a class="btn-scroll-top" href="#top" data-scroll> 
 		<svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -223,9 +224,9 @@
       	</svg><i class="ai-arrow-up"></i>
     </a>
 	<!-- Vendor scripts: js libraries and plugins-->
-	<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+	<script src="/resources/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 	<!-- Main theme script-->
-	<script src="assets/js/theme.min.js"></script>
+	<script src="/resources/assets/js/theme.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.bbs.shop.model.mapper.ShopMapper">
+
+	<insert id="insertProduct" parameterType="Product">
+		insert into Product 
+		(pno, title, link, image, lprice, hprice, mallName, 
+		productId, productType, maker, brand, category1, category2, category3, category4, scoreAvg) 
+		values(0, #{title}, #{link}, #{image}, #{lprice}, #{hprice}, #{mallName},
+		#{productId}, #{productType}, #{maker}, #{brand}, 
+		#{category1}, #{category2}, #{category3}, #{category4}, #{scoreAvg})
+	</insert>
+	
+	<select id="selectProductCount" resultType="int" parameterType="map">
+		SELECT  
+			COUNT(*)
+		FROM Product
+		WHERE 1=1
+		<if test="title != null">
+			AND TITLE LIKE '%${title}%' 
+		</if>		
+		<if test="kinds != null">
+			AND (
+				<foreach collection="kinds" item="item" separator="or">
+					TITLE LIKE '%${item}%'
+				</foreach>
+			)
+		</if>	
+		<if test="highPrice != null">
+			AND lprice <![CDATA[<]]> #{highPrice}
+		</if>		
+		<if test="lowPrice != null">
+			AND lprice <![CDATA[>]]> #{lowPrice}
+		</if>		
+		<if test="brands != null">
+			AND(
+		<foreach collection="brands" item="item" separator="or" index="index">
+        		TITLE LIKE '%${item}%'
+    	</foreach>
+    		)
+    	</if>
+	</select>
+	
+	<select id="selectProductList" resultType="Product" parameterType="map">
+		SELECT  
+			*
+		FROM Product
+		WHERE 1=1
+			<if test="title != null">
+			AND TITLE LIKE '%${title}%' 
+		</if>		
+		<if test="kinds != null">
+			AND (
+				<foreach collection="kinds" item="item" separator="or">
+					TITLE LIKE '%${item}%'
+				</foreach>
+			)
+		</if>		
+		<if test="highPrice != null">
+			AND lprice <![CDATA[<=]]> #{highPrice}
+		</if>		
+		<if test="lowPrice != null">
+			AND lprice <![CDATA[>=]]> #{lowPrice}
+		</if>		
+		<if test="brands != null">
+			AND(
+				<foreach collection="brands" item="item" separator="or" index="index">
+		        		TITLE LIKE '%${item}%'
+		    	</foreach>
+    		)
+    	</if>	
+    	<if test="sort == 'normal' ||  sort == null">
+			ORDER BY pNo DESC 
+    	</if>
+    	<if test="sort == 'low'">
+			ORDER BY lprice ASC 
+    	</if>
+    	<if test="sort == 'high'">
+			ORDER BY lprice DESC 
+    	</if>
+    	
+    	LIMIT ${limit} OFFSET ${offset}
+	</select>
+	
+	<select id="selectProductById" resultType="Product" parameterType="int">
+		SELECT  
+			*
+		FROM Product
+		WHERE pno = #{pno}
+	</select>
+	
+	
+	
+	<insert id="insertProductReply" parameterType="ProductReply">
+		insert into ProductReply (rNo, mNo, pNo, content, score, createDate) 
+		values (0, #{mno}, #{pno}, #{content}, #{score}, default)
+	</insert>
+	
+	<delete id="deleteProductReply" parameterType="int">
+		delete from ProductReply where rno = #{rno}
+	</delete>
+	
+	
+	<select id="selectProductReplyList" resultType="ProductReply" parameterType="int">
+		SELECT * FROM ProductReply 
+		INNER JOIN Member ON ProductReply.mNo = Member.mNo
+		WHERE pno = #{pno}
+	</select>
+	
+	
+	<update id="updateProductAVG"  parameterType="int">
+		UPDATE product set scoreAVG = (SELECT AVG(score) FROM ProductReply where pno = #{pno}) where pNo = #{pno}
+	</update>
+	
+	
+	<select id="selectCart" parameterType="map" resultType="Cart">
+		select * from cart
+		where 1=1
+		<if test="mno != null">
+			and mno = #{mno}
+    	</if>
+		<if test="pno != null">
+			and pno = #{pno}
+    	</if>
+	</select>	
+	
+	<insert id="insertCart" parameterType="Cart">
+		insert into CART (mno, pno, amount) values (#{mno}, #{pno}, #{amount})
+	</insert>
+	
+	<update id="updateCart" parameterType="Cart">
+		UPDATE CART set amount = #{amount} where mno = #{mno} and pno = #{pno}
+	</update>
+	
+	
+	<select id="selectCartProductList" parameterType="int" resultType="Product">
+		SELECT * FROM Cart 
+		INNER JOIN Product ON Cart.pNo = Product.pNo
+		INNER JOIN Member ON Cart.mNo = Member.mNo
+		where Member.mno = #{mno};
+	</select>	
+	
+	
+</mapper>

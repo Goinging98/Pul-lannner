@@ -16,13 +16,13 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="mask-icon" color="#6366f1" href="assets/favicon/safari-pinned-tab.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/resources/assets/favicon/site.webmanifest">
+    <link rel="mask-icon" color="#6366f1" href="/resources/assets/favicon/safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#080032">
-    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="msapplication-config" content="/resources/assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="white">
 
     <!-- Page loading styles-->
@@ -133,7 +133,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" id="google-font">
     <!-- Vendor styles-->
     <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="/resources/assets/css/theme.min.css">
   </head>
   <!-- Body-->
   <body>
@@ -147,52 +147,45 @@
     <main class="page-wrapper">
       <!-- Page content-->
       <div class="d-lg-flex position-relative h-100">
-        <!-- Home button--><a class="text-nav btn btn-icon bg-light border rounded-circle position-absolute top-0 end-0 p-0 mt-3 me-3 mt-sm-4 me-sm-4" href="index.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Back to home"><i class="ai-home"></i></a>
+        <!-- Home button--><a class="text-nav btn btn-icon bg-light border rounded-circle position-absolute top-0 end-0 p-0 mt-3 me-3 mt-sm-4 me-sm-4" href="/main" data-bs-toggle="tooltip" data-bs-placement="left" title="Back to home"><i class="ai-home"></i></a>
         <!-- Sign up form-->
         <div class="d-flex flex-column align-items-center w-lg-50 h-100 px-3 px-lg-5 pt-5">
           <div class="w-100 mt-auto" style="max-width: 526px;">
-            <h1>No account? Sign up</h1>
-            <p class="pb-3 mb-3 mb-lg-4">Have an account already?&nbsp;&nbsp;<a href='account-signin.html'>Sign in here!</a></p>
+            <h1>풀레너의 회원이 되어주세요!</h1>
+            <p class="pb-3 mb-3 mb-lg-4">이미 계정이 있다면&nbsp;<a href='/login'>로그인 해주세요!</a></p>
             <form class="needs-validation" novalidate>
               <div class="row row-cols-1 row-cols-sm-2">
                 <div class="col mb-4">
-                  <input class="form-control form-control-lg" type="text" placeholder="Your name" required>
+                  <input class="form-control form-control-lg" type="text" id="name" placeholder="이름" required>
                 </div>
                 <div class="col mb-4">
-                  <input class="form-control form-control-lg" type="email" placeholder="Email address" required>
+                  <input class="form-control form-control-lg" type="email" id="id" placeholder="이메일" required>
                 </div>
               </div>
               <div class="password-toggle mb-4">
-                <input class="form-control form-control-lg" type="password" placeholder="Password" required>
+                <input class="form-control form-control-lg" type="password" id="password" placeholder="비밀번호" required>
                 <label class="password-toggle-btn" aria-label="Show/hide password">
                   <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                 </label>
               </div>
               <div class="password-toggle mb-4">
-                <input class="form-control form-control-lg" type="password" placeholder="Confirm password" required>
-                <label class="password-toggle-btn" aria-label="Show/hide password">
-                  <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                </label>
+                <input class="form-control form-control-lg" type="phone" id="phone" placeholder="전화번호">
               </div>
-              <div class="pb-4">
-                <div class="form-check my-2">
-                  <input class="form-check-input" type="checkbox" id="terms">
-                  <label class="form-check-label ms-1" for="terms">I agree to <a href="#">Terms &amp; Conditions</a></label>
-                </div>
-              </div>
-              <button class="btn btn-lg btn-primary w-100 mb-4" type="submit">Sign up</button>
+              <button class="btn btn-lg btn-primary w-100 mb-4" type="submit">회원가입</button>
+              <!-- 
               <h2 class="h6 text-center pt-3 pt-lg-4 mb-4">Or sign in with your social account</h2>
               <div class="row row-cols-1 row-cols-sm-2 gy-3">
                 <div class="col"><a class="btn btn-icon btn-outline-secondary btn-google btn-lg w-100" href="#"><i class="ai-google fs-xl me-2"></i>Google</a></div>
                 <div class="col"><a class="btn btn-icon btn-outline-secondary btn-facebook btn-lg w-100" href="#"><i class="ai-facebook fs-xl me-2"></i>Facebook</a></div>
               </div>
+               -->
             </form>
           </div>
           <!-- Copyright-->
-          <p class="w-100 fs-sm pt-5 mt-auto mb-5" style="max-width: 526px;"><span class="text-muted">&copy; All rights reserved. Made by</span><a class="nav-link d-inline-block p-0 ms-1" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
+          <p class="w-100 fs-sm pt-5 mt-auto mb-5" style="max-width: 526px;"><span class="text-muted"></p>
         </div>
         <!-- Cover image-->
-        <div class="w-50 bg-size-cover bg-repeat-0 bg-position-center" style="background-image: url(assets/img/account/cover.jpg);"></div>
+        <div class="w-50 bg-size-cover bg-repeat-0 bg-position-center" style="background-image: url(/resources/assets/img/account/cover.jpg);"></div>
       </div>
     </main>
     <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll>
@@ -200,9 +193,9 @@
         <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"></circle>
       </svg><i class="ai-arrow-up"></i></a>
     <!-- Vendor scripts: js libraries and plugins-->
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="/resources/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <!-- Main theme script-->
-    <script src="assets/js/theme.min.js"></script>
+    <script src="/resources/assets/js/theme.min.js"></script>
   </body>
 </html>

@@ -34,7 +34,7 @@ public class MemberController {
 	private MemberService service;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Locale locale, Model model, HttpSession session) {
+	public String login() {
 		return "0.0.1_account-signin";
 	}
 	@PostMapping("/login")
@@ -59,15 +59,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/member/enroll")
-	public String enrollPage() {
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signup() {
 		log.info("가입 페이지 요청");
-		return "member/enroll";
+		return "0.0.2_account-signup";
 	}
-	
 	// 회원가입 
 	// ModelAndView 사용법, 가능하면 프로젝트에서는 스타일 통일할것! 현업 일부와 전저정부프레임워크 표준.
-	@PostMapping("/member/enroll")
+	@PostMapping("/signingup")
 	public String enroll(Model model, @ModelAttribute Member member) { // @ModelAttribute 생각가능
 		log.info("회원가입, member : " + member.toString());
 
