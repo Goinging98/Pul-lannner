@@ -17,11 +17,131 @@
 		
 		
 		
-		
 		<select id="selectGardenCount" parameterType="map" resultType="int">
 		    SELECT COUNT(*)
 		    FROM gardenDtl
 		</select>
+		
+		
+		<select id="selectByContentId" parameterType="int" resultType="GardenList">
+		SELECT *
+		FROM gardenDtl
+		WHERE cntntsNo = #{id}
+		</select>
+		
+		
+		<select id="selectByContentDetailId" parameterType="int" resultType="GardenDtl">
+		SELECT *,
+			case when managelevelCode="089001" then "초보자" <!-- 관리 수준 -->
+				 when managelevelCode="089002" then "경험자"
+				 when managelevelCode="089003" then "전문가"
+				 else "정보없음"
+			end as manageleveltext,
+			
+			
+			 CASE <!-- 성장 속도 -->
+          	 WHEN grwtveCodeNm IS NULL OR grwtveCodeNm = '' THEN '정보없음'
+         	 ELSE grwtveCodeNm
+      		 END AS growthrate,
+			
+			
+			 CASE <!-- 알맞은 습도 -->
+          	 WHEN hdCodeNm IS NULL OR hdCodeNm = '' THEN '정보없음'
+         	 ELSE hdCodeNm
+      		 END AS humidity,
+			
+			
+         	 CASE <!-- 잘 자라는 온도 -->
+          	 WHEN grwhTpCodeNm IS NULL OR grwhTpCodeNm = '' THEN '정보없음'
+         	 ELSE grwhTpCodeNm
+      		 END AS growthTemperature,
+			
+			
+			 <!-- 원산지, 잎형태, 냄새정도, 독성, 번식시기, 기타시기. 비료, 병충해 관리정보 -->
+			 CASE <!-- 원산지 -->
+ 			 WHEN orgplceInfo IS NULL OR orgplceInfo = "" THEN "정보없음"
+         	 ELSE orgplceInfo
+      		 END AS orgplce,
+			 
+			 
+			 CASE <!-- 잎 형태 -->
+ 			 WHEN lefStleInfo IS NULL OR lefStleInfo = "" THEN "정보없음"
+         	 ELSE lefStleInfo
+      		 END AS leafShape,
+      		 
+      		 
+      		 CASE <!-- 냄새 정보 -->
+ 			 WHEN smellCodeNm IS NULL OR smellCodeNm = "" THEN "정보없음"
+         	 ELSE smellCodeNm
+      		 END AS smellCodeName,
+      		 
+      		 
+      		 CASE <!-- 독 정보 -->
+ 			 WHEN toxctyInfo IS NULL OR toxctyInfo = "" THEN "정보없음"
+         	 ELSE toxctyInfo
+      		 END AS toxin,
+      		 
+      		 
+      		 CASE <!-- 번식 시기 -->
+ 			 WHEN prpgtEraInfo IS NULL OR prpgtEraInfo = "" THEN "정보없음"
+         	 ELSE prpgtEraInfo
+      		 END AS prpgtEra,
+      		 
+      		 
+      		 CASE <!-- 기타 시기 -->
+ 			 WHEN etcEraInfo IS NULL OR etcEraInfo = "" THEN "정보없음"
+         	 ELSE etcEraInfo
+      		 END AS etcEra,
+      		 
+      		 
+      		 CASE <!-- 비료 -->
+ 			 WHEN frtlzrInfo IS NULL OR frtlzrInfo = "" THEN "정보없음"
+         	 ELSE frtlzrInfo
+      		 END AS frtlzr,
+      		 
+      		 
+      		 CASE <!-- 병충해관리정보 -->
+ 			 WHEN dlthtsManageInfo IS NULL OR dlthtsManageInfo = "" THEN "정보없음"
+         	 ELSE dlthtsManageInfo
+      		 END AS dlthtsManage,
+      		 
+      		 
+      		 CASE <!-- 물주기정보 --> <!-- 봄 -->
+ 			 WHEN watercycleSprngCodeNm IS NULL OR watercycleSprngCodeNm = "" THEN "정보없음"
+         	 ELSE watercycleSprngCodeNm
+      		 END AS watercycleSprng,
+      		 CASE <!-- 여름 -->
+ 			 WHEN watercycleSummerCodeNm IS NULL OR watercycleSummerCodeNm = "" THEN "정보없음"
+         	 ELSE watercycleSummerCodeNm
+      		 END AS watercycleSummer,
+      		 CASE <!-- 가을 -->
+ 			 WHEN watercycleAutumnCodeNm IS NULL OR watercycleAutumnCodeNm = "" THEN "정보없음"
+         	 ELSE watercycleAutumnCodeNm
+      		 END AS watercycleAutumn,
+      		 CASE <!-- 겨울 -->
+ 			 WHEN watercycleWinterCodeNm IS NULL OR watercycleWinterCodeNm = "" THEN "정보없음"
+         	 ELSE watercycleWinterCodeNm
+      		 END AS watercycleWinter,
+      		 
+      	
+	     
+	    SUBSTRING_INDEX(rtnStreFileNm, '|', 1) AS imageA,
+	    SUBSTRING_INDEX(SUBSTRING_INDEX(rtnStreFileNm, '|', -2), '|', 1) AS imageB,
+	    SUBSTRING_INDEX(rtnStreFileNm, '|', -1) AS imageC
+
+      		 
+      		 
+		FROM gardenDtl
+		WHERE cntntsNo = #{id}
+		</select>
+		
+		
+
+		
+
+		
+		
+		
 		
 
 		

@@ -14,6 +14,9 @@ package com.multi.bbs.plantSearch.model.vo;
 		public String rtnFileUrl;
 		public String rtnThumbFileUrl;
 		
+
+		
+		
 		public GardenList() {
 			super();
 		}
@@ -119,7 +122,7 @@ package com.multi.bbs.plantSearch.model.vo;
 		}
 		
 		
-		
+
 
 	}
 

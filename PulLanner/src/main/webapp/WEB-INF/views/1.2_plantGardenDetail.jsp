@@ -13,7 +13,7 @@
       <style>
         /* 이미지 크기 맞추기(item에 적용) */
         .image-container {
-          height: 450px;
+          height: 550px;
           overflow: hidden;
         }
         /* 이미지 크기 맞추기(item에 적용) */
@@ -23,6 +23,7 @@
           object-fit: cover;
         }
         </style>
+        
         
       <div class="overflow-hidden">
         <div class="container pt-5 pb-sm-3 mt-5 mb-2 mb-md-3 mb-lg-4 mb-xxl-5">
@@ -37,13 +38,13 @@
         
         
         
-        
+  
           <!-- 식물 정보 시작 -->
           <article class="row align-items-center card-hover pb-3 mb-md-2 mb-lg-3 mb-xl-4" data-aos="fade-up"
             data-aos-duration="600" data-aos-offset="280">
             <div class="col-5 image-container">
-              <a href="assets\img\landing\yoga-studio\trainers\sample.jpeg" class="gallery-item d-block card-hover fit-cover">
-                <img src="assets\img\landing\yoga-studio\trainers\sample.jpeg" class="d-block rounded-4 fit-cover"
+              <a href="${itemDetail.imageA}" class="gallery-item d-block card-hover fit-cover">
+                <img src="${itemDetail.imageA}" class="d-block rounded-4 fit-cover"
                   alt="Image #1" style="width: 500px;">
               </a>
             </div>
@@ -52,8 +53,8 @@
                 <div class="col row">
                   <div class="col" style="margin-top: 50px;">
                     <div class="text-muted mb-2">실내정원용</div>
-                    <h2 class="mb-lg-3">식물학명을입력해주세요</h2>
-                    <h4 class="mb-lg-3 text-muted" style=' line-height: 30%'>식물영명입력</h4>
+                    <h2 class="mb-lg-3">${itemDetail.cntntsSj}</h2>
+                    <h4 class="mb-lg-3 text-muted" style=' line-height: 30%'>${itemDetail.plntbneNm}</h4>
                   </div>
                   <div class="col-1">
                     <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-top: 50px;" >
@@ -62,32 +63,36 @@
                   </div>
                 </div>
                 <div style="width: 750px; height: 150px; overflow: auto; margin-bottom: 15px;">
-                  <p class="mb-lg-3 mb-md-1 mb-lg-3 mt-3 pb-2">진달래과의 작은 관목으로 척박한 산성토양에서 잘 자라며 키는 20cm정도로 포복형이다. 암석정원에 잘 어울린다진달래과의 작은 관목으로 척박한 산성토양에서 잘 자라며 키는 20cm정도로 포복형이다. </p>
+                  <p class="mb-lg-3 mb-md-1 mb-lg-3 mt-3 pb-2">${itemDetail.adviseInfo} </p>
                 </div>
+                
+                <h3 class="h5 ai-cloud-rain">물주기 </h3>
+                <div class="fs-6" style="margin-bottom: 20px;">
+                  봄 : ${itemDetail.watercycleSprng} <br>
+                  여름 : ${itemDetail.watercycleSummer} <br>
+                  가을 : ${itemDetail.watercycleAutumn} <br>
+                  겨울 : ${itemDetail.watercycleWinter} <br>
+                </div>
+                
                 <!--표-->
                 <div class="row row-cols-1 row-cols-sm-2 g-4" >
                   <div class="col">
                     <h3 class="h5 ai-chart"> 관리 수준</h3>
-                    <p class="mb-1">초보자</p>
+                    <p class="mb-1">${itemDetail.manageleveltext}</p>
                   </div>
                   <div class="col">
                     <h3 class="h5 ai-award"> 성장 속도</h3>
-                    <p class="mb-1">정보가 없습니다</p>
+                    <p class="mb-1">${itemDetail.growthrate}</p>
                   </div>
                   <div class="col">
                     <h3 class="h5 ai-cloud-rain"> 알맞은 습도</h3>
-                    <p class="mb-1">40% ~ 70%</p>
+                    <p class="mb-1">${itemDetail.humidity}</p>
                   </div>
                   <div class="col">
                     <h3 class="h5 ai-bulb-alt"> 잘 자라는 온도</h3>
-                    <p class="mb-1">18~27℃의 온도에서 잘 자라요</p>
+                    <p class="mb-1">${itemDetail.growthTemperature}</p>
                   </div>
-                </div>
-        
-        
-        
-        
-        
+                </div> 
               </div>
             </div>
           </article>
@@ -108,7 +113,7 @@
               <div class="card border-0 h-100" style="background-color:#F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">원산지</h4>
-                  <p class="mb-0">아시아, 아메리카, 캐나다</p>
+                  <p class="mb-0">${itemDetail.orgplce}</p>
                 </div>
               </div>
             </div>
@@ -117,7 +122,7 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">잎 형태</h4>
-                  <p class="mb-0">화려함, 잎의 질감-중간, 잎의 광택-있음, 상록</p>
+                  <p class="mb-0">${itemDetail.leafShape}</p>
                 </div>
               </div>
             </div>
@@ -126,7 +131,7 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">냄새 정도</h4>
-                  <p class="mb-0">냄새 정보</p>
+                  <p class="mb-0">${itemDetail.smellCodeName}</p>
                 </div>
               </div>
             </div>
@@ -135,7 +140,7 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">독성</h4>
-                  <p class="mb-0">독성 정보</p>
+                  <p class="mb-0">${itemDetail.toxin}</p>
                 </div>
               </div>
             </div> 
@@ -144,7 +149,7 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">번식 시기</h4>
-                  <p class="mb-0">파종-9~11월/분주-3~5월</p>
+                  <p class="mb-0">${itemDetail.prpgtEra}</p>
                 </div>
               </div>
             </div>
@@ -153,7 +158,7 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">기타 시기</h4>
-                  <p class="mb-0">기타 시기 정보</p>
+                  <p class="mb-0">${itemDetail.etcEra}</p>
                 </div>
               </div>
             </div>
@@ -162,7 +167,7 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">비료</h4>
-                  <p class="mb-0">비료를 보통 요구함</p>
+                  <p class="mb-0">${itemDetail.frtlzr}</p>
                 </div>
               </div>
             </div>
@@ -171,7 +176,7 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">병충해관리정보</h4>
-                  <p class="mb-0">병충해관리정보</p>
+                  <p class="mb-0">${itemDetail.dlthtsManage}</p>
                 </div>
               </div>
             </div>

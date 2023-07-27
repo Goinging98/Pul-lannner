@@ -2,6 +2,7 @@ package com.multi.bbs.plantSearch.model.service;
 
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.plantSearch.model.mapper.plantSearchMapper;
+import com.multi.bbs.plantSearch.model.vo.GardenDtl;
 import com.multi.bbs.plantSearch.model.vo.GardenList;
 
 import java.util.List;
@@ -17,11 +18,6 @@ public class plantSearchService {
 
 
 	
-//	public GardenList selectByContentId(int id) {
-//		// 매퍼 인터페이스의 selectByContentId 메서드 호출
-//		return mapper.selectByContentId(id);
-//	}
-	
 	public List<GardenList> selectGardentList(PageInfo pageInfo, Map<String, Object> param) {
 	    param.put("limit", String.valueOf(pageInfo.getListLimit())); // 정수를 문자열로 변환하여 추가
 	    param.put("offset", String.valueOf(pageInfo.getStartList() - 1)); // 정수를 문자열로 변환하여 추가
@@ -29,9 +25,23 @@ public class plantSearchService {
 	    return mapper.selectGardentList(param);
 	}
 
+	
+	
 	public int selectGardenCount(Map<String, Object> map) {
 	    // 매퍼 인터페이스의 selectGardenCount 메서드 호출
 	    return mapper.selectGardenCount(map);
 	}
+
+	
+	public GardenList selectByContentId(int id) {
+		return mapper.selectByContentId(id);	
+	}
+	
+	
+	public GardenDtl selectByContentDetailId(int id) {
+		return mapper.selectByContentDetailId(id);	
+	}
+	
+	
 
 }

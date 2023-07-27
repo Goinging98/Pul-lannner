@@ -83,12 +83,12 @@
           <div class="col-md-3">
             <div class="card">
               <div class="image-container">
-                <img src="http://www.nongsaro.go.kr/cms_contents/301/12920_MF_REPR_ATTACH_01_TMB.jpg" class="card-img-top fit-cover" alt="Card image">
+                <img src="" class="card-img-top fit-cover" alt="Card image">
               </div>
               <div class="card-body">
-                <h5 class="card-title text-truncate">흰꽃나도사프란</h5>
+                <h5 class="card-title text-truncate">${item.cntntsSj}</h5>
                 <div class="d-flex justify-content-between">
-                  <a href="#" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+                  <a href="${path}/GardenDetail?id=${item.cntntsNo}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
                   <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;">
                     <i class="ai-bookmark"></i>
                   </button>
@@ -97,6 +97,23 @@
             </div>
           </div>
           </c:forEach>
+          
+          <div class="col-md-3">
+            <div class="card">
+              <div class="image-container">
+                <img src="https://c.pxhere.com/photos/25/6b/photo-1403685.jpg!d" class="card-img-top fit-cover" alt="Card image">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-truncate">테스트</h5>
+                <div class="d-flex justify-content-between">
+                  <a href="${path}/GardenDetail?id=${item.cntntsNo}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+                  <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;">
+                    <i class="ai-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
          
 
           
