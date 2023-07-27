@@ -14,6 +14,9 @@ package com.multi.bbs.plantSearch.model.vo;
 		public String rtnFileUrl;
 		public String rtnThumbFileUrl;
 		
+		//코드추가
+		public String thumbA;
+		
 
 		
 		
@@ -121,6 +124,13 @@ package com.multi.bbs.plantSearch.model.vo;
 			this.rtnThumbFileUrl = rtnThumbFileUrl;
 		}
 		
+		//코드추가
+		public String getThumbA() {
+			return thumbA;
+		}
+		public void setThumbA(String thumbA) {
+			this.thumbA = thumbA;
+		}
 		
 
 

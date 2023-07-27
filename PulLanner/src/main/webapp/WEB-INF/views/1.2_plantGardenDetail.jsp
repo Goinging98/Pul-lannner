@@ -62,7 +62,7 @@
                     </button>
                   </div>
                 </div>
-                <div style="width: 750px; height: 150px; overflow: auto; margin-bottom: 15px;">
+                <div style="width: 750px; height: 100px; overflow: auto; margin-bottom: 15px;">
                   <p class="mb-lg-3 mb-md-1 mb-lg-3 mt-3 pb-2">${itemDetail.adviseInfo} </p>
                 </div>
                 

@@ -5,7 +5,11 @@
 <mapper namespace="com.multi.bbs.plantSearch.model.mapper.plantSearchMapper">
 
 		<select id="selectGardentList" parameterType="map" resultType="GardenList">
-	    SELECT *
+	    SELECT *,
+	    
+	    SUBSTRING_INDEX(rtnStreFileNm, '|', 1) AS thumbA,
+	    SUBSTRING_INDEX(SUBSTRING_INDEX(rtnStreFileNm, '|', -2), '|', 1) AS imageB,
+	    SUBSTRING_INDEX(rtnStreFileNm, '|', -1) AS imageC
 	    FROM gardenDtl
 	    <where>
 	        <if test="searchValue != null">
@@ -23,12 +27,7 @@
 		</select>
 		
 		
-		<select id="selectByContentId" parameterType="int" resultType="GardenList">
-		SELECT *
-		FROM gardenDtl
-		WHERE cntntsNo = #{id}
-		</select>
-		
+
 		
 		<select id="selectByContentDetailId" parameterType="int" resultType="GardenDtl">
 		SELECT *,
@@ -121,24 +120,22 @@
       		 CASE <!-- 겨울 -->
  			 WHEN watercycleWinterCodeNm IS NULL OR watercycleWinterCodeNm = "" THEN "정보없음"
          	 ELSE watercycleWinterCodeNm
-      		 END AS watercycleWinter,
-      		 
-      	
+      		 END AS watercycleWinter,   	
 	     
 	    SUBSTRING_INDEX(rtnStreFileNm, '|', 1) AS imageA,
 	    SUBSTRING_INDEX(SUBSTRING_INDEX(rtnStreFileNm, '|', -2), '|', 1) AS imageB,
 	    SUBSTRING_INDEX(rtnStreFileNm, '|', -1) AS imageC
-
-      		 
-      		 
+ 
 		FROM gardenDtl
 		WHERE cntntsNo = #{id}
 		</select>
 		
-		
-
-		
-
+	
+		<select id="selectByContentId" parameterType="int" resultType="GardenList">
+		SELECT *
+		FROM gardenDtl
+		WHERE cntntsNo = #{id}
+		</select>
 		
 		
 		

@@ -83,7 +83,7 @@
           <div class="col-md-3">
             <div class="card">
               <div class="image-container">
-                <img src="" class="card-img-top fit-cover" alt="Card image">
+                <img src="${item.thumbA}" class="card-img-top fit-cover" alt="Card image">
               </div>
               <div class="card-body">
                 <h5 class="card-title text-truncate">${item.cntntsSj}</h5>
@@ -98,22 +98,6 @@
           </div>
           </c:forEach>
           
-          <div class="col-md-3">
-            <div class="card">
-              <div class="image-container">
-                <img src="https://c.pxhere.com/photos/25/6b/photo-1403685.jpg!d" class="card-img-top fit-cover" alt="Card image">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title text-truncate">테스트</h5>
-                <div class="d-flex justify-content-between">
-                  <a href="${path}/GardenDetail?id=${item.cntntsNo}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
-                  <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;">
-                    <i class="ai-bookmark"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
          
 
           

@@ -53,7 +53,7 @@ public class plantSearchController {
             
             // id가 null이 아닌 경우에만 id를 출력합니다.
             System.out.println("id: " + id);
-            System.out.println("itemDetail: " + gardenList); // 또는 gardenDtl의 필드들을 하나씩 출력
+            System.out.println("item: " + gardenList); // 또는 gardenDtl의 필드들을 하나씩 출력
         }
         
 
@@ -107,7 +107,7 @@ public class plantSearchController {
             
             // id가 null이 아닌 경우에만 id를 출력합니다.
             System.out.println("id: " + id);
-            System.out.println("itemDetail: " + gardenList); // 또는 gardenDtl의 필드들을 하나씩 출력
+            System.out.println("item: " + gardenList); // 또는 gardenDtl의 필드들을 하나씩 출력
         }
         
         
