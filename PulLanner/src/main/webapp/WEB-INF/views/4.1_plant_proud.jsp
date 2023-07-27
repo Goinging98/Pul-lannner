@@ -36,18 +36,21 @@
 								<h3>글쓰기</h3>
 							</label>
 							<form method="post" action="${path}/PlantProud" enctype="multipart/form-data">
-							<div class="form-floating mb-2">
-								<input class="form-control" type="text" id="fl-text" placeholder="Title">
-									<label for="fl-text">제목</label>
+							<input type="hidden" name="id" value="${loginMember.id}" readonly class="input-text">
+							<label class="form-label">제목</label>
+							<div class="form-floating">
+					        	<div class="form-floating">
+					            	<input class="form-control" type="text" id="fl-text" placeholder="Title">
+					              		<label for="fl-text">Title</label>
+					        	</div>
 							</div>
-							<textarea class="form-control" id="fl-textarea" style="height: 100px;" placeholder="자랑해주세요!"></textarea>
-							<!-- file input -->
-							<div class="insert mb-2">
-									<input type="file" id="upfile" style="display: none;" onchange="addFile(this);" multiple />
-										<div class="file-list"></div>
-										<label for="upfile"><button class="btn btn-primary" onclick="document.getElementById('upfile').click();">첨부파일</button>
-										</label>
-							</div>
+							<label class="form-label">내용</label>
+							<textarea class="form-control" name="content" id="fl-textarea" style="height: 100px;" placeholder="자랑해주세요!"></textarea>
+							<!-- File input -->
+					        <div class="mb-3">
+					          <label for="file-input" class="form-label">첨부파일</label>
+					          <input class="form-control" type="file" id="file-input">
+					        </div>
 							<div class="modal-footer">
 								<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 								<button type="submit" class="btn btn-primary">등록</button>
@@ -101,27 +104,35 @@
               </div>
               <div class="col col-md-4 col-6 order-md-3 order-2">
                 <nav aria-label="Page navigation">
-                  <ul class="pagination pagination-sm justify-content-end">
+                  <ul class="pagination justify-content-end">
                     <li class="page-item active" aria-current="page">
                     <!-- 처음 페이지 -->
-					<button onclick="movePage(1)">&lt;&lt;</button>
+                    <li class="page-item">
+					<button class="page-link" onclick="movePage(1)">&lt;&lt;</button>
+					</li>
 					<!-- 이전 페이지 -->
-					<button onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+					<li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+					</li>
 					<!-- 10개 페이지가 보여지는 부분 -->
 					<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
 						<c:if test="${status.current == pageInfo.currentPage}">
-							<button disabled>${status.current}</button>
+							<button class="page-link" disabled>${status.current}</button>
 						</c:if>
 						<c:if test="${status.current != pageInfo.currentPage}">
-							<button onclick="movePage(${status.current})">
+							<button class="page-link" onclick="movePage(${status.current})">
 								${status.current}
 							</button>
 						</c:if>
 					</c:forEach>
                     <!-- 다음 페이지 -->
-					<button onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+                    <li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+					</li>
 					<!-- 마지막 페이지 -->
-					<button onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button></li>
+					<li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
+					</li>
                   </ul>
                 </nav>
               </div>
@@ -130,6 +141,8 @@
           
           <!-- Sidebar (offcanvas on sreens < 992px)-->
           <aside class="col-lg-3">
+          	<form name="searchForm" action="${path}/PlantProud" method="get">
+          	<input type="hidden" name="page" value="1">
             <div class="offcanvas-lg offcanvas-end" id="sidebarBlog">
               <div class="offcanvas-header">
                 <h4 class="offcanvas-title">Sidebar</h4>
@@ -138,7 +151,7 @@
               <div class="offcanvas-body">
                 <!-- Search box-->
                 <div class="position-relative mb-4 mb-lg-5"><i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                  <input class="form-control ps-5" type="search" placeholder="Enter keyword">
+                  <input class="form-control ps-5" name="searchValue" type="search" placeholder="Enter keyword">
                 </div>
                 <!-- Category links-->
                 <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
@@ -179,6 +192,7 @@
                 </div>
               </div>
             </div>
+            </form>
           </aside>
         </div>
       </div>
@@ -186,114 +200,7 @@
       <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarBlog"><i class="ai-layout-column me-2"></i>Sidebar</button>
     </main>
 		
-		<script>
-		var fileNo = 0;
-		var filesArr = new Array();
-
-		/* 첨부파일 추가 */
-		function addFile(obj){
-		    var maxFileCnt = 3;   // 첨부파일 최대 개수
-		    var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
-		    var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
-		    var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
-
-		    // 첨부파일 개수 확인
-		    if (curFileCnt > remainFileCnt) {
-		        alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
-		    } else {
-		        for (const file of obj.files) {
-		            // 첨부파일 검증
-		            if (validation(file)) {
-		                // 파일 배열에 담기
-		                var reader = new FileReader();
-		                reader.onload = function () {
-		                    filesArr.push(file);
-		                };
-		                reader.readAsDataURL(file);
-
-		                // 목록 추가
-		                let htmlData = '';
-		                htmlData += '<div id="file' + fileNo + '" class="filebox">';
-		                htmlData += '   <div class="fs-6 name">' + file.name;
-		                htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><i class="far ai-circle-minus"></i></a></div>';
-		                htmlData += '</div>';
-		                $('.file-list').append(htmlData);
-		                fileNo++;
-		            } else {
-		                continue;
-		            }
-		        }
-		    }
-		    // 초기화
-		    document.querySelector("input[type=file]").value = "";
-		}
-
-		/* 첨부파일 검증 */
-		function validation(obj){
-		    const fileTypes = ['application/pdf', 'image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
-		    if (obj.name.length > 100) {
-		        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
-		        return false;
-		    } else if (obj.size > (100 * 1024 * 1024)) {
-		        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
-		        return false;
-		    } else if (obj.name.lastIndexOf('.') == -1) {
-		        alert("확장자가 없는 파일은 제외되었습니다.");
-		        return false;
-		    } else if (!fileTypes.includes(obj.type)) {
-		        alert("첨부가 불가능한 파일은 제외되었습니다.");
-		        return false;
-		    } else {
-		        return true;
-		    }
-		}
-
-		/* 첨부파일 삭제 */
-		function deleteFile(num) {
-		    document.querySelector("#file" + num).remove();
-		    filesArr[num].is_delete = true;
-		}
-
-		/* 폼 전송 */
-		function submitForm() {
-		    // 폼데이터 담기
-		    var form = document.querySelector("form");
-		    var formData = new FormData(form);
-		    for (var i = 0; i < filesArr.length; i++) {
-		        // 삭제되지 않은 파일만 폼데이터에 담기
-		        if (!filesArr[i].is_delete) {
-		            formData.append("attach_file", filesArr[i]);
-		        }
-		    }
-
-		    $.ajax({
-		        method: 'POST',
-		        url: '/register',
-		        dataType: 'json',
-		        data: formData,
-		        async: true,
-		        timeout: 30000,
-		        cache: false,
-		        headers: {'cache-control': 'no-cache', 'pragma': 'no-cache'},
-		        success: function () {
-		            alert("파일업로드 성공");
-		        },
-		        error: function (xhr, desc, err) {
-		            alert('에러가 발생 하였습니다.');
-		            return;
-		        }
-		    })
-		}
-		</script>
 		
-<script type="text/javascript">
-	function movePage(page){
-		searchForm.page.value = page;
-		searchForm.submit();
-	}
-</script>
-
-
     
     <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll>
       <svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -301,10 +208,17 @@
       </svg><i class="ai-arrow-up"></i></a>
       
     <!-- Vendor scripts: js libraries and plugins-->
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="resources/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="resources/assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <!-- Main theme script-->
-    <script src="assets/js/theme.min.js"></script>
+    <script src="resources/assets/js/theme.min.js"></script>
   </body>
 
- <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+<script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+</script>
