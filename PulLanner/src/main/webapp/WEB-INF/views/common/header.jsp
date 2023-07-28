@@ -168,94 +168,85 @@
 					</span> PUL-LANNER
 				</a>
 				<c:if test="${loginMember == null}">
-					<a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex"
-						href="/login" target="_blank" rel="noopener">
+					<a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex" href="/login" target="_blank" rel="noopener">
 						<i class="ai-user fs-xl me-2 ms-n1"></i>로그인
 					</a>
 				</c:if>
 				
-				<button class="navbar-toggler ms-sm-3" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 					<span class="navbar-toggler-icon"> </span>
 				</button>
 				<nav class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav navbar-nav-scroll me-auto"
-						style="--ar-scroll-height: 520px;">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							data-bs-toggle="dropdown" data-bs-auto-close="outside"
-							aria-expanded="false">식물검색</a>
+					<ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물검색</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/PlantSearch">꽃</a></li>
 								<li><a class="dropdown-item" href="${path}/PlantSearch">실내정원용</a></li>
 								<li><a class="dropdown-item" href="${path}/PlantSearch">다육이</a></li>
-							</ul></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							data-bs-toggle="dropdown" data-bs-auto-close="outside"
-							aria-expanded="false">식물분양</a>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물분양</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/PlantShop">식물판매</a></li>
 								<li><a class="dropdown-item" href="account-overview.html">씨앗분양</a></li>
-							</ul></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							data-bs-toggle="dropdown" data-bs-auto-close="outside"
-							aria-expanded="false">식물관리</a>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물관리</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/PlantManage">풀래너</a></li>
-							</ul></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							data-bs-toggle="dropdown" data-bs-auto-close="outside"
-							aria-expanded="false">식물명소</a>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물명소</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="account-overview.html">식물원</a></li>
 								<li><a class="dropdown-item" href="account-overview.html">숲/산</a></li>
 								<li><a class="dropdown-item" href="account-settings.html">국립공원</a></li>
 								<li><a class="dropdown-item" href="account-settings.html">휴양림</a></li>
-							</ul></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							data-bs-toggle="dropdown" data-bs-auto-close="outside"
-							aria-expanded="false">커뮤니티</a>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/PlantProud">식물자랑</a></li>
 								<li><a class="dropdown-item" href="${path}/HoneyTip">식물기르기꿀팁</a></li>
 								<li><a class="dropdown-item" href="${path}/Observe">관찰일지</a></li>
-							</ul></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							data-bs-toggle="dropdown" data-bs-auto-close="outside"
-							aria-expanded="false">아이템쇼핑</a>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">아이템쇼핑</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="account-overview.html">화분구매</a></li>
 								<li><a class="dropdown-item" href="account-overview.html">관리용품구매</a></li>
-							</ul></li>
+							</ul>
+						</li>
 						<!--<c:if test="${loginMember != null}">
-							<!-- User signed in state. Account dropdown on screens > 576px -->
-							<li class="nav-item dropdown d-sm-none border-top mt-2 pt-2">
-								<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-									<img class="border rounded-circle" src="assets/img/avatar/01.jpg" width="48" alt="Isabella Bocouse">
-			           				<div class="ps-2">
-				              			<div class="fs-xs lh-1 opacity-60">Hello,</div>
-				              			<div class="fs-sm dropdown-toggle">Isabella</div>
-			           				</div>
-			           			</a>
-			           			<div class="dropdown-menu">
-						            <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pb-1">계정관리</h6>
-						            <a class="dropdown-item" href="account-overview.html"><i class="ai-user-check fs-lg opacity-70 me-2"></i>내 정보</a>
-						            <a class="dropdown-item" href="account-settings.html"><i class="ai-settings fs-lg opacity-70 me-2"></i>Settings</a>
-						            <a class="dropdown-item" href="account-billing.html"><i class="ai-wallet fs-base opacity-70 me-2 mt-n1"></i>Billing</a>
-						            <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">Dashboard</h6>
-						            <a class="dropdown-item" href="account-orders.html"><i class="ai-cart fs-lg opacity-70 me-2"></i>Orders</a>
-						            <a class="dropdown-item" href="account-earnings.html"><i class="ai-activity fs-lg opacity-70 me-2"></i>Earnings</a>
-						            <a class="dropdown-item d-flex align-items-center" href="account-chat.html"><i class="ai-messages fs-lg opacity-70 me-2"></i>Chat<span class="badge bg-danger ms-3">4</span></a>
-						            <a class="dropdown-item" href="account-favorites.html"><i class="ai-heart fs-lg opacity-70 me-2"></i>Favorites</a>
-						            <div class="dropdown-divider"></div>
-						            <a class="dropdown-item" href="account-signin.html"><i class="ai-logout fs-lg opacity-70 me-2"></i>Sign out</a>
-					          	</div>
-				        	</li>
+						<!-- User signed in state. Account dropdown on screens > 576px -->
+						<li class="nav-item dropdown d-sm-none border-top mt-2 pt-2">
+							<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+								<img class="border rounded-circle" src="assets/img/avatar/01.jpg" width="48" alt="Isabella Bocouse">
+					           	<div class="ps-2">
+						        	<div class="fs-xs lh-1 opacity-60">Hello,</div>
+						        	<div class="fs-sm dropdown-toggle">Isabella</div>
+					           	</div>
+					           </a>
+					           <div class="dropdown-menu">
+								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pb-1">계정관리</h6>
+								    <a class="dropdown-item" href="account-overview.html"><i class="ai-user-check fs-lg opacity-70 me-2"></i>내 정보</a>
+								    <a class="dropdown-item" href="account-settings.html"><i class="ai-settings fs-lg opacity-70 me-2"></i>Settings</a>
+								    <a class="dropdown-item" href="account-billing.html"><i class="ai-wallet fs-base opacity-70 me-2 mt-n1"></i>Billing</a>
+								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">Dashboard</h6>
+								    <a class="dropdown-item" href="account-orders.html"><i class="ai-cart fs-lg opacity-70 me-2"></i>Orders</a>
+								    <a class="dropdown-item" href="account-earnings.html"><i class="ai-activity fs-lg opacity-70 me-2"></i>Earnings</a>
+								    <a class="dropdown-item d-flex align-items-center" href="account-chat.html"><i class="ai-messages fs-lg opacity-70 me-2"></i>Chat<span class="badge bg-danger ms-3">4</span></a>
+								    <a class="dropdown-item" href="account-favorites.html"><i class="ai-heart fs-lg opacity-70 me-2"></i>Favorites</a>
+								    <div class="dropdown-divider"></div>
+								    <a class="dropdown-item" href="account-signin.html"><i class="ai-logout fs-lg opacity-70 me-2"></i>Sign out</a>
+							    </div>
+				        </li>
 						<!--</c:if>-->
  				
  				
