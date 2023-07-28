@@ -22,8 +22,15 @@
                   <h2 class="h4 mb-0">내 식물 등록하기</h2>
                 </div>
                 <div class="d-flex align-items-center">
-                  <div class="dropdown"><a class="d-flex flex-column justify-content-end position-relative overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="width: 80px; height: 80px; background-image: url(assets/img/avatar/36.jpg);"><span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.5)"><i class="ai-camera"></i></span></a>
-                    <div class="dropdown-menu my-1"><a class="dropdown-item fw-normal" href="#"><i class="ai-camera fs-base opacity-70 me-2"></i>Upload new photo</a><a class="dropdown-item text-danger fw-normal" href="#"><i class="ai-trash fs-base me-2"></i>Delete photo</a></div>
+                  <div class="dropdown">
+                    <label for="profile-picture" class="d-flex flex-column justify-content-end position-relative overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" style="width: 80px; height: 80px; background-image: url(assets/img/avatar/36.jpg);">
+                      <span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.5)"><i class="ai-camera"></i></span>
+                    </label>
+                    <input type="file" id="profile-picture" style="display: none;">
+                    <div class="dropdown-menu my-1">
+                      <a class="dropdown-item fw-normal" href="#" onclick="handleUploadClick()"><i class="ai-camera fs-base opacity-70 me-2"></i>Upload new photo</a>
+                      <a class="dropdown-item text-danger fw-normal" href="#" onclick="handleDeleteClick()"><i class="ai-trash fs-base me-2"></i>Delete photo</a>
+                    </div>
                   </div>
                   <div class="ps-3">
                     <h3 class="h6 mb-1">무민</h3>
