@@ -29,7 +29,6 @@ public class PlantProudController {
 	@Autowired
 	private ProudBoardService service;
 	
-	
 	final static private String savePath = "/Users/kimjoohwan/Desktop/dev";	
 	
 	@GetMapping("/PlantProud")
@@ -76,7 +75,7 @@ public class PlantProudController {
 	public String writeBoard(Model model, HttpSession session,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			@ModelAttribute ProudBoard pBoard,
-			@RequestParam("upfile") MultipartFile upfile
+			@RequestParam(value= "upfile", required=false) MultipartFile upfile
 			) {
 		log.info("게시글 작성 요청");
 		
