@@ -33,10 +33,22 @@ public class MypageController {
 		return "0.1.3_account-writinglist";
 	}
 
-	@RequestMapping(value = "/mypage/starplant", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/stararticle", method = RequestMethod.GET)
 	public String stararticle(Locale locale, Model model, HttpSession session) {
 		logger.info("star plant page");
-		return "0.2.1_account-plant";
+		return "0.2.1_account-article";
+	}
+
+	@RequestMapping(value = "/mypage/starplant", method = RequestMethod.GET)
+	public String starplant(Locale locale, Model model, HttpSession session) {
+		logger.info("star plant page");
+		return "0.2.2_account-plant";
+	}
+
+	@RequestMapping(value = "/mypage/stargarden", method = RequestMethod.GET)
+	public String stargarden(Locale locale, Model model, HttpSession session) {
+		logger.info("star plant page");
+		return "0.2.3_account-garden";
 	}
 	
 	@RequestMapping(value = "/mypage/orders", method = RequestMethod.GET)
