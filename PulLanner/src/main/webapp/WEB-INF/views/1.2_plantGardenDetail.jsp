@@ -38,6 +38,8 @@
         
         
         
+        
+        
   
           <!-- 식물 정보 시작 -->
           <article class="row align-items-center card-hover pb-3 mb-md-2 mb-lg-3 mb-xl-4" data-aos="fade-up"

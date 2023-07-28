@@ -37,17 +37,16 @@
           <!-- Item-->
           <article class="row align-items-center card-hover pb-4 mb-md-2 mb-lg-3 mb-xl-4" data-aos="fade-up" data-aos-duration="600" data-aos-offset="280">
             <div class="col-12 image-container" style="display: flex; justify-content: center;">
-              <img src="assets\img\landing\yoga-studio\trainers\sample.jpeg" class="d-block rounded-5 fit-cover" style="text-align: center; width: 600px;">
+              <img src="${Ditem.mainImgUrl1}" class="d-block rounded-5 fit-cover" style="text-align: center; width: 600px;">
             </div>
           </article>
           <div class="text-center text-muted mb-2">다육이</div>
           <div>
-            <h2 class="text-center">비터헤드레터스
+            <h2 class="text-center">${Ditem.cntntsSj}
             <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style=" justify-content:center; margin-left: 2px;">
               <i class="ai-bookmark"></i>
             </button></h2>
           </div>
-          <h4 class="text-center text-muted" style=' line-height: 50%'>식물영명입력</h4>
 
 
           <!--표-->
@@ -155,7 +154,8 @@
         </div>       
       </div>      
      </div>
-    </main>
+    </main> 
+    <!--  수정테스트 -->
     
     
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
