@@ -37,7 +37,7 @@ public class MemberController {
 	public String login() {
 		return "0.0.1_account-signin";
 	}
-	@PostMapping("/login")
+	@PostMapping("/loginpage")
 	String login(Model model, String userId, String userPwd) {
 		log.info("id : " + userId + ", pwd : " + userPwd);
 		Member loginMember = service.login(userId, userPwd);
@@ -45,8 +45,8 @@ public class MemberController {
 			model.addAttribute("loginMember", loginMember); // 세션에 저장되는 코드, @SessionAttributes
 			return "redirect:/";
 		}else { // 실패
-			model.addAttribute("msg", "아이디 패스워드가 잘못되었습니다.");
-			model.addAttribute("location", "/");
+			model.addAttribute("msg", "아이디나 패스워드가 잘못되었습니다.");
+			model.addAttribute("location", "/login");
 			return "common/msg";
 		}
 	}
@@ -66,7 +66,7 @@ public class MemberController {
 	}
 	// 회원가입 
 	// ModelAndView 사용법, 가능하면 프로젝트에서는 스타일 통일할것! 현업 일부와 전저정부프레임워크 표준.
-	@PostMapping("/signingup")
+	@PostMapping("/signuppage")
 	public String enroll(Model model, @ModelAttribute Member member) { // @ModelAttribute 생각가능
 		log.info("회원가입, member : " + member.toString());
 
@@ -74,10 +74,10 @@ public class MemberController {
 		
 		if(result > 0) { // 성공
 			model.addAttribute("msg", "회원가입에 성공하였습니다.");
-			model.addAttribute("location", "/");
+			model.addAttribute("location", "/login");
 		}else { // 실패
 			model.addAttribute("msg", "회원가입에 실패하였습니다. 입력정보를 확인하세요.");
-			model.addAttribute ("location", "/");
+			model.addAttribute ("location", "/signup");
 		}
 		return "common/msg";
 	}

@@ -166,23 +166,23 @@
 				title="Back to home"><i class="ai-home"></i></a>
 			<!-- Sign in form-->
 			<div class="d-flex flex-column align-items-center w-lg-50 h-100 px-3 px-lg-5 pt-5">
-				<div class="w-100" style="max-width: 526px; margin-top: 200px;">
+				<div class="w-100 mt-auto" style="max-width: 526px;">
 					<h1>풀레너에 로그인하세요!</h1>
 					<p class="pb-3 mb-3 mb-lg-4">
 						아직 계정이 없으신가요?&nbsp;&nbsp;<a href='/signup'>회원가입하세요!</a>
 					</p>
-					<form class="needs-validation" novalidate>
+					<form class="needs-validation" action="${path}/loginpage" method="post" novalidate>
 						<div class="pb-3 mb-3">
 							<div class="position-relative">
 								<i class="ai-mail fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-								<input class="form-control form-control-lg ps-5" type="email" id="email" placeholder="이메일" required>
+								<input class="form-control form-control-lg ps-5" type="email" id="id" name="userId" placeholder="이메일" required>
 							</div>
 						</div>
 						<div class="mb-4">
 							<div class="position-relative">
 								<i class="ai-lock-closed fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
 								<div class="password-toggle">
-									<input class="form-control form-control-lg ps-5" type="password" id="password" placeholder="Password" required> 
+									<input class="form-control form-control-lg ps-5" type="password" id="password" name="userPwd" placeholder="Password" required> 
 									<label class="password-toggle-btn" aria-label="Show/hide password">
 										<input class="password-toggle-check" type="checkbox">
 										<span class="password-toggle-indicator"></span>
@@ -211,6 +211,8 @@
 						-->
 					</form>
 				</div>
+				<!-- Copyright-->
+				<p class="w-100 fs-sm pt-5 mt-auto mb-5" style="max-width: 526px;"> </p>
 			</div>
 			<!-- Cover image-->
 			<div class="w-50 bg-size-cover bg-repeat-0 bg-position-center" style="background-image: url(/resources/assets/img/account/cover.jpg);"></div>
