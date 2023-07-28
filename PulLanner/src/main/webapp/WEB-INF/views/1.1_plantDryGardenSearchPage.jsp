@@ -53,14 +53,14 @@
       </div>
 
       <div class="row">
-		<div class="col-md-7 mb-5 mt-3">
-			<div class> 
-				<a href="${path}/PlantSearch" type="button" class="btn btn-outline-primary active" style="margin-right: 10px;">실내정원용</a>
-				<a href="${path}/FlowerSearch" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">꽃</a>
-				<a href="${path}/DryGardenDetail" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">다육이</a>
-			</div>
-		</div>
-		<div class="col-md-5 mb-5 mt-3">
+        <div class="col-md-7 mb-5 mt-3">
+          <div>
+            <a href="${path}/PlantSearch" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">실내정원용</a>
+			<a href="${path}/FlowerSearch" type="button" class="btn btn-outline-primary " style="margin-right: 10px;">꽃</a>
+			<a href="${path}/DryGardenDetail" type="button" class="btn btn-outline-primary active" style="margin-right: 10px;">다육이</a>
+          </div>
+        </div>
+        <div class="col-md-5 mb-5 mt-3">
           <div >
             <div class="input-group input-group-sm rounded-pill">
               <span class="input-group-text">

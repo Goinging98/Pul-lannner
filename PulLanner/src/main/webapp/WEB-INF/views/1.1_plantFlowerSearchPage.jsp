@@ -53,14 +53,14 @@
       </div>
 
       <div class="row">
-		<div class="col-md-7 mb-5 mt-3">
-			<div class> 
-				<a href="${path}/PlantSearch" type="button" class="btn btn-outline-primary active" style="margin-right: 10px;">실내정원용</a>
-				<a href="${path}/FlowerSearch" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">꽃</a>
-				<a href="${path}/DryGardenDetail" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">다육이</a>
-			</div>
-		</div>
-		<div class="col-md-5 mb-5 mt-3">
+        <div class="col-md-7 mb-5 mt-3">
+          <div>
+            <a href="${path}/PlantSearch" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">실내정원용</a>
+			<a href="${path}/FlowerSearch" type="button" class="btn btn-outline-primary active" style="margin-right: 10px;">꽃</a>
+			<a href="${path}/DryGardenDetail" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">다육이</a>
+          </div>
+        </div>
+        <div class="col-md-5 mb-5 mt-3">
           <div >
             <div class="input-group input-group-sm rounded-pill">
               <span class="input-group-text">
@@ -79,16 +79,16 @@
 
           
           <!-- 첫번째 줄 Item-->
-          <c:forEach var="item" items="${list}">
+          <c:forEach var="fitem" items="${flowerlist}">
           <div class="col-md-3">
             <div class="card">
               <div class="image-container">
-                <img src="${item.thumbA}" class="card-img-top fit-cover" alt="Card image">
+                <img src="${fitem.imgUrl1}" class="card-img-top fit-cover" alt="Card image">
               </div>
               <div class="card-body">
-                <h5 class="card-title text-truncate">${item.cntntsSj}</h5>
+                <h5 class="card-title text-truncate">${fitem.flowNm}</h5>
                 <div class="d-flex justify-content-between">
-                  <a href="${path}/GardenDetail?id=${item.cntntsNo}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+                  <a href="${path}/FlowerDetail?id=${fitem.dataNo}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
                   <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;">
                     <i class="ai-bookmark"></i>
                   </button>
