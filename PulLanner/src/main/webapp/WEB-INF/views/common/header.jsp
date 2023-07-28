@@ -167,11 +167,6 @@
               			</svg>
 					</span> PUL-LANNER
 				</a>
-				<c:if test="${loginMember == null}">
-					<a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex" href="/login" target="_blank" rel="noopener">
-						<i class="ai-user fs-xl me-2 ms-n1"></i>로그인
-					</a>
-				</c:if>
 				
 				<button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 					<span class="navbar-toggler-icon"> </span>
@@ -190,7 +185,7 @@
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물분양</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/PlantShop">식물판매</a></li>
-								<li><a class="dropdown-item" href="account-overview.html">씨앗분양</a></li>
+								<li><a class="dropdown-item" href="${path}/PlantShop">씨앗분양</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
@@ -223,38 +218,43 @@
 								<li><a class="dropdown-item" href="account-overview.html">관리용품구매</a></li>
 							</ul>
 						</li>
-						<c:if test="${loginMember != null}">
-						<li class="nav-item dropdown">
-							<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-								<img class="border rounded-circle" src="assets/img/avatar/01.jpg" width="48" alt="Isabella Bocouse">
-					           	<div class="ps-2">
-						        	<div class="fs-xs lh-1 opacity-60">Hello,</div>
-						        	<div class="fs-sm dropdown-toggle">${loginMember.name}</div>
-					           	</div>
-					           </a>
-					           <div class="dropdown-menu">
-								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pb-1">내 정보 관리</h6>
-								    <a class="dropdown-item" href="/mypage/overview"><i class="ai-user-check fs-lg opacity-70 me-2"></i>내 정보</a>
-								    <a class="dropdown-item" href="/mypage/infochange"><i class="ai-settings fs-lg opacity-70 me-2"></i>내 정보 수정</a>
-								    <a class="dropdown-item" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 글 관리</a>
-								    <div class="dropdown-divider"></div>
-								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">스크랩</h6>
-								    <a class="dropdown-item" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a> 
-								    <a class="dropdown-item" href="/mypage/starplant"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a> 
-								    <a class="dropdown-item" href="/mypage/stargarden"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물원</a>
-								    <div class="dropdown-divider"></div>
-								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">쇼핑관리</h6>
-								    <a class="dropdown-item" href="/mypage/orders"><i class="ai-note fs-5 opacity-60 me-2"></i>주문내역</a> 
-								    <a class="dropdown-item" href="/mypage/shoppingbag"><i class="ai-cart fs-5 opacity-60 me-2"></i>장바구니</a> 
-								    <a class="dropdown-item" href="/mypage/favorites"><i class="ai-heart fs-5 opacity-60 me-2"></i>찜한 상품</a>
-								    <div class="dropdown-divider"></div>
-								    <a class="dropdown-item" href="account-signin.html"><i class="ai-logout fs-lg opacity-70 me-2"></i>로그아웃</a>
-							    </div>
-				        </li>
-						</c:if>
- 				
- 				
 					</ul>
 				</nav>
+				<c:if test="${loginMember == null}">
+					<a class="btn btn-primary btn-sm fs-sm order-lg-3 d-none d-sm-inline-flex" href="/login">
+						<i class="ai-user fs-xl me-2 ms-n1"></i>로그인
+					</a>
+				</c:if>
+				
+				<c:if test="${loginMember != null}">
+				<ul>
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+					       	<div class="ps-2">
+					        	<div class="fs-xs lh-1 opacity-60">Hello,</div>
+					        	<div class="fs-sm dropdown-toggle">${loginMember.name}</div>
+					       	</div>
+					    </a>
+					    <div class="dropdown-menu">
+						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pb-1">내 정보 관리</h6>
+						    <a class="dropdown-item" href="/mypage/overview"><i class="ai-user-check fs-lg opacity-70 me-2"></i>내 정보</a>
+						    <a class="dropdown-item" href="/mypage/infochange"><i class="ai-settings fs-lg opacity-70 me-2"></i>내 정보 수정</a>
+						    <a class="dropdown-item" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 글 관리</a>
+						    <div class="dropdown-divider"></div>
+						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">스크랩</h6>
+						    <a class="dropdown-item" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a> 
+						    <a class="dropdown-item" href="/mypage/starplant"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a> 
+						    <a class="dropdown-item" href="/mypage/stargarden"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물원</a>
+						    <div class="dropdown-divider"></div>
+						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">쇼핑관리</h6>
+						    <a class="dropdown-item" href="/mypage/orders"><i class="ai-note fs-5 opacity-60 me-2"></i>주문내역</a> 
+						    <a class="dropdown-item" href="/mypage/shoppingbag"><i class="ai-cart fs-5 opacity-60 me-2"></i>장바구니</a> 
+						    <a class="dropdown-item" href="/mypage/favorites"><i class="ai-heart fs-5 opacity-60 me-2"></i>찜한 상품</a>
+						    <div class="dropdown-divider"></div>
+						    <a class="dropdown-item" href="/main"><i class="ai-logout fs-lg opacity-70 me-2"></i>로그아웃</a>
+						</div>
+					</li>
+				</ul>
+				</c:if>
 			</div>
 		</header>
