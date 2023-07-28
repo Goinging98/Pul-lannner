@@ -2,6 +2,8 @@ package com.multi.bbs.plantSearch.model.service;
 
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.plantSearch.model.mapper.plantSearchMapper;
+import com.multi.bbs.plantSearch.model.vo.DryGardenDtl;
+import com.multi.bbs.plantSearch.model.vo.DryGardenList;
 import com.multi.bbs.plantSearch.model.vo.FlowerDtl;
 import com.multi.bbs.plantSearch.model.vo.GardenDtl;
 import com.multi.bbs.plantSearch.model.vo.GardenList;
@@ -58,5 +60,23 @@ public class plantSearchService {
 		return mapper.selectByFlowerId(id);	
 	}
 	
+	
+	
+	
+	
+	// --------------다육이 관련----------------
+	public List<DryGardenDtl> selectDryGardenList(PageInfo pageInfo, Map<String, Object> param) {
+	    param.put("limit", String.valueOf(pageInfo.getListLimit())); // 정수를 문자열로 변환하여 추가
+	    param.put("offset", String.valueOf(pageInfo.getStartList() - 1)); // 정수를 문자열로 변환하여 추가
+	    return mapper.selectDryGardenList(param);
+	}
+	
+	public int selectDryGardenCount(Map<String, Object> map) {
+	    return mapper.selectDryGardenCount(map);
+	}
+	
+    public DryGardenDtl selectByDryGardenId(int id) {
+        return mapper.selectByDryGardenId(id);
+    }
 
 }
