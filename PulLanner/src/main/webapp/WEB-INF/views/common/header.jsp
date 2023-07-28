@@ -241,10 +241,7 @@
 							data-bs-toggle="dropdown" data-bs-auto-close="outside"
 							aria-expanded="false">식물관리</a>
 							<ul class="dropdown-menu">
-								<li class="dropdown"><a class="dropdown-item" href="#"
-									data-bs-toggle="dropdown" aria-expanded="false">식물사육일지</a></li>
-								<li><a class="dropdown-item" href="account-overview.html">캘린더</a></li>
-								<li><a class="dropdown-item" href="account-settings.html">다이어리</a></li>
+								<li><a class="dropdown-item" href="${path}/PlantManage">풀래너</a></li>
 							</ul></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
