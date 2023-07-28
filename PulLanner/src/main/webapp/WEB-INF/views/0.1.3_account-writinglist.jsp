@@ -15,32 +15,32 @@
               <div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
                 <button class="btn-close position-absolute top-0 end-0 mt-3 me-3 d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount"></button>
                 <div class="offcanvas-body">
-                  <div class="pb-2 pb-lg-0 mb-4 mb-lg-5"><img class="d-block rounded-circle mb-2" src="assets/img/avatar/02.jpg" width="80" alt="Isabella Bocouse">
-                    <h3 class="h5 mb-1">Isabella Bocouse</h3>
-                    <p class="fs-sm text-muted mb-0">bocouse@example.com</p>
+                  <div class="pb-2 pb-lg-0 mb-4 mb-lg-5"><img class="d-block rounded-circle mb-2" src="/resources/assets/img/avatar/02.jpg" width="80" alt="Isabella Bocouse">
+                    <h3 class="h5 mb-1">${loginMember.name}</h3>
+                    <p class="fs-sm text-muted mb-0">${loginMember.id}</p>
                   </div>
                   <nav class="nav flex-column pb-2 pb-lg-4 mb-3">
                     <h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">내 정보 관리</h4>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-overview.html"><i class="ai-user-check fs-5 opacity-60 me-2"></i>내 정보</a>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-settings.html"><i class="ai-settings fs-5 opacity-60 me-2"></i>내 정보 수정</a>
-                    <a class="nav-link fw-semibold py-2 px-0 active" href="account-billing.html"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 글 관리</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="/mypage/overview"><i class="ai-user-check fs-5 opacity-60 me-2"></i>내 정보</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="/mypage/infochange"><i class="ai-settings fs-5 opacity-60 me-2"></i>내 정보 수정</a>
+                    <a class="nav-link fw-semibold py-2 px-0 active" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 글 관리</a>
                   </nav>
                   <nav class="nav flex-column pb-2 pb-lg-4 mb-3">
                     <h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">스크랩</h4>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-billing.html"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-billing.html"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-billing.html"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물원</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="/mypage/starplant"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="/mypage/stargarden"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물원</a>
                   </nav>
                   <nav class="nav flex-column pb-2 pb-lg-4 mb-1">
                     <h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">쇼핑관리</h4>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-orders.html"><i class="ai-note fs-5 opacity-60 me-2"></i>주문내역</a>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-earnings.html"><i class="ai-cart fs-5 opacity-60 me-2"></i>장바구니</a>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-favorites.html"><i class="ai-heart fs-5 opacity-60 me-2"></i>찜한 상품</a>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-favorites.html"><i class="ai-chevron-right fs-5 opacity-60 me-2" style="margin-left: 20px;"></i>식물분양</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="/mypage/orders"><i class="ai-note fs-5 opacity-60 me-2"></i>주문내역</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="/mypage/shoppingbag"><i class="ai-cart fs-5 opacity-60 me-2"></i>장바구니</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="/mypage/favorites"><i class="ai-heart fs-5 opacity-60 me-2"></i>찜한 상품</a>
+                    <!-- <a class="nav-link fw-semibold py-2 px-0" href="account-favorites.html"><i class="ai-chevron-right fs-5 opacity-60 me-2" style="margin-left: 20px;"></i>식물분양</a>
                     <a class="nav-link fw-semibold py-2 px-0" href="account-favorites.html"><i class="ai-chevron-right fs-5 opacity-60 me-2" style="margin-left: 20px;"></i>씨앗분양</a>
-                    <a class="nav-link fw-semibold py-2 px-0" href="account-favorites.html"><i class="ai-chevron-right fs-5 opacity-60 me-2" style="margin-left: 20px;"></i>조경도구</a>
+                    <a class="nav-link fw-semibold py-2 px-0" href="account-favorites.html"><i class="ai-chevron-right fs-5 opacity-60 me-2" style="margin-left: 20px;"></i>조경도구</a> -->
                   </nav>
-                  <nav class="nav flex-column"><a class="nav-link fw-semibold py-2 px-0" href="account-signin.html"><i class="ai-logout fs-5 opacity-60 me-2"></i>로그아웃</a></nav>
+                  <nav class="nav flex-column"><a class="nav-link fw-semibold py-2 px-0" href="/main"><i class="ai-logout fs-5 opacity-60 me-2"></i>로그아웃</a></nav>
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@
                 </div>
               </div>
               <!-- Post-->
-              <article class="row g-0 border-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" style="background-image: url(assets/img/blog/list/01.jpg); min-height: 16rem"></a>
+              <article class="row g-0 border-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" style="background-image: url(/resources/assets/img/blog/list/01.jpg); min-height: 16rem"></a>
                 <div class="col-sm-7 col-lg-8">
                   <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                     <h3><a href="blog-single-v1.html">Business strategy for a brand of vintage bags</a></h3>
@@ -82,7 +82,7 @@
                 </div>
               </article>
               <!-- Post-->
-              <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v2.html" style="background-image: url(assets/img/blog/list/02.jpg); min-height: 16rem"></a>
+              <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v2.html" style="background-image: url(/resources/assets/img/blog/list/02.jpg); min-height: 16rem"></a>
                 <div class="col-sm-7 col-lg-8">
                   <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                     <h3><a href="blog-single-v2.html">Top books for inspiration</a></h3>
@@ -92,7 +92,7 @@
                 </div>
               </article>
               <!-- Post-->
-              <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v3.html" style="background-image: url(assets/img/blog/list/03.jpg); min-height: 16rem"></a>
+              <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v3.html" style="background-image: url(/resources/assets/img/blog/list/03.jpg); min-height: 16rem"></a>
                 <div class="col-sm-7 col-lg-8">
                   <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                     <h3><a href="blog-single-v3.html">Destinations to inspire and restore resources</a></h3>
@@ -102,7 +102,7 @@
                 </div>
               </article>
               <!-- Post-->
-              <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" style="background-image: url(assets/img/blog/list/04.jpg); min-height: 16rem"></a>
+              <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" style="background-image: url(/resources/assets/img/blog/list/04.jpg); min-height: 16rem"></a>
                 <div class="col-sm-7 col-lg-8">
                   <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                     <h3><a href="blog-single-v1.html">Promotion of an online store from scratch, first sales</a></h3>
@@ -112,7 +112,7 @@
                 </div>
               </article>
               <!-- Post-->
-              <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v2.html" style="background-image: url(assets/img/blog/list/05.jpg); min-height: 16rem"></a>
+              <article class="row g-0 border-0 pt-3 pt-sm-0 mb-4"><a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v2.html" style="background-image: url(/resources/assets/img/blog/list/05.jpg); min-height: 16rem"></a>
                 <div class="col-sm-7 col-lg-8">
                   <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
                     <h3><a href="blog-single-v2.html">New series from Netflix</a></h3>
