@@ -6,6 +6,8 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+<form name="searchForm" action="${path}/ItemShop" method="get">
       <!-- Page content-->
       <div class="container py-5 mt-5 mb-lg-4 mb-xl-5">
         <!-- Breadcrumb-->
@@ -30,12 +32,7 @@
             </div>
           </div>
         </div>
-        <!-- Page title-->
-        <div class="row pt-xl-3 mt-n1 mt-sm-0">
-          <div class="col-lg-9 offset-lg-3 pt-lg-3">
-            <h1 class="pb-2 pb-sm-3">식물 판매</h1>
-          </div>
-        </div>
+        
         <div class="row pb-2 pb-sm-4">
           <!-- Sidebar (offcanvas on sreens < 992px)-->
           <aside class="col-lg-3">
@@ -113,24 +110,25 @@
                     <div class="accordion-collapse collapse" id="pot" data-bs-parent="#shopCategories">
                       <div class="accordion-body py-1 mb-1">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="pot-all">
-                          <label class="form-check-label d-flex align-items-center" for="pot-all"><span class="text-nav fw-medium">모두 보기</span><span class="fs-xs text-muted ms-auto">1416</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="clay-pot">
-                          <label class="form-check-label d-flex align-items-center" for="clay-pot"><span class="text-nav fw-medium">토분</span><span class="fs-xs text-muted ms-auto">113</span></label>
+                          <input class="form-check-input" type="checkbox" id="clay-pot"
+                          ${fn:contains(paramMap.brands, '토분') ? 'checked':'' }>
+                          <label class="form-check-label d-flex align-items-center" for="토분">
+                          <span class="text-nav fw-medium">토분</span></label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="ceramics">
-                          <label class="form-check-label d-flex align-items-center" for="ceramics"><span class="text-nav fw-medium">도자기</span><span class="fs-xs text-muted ms-auto">98</span></label>
+                          <label class="form-check-label d-flex align-items-center" for="ceramics">
+                          <span class="text-nav fw-medium">도자기</span></label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="plastic">
-                          <label class="form-check-label d-flex align-items-center" for="plastic"><span class="text-nav fw-medium">플라스틱</span><span class="fs-xs text-muted ms-auto">205</span></label>
+                          <label class="form-check-label d-flex align-items-center" for="plastic">
+                          <span class="text-nav fw-medium">플라스틱</span></label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="cement">
-                          <label class="form-check-label d-flex align-items-center" for="cement"><span class="text-nav fw-medium">시멘트</span><span class="fs-xs text-muted ms-auto">747</span></label>
+                          <label class="form-check-label d-flex align-items-center" for="cement">
+                          <span class="text-nav fw-medium">시멘트</span></label>
                         </div>
                       </div>
                     </div>
@@ -168,10 +166,8 @@
           <!-- Product grid-->
           <div class="col-lg-9">
             <!-- Active filters + Sorting-->
-            <div class="d-flex align-items-start justify-content-between mb-4">
-             <a href="/Around/03_2.html"> <button class="btn btn-lg btn-primary" type="submit">내 식물분양</button></a>
-             <a href="/Around/03_3.html"> <button class="btn btn-lg btn-primary mx-3" type="submit">내 씨앗분양</button></a>
-              <div class="input-group" style="width: 500px; margin-left: 30%;">
+            <div class=" mb-4" align="right">
+              <div class="input-group" style="width: 365px;">
 
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 <button type="button" class="btn btn-outline-primary">search</button>
@@ -179,458 +175,43 @@
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
               <!-- Item-->
+              <c:forEach var="item" items="${list}">
               <div class="col pb-2 pb-sm-3">
                 <div class="card-hover position-relative bg-secondary rounded-2 p-3 mb-4" >
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
-                    <i class="ai-heart fs-xl d-dark-mode-none">
-                    </i>
-                    <i class="ai-heart text-nav fs-xl d-none d-dark-mode-block">
-                    </i>
-                  </button>
                   <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
                     <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
+					
+					
                       <!-- Item -->
                       <div class="swiper-slide rounded-2"  >
-                        <div class="rounded-2" style="background-image: url( 'https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDRfMTI2/MDAxNTgwNzc3MTk5MDAw.vMd7XrRNB_E0s9YGLufqnzc-CK_6keUUJ3bAuiVMBkgg.zoYguWvqLazUn7EUzXgRiTQ5RDnjkDq9_LZFgx5DJOcg.JPEG.flowervine/DSC03078.JPG?type=w800' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
+                        <div class="rounded-2" style="background-image: url( '${item.image }' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
                       </div>
                       </div>
-                       <!-- Item -->
-                       <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                      </div>
-                      </div>
-
                     </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
                   </div>
                 </div>
                 <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Loft style lamp</a></h3>
+                  <h3 class="h6 mb-0">
+                  <a href="/Around/02_2seed-parcel-out.html" id="title" name="title"
+                   type="text" placeholder="Search">${item.title}</a>
+                  </h3>
                   <div class="d-flex ps-2 mt-n1 ms-auto">
 
                   </div>
                 </div>
-                <div class="d-flex align-items-center"><span class="me-2">$21.00</span>
-                  <del class="fs-sm text-muted">$35.00</del>
+                <div class="d-flex align-items-center"><span class="me-2">
+                <fmt:formatNumber value="${item.lprice }" pattern="#,###" />원</span>
                   <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
                 </div>
+                
               </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-     <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
+            </c:forEach>
+             
 
-                   <!-- Item -->
-                   <div class="swiper-slide rounded-2"  >
-                    <div class="rounded-2" style="background-image: url( 'https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/164274836271446071.jpg?gif=1&w=360&h=360&c=c&q=0.8&webp=1' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                  </div>
-                  </div>
-                   <!-- Item -->
-                   <div class="swiper-slide rounded-2"  >
-                  <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                  </div>
-                  </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Dispenser for soap</a></h3>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$16.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://thumbnail.10x10.co.kr/webimage/image/basic600/412/B004120835.jpg?cmd=thumb&w=400&h=400&fit=true&ws=false' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                    <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Glossy round vase</a></h3>
-                  <div class="d-flex ps-2 mt-n1 ms-auto">
-                    <!-- <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color2" value="Light gray" checked id="color2-1">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color2-1"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #d5d4d3;"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color2" value="Dark gray" id="color2-2">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color2-2"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #576071;"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color2" value="Blue" id="color2-3">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color2-3"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #a1b7d9;"></span></label>
-                    </div> -->
-                  </div>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$11.00</span>
-                  <del class="fs-sm text-muted">$15.00</del>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                    <!-- Item -->
-                    <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://rosedayflower.com/IS/U=halfflower2/PE1055_01.jpg&S=500x500' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                    <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Ceramic flower pot</a></h3>
-                  <div class="d-flex ps-2 mt-n1 ms-auto">
-                    <!-- <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color3" value="Gray concrete" checked id="color3-1">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color3-1"><span class="d-block bg-size-cover bg-position-center rounded-circle" style="width: .625rem; height: .625rem; background-color: #c0c0c0; background-image: url(assets/img/shop/pattern/marble.jpg);"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color3" value="Beige" id="color3-2">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color3-2"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #d9c9a1;"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color3" value="Blue" id="color3-3">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color3-3"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #a1b7d9;"></span></label>
-                    </div> -->
-                  </div>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$19.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://rosedayflower.com/IS/U=halfflower2/PC1007_01.jpg&S=500x500' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                    <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Pendant lamp</a></h3>
-                  <div class="d-flex ps-2 mt-n1 ms-auto">
-                    <!-- <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color4" value="Gray" checked id="color4-1">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color4-1"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #bab8b7;"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color4" value="Woody brown" id="color4-2">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color4-2"><span class="d-block bg-size-cover bg-position-center rounded-circle" style="width: .625rem; height: .625rem; background-color: #c0c0c0; background-image: url(assets/img/shop/pattern/wood.jpg);"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color4" value="Gray marble" id="color4-3">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color4-3"><span class="d-block bg-size-cover bg-position-center rounded-circle" style="width: .625rem; height: .625rem; background-color: #c0c0c0; background-image: url(assets/img/shop/pattern/marble.jpg);"></span></label>
-                    </div> -->
-                  </div>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$22.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                    <!-- Item -->
-                    <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://img.marieclairekorea.com/2021/04/mck_60657bd4d3c01.jpg' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                    <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Living room table</a></h3>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$46.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                    <!-- Item -->
-                    <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://rosedayflower.com/IS/U=halfflower2/PC1007_01.jpg&S=500x500' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                    <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Teapot for hot drinks</a></h3>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$17.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://rosedayflower.com/IS/U=halfflower2/PC1007_01.jpg&S=500x500' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                     <!-- Item -->
-                     <div class="swiper-slide rounded-2"  >
-                    <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                    </div>
-                    </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Analogue wall clock</a></h3>
-                  <div class="d-flex ps-2 mt-n1 ms-auto">
-                    <!-- <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color5" value="Turquoise" checked id="color5-1">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color5-1"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #a8c2c0;"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color5" value="Lilac" id="color5-2">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color5-2"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #b4a9c3;"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color5" value="Blue" id="color5-3">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color5-3"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #a1b7d9;"></span></label>
-                    </div> -->
-                  </div>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$25.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                      <!-- Item -->
-                      <div class="swiper-slide rounded-2"  >
-                        <div class="rounded-2" style="background-image: url( 'https://rosedayflower.com/IS/U=halfflower2/PC1007_01.jpg&S=500x500' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                      </div>
-                      </div>
-                       <!-- Item -->
-                       <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                      </div>
-                      </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Scented candle</a></h3>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$13.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                   <!-- Item -->
-                      <div class="swiper-slide rounded-2"  >
-                        <div class="rounded-2" style="background-image: url( 'https://rosedayflower.com/IS/U=halfflower2/PC1007_01.jpg&S=500x500' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                      </div>
-                      </div>
-                       <!-- Item -->
-                       <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                      </div>
-                      </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Matte color pitcher</a></h3>
-                  <div class="d-flex ps-2 mt-n1 ms-auto">
-                    <!-- <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color6" value="Light brown" checked id="color6-1">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color6-1"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #aea6a6;"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color6" value="Beige" id="color6-2">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color6-2"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #d9c9a1;"></span></label>
-                    </div>
-                    <div class="ms-1">
-                      <input class="btn-check" type="radio" name="color6" value="Blue" id="color6-3">
-                      <label class="btn btn-icon btn-xs btn-outline-secondary rounded-circle" for="color6-3"><span class="d-block rounded-circle" style="width: .625rem; height: .625rem; background-color: #a1b7d9;"></span></label>
-                    </div> -->
-                  </div>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$11.00</span>
-                  <del class="fs-sm text-muted">$15.00</del>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                 <!-- Item -->
-                 <div class="swiper-slide rounded-2"  >
-                  <div class="rounded-2" style="background-image: url( 'https://rosedayflower.com/IS/U=halfflower2/PC1007_01.jpg&S=500x500' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                </div>
-                </div>
-                 <!-- Item -->
-                 <div class="swiper-slide rounded-2"  >
-                <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                </div>
-                </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Plate with granite print</a></h3>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$9.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
-              <!-- Item-->
-              <div class="col pb-2 pb-sm-3">
-                <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-                  <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button"><i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-                    <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
-
-                      <!-- Item -->
-                      <div class="swiper-slide rounded-2"  >
-                        <div class="rounded-2" style="background-image: url( 'https://rosedayflower.com/IS/U=halfflower2/PC1007_01.jpg&S=500x500' ); object-fit: scale-down; background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                      </div>
-                      </div>
-                       <!-- Item -->
-                       <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                      </div>
-                      </div>
-                      
-                    </a>
-                    <button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button"><i class="ai-chevron-left fs-xl d-dark-mode-none"></i><i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                    <button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button"><i class="ai-chevron-right fs-xl d-dark-mode-none"></i><i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i></button>
-                  </div>
-                </div>
-                <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="/Around/02_2seed-parcel-out.html">Exquisite glass vase</a></h3>
-                </div>
-                <div class="d-flex align-items-center"><span class="me-2">$23.00</span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-                </div>
-              </div>
             </div>
             <!-- Pagination-->
             <div class="row gy-3 align-items-center pt-3 pt-sm-4 mt-md-2">
               <div class="col col-md-4 col-6 order-md-1 order-1">
-                <!-- <div class="d-flex align-items-center"><span class="text-muted fs-sm">Show</span>
-                  <select class="form-select form-select-flush w-auto">
-                    <option value="12">12</option>
-                    <option value="18">18</option>
-                    <option value="24">24</option>
-                    <option value="30">30</option>
-                  </select>
-                </div> -->
               </div>
               <div class="col col-md-4 col-12 order-md-2 order-3 text-center">
                 <!-- <button class="btn btn-primary w-md-auto w-100" type="button">Load more products</button> -->
@@ -638,19 +219,27 @@
               <div class="col col-md-4 col-6 order-md-3 order-2">
                 <nav aria-label="Page navigation">
                   <ul class="pagination pagination-sm justify-content-end">
-                    <li class="page-item active" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
+                  <c:if test="${status.current == pageInfo.currentPage}">
+                    <li class="page-item" aria-current="page"><span class="page-link">${status.current}<span class="visually-hidden">(current)</span></span></li>
+                    </c:if>
+                   <c:if test="${status.current != pageInfo.currentPage}"> 
+                    <li class="page-item"><a class="page-link" href="#">${status.current}</a></li>
+                   </c:if>
+                   </c:forEach>
                   </ul>
+                  
+                  
                 </nav>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </form>
       <!-- Sidebar toggle button-->
       <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#shopSidebar"><i class="ai-filter me-2"></i>Filters</button>
   </body>
+  
+ 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
