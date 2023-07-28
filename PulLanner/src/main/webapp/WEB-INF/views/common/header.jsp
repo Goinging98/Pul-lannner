@@ -223,9 +223,8 @@
 								<li><a class="dropdown-item" href="account-overview.html">관리용품구매</a></li>
 							</ul>
 						</li>
-						<!--<c:if test="${loginMember != null}">
-						<!-- User signed in state. Account dropdown on screens > 576px -->
-						<li class="nav-item dropdown d-sm-none border-top mt-2 pt-2">
+						<!--<c:if test="${loginMember != null}">-->
+						<li class="nav-item dropdown">
 							<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
 								<img class="border rounded-circle" src="assets/img/avatar/01.jpg" width="48" alt="Isabella Bocouse">
 					           	<div class="ps-2">
