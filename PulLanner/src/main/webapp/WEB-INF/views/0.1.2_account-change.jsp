@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
-<jsp:include page="/WEB-INF/views/common/header_login.jsp" />
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <script>
 function findAddr(){
