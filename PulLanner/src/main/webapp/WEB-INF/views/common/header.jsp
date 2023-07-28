@@ -223,30 +223,35 @@
 								<li><a class="dropdown-item" href="account-overview.html">관리용품구매</a></li>
 							</ul>
 						</li>
-						<!--<c:if test="${loginMember != null}">-->
+						<c:if test="${loginMember != null}">
 						<li class="nav-item dropdown">
 							<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
 								<img class="border rounded-circle" src="assets/img/avatar/01.jpg" width="48" alt="Isabella Bocouse">
 					           	<div class="ps-2">
 						        	<div class="fs-xs lh-1 opacity-60">Hello,</div>
-						        	<div class="fs-sm dropdown-toggle">Isabella</div>
+						        	<div class="fs-sm dropdown-toggle">${loginMember.name}</div>
 					           	</div>
 					           </a>
 					           <div class="dropdown-menu">
-								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pb-1">계정관리</h6>
-								    <a class="dropdown-item" href="account-overview.html"><i class="ai-user-check fs-lg opacity-70 me-2"></i>내 정보</a>
-								    <a class="dropdown-item" href="account-settings.html"><i class="ai-settings fs-lg opacity-70 me-2"></i>Settings</a>
-								    <a class="dropdown-item" href="account-billing.html"><i class="ai-wallet fs-base opacity-70 me-2 mt-n1"></i>Billing</a>
-								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">Dashboard</h6>
-								    <a class="dropdown-item" href="account-orders.html"><i class="ai-cart fs-lg opacity-70 me-2"></i>Orders</a>
-								    <a class="dropdown-item" href="account-earnings.html"><i class="ai-activity fs-lg opacity-70 me-2"></i>Earnings</a>
-								    <a class="dropdown-item d-flex align-items-center" href="account-chat.html"><i class="ai-messages fs-lg opacity-70 me-2"></i>Chat<span class="badge bg-danger ms-3">4</span></a>
-								    <a class="dropdown-item" href="account-favorites.html"><i class="ai-heart fs-lg opacity-70 me-2"></i>Favorites</a>
+								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pb-1">내 정보 관리</h6>
+								    <a class="dropdown-item" href="/mypage/overview"><i class="ai-user-check fs-lg opacity-70 me-2"></i>내 정보</a>
+								    <a class="dropdown-item" href="/mypage/infochange"><i class="ai-settings fs-lg opacity-70 me-2"></i>내 정보 수정</a>
+								    <a class="dropdown-item" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 글 관리</a>
 								    <div class="dropdown-divider"></div>
-								    <a class="dropdown-item" href="account-signin.html"><i class="ai-logout fs-lg opacity-70 me-2"></i>Sign out</a>
+								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">스크랩</h6>
+								    <a class="dropdown-item" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a> 
+								    <a class="dropdown-item" href="/mypage/starplant"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a> 
+								    <a class="dropdown-item" href="/mypage/stargarden"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물원</a>
+								    <div class="dropdown-divider"></div>
+								    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">쇼핑관리</h6>
+								    <a class="dropdown-item" href="/mypage/orders"><i class="ai-note fs-5 opacity-60 me-2"></i>주문내역</a> 
+								    <a class="dropdown-item" href="/mypage/shoppingbag"><i class="ai-cart fs-5 opacity-60 me-2"></i>장바구니</a> 
+								    <a class="dropdown-item" href="/mypage/favorites"><i class="ai-heart fs-5 opacity-60 me-2"></i>찜한 상품</a>
+								    <div class="dropdown-divider"></div>
+								    <a class="dropdown-item" href="account-signin.html"><i class="ai-logout fs-lg opacity-70 me-2"></i>로그아웃</a>
 							    </div>
 				        </li>
-						<!--</c:if>-->
+						</c:if>
  				
  				
 					</ul>
