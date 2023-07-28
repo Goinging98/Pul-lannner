@@ -219,7 +219,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">아이템쇼핑</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="account-overview.html">화분구매</a></li>
+								<li><a class="dropdown-item" href="${path}/ItemShop">화분구매</a></li>
 								<li><a class="dropdown-item" href="account-overview.html">관리용품구매</a></li>
 							</ul>
 						</li>
