@@ -2,8 +2,10 @@ package com.multi.bbs;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.multi.bbs.api.naver.NaverSearchAPI;
+import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.shop.model.service.ShopService;
-import com.multi.bbs.shop.model.vo.News;
 import com.multi.bbs.shop.model.vo.Product;
 
 import jakarta.servlet.http.HttpSession;
@@ -43,6 +45,12 @@ public class HomeController {
 //		Member loginMember = memberService.login("admin", "1212");
 //		session.setAttribute("loginMember", loginMember);
 //		test();
+		int page = 1;
+		Map<String, Object> paramMap = new HashMap<>();
+		int count = shopService.getProductCount(paramMap);
+		PageInfo pageInfo = new PageInfo(page, 5, count, 6);
+		List<Product> plist1 = shopService.getProductList(pageInfo, paramMap);
+		model.addAttribute("plist1", plist1);
 		
 		return "0.0_main";
 	}
