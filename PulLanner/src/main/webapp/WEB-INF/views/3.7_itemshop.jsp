@@ -39,14 +39,14 @@
             <div class="offcanvas-lg offcanvas-start" id="shopSidebar">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title">Filters</h5>
-                <button class="btn-close" type="button" data-bs-dismiss="offcanvas" data-bs-target="#shopSidebar"></button>
+                <button class="btn-close" type="submit" type="button" data-bs-dismiss="offcanvas" data-bs-target="#shopSidebar"></button>
               </div>
               
               
               <div class=" mb-4" align="center">
               <div class="input-group" style="width: 280px;">
 
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" 
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="searchValue"
                 value="${paramMap.title}" />
                 <button type="button" class="btn btn-outline-primary">search</button>
               </div>
