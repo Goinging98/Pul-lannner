@@ -159,7 +159,7 @@
 		<!-- Navbar. Remove 'fixed-top' class to make the navigation bar scrollable with the page-->
 		<header class="navbar navbar-expand-lg fixed-top" style="background-color: #ffffff;">
 			<div class="container">
-				<a class="navbar-brand pe-sm-3" href="index.html">
+				<a class="navbar-brand pe-sm-3" href="/main">
 					<span class="text-primary flex-shrink-0 me-2">
 						<svg version="1.1" width="35" height="32" viewBox="0 0 36 33" xmlns="http://www.w3.org/2000/svg">
                 		<path fill="currentColor" d="M35.6,29c-1.1,3.4-5.4,4.4-7.9,1.9c-2.3-2.2-6.1-3.7-9.4-3.7c-3.1,0-7.5,1.8-10,4.1c-2.2,2-5.8,1.5-7.3-1.1c-1-1.8-1.2-4.1,0-6.2l0.6-1.1l0,0c0.6-0.7,4.4-5.2,12.5-5.7c0.5,1.8,2,3.1,3.9,3.1c2.2,0,4.1-1.9,4.1-4.2s-1.8-4.2-4.1-4.2c-2,0-3.6,1.4-4,3.3H7.7c-0.8,0-1.3-0.9-0.9-1.6l5.6-9.8c2.5-4.5,8.8-4.5,11.3,0L35.1,24C36,25.7,36.1,27.5,35.6,29z">
@@ -176,22 +176,9 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물검색</a>
 							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="${path}/PlantSearch">실내정원</a></li>
 								<li><a class="dropdown-item" href="${path}/PlantSearch">꽃</a></li>
-								<li><a class="dropdown-item" href="${path}/PlantSearch">실내정원용</a></li>
 								<li><a class="dropdown-item" href="${path}/PlantSearch">다육이</a></li>
-							</ul>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물분양</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="${path}/PlantShop">식물판매</a></li>
-								<li><a class="dropdown-item" href="${path}/PlantShop">씨앗분양</a></li>
-							</ul>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물관리</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="${path}/PlantManage">풀래너</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
@@ -204,19 +191,25 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물분양</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="${path}/PlantShop">식물 판매</a></li>
+								<li><a class="dropdown-item" href="${path}/PlantShop">씨앗 분양</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="${path}/ItemShop" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">아이템쇼핑</a>
+						</li>
+						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="${path}/PlantProud">식물자랑</a></li>
-								<li><a class="dropdown-item" href="${path}/HoneyTip">식물기르기꿀팁</a></li>
+								<li><a class="dropdown-item" href="${path}/PlantProud">식물 자랑</a></li>
+								<li><a class="dropdown-item" href="${path}/HoneyTip">식물 기르기꿀팁</a></li>
 								<li><a class="dropdown-item" href="${path}/Observe">관찰일지</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">아이템쇼핑</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="${path}/ItemShop">화분구매</a></li>
-								<li><a class="dropdown-item" href="account-overview.html">관리용품구매</a></li>
-							</ul>
+							<a class="nav-link dropdown-toggle" href="${path}/PlantManage" >풀레너</a>
 						</li>
 					</ul>
 				</nav>
@@ -237,14 +230,10 @@
 					    </a>
 					    <div class="dropdown-menu">
 						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pb-1">내 정보 관리</h6>
-						    <a class="dropdown-item" href="/mypage/overview"><i class="ai-user-check fs-lg opacity-70 me-2"></i>내 정보</a>
-						    <a class="dropdown-item" href="/mypage/infochange"><i class="ai-settings fs-lg opacity-70 me-2"></i>내 정보 수정</a>
+						    <a class="dropdown-item" href="/mypage/overview"><i class="ai-user-check fs-lg opacity-70 me-2"></i>마이페이지</a>
 						    <a class="dropdown-item" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 글 관리</a>
-						    <div class="dropdown-divider"></div>
-						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">스크랩</h6>
-						    <a class="dropdown-item" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a> 
-						    <a class="dropdown-item" href="/mypage/starplant"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a> 
-						    <a class="dropdown-item" href="/mypage/stargarden"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물원</a>
+						    <a class="dropdown-item" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 풀레너</a>
+						    <a class="dropdown-item" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>스크랩 관리</a> 
 						    <div class="dropdown-divider"></div>
 						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">쇼핑관리</h6>
 						    <a class="dropdown-item" href="/mypage/orders"><i class="ai-note fs-5 opacity-60 me-2"></i>주문내역</a> 
