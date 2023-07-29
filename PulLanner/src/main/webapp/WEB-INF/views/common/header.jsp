@@ -198,7 +198,7 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="${path}/ItemShop">아이템쇼핑</a>
+							<a class="nav-link" href="${path}/ItemShop">아이템쇼핑</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
@@ -209,7 +209,7 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="${path}/PlantManage" >풀레너</a>
+							<a class="nav-link" href="${path}/PlantManage" >풀레너</a>
 						</li>
 					</ul>
 				</nav>
@@ -221,8 +221,8 @@
 				
 				<c:if test="${loginMember != null}">
 				<ul>
-					<li class="nav-item dropdown">
-						<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+					<li class="nav dropdown" style="margin-top:10px;">
+						<a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false">
 					       	<div class="ps-2">
 					        	<div class="fs-xs lh-1 opacity-60">Hello,</div>
 					        	<div class="fs-sm dropdown-toggle">${loginMember.name}</div>
