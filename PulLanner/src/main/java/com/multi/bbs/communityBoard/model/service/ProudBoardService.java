@@ -19,27 +19,19 @@ import com.multi.bbs.communityBoard.model.vo.ProudBoard;
 public class ProudBoardService {
 	@Autowired
 	private ProudBoardMapper mapper;
-
 	
-	public int getPBoardCount(Map<String, String> param) {
-		return mapper.selectPBoardCount(param);
-	}
-
-
-	public List<ProudBoard> getPBoardList(PageInfo pageInfo, Map<String, String> param) {
-		param.put("limit", "" + pageInfo.getListLimit());
-		param.put("offset", "" + (pageInfo.getStartList() - 1));
-		return mapper.selectPBoardList(param);
-	}
-
 	@Transactional(rollbackFor = Exception.class)
-	public ProudBoard findByNo(int pBoardNo) {
-		ProudBoard pBoard = mapper.selectPBoardByNo(pBoardNo);
-		pBoard.setReadCount(pBoard.getReadCount() + 1);
-		mapper.updateReadCount(pBoard);
-		return pBoard;
+	public int saveProudBoard(ProudBoard proudBoard) {
+		int result = 0;
+		if(proudBoard.getBNo() == 0) {
+			result = mapper.insertProudBoard(proudBoard);
+		}else {
+			result = mapper.updateProudBoard(proudBoard);
+		}
+		return result;
 	}
-
+	
+	
 	public String saveFile(MultipartFile upFile, String savePath) {
 		File folder = new File(savePath);
 		
@@ -64,32 +56,41 @@ public class ProudBoardService {
 		}
 		return reNameFileName;
 	}
-
-	@Transactional(rollbackFor = Exception.class)
-	public int savePBoard(ProudBoard pBoard) {
-		int result = 0;
-		if(pBoard.getPNo() == 0) {
-			result = mapper.insertPBoard(pBoard);
-		} else {
-			result = mapper.updatePBoard(pBoard);
-		}
-		return result;
+	
+	public int getProudBoardCount(Map<String, String> param) {
+		return mapper.selectProudBoardCount(param);
 	}
-
-	public void deleteFile(String path) {
-		File file = new File(path);
+	
+	public List<ProudBoard> getProudBoardList(PageInfo pageInfo, Map<String, String> param){
+		param.put("limit", "" + pageInfo.getListLimit());
+		param.put("offset", "" + (pageInfo.getStartList() - 1));
+		return mapper.selectProudBoardList(param);
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public ProudBoard findByNo(int proudBoardNo) {
+		ProudBoard proudBoard = mapper.selectProudBoardByNo(proudBoardNo); 
+		proudBoard.setReadCount(proudBoard.getReadCount() + 1);  
+		mapper.updateProudReadCount(proudBoard);
+		return proudBoard; 
+	}
+	
+	public void deleteFile(String filePath) {
+		File file = new File(filePath);
 		if(file.exists()) {
 			file.delete();
 		}
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
-	public int deleteBoard(int no, String savePath) {
-		ProudBoard board = mapper.selectPBoardByNo(no);
-		deleteFile(savePath + "\\" + board.getRenamedFileName());
-		return mapper.deletePBoard(no);
+	public int deleteProudBoard(int no, String rootPath) {
+		ProudBoard proudBoard = mapper.selectProudBoardByNo(no);
+		deleteFile(rootPath + "\\" + proudBoard.getRenamedFileName());
+		return mapper.deleteProudBoard(no);
 	}
-
-
-
+	
 }
+
+
+
+

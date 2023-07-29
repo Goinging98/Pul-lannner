@@ -4,96 +4,99 @@
 
 <mapper namespace="com.multi.bbs.communityBoard.model.mapper.ProudBoardMapper">
 
-	<resultMap type="ProudBoard" id="pBoardListResultMap">
-		<result property="pNo" column="pNo" />
-		<result property="mno" column="mNo" />
-		<result property="writerId" column="ID" />
-		<result property="title" column="TITLE" />
-		<result property="content" column="CONTENT" />
-		<result property="type" column="TYPE" />
-		<result property="originalFileName" column="ORIGINAL_FILENAME" />
-		<result property="renamedFileName" column="RENAMED_FILENAME" />
-		<result property="readCount" column="READCOUNT" />
-		<result property="status" column="STATUS" />
-		<result property="createDate" column="CREATE_DATE" />
-		<result property="modifyDate" column="MODIFY_DATE" />
-	</resultMap>
-	
-	<resultMap type="ProudBoard" id="pBoardDetailResultMap" extends="pBoardListResultMap">
-		<collection property="replyList" javaType="arrayList" columnPrefix="R_"
-													resultMap="pBoardReplyResultMap"/>
+	<resultMap type="ProudBoard" id="proudBoardListResultMap">
+		<id property="bNo" column="bNo"/>
+		<result property="title" column="TITLE"/>
+		<result property="mNo" column="mNo"/>
+		<result property="id" column="ID"/>
+		<result property="readCount" column="READCOUNT"/>
+		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
+		<result property="renamedFileName" column="RENAMED_FILENAME"/>
+		<result property="content" column="CONTENT"/>
+		<result property="type" column="TYPE"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="modifyDate" column="MODIFY_DATE"/>
 	</resultMap>
 
-	<select id="selectPBoardList" resultMap="pBoardListResultMap" parameterType="map">
+	
+	<resultMap type="ProudBoard" id="proudBoardDetailResultMap" extends="proudBoardListResultMap">
+	</resultMap>
+	
+	<select id="selectProudBoardList" resultMap="proudBoardListResultMap" parameterType="map">
 		SELECT  
-			DISTINCT C.PNO, C.TITLE, C.CREATE_DATE, C.ORIGINAL_FILENAME, C.READCOUNT, C.STATUS
-		FROM COMMBOARD C
-		LEFT OUTER JOIN MEMBER M1 ON C.MNO = M1.MNO
-		WHERE C.STATUS = 'Y' AND C.TYPE = 'PROUD'
+			DISTINCT B.BNO, B.TITLE, B.CONTENT, M1.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
+		FROM COMMBOARD B
+		LEFT OUTER JOIN MEMBER M1 ON B.MNO = M1.MNO
+		LEFT OUTER JOIN REPLY R ON R.BNO = B.BNO 
+		LEFT OUTER JOIN MEMBER M2 ON R.MNO = M2.MNO 
+		WHERE B.STATUS = 'Y' AND B.TYPE = 'PROUD'
+		<if test="writer != null">
+			AND M1.ID LIKE '%${writer}%' 
+		</if>		
 		<if test="title != null">
-			AND C.TITLE LIKE '%${title}%' 
+			AND B.TITLE LIKE '%${title}%' 
 		</if>		
 		<if test="content != null">
-			AND C.CONTENT LIKE '%${content}%' 
+			AND B.CONTENT LIKE '%${content}%' 
 		</if>		
 		<if test="all != null">
 			AND(
-				c.title like 			'%${all}%' 
-				OR c.content like 		'%${all}%'
+				b.title like 			'%${all}%' 
+				OR b.content like 		'%${all}%'
 				OR m1.id like 			'%${all}%'
 				OR r.content like 		'%${all}%'
 				OR m2.id like 			'%${all}%'
 			)
 		</if>		
-		ORDER BY C.PNO DESC LIMIT ${limit} OFFSET ${offset}
+		ORDER BY B.BNO DESC LIMIT ${limit} OFFSET ${offset}
 	</select>
 	
 	
-	<select id="selectPBoardCount" resultType="int" parameterType="map">
+	<select id="selectProudBoardCount" resultType="int" parameterType="map">
 		SELECT  
-			 COUNT(DISTINCT C.PNO)
-		FROM COMMBOARD C
-		LEFT OUTER JOIN MEMBER M1 ON C.MNO = M1.MNO
-		WHERE C.STATUS = 'Y' AND TYPE = 'PROUD'
+			 COUNT(DISTINCT B.BNO)
+		FROM COMMBOARD B
+		LEFT OUTER JOIN MEMBER M1 ON B.MNO = M1.MNO
+		WHERE B.STATUS = 'Y' AND B.TYPE = 'PROUD'
 		<if test="writer != null">
 			AND M1.ID LIKE '%${writer}%' 
 		</if>		
 		<if test="title != null">
-			AND C.TITLE LIKE '%${title}%' 
+			AND B.TITLE LIKE '%${title}%' 
 		</if>		
 		<if test="content != null">
-			AND C.CONTENT LIKE '%${content}%' 
+			AND B.CONTENT LIKE '%${content}%' 
 		</if>		
 		<if test="all != null">
 			AND(
-				c.title like 			'%${all}%' 
-				OR c.content like 		'%${all}%'
+				b.title like 			'%${all}%' 
+				OR b.content like 		'%${all}%'
 				OR m1.id like 			'%${all}%'
+				OR r.content like 		'%${all}%'
 				OR m2.id like 			'%${all}%'
 			)
 		</if>		
 	</select>
 	
-	
-	<select id="selectPBoardByNo" parameterType="int" resultMap="pBoardDetailResultMap">
-		SELECT  C.pNO, C.TYPE, C.TITLE, M.ID, C.READCOUNT, C.ORIGINAL_FILENAME, C.RENAMED_FILENAME, C.CONTENT, C.CREATE_DATE, C.MODIFY_DATE,
-				R.rNO as R_RNO, 
-		        R.pNO as R_PNO, 
-		        R.CONTENT as R_CONTENT, 
-		        M2.ID as R_ID, 
-		        R.CREATE_DATE as R_CREATE_DATE, 
-		        R.MODIFY_DATE as R_MODIFY_DATE
-		FROM COMMBOARD C
-		JOIN MEMBER M ON(C.mNO = M.mNO)
-		LEFT OUTER JOIN REPLY R ON(R.bNO = C.pNO)
-		LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
-		WHERE C.STATUS = 'Y' AND  C.pNO= #{pno}
+	<select id="selectProudBoardByNo" parameterType="int" resultMap="proudBoardDetailResultMap">
+		SELECT  
+			B.BNO, B.TITLE, M.ID, B.READCOUNT, B.TYPE, B.ORIGINAL_FILENAME, B.RENAMED_FILENAME, B.CONTENT, B.CREATE_DATE, B.MODIFY_DATE,
+			R.RNO AS R_RNO, 
+		    R.BNO AS R_BNO,
+		    R.CONTENT  AS R_CONTENT, 
+		    M2.ID  AS R_ID, 
+		    R.CREATE_DATE  AS R_CREATE_DATE, 
+		    R.MODIFY_DATE  AS R_MODIFY_DATE
+		FROM COMMBOARD B
+		JOIN MEMBER M ON(B.MNO = M.MNO)
+		LEFT OUTER JOIN REPLY R ON (B.BNO = R.BNO)
+		LEFT OUTER JOIN MEMBER M2 ON (R.MNO = M2.MNO)
+		WHERE B.STATUS = 'Y' AND B.TYPE = 'PROUD' AND B.BNO = #{bNo} 
 	</select>
-
-
-	<insert id="insertPBoard" parameterType="ProudBoard">
-		INSERT INTO BOARD(
-			PNO, MNO, TITLE,
+	
+	<insert id="insertProudBoard" parameterType="ProudBoard">
+		INSERT INTO COMMBOARD(
+			BNO, MNO, TITLE,
 			CONTENT, ORIGINAL_FILENAME,
 			RENAMED_FILENAME, READCOUNT, STATUS,
 			CREATE_DATE, MODIFY_DATE, TYPE	
@@ -101,31 +104,34 @@
 			0, #{mNo}, #{title}, 
 			#{content}, #{originalFileName}, 
 			#{renamedFileName}, DEFAULT, DEFAULT, 
-			DEFAULT, DEFAULT, DEFAULT			
+			DEFAULT, DEFAULT, 'PROUD'			
 		)
 	</insert>
 	
-	
-	<update id="updatePBoard" parameterType="ProudBoard">
+
+	<update id="updateProudBoard" parameterType="ProudBoard">
 		UPDATE COMMBOARD
-		SET 
-			TITLE = #{title},
-			CONTENT = #{content},
+		SET
+			TITLE=#{title},
+			CONTENT=#{content},
 			<if test="originalFileName != null">
-				ORIGINAL_FILENAME = #{originalFileName},
+				ORIGINAL_FILENAME=#{originalFileName},
 			</if>
 			<if test="renamedFileName != null">
-				RENAMED_FILENAME = #{renamedFileName},
+				RENAMED_FILENAME=#{renamedFileName},
 			</if>
 			MODIFY_DATE = CURRENT_TIMESTAMP
-		WHERE 
-			PNO=#{pNo}
+		WHERE
+			BNO=#{bNo} AND TYPE = 'PROUD'
 	</update>
 	
-	
-	<update id="deletePBoard" parameterType="int">
-		UPDATE COMMBOARD SET STATUS='N' WHERE PNO=#{pNo}
+	<update id="updateProudReadCount" parameterType="map">
+		UPDATE COMMBOARD SET READCOUNT=#{readCount} WHERE BNO=#{bNo} and TYPE = 'PROUD'
 	</update>
-
+	
+	<update id="deleteProudBoard" parameterType="int">
+		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo} AND TYPE = 'PROUD'
+	</update>
+	
 
 </mapper>

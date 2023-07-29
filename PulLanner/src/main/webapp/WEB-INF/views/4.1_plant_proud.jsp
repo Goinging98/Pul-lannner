@@ -40,7 +40,7 @@
 							<label class="form-label">제목</label>
 							<div class="form-floating">
 					        	<div class="form-floating">
-					            	<input class="form-control" type="text" id="fl-text" placeholder="Title">
+					            	<input class="form-control" type="text" name="title" id="fl-text" placeholder="Title">
 					              		<label for="fl-text">Title</label>
 					        	</div>
 							</div>
@@ -72,8 +72,16 @@
 			<c:if test="${not empty list}">
 				<c:forEach var="item" items="${list}">
 					<article class="row g-0 border-0 mb-4 ">
-						<a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" 
-							style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
+					<a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5"
+              style="background-image: url(assets/img/blog/list/01.jpg); min-height: 14rem">
+					<c:if test="${not empty board.originalFileName 
+								and (fn:contains(board.originalFileName,'.jpg')
+									 or fn:contains(board.originalFileName,'.png')
+									  or fn:contains(board.originalFileName,'.jpeg'))}">
+							<img src="${path}/resources/static/upload/board/${board.renamedFileName}"
+								width="100%" height="100%"/>
+				</c:if>
+				</a>
 						<div class="col-sm-7">
 							<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
 								<h3>
@@ -83,11 +91,10 @@
 									<c:out value="${item.content}"></c:out>
 								</p>
 								<div class="d-flex flex-wrap align-items-center mt-n2">
-									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3" href="#">6 <i class="ai-share fs-lg ms-1"></i></a>
-									<a class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2" href="#">12<i class="ai-message fs-lg ms-1"></i></a>
+									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2" href="#">${item.readCount}<i class="ai-heart fs-lg ms-1" ></i></a>
 									<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
 									<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span>
-									<span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">Business</a>
+									<span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">"${item.id}"</a>
 								</div>
 							</div>
 						</div>
@@ -150,16 +157,28 @@
               </div>
               <div class="offcanvas-body">
                 <!-- Search box-->
-                <div class="position-relative mb-4 mb-lg-5"><i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                  <input class="form-control ps-5" name="searchValue" type="search" placeholder="Enter keyword">
+                <div class="position-relative mb-4 mb-lg-5">
+                <label>
+					<input type="radio" name="searchType" value="title" 
+									${searchType == 'title' ? 'checked' : ''}> 제목
+				</label>
+				<label>
+					<input type="radio" name="searchType" value="content" 
+									${searchType == 'content' ? 'checked' : ''}> 내용
+				</label>
+				<label>
+					<input type="radio" name="searchType" value="writer" 
+									${searchType == 'writer' ? 'checked' : ''}> 작성자
+				</label>
+                <i class="ai-search position-absolute top-50 bottom-50 start-0 translate-middle-y ms-3"></i>
+                  <input class="form-control ps-5" type="text" id="searchValue" name="searchValue" class="input_text" value="${param.searchValue}" placeholder="search"/>
                 </div>
                 <!-- Category links-->
                 <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
                 <ul class="nav flex-column mb-lg-5 mb-4">
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="#">All categories<span class="fs-sm text-muted ms-2">(110)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(${pBoardCount})</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(${hBoardCount})</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(${oBoardCount})</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(${proudBoardCount})</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(${honeyBoardCount})</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(${observeBoardCount})</span></a></li>
                 </ul>
 
                 <!-- Featured posts widget-->
@@ -220,5 +239,24 @@
 	function movePage(page){
 		searchForm.page.value = page;
 		searchForm.submit();
+	}
+	
+	$(document).ready(() => {
+		$("#btnUpdate").click((e) => {
+			location.href = "${path}/board/update?no=${board.BNo}";
+		});
+		
+		$("#btnDelete").click((e) => {
+			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
+				location.replace("${path}/board/delete?no=${board.BNo}");
+			}
+		});
+	});
+	
+	function fileDownload(oriname, rename) {
+		const url = "/board/fileDown";
+		let oName = encodeURIComponent(oriname);
+		let rName = encodeURIComponent(rename);
+		location.assign(url + "?oriname=" + oName + "&rename=" + rName);
 	}
 </script>

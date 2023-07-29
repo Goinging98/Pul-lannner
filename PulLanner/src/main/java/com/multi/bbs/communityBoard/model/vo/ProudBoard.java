@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProudBoard {
-	private int pNo;
+	private int bNo;
 	private int mNo;
-	private String writerId;
+	private String id;
 	private String title;
 	private String content;
 	private String originalFileName;
@@ -23,5 +23,4 @@ public class ProudBoard {
 	private String type;
 	private Date createDate;
 	private Date modifyDate;
-
 }

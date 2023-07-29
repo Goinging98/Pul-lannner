@@ -9,12 +9,11 @@ import com.multi.bbs.communityBoard.model.vo.ProudBoard;
 
 @Mapper
 public interface ProudBoardMapper {
-	List<ProudBoard> selectPBoardList(Map<String, String> map);
-	int selectPBoardCount(Map<String, String> map);
-	ProudBoard selectPBoardByNo(int no);
-	int insertPBoard(ProudBoard pBoard);
-	int updatePBoard(ProudBoard pBoard);
-	int updateReadCount(ProudBoard board);
-	int deletePBoard(int no);
-
+	List<ProudBoard> selectProudBoardList(Map<String, String> map);
+	int selectProudBoardCount(Map<String, String> map);
+	ProudBoard selectProudBoardByNo(int no);
+	int insertProudBoard(ProudBoard proudBoard);
+	int updateProudBoard(ProudBoard proudBoard);
+	int updateProudReadCount(ProudBoard proudBoard);
+	int deleteProudBoard(int no);
 }

@@ -260,7 +260,7 @@ SELECT * FROM BOARD;
 ---------- Community Board 관련 테이블 -------------
 -------------------------------------------------
 CREATE TABLE COMMBOARD (
-	pNo 	INT PRIMARY KEY AUTO_INCREMENT,
+	bNo 	INT AUTO_INCREMENT,
     mNo 	INT,
     TITLE	VARCHAR(1000),
     CONTENT	VARCHAR(2000),
@@ -271,30 +271,35 @@ CREATE TABLE COMMBOARD (
     STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN('Y', 'N')),
     CREATE_DATE DATETIME  DEFAULT CURRENT_TIMESTAMP, 
     MODIFY_DATE DATETIME  DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT PK_COMMBOARD_NO PRIMARY KEY(bNO),
     CONSTRAINT FK_COMMBOARD_WRITER FOREIGN KEY(mNo) REFERENCES MEMBER(mNo) ON DELETE SET NULL
 );
 
 INSERT INTO COMMBOARD VALUES(0, 1, '내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '2내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '3내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '윤정님은 바보', '윤정님 코드치다가 바보되었어 ㅠㅠ', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '4내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '5내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '6내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '7내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '8내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '9내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
 INSERT INTO COMMBOARD VALUES(0, 1, '선인장은 이렇게 키우는게 정석', '선인장에게 물을 준다면 그것은 사치다. 강하게 키워야 한다. 물을 최대한 주지 말고 사막의 오아시스 처럼 주자', 'HONEY', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
 INSERT INTO COMMBOARD VALUES(0, 1, '가시가 더 길어진다..', '이번 기간에는 선인장의 가시가 더 두껍고 길어졌다. 손끝을 살짝 대봤는데 엄청 따갑다..', 'OBSERVE', '원본파일명.txt', '변경된파일명.txt', DEFAULT, 'Y', DEFAULT, DEFAULT);
 
 COMMIT;
 SELECT * FROM COMMBOARD;
 
-SELECT	C.pNO, C.TYPE, C.TITLE, M.ID, C.CREATE_DATE, C.ORIGINAL_FILENAME, C.READCOUNT, C.STATUS
-		FROM COMMBOARD C
+SELECT	B.bNO, B.TYPE, B.TITLE, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
+		FROM COMMBOARD B
 		JOIN MEMBER M ON(C.mNO = M.mNO)
-		WHERE C.TYPE = 'PROUD'
-		AND C.STATUS = 'Y';
+		WHERE B.TYPE = 'PROUD'
+		AND B.STATUS = 'Y';
+        
+INSERT INTO COMMBOARD(
+			BNO, MNO, TITLE,
+			CONTENT, ORIGINAL_FILENAME,
+			RENAMED_FILENAME, READCOUNT, STATUS,
+			CREATE_DATE, MODIFY_DATE, TYPE	
+		) VALUES (
+			0, 1, 'abc', 
+			'content', 'original', 
+			'renamedFileName', DEFAULT, DEFAULT, 
+			DEFAULT, DEFAULT, 'PROUD'			
+		);
+
 
 ------------------------------------------------------------------
 ------------------------- REPLY 관련 테이블 -------------------------
