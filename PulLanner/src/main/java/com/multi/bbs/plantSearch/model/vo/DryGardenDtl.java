@@ -33,6 +33,8 @@ public class DryGardenDtl extends DryGardenList{
 	public String lightImgUrl1;
 	public String lightImgUrl2;
 	public String lightImgUrl3;
+	//추가 코드
+	public String enNm;
 	
 	public DryGardenDtl() {
 		super();
@@ -301,8 +303,15 @@ public class DryGardenDtl extends DryGardenList{
 		this.lightImgUrl3 = lightImgUrl3;
 	}
 	
+	//추가 코드
+	public String getEnNm() {
+		return enNm;
+	}
+	public void setEnNm(String enNm) {
+		this.enNm = enNm;
+	}
 	
-	
+
 		
 		
 		

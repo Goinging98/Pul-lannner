@@ -191,9 +191,14 @@
 		
 		
 		<select id="selectByDryGardenId" parameterType="int" resultType="DryGardenDtl">
-		SELECT *
-		FROM drygardenDtl
-		WHERE cntntsNo = #{id}
+		  SELECT *,
+		    SUBSTRING(
+		      scnm,
+		      POSITION("&lt;i&gt;" IN scnm) + LENGTH('&lt;i&gt;'),
+		      POSITION("&lt;/i&gt;" IN scnm) - POSITION("&lt;i&gt;" IN scnm) - LENGTH('&lt;i&gt;')
+		    ) AS enNm
+		  FROM drygardenDtl
+		  WHERE cntntsNo = #{id}
 		</select>
 	
 		

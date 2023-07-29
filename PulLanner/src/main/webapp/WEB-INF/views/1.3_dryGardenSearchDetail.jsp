@@ -47,6 +47,7 @@
               <i class="ai-bookmark"></i>
             </button></h2>
           </div>
+          <h4 class="text-center text-muted" style=' line-height: 50%'>${Ditem.enNm}</h4>
 
 
           <!--표-->
