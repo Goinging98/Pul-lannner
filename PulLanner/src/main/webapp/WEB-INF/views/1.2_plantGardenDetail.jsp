@@ -111,8 +111,8 @@
           
           <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-4 pb-2 pb-sm-4 pb-lg-5 mt-lg-3" style="text-align: center;">
             <!-- Address-->
-            <div class="col">
-              <div class="card border-0 h-100" style="background-color:#F7F9FC">
+            <div class="col overflow-auto" style="height: 170px;">
+              <div class="card border-0 h-100" style="background-color:#F7F9FC; height:"200px;">
                 <div class="card-body">
                   <h4 class="card-title mb-2">원산지</h4>
                   <p class="mb-0">${itemDetail.orgplce}</p>
@@ -120,7 +120,7 @@
               </div>
             </div>
             <!-- Address-->
-            <div class="col">
+            <div class="col overflow-auto" style="height: 170px;">
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">잎 형태</h4>
@@ -129,7 +129,7 @@
               </div>
             </div>
             <!-- Address-->
-            <div class="col">
+            <div class="col overflow-auto" style="height: 170px;">
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">냄새 정도</h4>
@@ -138,7 +138,7 @@
               </div>
             </div>
             <!-- Address-->
-            <div class="col">
+            <div class="col overflow-auto" style="height: 170px;">
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">독성</h4>
@@ -147,7 +147,7 @@
               </div>
             </div> 
             <!-- Address-->
-            <div class="col">
+            <div class="col overflow-auto" style="height: 170px;">
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">번식 시기</h4>
@@ -156,7 +156,7 @@
               </div>
             </div>
             <!-- Address-->
-            <div class="col">
+            <div class="col overflow-auto" style="height: 170px;">
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">기타 시기</h4>
@@ -165,7 +165,7 @@
               </div>
             </div>
             <!-- Address-->
-            <div class="col">
+           <div class="col overflow-auto" style="height: 170px;">
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">비료</h4>
@@ -174,7 +174,7 @@
               </div>
             </div>
             <!-- Address-->
-            <div class="col">
+            <div class="col overflow-auto" style="height: 170px;">
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">병충해관리정보</h4>
