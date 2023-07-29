@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -8,22 +7,16 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 <form name="searchForm" action="${path}/ItemShop" method="get">
+      <input type="hidden" name="page" >
       <!-- Page content-->
       <div class="container py-5 mt-5 mb-lg-4 mb-xl-5">
-        <!-- Breadcrumb-->
-        <nav aria-label="breadcrumb">
-          <ol class="pt-lg-3 pb-2 breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Shop catalog</li>
-          </ol>
-        </nav>
         <!-- Banner-->
         <div class="ignore-dark-mode rounded-1 overflow-hidden mb-5" style="background-color: #F2F2DF;">
           <div class="row align-items-center g-0 py-1">
             <div class="col-md-6 offset-xl-1 ">
               <div class="py-5 my-5 px-4 px-sm-5 pe-md-0 ps-xl-4" style="margin-left: 160px;">
-                <p class="fs-xs  pt-3 pt-md-0 mb-3 mb-lg-4"  >2023.08.01 ~ 2023.08.31</p>
-                <h2 class="h1 pb-2 pb-xl-3"   >구매하신 식물을 인증하면 <br><span class='text-primary'>포인트가 두배!!!</span></h2><a class="btn btn-sm btn-outline-dark ignore-dark-mode" href="#">리뷰 쓰러가기</a>
+                <p class="fs-xs  pt-3 pt-md-0 mb-3 mb-lg-4">2023.08.01 ~ 2023.08.31</p>
+                <h2 class="h1 pb-2 pb-xl-3">구매하신 식물을 인증하면 <br><span class='text-primary'>포인트가 두배!!!</span></h2><a class="btn btn-sm btn-outline-dark ignore-dark-mode" href="#">리뷰 쓰러가기</a>
               </div>
             </div>
             <div class="col-md-6 col-xl-5 d-flex justify-content-end">
@@ -45,10 +38,8 @@
               
               <div class=" mb-4" align="center">
               <div class="input-group" style="width: 280px;">
-
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="searchValue"
-                value="${paramMap.title}" />
-                <button type="button" class="btn btn-outline-primary">search</button>
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="title"
+                value="${paramMap.title}" type="text" />
               </div>
             </div>
             
@@ -179,8 +170,6 @@
                    </c:if>
                    </c:forEach>
                   </ul>
-                  
-                  
                 </nav>
               </div>
             </div>
@@ -192,7 +181,13 @@
       <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#shopSidebar"><i class="ai-filter me-2"></i>Filters</button>
   </body>
   
-
+<script type="text/javascript">
+		function movePage(page){
+			searchForm.page.value = page;
+			searchForm.submit();
+		}
+	</script>
+      
       
  
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

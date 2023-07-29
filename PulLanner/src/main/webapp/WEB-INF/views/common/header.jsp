@@ -198,7 +198,7 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="${path}/ItemShop" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">아이템쇼핑</a>
+							<a class="nav-link dropdown-toggle" href="${path}/ItemShop">아이템쇼핑</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
