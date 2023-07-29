@@ -197,10 +197,10 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물명소</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="account-overview.html">식물원</a></li>
-								<li><a class="dropdown-item" href="account-overview.html">숲/산</a></li>
-								<li><a class="dropdown-item" href="account-settings.html">국립공원</a></li>
-								<li><a class="dropdown-item" href="account-settings.html">휴양림</a></li>
+								<li><a class="dropdown-item" href="${path}/arboretumList">식물원</a></li>
+								<li><a class="dropdown-item" href="${path}/mountainList">숲/산</a></li>
+								<li><a class="dropdown-item" href="${path}/parkList">국립공원</a></li>
+								<li><a class="dropdown-item" href="${path}/forestList">휴양림</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
