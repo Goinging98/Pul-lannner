@@ -173,10 +173,12 @@ function findAddr(){
 							</div>
 						</div>
 					</div>
+					<!-- 
 					<div class="alert alert-info d-flex my-3 my-sm-4">
 						<i class="ai-circle-info fs-xl me-2"></i>
 						<p class="mb-0">비밀번호는 최소 8글자 이상이어야 합니다.</p>
 					</div>
+					 -->
 					<div class="d-flex justify-content-end pt-3">
 						<button class="btn btn-secondary" type="button">취소</button>
 						<button class="btn btn-primary ms-3" type="button">변경사항 저장</button>
@@ -191,24 +193,25 @@ function findAddr(){
 						<i class="ai-trash text-primary lead pe-1 me-2"></i>
 						<h2 class="h4 mb-0">계정 삭제</h2>
 					</div>
-					<div class="alert alert-warning d-flex mb-4">
-						<i class="ai-triangle-alert fs-xl me-2"></i>
-						<p class="mb-0"> 
-							계정 삭제 시, 작성한 글은 남아있으며 동일 계정으로 복구할 수 없습니다. 
-							<a href='#' class='alert-link'>더 알아보기</a>
-						</p>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="confirm">
-						<label class="form-check-label text-dark fw-medium" for="confirm">
-							네, 계정을 삭제하겠습니다.
-						</label>
-					</div>
-					<div class="d-flex flex-column flex-sm-row justify-content-end pt-4 mt-sm-2 mt-md-3">
-						<button class="btn btn-danger" type="button">
-							<i class="ai-trash ms-n1 me-2"></i>계정 삭제
-						</button>
-					</div>
+					<form action="${path}/member/delete" method="post">
+						<div class="alert alert-warning d-flex mb-4">
+							<i class="ai-triangle-alert fs-xl me-2"></i>
+							<p class="mb-0"> 
+								계정 삭제 시, 작성한 글은 남아있으며 동일 계정으로 복구할 수 없습니다. 
+							</p>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="confirm">
+							<label class="form-check-label text-dark fw-medium" for="confirm">
+								네, 계정을 삭제하겠습니다.
+							</label>
+						</div>
+						<div class="d-flex flex-column flex-sm-row justify-content-end pt-4 mt-sm-2 mt-md-3">
+							<button class="btn btn-danger" type="button">
+								<i class="ai-trash ms-n1 me-2"></i>계정 삭제
+							</button>
+						</div>
+					</form>
 				</div>
 			</section>
 		</div>
