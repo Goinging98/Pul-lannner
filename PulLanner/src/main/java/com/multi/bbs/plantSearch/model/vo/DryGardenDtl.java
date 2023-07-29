@@ -153,7 +153,7 @@ public class DryGardenDtl extends DryGardenList{
 		this.distbNm = distbNm;
 	}
 	public String getOrgplce() {
-		return orgplce;
+		return orgplce.equals("") ? "정보없음" : orgplce;
 	}
 	public void setOrgplce(String orgplce) {
 		this.orgplce = orgplce;
@@ -165,7 +165,7 @@ public class DryGardenDtl extends DryGardenList{
 		this.stleSeNm = stleSeNm;
 	}
 	public String getFlwrInfo() {
-		return flwrInfo;
+		return flwrInfo.equals("") ? "정보없음" : flwrInfo;
 	}
 	public void setFlwrInfo(String flwrInfo) {
 		this.flwrInfo = flwrInfo;
@@ -183,19 +183,19 @@ public class DryGardenDtl extends DryGardenList{
 		this.rdxStleNm = rdxStleNm;
 	}
 	public String getGrwtInfo() {
-		return grwtInfo;
+		return grwtInfo.equals("") ? "정보없음" : grwtInfo;
 	}
 	public void setGrwtInfo(String grwtInfo) {
 		this.grwtInfo = grwtInfo;
 	}
 	public String getGrwtseVeNm() {
-		return grwtseVeNm;
+		return grwtseVeNm.equals("") ? "정보없음" : grwtseVeNm;
 	}
 	public void setGrwtseVeNm(String grwtseVeNm) {
 		this.grwtseVeNm = grwtseVeNm;
 	}
 	public String getGrwhTpInfo() {
-		return grwhTpInfo;
+	    return grwhTpInfo.equals("") ? "정보없음" : grwhTpInfo;
 	}
 	public void setGrwhTpInfo(String grwhTpInfo) {
 		this.grwhTpInfo = grwhTpInfo;
@@ -207,19 +207,19 @@ public class DryGardenDtl extends DryGardenList{
 		this.pswntrTpInfo = pswntrTpInfo;
 	}
 	public String getChartrInfo() {
-		return chartrInfo;
+		return chartrInfo.equals("") ? "정보없음" : chartrInfo;
 	}
 	public void setChartrInfo(String chartrInfo) {
 		this.chartrInfo = chartrInfo;
 	}
 	public String getLighttInfo() {
-		return lighttInfo;
+		return lighttInfo.equals("") ? "정보없음" : lighttInfo;
 	}
 	public void setLighttInfo(String lighttInfo) {
 		this.lighttInfo = lighttInfo;
 	}
 	public String getWaterCycleInfo() {
-		return waterCycleInfo;
+		return waterCycleInfo.equals("") ? "정보없음" : waterCycleInfo;
 	}
 	public void setWaterCycleInfo(String waterCycleInfo) {
 		this.waterCycleInfo = waterCycleInfo;
@@ -237,13 +237,13 @@ public class DryGardenDtl extends DryGardenList{
 		this.hgtmMhmrInfo = hgtmMhmrInfo;
 	}
 	public String getDlthtsInfo() {
-		return dlthtsInfo;
+		return dlthtsInfo.equals("") ? "정보없음" : dlthtsInfo;
 	}
 	public void setDlthtsInfo(String dlthtsInfo) {
 		this.dlthtsInfo = dlthtsInfo;
 	}
 	public String getManageLevelNm() {
-		return manageLevelNm;
+		return manageLevelNm.equals("") ? "정보없음" : manageLevelNm;
 	}
 	public void setManageLevelNm(String manageLevelNm) {
 		this.manageLevelNm = manageLevelNm;
@@ -267,7 +267,7 @@ public class DryGardenDtl extends DryGardenList{
 		this.batchPlaceInfo = batchPlaceInfo;
 	}
 	public String getTipInfo() {
-		return tipInfo;
+		return tipInfo.equals("") ? "정보없음" : tipInfo;
 	}
 	public void setTipInfo(String tipInfo) {
 		this.tipInfo = tipInfo;

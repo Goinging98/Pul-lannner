@@ -56,21 +56,21 @@
             <div class= "h-100" style="display: inline-block; width: 350px;">
               <div class="col">
                 <h3 class="h5 ai-chart"> 관리 수준</h3>
-                <p class="mb-1">초보자</p>
+                <p class="mb-1">${Ditem.manageLevelNm}</p>
               </div>
             </div>
             <!-- Address-->
             <div class= "h-100" style="display: inline-block; width: 350px;">
               <div class="col">
                 <h3 class="h5 ai-award"> 성장 속도</h3>
-                <p class="mb-1">정보가 없습니다</p>
+                <p class="mb-1">${Ditem.grwtseVeNm}</p>
               </div>
             </div>
             <!-- Address-->
             <div class="h-100" style="display: inline-block; width: 350px;">
               <div class="col">
                 <h3 class="h5 ai-bulb-alt"> 생육 온도</h3>
-                <p class="mb-1">생육온도정보</p>
+                <p class="mb-1">${Ditem.grwhTpInfo}</p>
               </div>
             </div>
           </div>
@@ -84,7 +84,9 @@
               <div class="card border-0 h-100" style="background-color:#F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">원산지</h4>
-                  <p class="mb-0">아프리카 콩고</p>
+                   <div class="overflow-auto fixed-height" style="height: 100px;">
+                  ${Ditem.orgplce}
+                  </div>
                 </div>
               </div>
             </div>
@@ -93,7 +95,9 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">꽃</h4>
-                  <p class="mb-0">한 여름 무렵에 흰색 꽃이 핌</p>
+                  <div class="overflow-auto fixed-height" style="height: 100px;">
+                  ${Ditem.flwrInfo}
+                  </div>
                 </div>
               </div>
             </div>
@@ -102,7 +106,9 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">생장형</h4>
-                  <p class="mb-0">봄~가을 성장(겨울에 휴면)</p>
+                  <div class="overflow-auto fixed-height" style="height: 100px;">
+                  ${Ditem.grwtInfo}
+                  </div>
                 </div>
               </div>
             </div>
@@ -111,7 +117,9 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">특성</h4>
-                  <p class="mb-0">높이 15cm 잎은 넓고 다양한 무늬가 있음</p>
+                  <div class="overflow-auto fixed-height" style="height: 100px;">
+                  ${Ditem.chartrInfo}
+                  </div>
                 </div>
               </div>
             </div> 
@@ -120,7 +128,9 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">광</h4>
-                  <p class="mb-0">고온에 강하므로 연중 광선이 잘 쬐는 반그늘 아래에서 잘 자라고 여름철에는 직사광선을 약간 피함</p>
+                  <div class="overflow-auto fixed-height" style="height: 100px;">
+                  ${Ditem.lighttInfo}
+                  </div>
                 </div>
               </div>
             </div>
@@ -129,7 +139,9 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">물주기</h4>
-                  <p class="mb-0">분 흙이 충분히 마른 뒤 며칠 후 충분히 관수</p>
+                  <div class="overflow-auto fixed-height" style="height: 100px;">
+                  ${Ditem.waterCycleInfo}
+                  </div>
                 </div>
               </div>
             </div>
@@ -138,7 +150,9 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">병충해</h4>
-                  <p class="mb-0">병충해에는 별로 걸리지 않으나 잎을 깨끗이 닦아주도록 함</p>
+                  <div class="overflow-auto fixed-height" style="height: 100px;">
+                  ${Ditem.dlthtsInfo}
+                  </div>
                 </div>
               </div>
             </div>
@@ -147,7 +161,9 @@
               <div class="card border-0 h-100" style="background-color: #F7F9FC">
                 <div class="card-body">
                   <h4 class="card-title mb-2">Tip</h4>
-                  <p class="mb-0">10월 상, 중순부터 물을 점차 줄이고 비료도 주지 않음 고온에서 잘 자라고 저온에는 매우 약하므로 겨울에 냉해를 입지 않도록 잘 보온하여 적정온도 20-25도를 유지함</p>
+                  <div class="overflow-auto fixed-height" style="height: 100px;">
+                  ${Ditem.tipInfo}
+                  </div>
                 </div>
               </div>
             </div>
