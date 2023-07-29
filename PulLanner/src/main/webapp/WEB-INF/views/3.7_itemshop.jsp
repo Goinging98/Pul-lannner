@@ -41,68 +41,22 @@
                 <h5 class="offcanvas-title">Filters</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="offcanvas" data-bs-target="#shopSidebar"></button>
               </div>
+              
+              
+              <div class=" mb-4" align="center">
+              <div class="input-group" style="width: 280px;">
+
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" 
+                value="${paramMap.title}" />
+                <button type="button" class="btn btn-outline-primary">search</button>
+              </div>
+            </div>
+            
               <div class="offcanvas-body pt-2 pt-lg-0 pe-lg-4">
                 <!-- Categories (accordion with checkboxes)-->
                 <h3 class="h5">Categories</h3>
                 <div class="accordion accordion-alt pb-2 mb-4" id="shopCategories">
-                  <div class="accordion-item mb-0">
-                    <h4 class="accordion-header">
-                      <button class="accordion-button fs-xl fw-medium py-2" type="button" data-bs-toggle="collapse" data-bs-target="#difficulty" aria-expanded="true" aria-controls="difficulty"><span class="fs-base">관리 난이도</span></button>
-                    </h4>
-                    <div class="accordion-collapse collapse show" id="difficulty" data-bs-parent="#shopCategories">
-                      <div class="accordion-body py-1 mb-1">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="difficulty-all">
-                          <label class="form-check-label d-flex align-items-center" for="difficulty-all"><span class="text-nav fw-medium">모두 보기</span><span class="fs-xs text-muted ms-auto">697</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" checked id="beginner">
-                          <label class="form-check-label d-flex align-items-center" for="beginner"><span class="text-nav fw-medium">초보자</span><span class="fs-xs text-muted ms-auto">234</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="intermediate">
-                          <label class="form-check-label d-flex align-items-center" for="intermediate"><span class="text-nav fw-medium">경험자</span><span class="fs-xs text-muted ms-auto">182</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="expert">
-                          <label class="form-check-label d-flex align-items-center" for="expert"><span class="text-nav fw-medium">전문가</span><span class="fs-xs text-muted ms-auto">133</span></label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item mb-0">
-                    <h4 class="accordion-header">
-                      <button class="accordion-button collapsed fs-xl fw-medium py-2" type="button" data-bs-toggle="collapse" data-bs-target="#plant" aria-expanded="false" aria-controls="plant"><span class="fs-base">식물 종류</span></button>
-                    </h4>
-                    <div class="accordion-collapse collapse" id="plant" data-bs-parent="#shopCategories">
-                      <div class="accordion-body py-1 mb-1">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="plant-all">
-                          <label class="form-check-label d-flex align-items-center" for="plant-all"><span class="text-nav fw-medium">모두 보기</span><span class="fs-xs text-muted ms-auto">813</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="foliage-plant">
-                          <label class="form-check-label d-flex align-items-center" for="foliage-plant"><span class="text-nav fw-medium">관엽 식물</span><span class="fs-xs text-muted ms-auto">387</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="flower-plant">
-                          <label class="form-check-label d-flex align-items-center" for="flower-plant"><span class="text-nav fw-medium">관화 식물</span><span class="fs-xs text-muted ms-auto">124</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="seed">
-                          <label class="form-check-label d-flex align-items-center" for="seed"><span class="text-nav fw-medium">씨앗</span><span class="fs-xs text-muted ms-auto">59</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="indoor-garden">
-                          <label class="form-check-label d-flex align-items-center" for="indoor-garden"><span class="text-nav fw-medium">실내정원용</span><span class="fs-xs text-muted ms-auto">227</span></label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="fleshy-plant">
-                          <label class="form-check-label d-flex align-items-center" for="fleshy-plant"><span class="text-nav fw-medium">다육식물</span><span class="fs-xs text-muted ms-auto">16</span></label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 
                   <div class="accordion-item mb-0">
                     <h4 class="accordion-header">
                       <button class="accordion-button collapsed fs-xl fw-medium py-2" type="button" data-bs-toggle="collapse" data-bs-target="#pot" aria-expanded="false" aria-controls="pot"><span class="fs-base">화분 구매</span></button>
@@ -110,23 +64,26 @@
                     <div class="accordion-collapse collapse" id="pot" data-bs-parent="#shopCategories">
                       <div class="accordion-body py-1 mb-1">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="clay-pot"
-                          ${fn:contains(paramMap.brands, '토분') ? 'checked':'' }>
-                          <label class="form-check-label d-flex align-items-center" for="토분">
+                          <input class="form-check-input" type="checkbox" id="clay-pot" name="kinds" value="토분" 
+                          ${fn:contains(paramMap.kinds, '토분') ? 'checked':'' }>
+                          <label class="form-check-label d-flex align-items-center" for="clay-pot">
                           <span class="text-nav fw-medium">토분</span></label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="ceramics">
+                          <input class="form-check-input" type="checkbox" id="ceramics" name="kinds" value="도자기"
+                          ${fn:contains(paramMap.kinds, '도자기') ? 'checked':'' }>
                           <label class="form-check-label d-flex align-items-center" for="ceramics">
                           <span class="text-nav fw-medium">도자기</span></label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="plastic">
+                          <input class="form-check-input" type="checkbox" id="plastic" name="kinds" value="플라스틱"
+                          ${fn:contains(paramMap.kinds, '플라스틱') ? 'checked':'' }>
                           <label class="form-check-label d-flex align-items-center" for="plastic">
                           <span class="text-nav fw-medium">플라스틱</span></label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="cement">
+                          <input class="form-check-input" type="checkbox" id="cement" name="kinds" value="시멘트"
+                          ${fn:contains(paramMap.kinds, '시멘트') ? 'checked':'' }>
                           <label class="form-check-label d-flex align-items-center" for="cement">
                           <span class="text-nav fw-medium">시멘트</span></label>
                         </div>
@@ -141,19 +98,19 @@
                       <div class="accordion-body py-1 mb-1">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="care-all">
-                          <label class="form-check-label d-flex align-items-center" for="care-all"><span class="text-nav fw-medium">모두 보기</span><span class="fs-xs text-muted ms-auto">1219</span></label>
+                          <label class="form-check-label d-flex align-items-center" for="care-all"><span class="text-nav fw-medium">모종삽</span></label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="repotting">
-                          <label class="form-check-label d-flex align-items-center" for="repotting"><span class="text-nav fw-medium">분갈이</span><span class="fs-xs text-muted ms-auto">43</span></label>
+                          <label class="form-check-label d-flex align-items-center" for="repotting"><span class="text-nav fw-medium">영양제</span></label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="water">
-                          <label class="form-check-label d-flex align-items-center" for="water"><span class="text-nav fw-medium">물주기</span><span class="fs-xs text-muted ms-auto">528</span></label>
+                          <label class="form-check-label d-flex align-items-center" for="water"><span class="text-nav fw-medium">살충제</span></label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="temp">
-                          <label class="form-check-label d-flex align-items-center" for="temp"><span class="text-nav fw-medium">온도, 습도</span><span class="fs-xs text-muted ms-auto">391</span></label>
+                          <label class="form-check-label d-flex align-items-center" for="temp"><span class="text-nav fw-medium">흙</span></label>
                         </div>
                       </div>
                     </div>
@@ -165,14 +122,8 @@
           </aside>
           <!-- Product grid-->
           <div class="col-lg-9">
-            <!-- Active filters + Sorting-->
-            <div class=" mb-4" align="right">
-              <div class="input-group" style="width: 365px;">
-
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary">search</button>
-              </div>
-            </div>
+            
+            
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
               <!-- Item-->
               <c:forEach var="item" items="${list}">
@@ -183,10 +134,10 @@
 					
 					
                       <!-- Item -->
-                      <div class="swiper-slide rounded-2"  >
+                    
                         <div class="rounded-2" style="background-image: url( '${item.image }' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
                       </div>
-                      </div>
+
                     </a>
                   </div>
                 </div>
@@ -209,7 +160,7 @@
              
 
             </div>
-            <!-- Pagination-->
+            <!-- 페이지 -->
             <div class="row gy-3 align-items-center pt-3 pt-sm-4 mt-md-2">
               <div class="col col-md-4 col-6 order-md-1 order-1">
               </div>
@@ -224,7 +175,7 @@
                     <li class="page-item" aria-current="page"><span class="page-link">${status.current}<span class="visually-hidden">(current)</span></span></li>
                     </c:if>
                    <c:if test="${status.current != pageInfo.currentPage}"> 
-                    <li class="page-item"><a class="page-link" href="#">${status.current}</a></li>
+                    <li class="page-item"><a class="page-link" href="movePage(${pageInfo.nextPage});">${status.current}</a></li>
                    </c:if>
                    </c:forEach>
                   </ul>
@@ -241,5 +192,7 @@
       <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#shopSidebar"><i class="ai-filter me-2"></i>Filters</button>
   </body>
   
+
+      
  
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
