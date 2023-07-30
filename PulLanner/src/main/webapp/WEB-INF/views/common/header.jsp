@@ -204,7 +204,7 @@
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/PlantProud">식물 자랑</a></li>
-								<li><a class="dropdown-item" href="${path}/HoneyTip">식물 기르기꿀팁</a></li>
+								<li><a class="dropdown-item" href="${path}/HoneyTip/list">식물 기르기꿀팁</a></li>
 								<li><a class="dropdown-item" href="${path}/Observe">관찰일지</a></li>
 							</ul>
 						</li>
