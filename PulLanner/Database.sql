@@ -482,5 +482,33 @@ COMMIT;
 
 SELECT * FROM PLANTPARCELREPLY;
 
+------------------------------------------------------------------
+------------------------- PLANT MANAGE 관련 테이블 -------------------------
+------------------------------------------------------------------
 
 
+CREATE TABLE plantManage ( 
+	cno INT PRIMARY KEY AUTO_INCREMENT, #이 테이블 주키
+    bno INT, #식물 번호
+    mno INT, #회원번호 
+    working INT, # 1=환기하기 2=물주기~ 
+    feedDate DATETIME, 
+    enrollDate DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    content VARCHAR(2000) #메모 
+    );   
+
+# 식물 리스트 
+CREATE TABLE manageList ( 
+	bno INT PRIMARY KEY AUTO_INCREMENT, 
+	mno INT,     
+    plantName VARCHAR(100), 
+    petName VARCHAR(100), #애칭 
+    location VARCHAR(1000), #식물 키우는 위치  
+    content VARCHAR(2000), #소개
+	IMG VARCHAR(500),    #사진 
+    startDate DATETIME,
+	enrollDate DATETIME DEFAULT CURRENT_TIMESTAMP,   #키우기 시작한 날 
+    modifyDate DATETIME DEFAULT CURRENT_TIMESTAMP 
+ );
+ 
+ select * from manageList;
