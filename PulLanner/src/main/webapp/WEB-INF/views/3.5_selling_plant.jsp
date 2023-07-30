@@ -162,7 +162,7 @@
       </div>
     </main>
 
-
+<%-- 
 
     <!-- Footer-->
     <footer class="footer pt-lg-5 pt-4 pb-5">
@@ -227,5 +227,12 @@
     <script src="assets/vendor/shufflejs/dist/shuffle.min.js"></script>
     <!-- Main theme script-->
     <script src="assets/js/theme.min.js"></script>
+     --%>
+    
+    
   </body>
+  
+  
+  
+  
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
