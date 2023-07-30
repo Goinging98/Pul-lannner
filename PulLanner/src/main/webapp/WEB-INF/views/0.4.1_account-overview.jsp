@@ -84,7 +84,7 @@
 							</tr>
 							<tr>
 								<td class="border-0 text-muted py-1 px-0">주소</td>
-								<td class="border-0 text-dark fw-medium py-1 ps-3">${loginMember.address}</td>
+								<td class="border-0 text-dark fw-medium py-1 ps-3">(${loginMember.addr1}) ${loginMember.addr2}  ${loginMember.addr3}</td>
 							</tr>
 						</table>
 					</div>

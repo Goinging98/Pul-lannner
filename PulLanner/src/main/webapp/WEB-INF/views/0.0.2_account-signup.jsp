@@ -190,10 +190,21 @@
 								<span class="password-toggle-indicator"></span>
 							</label>
 						</div>
+			            <div class="password-toggle mb-4">
+			                <input class="form-control form-control-lg" type="password" id="password1" placeholder="비밀번호 확인" required>
+			                <label class="password-toggle-btn" aria-label="Show/hide password">
+			                	<input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+			                </label>
+			            </div>
 						<div class="password-toggle mb-4">
 							<input class="form-control form-control-lg" type="text" id="phone" name="phone" placeholder="전화번호">
 						</div>
-						<button class="btn btn-lg btn-primary w-100 mb-4" type="submit">회원가입</button>
+						<div class="password-toggle mb-4">
+							<label class="form-label" for="address">주소</label>
+							<input class="form-control" id="member_post" type="text" placeholder="Zip Code" name="addr1" readonly onclick="findAddr()"><br>
+							<input class="form-control" id="member_addr" type="text" placeholder="Address" name="addr2" readonly > <br>
+							<input class="form-control" type="text" placeholder="Detailed Address" name="addr3">
+						</div>
 						<!-- 
               <h2 class="h6 text-center pt-3 pt-lg-4 mb-4">Or sign in with your social account</h2>
               <div class="row row-cols-1 row-cols-sm-2 gy-3">
@@ -201,6 +212,8 @@
                 <div class="col"><a class="btn btn-icon btn-outline-secondary btn-facebook btn-lg w-100" href="#"><i class="ai-facebook fs-xl me-2"></i>Facebook</a></div>
               </div>
                -->
+               		
+						<button class="btn btn-lg btn-primary w-100 mb-4"  type="submit">회원가입</button>
 					</form>
 				</div>
 				<!-- Copyright-->
@@ -225,4 +238,88 @@
 	<!-- Main theme script-->
 	<script src="/resources/assets/js/theme.min.js"></script>
 </body>
+
+<script type="text/javascript">
+	$(()=>{
+		$('#password1').blur((event)=>{
+			let password = $('#password').val();
+			let password1 = $(event.target).val();
+			
+			if(password.trim() != password1.trim()){
+				alert('패스워드가 일치하지 않습니다.')
+				$('#password').val("");
+				$('#password1').val("");
+				$('#password').focus();
+			}
+		});
+		
+		$('#enrollSubmit').click(()=>{
+			let id = $('#id').val();
+			if(id.length < 4){
+				alert('아이디가 4글자보다 작습니다.');
+				return false; // submit 안가는 방법
+			}
+			
+			// 유효성 로직 추가하는 곳
+			
+			return true; // submit 보내짐
+		});
+		
+		$('#checkDuplicate').click(()=>{
+			let id = $('#id').val().trim();
+
+			if(id.length < 4){
+				alert('아이디가 4글자보다 작습니다.');
+				return;
+			}
+
+			$.ajax({
+				type:'get',
+				url:'${path}/member/idCheck',
+				data:{id}, // 속성값이 키값과 같을때 값을 생략해서 보낼수 있다. 보통은 key-value로 채운다.
+				success:
+					(data)=>{ // data : 서버에서 보내준 결과 값, json으로 응답될수 있다.
+						console.log(data);
+						if(data.validate === true){
+							alert('이미 사용중인 아이디 입니다.');
+						} else{
+							alert('사용 가능합니다.');
+						}
+					},
+				error:
+					(e)=>{
+						alert('중복을 확인할수 없습니다.');
+						console.log(e)
+					}
+			});
+		});
+		
+	});
+</script>
+<script>
+function findAddr(){
+	new daum.Postcode({
+        oncomplete: function(data) {
+        	
+        	console.log(data);
+        	
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var roadAddr = data.roadAddress; // 도로명 주소 변수
+            var jibunAddr = data.jibunAddress; // 지번 주소 변수
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('member_post').value = data.zonecode;
+            if(roadAddr !== ''){
+                document.getElementById("member_addr").value = roadAddr;
+            } 
+            else if(jibunAddr !== ''){
+                document.getElementById("member_addr").value = jibunAddr;
+            }
+        }
+    }).open();
+}
+</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </html>

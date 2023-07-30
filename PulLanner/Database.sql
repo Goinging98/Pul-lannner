@@ -186,7 +186,7 @@ SELECT * FROM gardenDtl;
 ------------------------------------------------
 --------------- MEMBER 관련 테이블 ----------------
 ------------------------------------------------
-
+drop table member;
 CREATE TABLE MEMBER (
     mNo      INT  PRIMARY KEY AUTO_INCREMENT,
     ID 		 VARCHAR(30) NOT NULL UNIQUE,
@@ -195,7 +195,9 @@ CREATE TABLE MEMBER (
     NAME 	 VARCHAR(15) NOT NULL,
     PHONE 	 VARCHAR(13),
     EMAIL 	 VARCHAR(100),
-    ADDRESS  VARCHAR(100),
+    ADDR1  VARCHAR(100),
+    ADDR2  VARCHAR(100),
+    ADDR3  VARCHAR(100),
     HOBBY 	 VARCHAR(100),
     STATUS 	 VARCHAR(1) DEFAULT 'Y' CHECK(STATUS IN('Y', 'N')),
     ENROLL_DATE DATETIME  DEFAULT CURRENT_TIMESTAMP,
@@ -212,7 +214,9 @@ INSERT INTO MEMBER (
     NAME, 
     PHONE, 
     EMAIL, 
-    ADDRESS, 
+    ADDR1, 
+    ADDR2, 
+    ADDR3, 
     HOBBY, 
     STATUS, 
     ENROLL_DATE, 
@@ -225,7 +229,9 @@ INSERT INTO MEMBER (
     '관리자', 
     '010-1234-4341', 
     'admin@test.com', 
-    '서울시 강남구 역삼동',
+    '',
+    '',
+    '',
     DEFAULT,
     DEFAULT,
     DEFAULT,

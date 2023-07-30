@@ -84,7 +84,7 @@ public class MemberController {
 	
 
 	// AJAX 회원아이디 중복 검사부
-	@GetMapping("/member/idCheck")
+	@GetMapping("/mypage/idCheck")
 	public ResponseEntity<Map<String, Object>> idCheck(String id){
 		log.info("아이디 중복 확인 : " + id);
 		
@@ -96,7 +96,7 @@ public class MemberController {
 	}
 	
 	
-	@PostMapping("/member/update")
+	@PostMapping("/mypage/update")
 	public String update(Model model, 
 			@ModelAttribute Member updateMember, // request에서 온 값
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember // 세션 값
@@ -104,7 +104,7 @@ public class MemberController {
 		log.info("update 요청, updateMember : " + updateMember);
 		if(loginMember == null || loginMember.getId().equals(updateMember.getId()) == false) {
 			model.addAttribute("msg","잘못된 접근입니다.");
-			model.addAttribute("location","/");
+			model.addAttribute("location","/mypage/infochange");
 			return "common/msg";
 		}
 		
@@ -114,27 +114,27 @@ public class MemberController {
 		if(result > 0) {
 			model.addAttribute("loginMember", service.findById(loginMember.getId())); // DB에서 있는 값을 다시 세션에 넣어주는 코드
 			model.addAttribute("msg", "회원정보를 수정하였습니다.");
-			model.addAttribute("location", "/member/view");
+			model.addAttribute("location", "/mypage/overview");
 		}else {
 			model.addAttribute("msg", "회원정보 수정에 실패하였습니다.");
-			model.addAttribute("location", "/member/view");
+			model.addAttribute("location", "/mypage/overview");
 		}
 		return "common/msg";
 	}
 	
 	
-	@GetMapping("/member/view")
-	public String memberView() {
-		log.info("회원 정보 페이지 요청");
-		return "member/view";
-	}
+//	@GetMapping("/member/view")
+//	public String memberView() {
+//		log.info("회원 정보 페이지 요청");
+//		return "member/view";
+//	}
 	
-	@GetMapping("/member/updatePwd")
-	public String updatePwdPage() {
-		return "member/updatePwd";
-	}
+//	@GetMapping("/mypage/updatePwd")
+//	public String updatePwdPage() {
+//		return "member/updatePwd";
+//	}
 	
-	@PostMapping("/member/updatePwd")
+	@PostMapping("/mypage/updatePwd")
 	public String updatePwd(Model model,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			String userPwd

@@ -7,7 +7,7 @@
 	<sql id="selectMemberSql">
 		SELECT 	
 			MNO, ID, PASSWORD, ROLE, NAME, PHONE,
-			EMAIL, ADDRESS, HOBBY,
+			EMAIL, ADDR1, ADDR2, ADDR3, HOBBY,
 			STATUS, ENROLL_DATE, MODIFY_DATE 
 		FROM MEMBER
 	</sql>
@@ -20,7 +20,9 @@
 		<result property="name" 	column="NAME" />
 		<result property="phone" 	column="PHONE" />
 		<result property="email" 	column="EMAIL" />
-		<result property="address" 	column="ADDRESS" />
+		<result property="addr1" 	column="ADDR1" />
+		<result property="addr2" 	column="ADDR2" />
+		<result property="addr3" 	column="ADDR3" />
 		<result property="hobby" 	column="HOBBY" />
 		<result property="status" 	column="STATUS" />
 		<result property="enrollDate" column="ENROLL_DATE" />
@@ -44,12 +46,12 @@
 		INSERT INTO MEMBER(
 			MNO, ID, PASSWORD, 	
 			ROLE, NAME, PHONE,
-			EMAIL, ADDRESS,HOBBY, 		
+			EMAIL, ADDR1, ADDR2, ADDR3,HOBBY, 		
 			STATUS, ENROLL_DATE, MODIFY_DATE
 		) VALUES (
 			 0, #{id}, #{password},
 			 default, #{name}, #{phone},
-			 #{email}, #{address}, #{hobby},
+			 #{email}, #{addr1}, #{addr2}, #{addr3}, #{hobby},
 			 DEFAULT, DEFAULT, DEFAULT)
 	</insert>
 	
@@ -59,7 +61,9 @@
 	 		NAME		= #{name}, 
 	 		PHONE		= #{phone},
 	 		EMAIL		= #{email},
-	 		ADDRESS		= #{address},
+	 		ADDR1		= #{addr1},
+	 		ADDR2		= #{addr2},
+	 		ADDR3		= #{addr3},
 	 		HOBBY		= #{hobby},
 	 		MODIFY_DATE	= #{modifyDate}
 	 	WHERE MNO = #{mNo}

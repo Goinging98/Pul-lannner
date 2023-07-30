@@ -32,6 +32,26 @@ function findAddr(){
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+
+<script>
+	$(document).ready(() => {
+		$("#updateSubmit").on("click", (e) => {
+			let pass1 = $("#pass1").val();			
+			let pass2 = $("#pass2").val();
+			
+			if(pass1.trim() != pass2.trim()) {
+				alert("비밀번호가 일치하지 않습니다.");
+				
+				$("#pass1").val("");
+				$("#pass2").val("");
+				$("#pass1").focus();
+				
+				return false;
+			}		
+		});
+	});
+</script>
+
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
 		<!-- Sidebar (offcanvas on sreens < 992px)-->
@@ -39,7 +59,8 @@ function findAddr(){
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
 				<div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
-					<button class="btn-close position-absolute top-0 end-0 mt-3 me-3 d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount"></button>
+					<button class="btn-close position-absolute top-0 end-0 mt-3 me-3 d-lg-none" 
+						type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount"></button>
 					<div class="offcanvas-body">
 						<div class="pb-2 pb-lg-0 mb-4 mb-lg-5">
 							<img class="d-block rounded-circle mb-2" src="/resources/assets/img/avatar/02.jpg" width="80" alt="pic">
@@ -75,7 +96,9 @@ function findAddr(){
 			</div>
 		</aside>
 
-		<!-- Page content-->
+
+
+		<!-- 기본 정보 변경 -->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
 			<h1 class="h2 mb-4">설정</h1>
 			<!-- Basic info-->
@@ -88,7 +111,8 @@ function findAddr(){
 					<div class="d-flex align-items-center">
 						<div class="dropdown">
 							<a class="d-flex flex-column justify-content-end position-relative overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0"
-								href="#" data-bs-toggle="dropdown" aria-expanded="false" style="width: 80px; height: 80px; background-image: url(/resources/assets/img/avatar/02.jpg);">
+								href="#" data-bs-toggle="dropdown" aria-expanded="false" 
+								style="width: 80px; height: 80px; background-image: url(/resources/assets/img/avatar/02.jpg);">
 								<span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0, 0, 0, .5)"><i class="ai-camera"></i></span>
 							</a>
 							<div class="dropdown-menu my-1">
@@ -101,88 +125,76 @@ function findAddr(){
 							<p class="fs-sm text-muted mb-0">1000px 이하, PNG 혹은 JPG</p>
 						</div>
 					</div>
-					<form>
+					<form id="enroll-container" name="memberEnrollFrm" action="${path}/mypage/update" method="post">
 						<div class="row g-3 g-sm-4 mt-0 mt-lg-2">
 							<div class="col-sm-6">
 								<label class="form-label" for="fn">이름</label> 
-								<input class="form-control" type="text" value="${loginMember.name}" id="name" name="name">
+								<input class="form-control" type="text" value="${loginMember.name}" id="name" name="name" >
 							</div>
 							<div class="col-sm-6">
 								<label class="form-label" for="email">이메일</label> 
-								<input class="form-control" type="email" value="${loginMember.id}" id="id" name="id">
+								<input class="form-control" type="email" value="${loginMember.id}" id="id" name="id" >
 							</div>
 							<div class="col-sm-6">
 								<label class="form-label" for="phone">전화번호</label> 
 								<input class="form-control" type="text" value="${loginMember.phone}" id="phone" name="phone">
 							</div>
 							<div class="col-12">
-								<label class="form-label" for="bio">주소</label>
-								<input class="form-control" id="member_post" type="text" placeholder="Zip Code" readonly onclick="findAddr()"><br>
-								<input class="form-control" id="member_addr" type="text" placeholder="Address" readonly> <br>
-								<input class="form-control" type="text" placeholder="Detailed Address">
+								<label class="form-label" for="address">주소</label>
+								<input class="form-control" id="member_post" type="text" placeholder="Zip Code" name="addr1" readonly onclick="findAddr()"><br>
+								<input class="form-control" id="member_addr" type="text" placeholder="Address" name="addr2" readonly > <br>
+								<input class="form-control" type="text" placeholder="Detailed Address" name="addr3">
 							</div>
 							<div class="col-12 d-flex justify-content-end pt-3">
-								<button class="btn btn-primary ms-3" type="button">변경사항 저장</button>
+								<button class="btn btn-primary ms-3" type="submit">변경사항 저장</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</section>
-			<!-- Password-->
+			
+			
+			<!-- 비밀번호 변경 -->
 			<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4">
 				<div class="card-body">
 					<div class="d-flex align-items-center pb-4 mt-sm-n1 mb-0 mb-lg-1 mb-xl-3">
 						<i class="ai-lock-closed text-primary lead pe-1 me-2"></i>
 						<h2 class="h4 mb-0">비밀번호 변경</h2>
 					</div>
-					<div class="row align-items-center g-3 g-sm-4 pb-3">
-						<div class="col-sm-6">
-							<label class="form-label" for="current-pass">현재 비밀번호</label>
-							<div class="password-toggle">
-								<input class="form-control" type="password" id="current-pass" name="password"> 
-								<label class="password-toggle-btn" aria-label="Show/hide password">
-									<input class="password-toggle-check" type="checkbox">
-									<span class="password-toggle-indicator"></span>
-								</label>
+					
+					<form action="${path}/mypage/updatePwd" method="POST">
+						<div class="row align-items-center g-3 g-sm-4 pb-3">
+							<div class="col-sm-6">
+								<label class="form-label" for="new-pass">새 비밀번호</label>
+								<div class="password-toggle">
+									<input class="form-control" type="password" id="pass1" name="password">
+									<label class="password-toggle-btn" aria-label="Show/hide password"> 
+										<input class="password-toggle-check" type="checkbox">
+										<span class="password-toggle-indicator"></span>
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<label class="form-label" for="confirm-pass">새 비밀번호 확인</label>
+								<div class="password-toggle">
+									<input class="form-control" type="password" id="pass2">
+									<label class="password-toggle-btn" aria-label="Show/hide password"> 
+										<input class="password-toggle-check" type="checkbox">
+										<span class="password-toggle-indicator"></span>
+									</label>
+								</div>
 							</div>
 						</div>
-						<div class="col-sm-6">
-							<a class="d-inline-block fs-sm fw-semibold text-decoration-none mt-sm-4"
-								href="account-password-recovery.html">비밀번호를 잊으셨나요?</a>
+						<div class="d-flex justify-content-end pt-3">
+							<button class="btn btn-secondary" type="reset">취소</button>
+							<button class="btn btn-primary ms-3" type="submit" id="updateSubmit" onclick="return validate();">변경사항 저장</button>
 						</div>
-						<div class="col-sm-6">
-							<label class="form-label" for="new-pass">새 비밀번호</label>
-							<div class="password-toggle">
-								<input class="form-control" type="password" id="new-pass">
-								<label class="password-toggle-btn" aria-label="Show/hide password"> 
-									<input class="password-toggle-check" type="checkbox">
-									<span class="password-toggle-indicator"></span>
-								</label>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<label class="form-label" for="confirm-pass">새 비밀번호 확인</label>
-							<div class="password-toggle">
-								<input class="form-control" type="password" id="confirm-pass">
-								<label class="password-toggle-btn" aria-label="Show/hide password"> 
-									<input class="password-toggle-check" type="checkbox">
-									<span class="password-toggle-indicator"></span>
-								</label>
-							</div>
-						</div>
-					</div>
-					<!-- 
-					<div class="alert alert-info d-flex my-3 my-sm-4">
-						<i class="ai-circle-info fs-xl me-2"></i>
-						<p class="mb-0">비밀번호는 최소 8글자 이상이어야 합니다.</p>
-					</div>
-					 -->
-					<div class="d-flex justify-content-end pt-3">
-						<button class="btn btn-secondary" type="reset">취소</button>
-						<button class="btn btn-primary ms-3" type="submit">변경사항 저장</button>
-					</div>
+					</form>
 				</div>
 			</section>
+
+
+
 
 			<!-- 계정 삭제 -->
 			<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4">
@@ -215,11 +227,11 @@ function findAddr(){
 		</div>
 	</div>
 </div>
-<!-- Divider for dark mode only-->
-<hr class="d-none d-dark-mode-block">
+
+
 <!-- Sidebar toggle button-->
 <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
-	<i class="ai-menu me-2"></i>Account menu
+	<i class="ai-menu me-2"></i>
 </button>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
