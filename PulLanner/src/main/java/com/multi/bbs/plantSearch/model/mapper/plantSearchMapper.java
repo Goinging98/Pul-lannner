@@ -16,9 +16,9 @@ public interface plantSearchMapper {
 	
 	// --------------실내식물 관련----------------
 	
-	List<GardenList> selectGardentList(Map<String, Object> map); 
+	List<GardenList> selectGardentList(Map<String, String> map); 
 	
-	int selectGardenCount(Map<String, Object> map);
+	int selectGardenCount(Map<String, String> param);
 	
 	GardenDtl selectByContentDetailId(int id);
 	

@@ -21,16 +21,16 @@ public class plantSearchService {
 
 
 	// --------------실내식물 관련----------------
-	public List<GardenList> selectGardentList(PageInfo pageInfo, Map<String, Object> param) {
-	    param.put("limit", String.valueOf(pageInfo.getListLimit())); // 정수를 문자열로 변환하여 추가
-	    param.put("offset", String.valueOf(pageInfo.getStartList() - 1)); // 정수를 문자열로 변환하여 추가
+	public List<GardenList> selectGardentList(PageInfo pageInfo, Map<String, String> param) {
+		param.put("limit", "" + pageInfo.getListLimit());
+		param.put("offset", "" + (pageInfo.getStartList() - 1));
 	    // 매퍼 인터페이스의 selectGardentList 메서드 호출
 	    return mapper.selectGardentList(param);
 	}
 
-	public int selectGardenCount(Map<String, Object> map) {
+	public int selectGardenCount(Map<String, String> param) {
 	    // 매퍼 인터페이스의 selectGardenCount 메서드 호출
-	    return mapper.selectGardenCount(map);
+	    return mapper.selectGardenCount(param);
 	}
 
 	public GardenList selectByContentId(int id) {

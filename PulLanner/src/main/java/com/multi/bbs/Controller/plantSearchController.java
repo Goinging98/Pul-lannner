@@ -1,5 +1,6 @@
 package com.multi.bbs.Controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,25 +27,31 @@ public class plantSearchController {
 	
 // ================================실내식물 관련===========================================
 	@RequestMapping("/PlantSearch")
-    public String list(Model model, @RequestParam Map<String, Object> param, Integer id) {
+	public String list(Model model, @RequestParam Map<String, Object> param, Integer id, @RequestParam Map<String, String> paramMap){
 
         int page = 1;
-        try {
-            page = Integer.parseInt((String) param.get("page"));
-        } catch (Exception e) {
-        }
+        Map<String, String> searchMap = new HashMap<String, String>();
+		try {
+			String searchValue = paramMap.get("searchValue");
+			if(searchValue != null && searchValue.length() > 0) {
+				String searchType = paramMap.get("searchType");
+				searchMap.put(searchType, searchValue);
+			}else {
+				paramMap.put("searchType", "all");
+			}
+			page = Integer.parseInt(paramMap.get("page"));
+		} catch (Exception e) {}
 
-
-        int count = plantSearchService.selectGardenCount(param);
+		
+        int count = plantSearchService.selectGardenCount(searchMap);
         PageInfo pageInfo = new PageInfo(page, 5, count, 12); // 게시글이 보여지는 갯수 = 10
-        List<GardenList> list = plantSearchService.selectGardentList(pageInfo, param);
+        List<GardenList> list = plantSearchService.selectGardentList(pageInfo, searchMap);
         
 
-        int maxPage = (count / 12);
 
         model.addAttribute("list", list);
+        model.addAttribute("param", paramMap);
         model.addAttribute("count", count);
-        model.addAttribute("maxPage", maxPage);
         model.addAttribute("page", page);
         model.addAttribute("pageInfo", pageInfo);
         
@@ -79,27 +86,8 @@ public class plantSearchController {
 	
 	
 	@RequestMapping("/GardenDetail")
-    public String gardendetail(Model model, @RequestParam Map<String, Object> param, Integer id) {
+    public String gardendetail(Model model, @RequestParam Map<String, Object> param, Integer id, @RequestParam Map<String, String> paramMap){
 
-        int page = 1;
-        try {
-            page = Integer.parseInt((String) param.get("page"));
-        } catch (Exception e) {
-        }
-
-
-        int count = plantSearchService.selectGardenCount(param);
-        PageInfo pageInfo = new PageInfo(page, 5, count, 12); // 게시글이 보여지는 갯수 = 10
-        List<GardenList> list = plantSearchService.selectGardentList(pageInfo, param);;
-
-
-        int maxPage = (count / 12);
-
-        model.addAttribute("list", list);
-        model.addAttribute("count", count);
-        model.addAttribute("maxPage", maxPage);
-        model.addAttribute("page", page);
-        model.addAttribute("pageInfo", pageInfo);
 
         
         

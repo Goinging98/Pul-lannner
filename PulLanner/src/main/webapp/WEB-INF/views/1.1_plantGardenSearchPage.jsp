@@ -52,28 +52,37 @@
         </div>
       </div>
 
-      <div class="row">
+	<div class="row">
 		<div class="col-md-7 mb-5 mt-3">
-			<div class> 
-				<a href="${path}/PlantSearch" type="button" class="btn btn-outline-primary active" style="margin-right: 10px;">실내정원용</a>
-				<a href="${path}/FlowerSearch" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">꽃</a>
-				<a href="${path}/DryGardenSearch" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">다육이</a>
+			<div class>
+				<a href="${path}/PlantSearch" type="button"
+					class="btn btn-outline-primary active" style="margin-right: 10px;">실내정원용</a>
+				<a href="${path}/FlowerSearch" type="button"
+					class="btn btn-outline-primary" style="margin-right: 10px;">꽃</a> <a
+					href="${path}/DryGardenSearch" type="button"
+					class="btn btn-outline-primary" style="margin-right: 10px;">다육이</a>
 			</div>
 		</div>
+		
+		
+		<!-- 검색창 -->
+		<form name="searchForm" action="${path}/PlantSearch" method="get">
+              <input type="hidden" name="page" value="1">
 		<div class="col-md-5 mb-5 mt-3">
-          <div >
-            <div class="input-group input-group-sm rounded-pill">
-              <span class="input-group-text">
-                <i class="ai-search"></i>
-              </span>
-              <input type="search" class="form-control" placeholder="Search...">
-              <button type="button" class="btn btn-primary rounded-pill">Search</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Product grid-->
+			<div>
+				<div class="input-group input-group-sm rounded-pill">
+					<span class="input-group-text"> <i class="ai-search"></i>
+					</span> <input type="search" id="searchValue" name="searchValue"
+						value="${param.searchValue}" class="form-control"
+						placeholder="Search...">
+					<button type="button" class="btn btn-primary rounded-pill">Search</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+
+	<!-- Product grid-->
       <div class="col-lg-12">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
@@ -150,6 +159,48 @@
         </nav>
       </div>
     </div>
+   
+    <!-- Pagination-->
+            <div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
+              <div class="col col-md-4 col-6 order-md-1 order-1">
+              </div>
+              <div class="col col-md-4 col-6 order-md-3 order-2">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-end">
+                    <li class="page-item active" aria-current="page">
+                    <!-- 처음 페이지 -->
+                    <li class="page-item">
+					<button class="page-link" onclick="movePage(1)">&lt;&lt;</button>
+					</li>
+					<!-- 이전 페이지 -->
+					<li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+					</li>
+					<!-- 10개 페이지가 보여지는 부분 -->
+					<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
+						<c:if test="${status.current == pageInfo.currentPage}">
+							<button class="page-link" disabled>${status.current}</button>
+						</c:if>
+						<c:if test="${status.current != pageInfo.currentPage}">
+							<button class="page-link" onclick="movePage(${status.current})">
+								${status.current}
+							</button>
+						</c:if>
+					</c:forEach>
+                    <!-- 다음 페이지 -->
+                    <li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+					</li>
+					<!-- 마지막 페이지 -->
+					<li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
+					</li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+
 
     <!-- Sidebar toggle button-->
     <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas"
@@ -157,4 +208,10 @@
   </main>
   
   <jsp:include page="/WEB-INF/views/common/footer.jsp" />
- 
+  
+ <script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+	</script>
