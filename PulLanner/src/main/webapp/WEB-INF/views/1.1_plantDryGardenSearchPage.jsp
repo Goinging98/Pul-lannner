@@ -60,19 +60,26 @@
 			<a href="${path}/DryGardenSearch" type="button" class="btn btn-outline-primary active" style="margin-right: 10px;">다육이</a>
           </div>
         </div>
-        <div class="col-md-5 mb-5 mt-3">
-          <div >
-            <div class="input-group input-group-sm rounded-pill">
-              <span class="input-group-text">
-                <i class="ai-search"></i>
-              </span>
-              <input type="search" class="form-control" placeholder="Search...">
-              <button type="button" class="btn btn-primary rounded-pill">Search</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+        
+        
+		<!-- 검색창 -->
+		<div class="col-md-5 mb-5 mt-3">
+		<form name="searchForm" action="${path}/PlantSearch" method="get">
+              <input type="hidden" name="page" value="1">
+			<div>
+				<div class="input-group input-group-sm rounded-pill">
+					<span class="input-group-text"> <i class="ai-search"></i>
+					</span> <input type="search" id="searchValue" name="searchValue"
+						value="${param.searchValue}" class="form-control"
+						placeholder="Search...">
+					<button type="button" class="btn btn-primary rounded-pill">Search</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+	
+	
       <!-- Product grid-->
       <div class="col-lg-12">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
@@ -109,46 +116,47 @@
           
         </div>
       </div>
-      <!-- Pagination-->
+   <!-- Pagination-->
       <div class="col-12 pt-sm-4 mt-md-2 text-end">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-end">
-            <li class="page-item">
-              <a href="#" class="page-link">
-                </i class="ai-arrow-left fs-xl me-2"></i>
-                Prev
-              </a>
-            </li>
-            <li class="page-item d-sm-none">
-              <span class="page-link pe-none">2 / 5</span>
-            </li>
-            <li class="page-item d-none d-sm-block">
-              <a href="#" class="page-link">1</a>
-            </li>
-            <li class="page-item active d-none d-sm-block" aria-current="page">
-              <span class="page-link">
-                2
-                <span class="visually-hidden">(current)</span>
-              </span>
-            </li>
-            <li class="page-item d-none d-sm-block">
-              <a href="#" class="page-link">3</a>
-            </li>
-            <li class="page-item d-none d-sm-block">
-              <a href="#" class="page-link">4</a>
-            </li>
-            <li class="page-item d-none d-sm-block">
-              <a href="#" class="page-link">5</a>
-            </li>
-            <li class="page-item">
-              <a href="#" class="page-link">
-                Next
-                </i class="ai-arrow-right fs-xl ms-2"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+          <!-- Pagination-->
+            <div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
+              <div class="col col-md-4 col-6 order-md-1 order-1">
+              </div>
+              <div class="col col-md-4 col-6 order-md-3 order-2">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-end">
+                    <li class="page-item active" aria-current="page">
+                    <!-- 처음 페이지 -->
+                    <li class="page-item">
+					<button class="page-link" onclick="movePage(1)">&lt;&lt;</button>
+					</li>
+					<!-- 이전 페이지 -->
+					<li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+					</li>
+					<!-- 10개 페이지가 보여지는 부분 -->
+					<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
+						<c:if test="${status.current == pageInfo.currentPage}">
+							<button class="page-link" disabled>${status.current}</button>
+						</c:if>
+						<c:if test="${status.current != pageInfo.currentPage}">
+							<button class="page-link" onclick="movePage(${status.current})">
+								${status.current}
+							</button>
+						</c:if>
+					</c:forEach>
+                    <!-- 다음 페이지 -->
+                    <li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+					</li>
+					<!-- 마지막 페이지 -->
+					<li class="page-item">
+					<button class="page-link" onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
+					</li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
     </div>
 
     <!-- Sidebar toggle button-->
@@ -156,5 +164,11 @@
       data-bs-target="#shopSidebar"><i class="ai-filter me-2"></i>Filters</button>
   </main>
   
-  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+ <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+   <script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+</script>
  

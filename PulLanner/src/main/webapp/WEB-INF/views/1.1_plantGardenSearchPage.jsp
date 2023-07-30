@@ -66,16 +66,16 @@
 		
 		
 		<!-- 검색창 -->
-		<form name="searchForm" action="${path}/PlantSearch" method="get">
-              <input type="hidden" name="page" value="1">
 		<div class="col-md-5 mb-5 mt-3">
+				<form id="searchForm" name="searchForm" action="${path}/PlantSearch" method="get">
+              <input type="hidden" name="page" value="1">
 			<div>
 				<div class="input-group input-group-sm rounded-pill">
 					<span class="input-group-text"> <i class="ai-search"></i>
 					</span> <input type="search" id="searchValue" name="searchValue"
 						value="${param.searchValue}" class="form-control"
 						placeholder="Search...">
-					<button type="button" class="btn btn-primary rounded-pill">Search</button>
+					<button type="button" class="btn btn-primary rounded-pill" onclick="submitSearchForm()">검색</button>
 				</div>
 			</div>
 		</div>
@@ -106,61 +106,11 @@
             </div>
           </div>
           </c:forEach>
-          
-         
-
-          
-
-
-
-
-         
-          
         </div>
       </div>
       <!-- Pagination-->
       <div class="col-12 pt-sm-4 mt-md-2 text-end">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-end">
-            <li class="page-item">
-              <a href="#" class="page-link">
-                </i class="ai-arrow-left fs-xl me-2"></i>
-                Prev
-              </a>
-            </li>
-            <li class="page-item d-sm-none">
-              <span class="page-link pe-none">2 / 5</span>
-            </li>
-            <li class="page-item d-none d-sm-block">
-              <a href="#" class="page-link">1</a>
-            </li>
-            <li class="page-item active d-none d-sm-block" aria-current="page">
-              <span class="page-link">
-                2
-                <span class="visually-hidden">(current)</span>
-              </span>
-            </li>
-            <li class="page-item d-none d-sm-block">
-              <a href="#" class="page-link">3</a>
-            </li>
-            <li class="page-item d-none d-sm-block">
-              <a href="#" class="page-link">4</a>
-            </li>
-            <li class="page-item d-none d-sm-block">
-              <a href="#" class="page-link">5</a>
-            </li>
-            <li class="page-item">
-              <a href="#" class="page-link">
-                Next
-                </i class="ai-arrow-right fs-xl ms-2"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-   
-    <!-- Pagination-->
+          <!-- Pagination-->
             <div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
               <div class="col col-md-4 col-6 order-md-1 order-1">
               </div>
@@ -199,7 +149,9 @@
                 </nav>
               </div>
             </div>
-          </div>
+    </div>
+   
+
 
 
     <!-- Sidebar toggle button-->
@@ -214,4 +166,7 @@
 		searchForm.page.value = page;
 		searchForm.submit();
 	}
+	
+
+	
 	</script>
