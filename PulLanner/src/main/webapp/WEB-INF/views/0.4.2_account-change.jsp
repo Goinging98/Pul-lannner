@@ -68,7 +68,7 @@ function findAddr(){
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">내 정보 관리</h4>
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/overview"><i class="ai-user-check fs-5 opacity-60 me-2"></i>내 정보</a> 
 							<a class="nav-link fw-semibold py-2 px-0 active" href="/mypage/infochange"><i class="ai-settings fs-5 opacity-60 me-2"></i>내 정보 수정</a>
-							<a class="nav-link fw-semibold py-2 px-0" href="/main"><i class="ai-logout fs-5 opacity-60 me-2"></i>로그아웃</a>
+							<a class="nav-link fw-semibold py-2 px-0" href="/logout"><i class="ai-logout fs-5 opacity-60 me-2"></i>로그아웃</a>
 						</nav>
 					</div>
 				</div>
@@ -178,8 +178,8 @@ function findAddr(){
 					</div>
 					 -->
 					<div class="d-flex justify-content-end pt-3">
-						<button class="btn btn-secondary" type="button">취소</button>
-						<button class="btn btn-primary ms-3" type="button">변경사항 저장</button>
+						<button class="btn btn-secondary" type="reset">취소</button>
+						<button class="btn btn-primary ms-3" type="submit">변경사항 저장</button>
 					</div>
 				</div>
 			</section>
@@ -191,7 +191,7 @@ function findAddr(){
 						<i class="ai-trash text-primary lead pe-1 me-2"></i>
 						<h2 class="h4 mb-0">계정 삭제</h2>
 					</div>
-					<form action="${path}/member/delete" method="post">
+					<form action="${path}/mypage/delete" method="post">
 						<div class="alert alert-warning d-flex mb-4">
 							<i class="ai-triangle-alert fs-xl me-2"></i>
 							<p class="mb-0"> 
@@ -205,7 +205,7 @@ function findAddr(){
 							</label>
 						</div>
 						<div class="d-flex flex-column flex-sm-row justify-content-end pt-4 mt-sm-2 mt-md-3">
-							<button class="btn btn-danger" type="button">
+							<button class="btn btn-danger" type="submit" >
 								<i class="ai-trash ms-n1 me-2"></i>계정 삭제
 							</button>
 						</div>

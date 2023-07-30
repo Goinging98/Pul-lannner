@@ -240,7 +240,7 @@
 						    <a class="dropdown-item" href="/mypage/shoppingbag"><i class="ai-cart fs-5 opacity-60 me-2"></i>장바구니</a> 
 						    <a class="dropdown-item" href="/mypage/favorites"><i class="ai-heart fs-5 opacity-60 me-2"></i>찜한 상품</a>
 						    <div class="dropdown-divider"></div>
-						    <a class="dropdown-item" href="/main"><i class="ai-logout fs-lg opacity-70 me-2"></i>로그아웃</a>
+						    <a class="dropdown-item" href="/logout"><i class="ai-logout fs-lg opacity-70 me-2"></i>로그아웃</a>
 						</div>
 					</li>
 				</ul>

@@ -151,10 +151,11 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("/member/delete")
+	@RequestMapping("/mypage/delete")
 	public String delete(Model model,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		int result = service.delete(loginMember.getMNo());
+		log.info("회원탈퇴, member : " + loginMember.getMNo());
 		if(result > 0) {
 			model.addAttribute("msg", "회원탈퇴에 성공하였습니다.");
 			model.addAttribute("location","/logout");
