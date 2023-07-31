@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ManageList {
+public class Managelist {
 
 	private int bno;
 	private int mno;

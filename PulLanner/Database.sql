@@ -552,33 +552,39 @@ WHERE P.PARCELSTATUS = 'Y' AND  P.PARCELNO=1;
 ------------------------------------------------------------------
 
 
-CREATE TABLE plantManage ( 
-	cno INT PRIMARY KEY AUTO_INCREMENT, #이 테이블 주키
-    bno INT, #식물 번호
-    mno INT, #회원번호 
-    working INT, # 1=환기하기 2=물주기~ 
-    feedDate DATETIME, 
-    enrollDate DATETIME DEFAULT CURRENT_TIMESTAMP, 
-    content VARCHAR(2000) #메모 
+CREATE TABLE PLANTMANAGE ( 
+	cNo INT PRIMARY KEY AUTO_INCREMENT, #이 테이블 주키
+    bNo INT, #식물 번호
+    mNo INT, #회원번호 
+    WORKING INT, # 1=환기하기 2=물주기~ 
+    FEEDDATE DATETIME, 
+    ENROLLDATE DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    CONTENT VARCHAR(2000) #메모 
     );   
     
 COMMIT;
 
-select * from PlantManage;
+select * from PLANTMANAGE;
 # 식물 리스트 
-CREATE TABLE ManageList ( 
-	bno INT PRIMARY KEY AUTO_INCREMENT, 
-	mno INT,     
-    plantName VARCHAR(100), 
-    petName VARCHAR(100), #애칭 
-    location VARCHAR(1000), #식물 키우는 위치  
-    content VARCHAR(2000), #소개
+CREATE TABLE MANAGELIST ( 
+	bNo INT PRIMARY KEY AUTO_INCREMENT, 
+	mNo INT,   
+    STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN ('Y', 'N')),
+    PLANTNAME VARCHAR(100), 
+    PETNAME VARCHAR(100), #애칭 
+    LOCATION VARCHAR(1000), #식물 키우는 위치  
+    CONTENT VARCHAR(2000), #소개
 	IMG VARCHAR(500),    #사진 
-    startDate DATETIME,
-	enrollDate DATETIME DEFAULT CURRENT_TIMESTAMP,   #키우기 시작한 날 
-    modifyDate DATETIME DEFAULT CURRENT_TIMESTAMP 
+    STARTDDATE DATETIME,
+	ENROLLDATE DATETIME DEFAULT CURRENT_TIMESTAMP,   #키우기 시작한 날 
+    MODIFYDATE DATETIME DEFAULT CURRENT_TIMESTAMP 
  );
- 
+ INSERT INTO MANAGELIST VALUES(0, 1,'Y', '선인장', '인장이', '실내', '인장이 분양했어요!!', '변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
+ INSERT INTO MANAGELIST VALUES(0, 1,'Y', '민들레', '들레1세', '실내', '들레 집에서 관찰하기!', '변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
  COMMIT;
+    
+    
+ select * from MANAGELIST;
  
- select * from ManageList;
+ SELECT COUNT(*) FROM MANAGELIST WHERE STATUS= 'Y'
+

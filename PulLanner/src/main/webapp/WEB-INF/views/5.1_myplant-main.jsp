@@ -29,7 +29,7 @@
                   <h3 class="h5 mb-2">${loginMember.name}<i class="ai-circle-check-filled fs-base text-success ms-2"></i></h3>
                   <div class="text-muted fw-medium d-flex flex-wrap flex-sm-nowrap align-iteems-center">
                     <div class="d-flex align-items-center me-3"><i class="ai-mail me-1"></i>${loginMember.id}</div>
-                    <div class="d-flex align-items-center text-nowrap"><i class="ai-map-pin me-1"></i>korea, won</div>
+                    <div class="d-flex align-items-center text-nowrap"><i class="ai-map-pin me-1"></i>korea</div>
                   </div>
                 </div>
               </div>

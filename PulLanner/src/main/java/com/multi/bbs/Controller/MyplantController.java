@@ -29,7 +29,7 @@ public class MyplantController{
 //		session.setAttribute("loginMember", loginMember);
 //		test();
 		return "5.1_myplant-main";
-	}
+	}	
 
 	private static final Logger logger2 = LoggerFactory.getLogger(PlantShopController.class);
 	

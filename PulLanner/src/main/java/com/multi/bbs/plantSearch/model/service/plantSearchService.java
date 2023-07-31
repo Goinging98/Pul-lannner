@@ -1,4 +1,4 @@
-package com.multi.bbs.plantSearch.model.service;
+ package com.multi.bbs.plantSearch.model.service;
 
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.plantSearch.model.mapper.plantSearchMapper;

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.bbs.manage.model.mapper.ManageBoardMapper">
+
+	<resultMap type="MANAGELIST" id="ManagelistResultMap">
+		<id property="bNo" column="bNo"/>
+		<result property="mNo" column="mNo"/>
+		<result property="mNo" column="mNo"/>
+		<result property="status" column="STATUS"/>
+		<result property="plantName" column="PLANTNAME"/>
+		<result property="petName" column="PETNAME"/>
+		<result property="location" column="LOCATION"/>
+		<result property="content" column= "CONTENT"/>
+		<result property="IMG" column="IMG"/>
+		<result property="startDate" column="STARTDATE"/>
+		<result property="enrollDate" column="ENROLLDATE"/>
+		<result property="modifyDate" column="MODIFYDATE"/>
+	</resultMap>
+
+	<resultMap type="PLANTMANAGE" id="PLANTMANAGEREsultMap">
+		<result property="cNO" column="cNo" />
+		<result property="bNo" column="bNo" />
+		<result property="mNo" column="mNO" />
+		<result property="working" column="WORKING"/>
+		<result property="feeddate" column="FEEDDATE" />
+		<result property="enrolldate" column="ENROLLDATE" />
+		<result property="content" column="CONTENT" />
+	</resultMap>
+	
+	
+	<select id="selectCount" resultType="int">
+	SELECT COUNT(*) FROM MANAGELIST FROM WHERE STATUS
+	</select>
+	
+	<select id="selectMANAGELISTList" resultMap="ManagelistResultMap" parameterType="map">
+		SELECT PLANT NAME, PET NAME, IMG FROM MANAGELIST 
+		</select>
+</mapper>
