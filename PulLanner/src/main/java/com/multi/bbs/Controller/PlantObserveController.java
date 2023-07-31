@@ -23,12 +23,31 @@ public class PlantObserveController {
 	private static final Logger logger = LoggerFactory.getLogger(PlantObserveController.class);
 	
 	@RequestMapping(value = "/Observe", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpSession session) {
-		logger.info("Welcome honeytip! The client locale is {}.", locale);
+	public String observe(Locale locale, Model model, HttpSession session) {
+		logger.info("Welcome observe! The client locale is {}.", locale);
 //		Member loginMember = memberService.login("admin", "1212");
 //		session.setAttribute("loginMember", loginMember);
 //		test();
 		return "4.3.0_observe_list";
 	}
+	
+	@RequestMapping(value = "/ObserveWrite", method = RequestMethod.GET)
+	public String observeWrite(Locale locale, Model model, HttpSession session) {
+		logger.info("Welcome observe! The client locale is {}.", locale);
+//		Member loginMember = memberService.login("admin", "1212");
+//		session.setAttribute("loginMember", loginMember);
+//		test();
+		return "4.3.2_observe_writing";
+	}
+	
+	@RequestMapping(value = "/ObserveDetail", method = RequestMethod.GET)
+	public String observeDetail(Locale locale, Model model, HttpSession session) {
+		logger.info("Welcome observe! The client locale is {}.", locale);
+//		Member loginMember = memberService.login("admin", "1212");
+//		session.setAttribute("loginMember", loginMember);
+//		test();
+		return "4.3.1_observe_detail";
+	}
+	
 }
 	

@@ -20,15 +20,15 @@
           <!-- Blog posts-->
           <div class="col-lg-9 pe-lg-4 pe-xl-5">
             <h1 class="pb-3 pb-lg-4">관찰일지<button type="button" class="btn btn-secondary btn-icon" 
-              onClick="location.href='blog-input-v2.html'" style="float:right" data-bs-toggle="tooltip" data-bs-placement="top" title="글쓰기"><i class="ai-edit-alt"></i>
+              onClick="location.href='${path}/ObserveWrite'" style="float:right" data-bs-toggle="tooltip" data-bs-placement="top" title="글쓰기"><i class="ai-edit-alt"></i>
             </button></h1>
             <!-- Post-->
             <article class="row g-0 border-0 mb-4 ">
-              <a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="blog-single-v1.html" 
+              <a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5" href="${path}/ObserveDetail" 
               style="background-image: url(resources/assets/img/blog/list/01.jpg); min-height: 14rem"></a>
               <div class="col-sm-7">
                 <div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-                  <h3><a href="blog-single-v4.html">선인장 관찰일지</a></h3>
+                  <h3><a href="${path}/ObserveDetail">선인장 관찰일지</a></h3>
                   <p class="d-flex flex-wrap align-items-center mt-n2"><a class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2" href="blog-single-v4.html">12<i class="ai-message fs-lg ms-1"></i></a><span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2">Date ~ Date</a><span class="fs-xs opacity-20 mt-2 mx-3">|</span><span class="fs-sm text-muted mt-2">8 hours ago</span></p>
                   <p class="d-sm-none d-md-block">역시 물은 안줘도 알아서 잘 자란다. 완전 작았는데 이제는 제법 커졌다... 가시가 더 길어져서 살짝 무섭기도 하다</p>
                 </div>

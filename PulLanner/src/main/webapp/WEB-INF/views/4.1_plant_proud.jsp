@@ -217,7 +217,6 @@
       </div>
       <!-- Sidebar toggle button-->
       <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarBlog"><i class="ai-layout-column me-2"></i>Sidebar</button>
-    </main>
 		
 		
     

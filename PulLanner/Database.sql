@@ -327,6 +327,33 @@ SELECT * FROM REPLY;
 
 
 ------------------------------------------------------------------
+------------------------- COMMREPLY 관련 테이블 -------------------------
+------------------------------------------------------------------
+CREATE TABLE COMMREPLY(
+  rNo INT PRIMARY KEY AUTO_INCREMENT,
+  bNo INT,
+  mNo INT,
+  CONTENT VARCHAR(1000),
+  TYPE VARCHAR(10),
+  STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN ('Y', 'N')),
+  CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
+  MODIFY_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (bNo) REFERENCES COMMBOARD(bNo),
+  FOREIGN KEY (mNo) REFERENCES MEMBER(mNo)
+);
+
+COMMIT;
+SELECT * FROM COMMREPLY;
+
+INSERT INTO COMMREPLY(
+				RNO, BNO, MNO, 
+				CONTENT, STATUS, CREATE_DATE, MODIFY_DATE, TYPE
+		) VALUES(
+				0, 1, 1, '멋져요',
+				DEFAULT, DEFAULT, DEFAULT, 'HONEY'
+			);
+
+------------------------------------------------------------------
 ------------------------- Shop 관련 테이블 -------------------------
 ------------------------------------------------------------------
 create table Product
