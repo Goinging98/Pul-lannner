@@ -20,15 +20,15 @@
         <section class="card border-3 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4" style="max-width: 1000px;">
           <div class="card-body">
             <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3"><i class="ai-user text-primary lead pe-1 me-2"></i>
-              <h2 class="h4 mb-0">무민의꽃밭세상(ID)</h2><a class="btn btn-sm btn-secondary ms-auto" href="sickmool-gwanri (1).html"><i class="ai-edit ms-n1 me-2"></i>식물등록</a>
+              <h2 class="h4 mb-0">${loginMember.id}</h2><a class="btn btn-sm btn-secondary ms-auto" href="sickmool-gwanri (1).html"><i class="ai-edit ms-n1 me-2"></i>식물등록</a>
             </div>
             <div class="d-md-flex align-items-center">
               <div class="d-sm-flex align-items-center">
                 <div class="rounded-circle bg-size-cover bg-position-center flex-shrink-0" style="width: 130px; height: 130px; background-image: url(assets/img/avatar/02.jpg);"></div>
                 <div class="pt-3 pt-sm-0 ps-sm-3">
-                  <h3 class="h5 mb-2">김무민<i class="ai-circle-check-filled fs-base text-success ms-2"></i></h3>
+                  <h3 class="h5 mb-2">${loginMember.name}<i class="ai-circle-check-filled fs-base text-success ms-2"></i></h3>
                   <div class="text-muted fw-medium d-flex flex-wrap flex-sm-nowrap align-iteems-center">
-                    <div class="d-flex align-items-center me-3"><i class="ai-mail me-1"></i>moomin@manse.com</div>
+                    <div class="d-flex align-items-center me-3"><i class="ai-mail me-1"></i>${loginMember.id}</div>
                     <div class="d-flex align-items-center text-nowrap"><i class="ai-map-pin me-1"></i>korea, won</div>
                   </div>
                 </div>
