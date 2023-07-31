@@ -496,9 +496,12 @@ CREATE TABLE plantManage (
     enrollDate DATETIME DEFAULT CURRENT_TIMESTAMP, 
     content VARCHAR(2000) #메모 
     );   
+    
+COMMIT;
 
+select * from PlantManage;
 # 식물 리스트 
-CREATE TABLE manageList ( 
+CREATE TABLE ManageList ( 
 	bno INT PRIMARY KEY AUTO_INCREMENT, 
 	mno INT,     
     plantName VARCHAR(100), 
@@ -511,4 +514,6 @@ CREATE TABLE manageList (
     modifyDate DATETIME DEFAULT CURRENT_TIMESTAMP 
  );
  
- select * from manageList;
+ COMMIT;
+ 
+ select * from ManageList;
