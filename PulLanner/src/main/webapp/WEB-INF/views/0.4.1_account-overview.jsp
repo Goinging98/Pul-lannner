@@ -16,7 +16,6 @@
 					<button class="btn-close position-absolute top-0 end-0 mt-3 me-3 d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount"></button>
 					<div class="offcanvas-body">
 						<div class="pb-2 pb-lg-0 mb-4 mb-lg-5">
-							<img class="d-block rounded-circle mb-2" src="/resources/assets/img/avatar/02.jpg" width="80" alt="pic">
 							<h3 class="h5 mb-1">${loginMember.name}</h3>
 							<p class="fs-sm text-muted mb-0">${loginMember.id}</p>
 						</div>
@@ -64,7 +63,6 @@
 					</div>
 					<div class="d-md-flex align-items-center">
 						<div class="d-sm-flex align-items-center">
-							<div class="rounded-circle bg-size-cover bg-position-center flex-shrink-0" style="width: 80px; height: 80px; background-image: url(/resources/assets/img/avatar/02.jpg);"></div>
 							<div class="pt-3 pt-sm-0 ps-sm-3">
 								<h3 class="h5 mb-2">${loginMember.name}<i class="ai-circle-check-filled fs-base text-success ms-2"></i>
 								</h3>

@@ -63,9 +63,8 @@ function findAddr(){
 						type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount"></button>
 					<div class="offcanvas-body">
 						<div class="pb-2 pb-lg-0 mb-4 mb-lg-5">
-							<img class="d-block rounded-circle mb-2" src="/resources/assets/img/avatar/02.jpg" width="80" alt="pic">
 							<h3 class="h5 mb-1">${loginMember.name}</h3>
-							<p class="fs-sm text-muted mb-0">${loginMember.id}</p>
+							<p class="fs-sm text-muted mb-0">${loginMember.id}</p>	
 						</div>
 						<nav class="nav flex-column pb-2 pb-lg-4 mb-3">
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">내 글 관리</h4>
@@ -107,23 +106,6 @@ function findAddr(){
 					<div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
 						<i class="ai-user text-primary lead pe-1 me-2"></i>
 						<h2 class="h4 mb-0">내 정보</h2>
-					</div>
-					<div class="d-flex align-items-center">
-						<div class="dropdown">
-							<a class="d-flex flex-column justify-content-end position-relative overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0"
-								href="#" data-bs-toggle="dropdown" aria-expanded="false" 
-								style="width: 80px; height: 80px; background-image: url(/resources/assets/img/avatar/02.jpg);">
-								<span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0, 0, 0, .5)"><i class="ai-camera"></i></span>
-							</a>
-							<div class="dropdown-menu my-1">
-								<a class="dropdown-item fw-normal" href="#"><i class="ai-camera fs-base opacity-70 me-2"></i>사진 업로드</a>
-								<a class="dropdown-item text-danger fw-normal" href="#"><i class="ai-trash fs-base me-2"></i>사진 삭제</a>
-							</div>
-						</div>
-						<div class="ps-3">
-							<h3 class="h6 mb-1">프로필 사진</h3>
-							<p class="fs-sm text-muted mb-0">1000px 이하, PNG 혹은 JPG</p>
-						</div>
 					</div>
 					<form id="enroll-container" name="memberEnrollFrm" action="${path}/mypage/update" method="post">
 						<div class="row g-3 g-sm-4 mt-0 mt-lg-2">

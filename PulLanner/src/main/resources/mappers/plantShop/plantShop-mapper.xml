@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.multi.bbs.plantShop.model.mapper.PlantShopMapper">
+
+	<resultMap type="Plantshop" id="plantshopResultMap">
+		<result property="parcelno" column="PARCELNO" />
+		<result property="mno" column="mNO" />
+		<result property="writerId" column="ID" />
+		<result property="parceltitle" column="PARCELTITLE" />
+		<result property="parcelcontent" column="PARCELCONTENT" />
+		<result property="parceltype" column="PARCELTYPE" />
+		<result property="parcelimg" column="PARCELIMG" />
+		<result property="parcelimgedt" column="PARCELIMGEDT" />
+		<result property="parcelprice" column="PARCELPRICE" />
+		<result property="parcelcount" column="PARCELCOUNT" />
+		<result property="parcelstatus" column="PARCELSTATUS" />
+		<result property="crtDate" column="CRTDATE" />
+		<result property="mdfDate" column="MDFDATE" />
+	</resultMap>
+
+	<resultMap type="PlantparcelReply" id="plantparcelReplyResultMap">
+		<result property="parcelrno" column="PARCELRNO" />
+		<result property="parcelno" column="PARCELNO" />
+		<result property="mno" column="mNO" />
+		<result property="writerId" column="ID"/>
+		<result property="parcelrcontent" column="PARCELRCONTENT" />
+		<result property="rstatus" column="RSTATUS" />
+		<result property="rcrtDate" column="RCRTDATE" />
+		<result property="rmdfDate" column="RMDFDATE" />
+	</resultMap>
+	
+	<resultMap type="Plantshop" id="plantshopDetailResultMap" extends="plantshopResultMap">
+		<collection property="parcelreplies" javaType="arrayList" columnPrefix="R_"
+													resultMap="plantparcelReplyResultMap"/>
+	</resultMap>
+	
+<!--
+	■ 조회 필수 3종 세트   	
+	selectBoardList : list를 뽑을때 사용하는데, 페이징, 검색 조건이 모두 포함된 동적 쿼리, 컬럼의 갯수는 꼭 보여줄 것만 선언 
+	selectBoardCount : selectBoardList와 쌍으로 갯수를 세오는 Count문, 검색조건이 selectBoardList 일치 해야함
+	selectBoardByNo : 내용을 디테일하게 볼수 있는 쿼리 모든 컬럼 내용을 가지고 온다. +@(리플도 한번에 가져올때도 사용)
+-->
+
+	<!--				  문제점 : parameterMap으로 되어 있었음 -> 안돌아갑니다.  -->
+	<select id="selectPlantshopList" parameterType="map" resultMap="plantshopResultMap">
+		SELECT 
+			P.PARCELNO, P.PARCELTITLE, M.ID, P.CRTDATE, P.PARCELIMG, P.PARCELCOUNT, P.PARCELPRICE, P.PARCELSTATUS
+		FROM PLANTSHOP P 
+		JOIN MEMBER M ON(P.PARCELNO = M.mNO)
+		WHERE 1 = 1
+		AND P.PARCELSTATUS = 'Y'
+		<if test="id != null">
+			AND M.ID LIKE '%${id}%'
+		</if>
+		<if test="parceltitle != null">
+			AND P.PARCELTITLE LIKE '%${parceltitle}%'
+		</if>
+		<if test="parcelcontent != null">
+			AND P.PARCELCONTENT LIKE '%${parcelcontent}%'
+		</if>
+		ORDER BY P.PARCELNO DESC LIMIT ${limit} OFFSET ${offset}
+	</select>
+
+	<select id="selectPlantshopCount" parameterType="map" resultType="int">
+		SELECT 
+			COUNT(*)
+		FROM PLANTSHOP P 
+		JOIN MEMBER M ON(P.PARCELNO = M.mNO)
+		WHERE 1 = 1
+		AND P.PARCELSTATUS = 'Y'
+		<if test="id != null">
+			AND M.ID LIKE '%${id}%'
+		</if>
+		<if test="parceltitle != null">
+			AND P.PARCELTITLE LIKE '%${parceltitle}%'
+		</if>
+		<if test="parcelcontent != null">
+			AND P.PARCELRCONTENT LIKE '%${parcelcontent}%'
+		</if>
+	</select>
+	
+	<select id="selectPlantshopByNo" parameterType="int" resultMap="plantshopDetailResultMap">
+		SELECT  P.PARCELNO, P.PARCELTITLE, M.ID, P.PARCELCOUNT, P.PARCELIMG, P.PARCELIMGEDT, P.PARCELCONTENT, P.CRTDATE, P.MDFDATE, P.PARCELPRICE,
+				R.PARCELRNO as R_PARCELRNO, 
+		        R.PARCELNO as R_PARCELNO, 
+		        R.PARCELRCONTENT as R_PARCELRCONTENT, 
+		        M2.ID as R_ID, 
+		        R.RCRTDATE as R_RCRTDATE, 
+		        R.RMDFDATE as R_RMDFDATE
+		FROM PLANTSHOP P
+		JOIN MEMBER M ON(P.mNO = M.mNO)
+		LEFT OUTER JOIN PLANTPARCELREPLY R ON(R.PARCELNO = P.PARCELNO)
+		LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
+		WHERE P.PARCELSTATUS = 'Y' AND  P.PARCELNO= #{parcelno}
+	</select>
+
+	<insert id="insertPlantshop" parameterType="Plantshop">
+		INSERT INTO PLANTSHOP(
+			PARCELNO, mNO, PARCELTITLE, PARCELCONTENT, PARCELTYPE,	
+			PARCELIMG, PARCELIMGEDT, PARCELPRICE, CRTDATE, MDFDATE, 
+			PARCELPRICE, PARCELSTATUS
+		) VALUES (
+			default, #{mno}, #{parceltitle}, #{parcelcontent}, #{parceltype},		
+			#{parcelimg}, #{parcelimgedt}, #{parcelprice}, default, default, 
+			#{parcelprice}, default
+		)
+	</insert>
+		
+	<insert id="insertPlantparcelReply" parameterType="Reply">
+		INSERT INTO PLANTPARCELREPLY(
+			PARCELRNO, PARCELNO, MNO, 
+			PARCELRCONTENT, RSTATUS, RCRTDATE, RMDFDATE) 
+		VALUES(
+			default, #{parcelno}, #{mno}, 
+			#{parcelrcontent}, default, default, default
+		)
+	</insert>
+	
+	<update id="updatePlantshop" parameterType="Plantshop">
+		UPDATE PLANTSHOP 
+		SET 
+			PARCELTITLE = #{parceltitle},
+			PARCELCONTENT = #{parcelcontent},
+			PARCELPRICE = #{parcelprice}
+			<if test="parcelimg != null">
+				PARCELIMG = #{parcelimg},
+			</if>
+			<if test="parcelimgedt != null">
+				PARCELIMGEDT = #{parcelimgedt},
+			</if>
+			MDFDATE = CURRENT_TIMESTAMP
+		WHERE 
+			PARCELNO = #{parcelno}
+	</update>
+	
+	<!-- board로 수정함  -->
+	<update id="updateParcelCount" parameterType="Plantshop">
+		UPDATE PLANTSHOP SET PARCELCOUNT = #{parcelcount} WHERE PARCELNO = #{parcelno}
+	</update>
+
+	<update id="deletePlantshop" parameterType="int">
+		UPDATE PLANTSHOP SET PARCELSTATUS='N' WHERE PARCELNO=#{parcelno}
+	</update>
+	
+	<delete id="deletePlantparcelReply" parameterType="int">
+		DELETE FROM PLANTPARCELREPLY WHERE PARCELRNO=#{parcelrno}
+	</delete>
+</mapper>
+
