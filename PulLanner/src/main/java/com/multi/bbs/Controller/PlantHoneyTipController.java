@@ -82,7 +82,7 @@ public class PlantHoneyTipController {
 		}
 		
 		model.addAttribute("honeyBoard", honeyBoard);
-		model.addAttribute("replyList", honeyBoard.getHoneyReplyList());
+		model.addAttribute("honeyReplyList", honeyBoard.getHoneyReplyList());
 		return "4.2.1_honeytip_detail";
 	}
 	

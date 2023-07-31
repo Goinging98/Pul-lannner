@@ -33,7 +33,7 @@
                 <div class="card border-0 bg-secondary">
                   <div class="card-body pb-4">
                     <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">9 hours ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="">Brand strategy</a></div>
-                    <h3 class="h4 card-title"><a href="${path}/HoneyTip/view">${item.title}</a></h3>
+                    <h3 class="h4 card-title"><a href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a></h3>
                     <p class="card-text">${item.content}</p>
                   </div>
                   <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/05.jpg" width="48" alt="Post author">

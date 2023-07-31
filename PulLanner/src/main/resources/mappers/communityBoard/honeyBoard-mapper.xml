@@ -9,6 +9,7 @@
 		<result property="title" 						column="TITLE"/>
 		<result property="mNo" 					column="mNo"/>
 		<result property="id" 						column="ID"/>
+		<result property="name" 					column="NAME"/>
 		<result property="readCount" 			column="READCOUNT"/>
 		<result property="originalFileName" 	column="ORIGINAL_FILENAME"/>
 		<result property="renamedFileName" 	column="RENAMED_FILENAME"/>
@@ -23,6 +24,7 @@
 		<result property="bNo" 				column="bNo"/>
 		<result property="mNo" 			column="mNo"/>
 		<result property="id" 				column="ID"/>
+		<result property="name" 			column="NAME"/>
 		<result property="content" 		column="CONTENT"/>
 		<result property="type" 				column="TYPE"/>
 		<result property="createDate" 	column="CREATE_DATE"/>
@@ -36,14 +38,14 @@
 	
 	<select id="selectHoneyBoardList" resultMap="honeyBoardListResultMap" parameterType="map">
 		SELECT  
-			DISTINCT B.BNO, B.TITLE, B.CONTENT, M1.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
+			DISTINCT B.BNO, B.TITLE, B.CONTENT, M1.ID, M1.NAME, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
 		FROM COMMBOARD B
 		LEFT OUTER JOIN MEMBER M1 ON B.MNO = M1.MNO
 		LEFT OUTER JOIN COMMREPLY R ON R.BNO = B.BNO
 		LEFT OUTER JOIN MEMBER M2 ON R.MNO = M2.MNO
 		WHERE B.STATUS = 'Y' AND B.TYPE = 'HONEY'
-		<if test="writer != null">
-			AND M1.ID LIKE '%${writer}%' 
+		<if test="name != null">
+			AND M1.NAME LIKE '%${name}%' 
 		</if>		
 		<if test="title != null">
 			AND B.TITLE LIKE '%${title}%' 
@@ -94,7 +96,7 @@
 	
 	<select id="selectHoneyBoardByNo" parameterType="int" resultMap="honeyBoardDetailResultMap">
 		SELECT  
-			B.BNO, B.TITLE, M.ID, B.READCOUNT, B.TYPE, B.ORIGINAL_FILENAME, B.RENAMED_FILENAME, B.CONTENT, B.CREATE_DATE, B.MODIFY_DATE,
+			B.BNO, B.TITLE, M.ID, M.NAME, B.READCOUNT, B.TYPE, B.ORIGINAL_FILENAME, B.RENAMED_FILENAME, B.CONTENT, B.CREATE_DATE, B.MODIFY_DATE,
 			R.RNO AS R_RNO, 
 		    R.BNO AS R_BNO,
 		    R.CONTENT  AS R_CONTENT, 
@@ -105,7 +107,7 @@
 		JOIN MEMBER M ON(B.MNO = M.MNO)
 		LEFT OUTER JOIN COMMREPLY R ON (B.BNO = R.BNO)
 		LEFT OUTER JOIN MEMBER M2 ON (R.MNO = M2.MNO)
-		WHERE B.STATUS = 'Y' AND B.BNO = #{bNo} AND B.TYPE = 'HONEY'
+		WHERE B.STATUS = 'Y' AND B.BNO = #{bNo}
 	</select>
 	
 	<insert id="insertHoneyBoard" parameterType="HoneyTipBoard">
@@ -125,7 +127,7 @@
 
 	<insert id="insertHoneyReply" parameterType="HoneyTipReply">
 		INSERT INTO COMMREPLY(
-				RNO, BNO, MNO, 
+				RNO, BNO, MNO,
 				CONTENT, STATUS, CREATE_DATE, MODIFY_DATE, TYPE
 		) VALUES(
 				0, #{bNo}, #{mNo}, #{content},
@@ -146,19 +148,19 @@
 			</if>
 			MODIFY_DATE = CURRENT_TIMESTAMP
 		WHERE
-			BNO=#{bNo} AND TYPE = 'HONEY'
+			BNO=#{bNo}
 	</update>
 	
 	<update id="updateHoneyReadCount" parameterType="map">
-		UPDATE COMMBOARD SET READCOUNT=#{readCount} WHERE BNO=#{bNo} AND = 'HONEY'
+		UPDATE COMMBOARD SET READCOUNT=#{readCount} WHERE BNO=#{bNo}
 	</update>
 	
 	<update id="deleteHoneyBoard" parameterType="int">
-		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo} AND = 'HONEY'
+		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo} AND TYPE = 'HONEY'
 	</update>
 	
 	<delete id="deleteHoneyReply" parameterType="int">
-		DELETE FROM COMMREPLY WHERE RNO=#{rNo} AND = 'HONEY'
+		DELETE FROM COMMREPLY WHERE RNO=#{rNo}
 	</delete>
 	
 
