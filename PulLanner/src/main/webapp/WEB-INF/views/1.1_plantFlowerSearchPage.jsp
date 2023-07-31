@@ -64,21 +64,18 @@
         
 		<!-- 검색창 -->
 
-		<div class="col-md-5 mb-5 mt-3">
-		<form name="searchForm" action="${path}/FlowerSearch" method="get">
-             <input type="hidden" name="page" value="1">
-			<div>
-				<div class="input-group input-group-sm rounded-pill">
-					<span class="input-group-text"> <i class="ai-search"></i>
-					</span> <input type="search" id="searchValue" name="searchValue"
-						value="${param.searchValue}" class="form-control"
-						placeholder="Search...">
-					<button type="button" class="btn btn-primary rounded-pill">Search</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	</form>
+<div class="col-md-5 mb-5 mt-3">
+    <form name="searchForm" action="${path}/FlowerSearch" method="get">
+        <input type="hidden" name="page" value="1">
+        <div>
+            <div class="input-group input-group-sm rounded-pill">
+                <span class="input-group-text"> <i class="ai-search"></i></span>
+                <input type="search" id="searchValue" name="searchValue" value="${param.searchValue}" class="form-control" placeholder="Search...">
+                <button type="button" class="btn btn-primary rounded-pill" onclick="submitSearchForm()">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
       
       <!-- Product grid-->
       <div class="col-lg-12">
@@ -124,18 +121,23 @@
 					<li class="page-item">
 					<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
 					</li>
-					<!-- 10개 페이지가 보여지는 부분 -->
-					<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
-						<c:if test="${status.current == pageInfo.currentPage}">
-							<button class="page-link" disabled>${status.current}</button>
-						</c:if>
-						<c:if test="${status.current != pageInfo.currentPage}">
-							<button class="page-link" onclick="movePage(${status.current})">
-								${status.current}
-							</button>
-						</c:if>
-					</c:forEach>
-                    <!-- 다음 페이지 -->
+					<!-- 12개 페이지가 보여지는 부분 -->
+							<c:forEach begin="${pageInfo.startPage}"
+								end="${pageInfo.endPage}" varStatus="status" step="1">
+								<c:if test="${status.current == pageInfo.currentPage}">
+									<li class="page-item active" aria-current="page">
+										<button class="page-link" disabled>${status.current}</button>
+									</li>
+								</c:if>
+								<c:if test="${status.current != pageInfo.currentPage}">
+									<li class="page-item">
+										<button class="page-link"
+											onclick="movePage(${status.current})">${status.current}</button>
+									</li>
+								</c:if>
+							</c:forEach>
+
+							<!-- 다음 페이지 -->
                     <li class="page-item">
 					<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
 					</li>
@@ -156,10 +158,19 @@
   
   <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     
+  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    
  <script type="text/javascript">
 	function movePage(page){
 		searchForm.page.value = page;
 		searchForm.submit();
 	}
+	
+    function submitSearchForm() {
+        var searchValue = document.getElementById("searchValue").value;
+        var form = document.forms["searchForm"];
+        form.action = "${path}/FlowerSearch?searchValue=" + searchValue + "&page=1";
+        form.submit();
+    }
 </script>
  
