@@ -84,13 +84,13 @@ public class ShopController {
 		
 		// 대표상품 4개, - 키보드, 마우스 2세트
 		Map<String, Object> map = new HashMap<>();
-		map.put("title", "키보드");
+		map.put("title", "모종삽");
 		int count = shopService.getProductCount(map);
 		System.out.println(count);
 		PageInfo pageInfo = new PageInfo(pageCount++ % 5 + 1, 6, count, 6);
 		List<Product> plist1 = shopService.getProductList(pageInfo, map);
 		
-		map.put("title", "마우스");
+		map.put("title", "영양제");
 		count = shopService.getProductCount(map);
 		System.out.println(count);
 		pageInfo = new PageInfo(pageCount++ % 5 + 1, 6, count, 6);
@@ -103,7 +103,7 @@ public class ShopController {
 		model.addAttribute("product", product);
 		model.addAttribute("plist1", plist1);
 		model.addAttribute("replyList", replyList);
-		return "3.7_itemshop";
+		return "3.8_item-parcel-out";
 	}
 	
 	@PostMapping("/shop/writeReply")
