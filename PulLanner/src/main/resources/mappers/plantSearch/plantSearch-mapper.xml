@@ -11,9 +11,9 @@
 	    SUBSTRING_INDEX(SUBSTRING_INDEX(rtnStreFileNm, '|', -2), '|', 1) AS imageB,
 	    SUBSTRING_INDEX(rtnStreFileNm, '|', -1) AS imageC
 	    FROM gardenDtl
-	        <if test="searchValue != null">
-	            AND title LIKE CONCAT('%', #{searchValue}, '%')
-	        </if>
+	           <if test="searchValue != null and searchValue != ''">
+            WHERE cntntsSj LIKE CONCAT('%', #{searchValue}, '%')
+        </if>
 	    ORDER BY cntntsNo DESC LIMIT ${limit} OFFSET ${offset}
 		</select>
 		
@@ -22,6 +22,9 @@
 		<select id="selectGardenCount" parameterType="map" resultType="int">
 		    SELECT COUNT(*)
 		    FROM gardenDtl
+		     <if test="searchValue != null and searchValue != ''">
+            WHERE cntntsSj LIKE CONCAT('%', #{searchValue}, '%')
+        </if>
 		</select>
 		
 		
@@ -136,19 +139,16 @@
 		</select>
 	
 	
-	
-	
+
 	
 	<!-- ===============꽃 관련================ -->	
 	
 		<select id="selectFlowerList" parameterType="map" resultType="FlowerDtl">
 		SELECT *
 	    FROM flowerDetail
-	    <where>
-	        <if test="searchValue != null">
-	            AND title LIKE CONCAT('%', #{searchValue}, '%')
-	        </if>
-	    </where>
+	    <if test="searchValue != null and searchValue != ''">
+            WHERE flowNm LIKE CONCAT('%', #{searchValue}, '%')
+        </if>
 	    ORDER BY dataNo DESC LIMIT ${limit} OFFSET ${offset}
 		</select>
 		
@@ -156,6 +156,9 @@
 		<select id="selectFlowerCount" parameterType="map" resultType="int">
 		    SELECT COUNT(*)
 		    FROM flowerDetail
+		     <if test="searchValue != null and searchValue != ''">
+            WHERE flowNm LIKE CONCAT('%', #{searchValue}, '%')
+      		  </if>
 		</select>
 	
 	
@@ -173,18 +176,20 @@
 		<select id="selectDryGardenList" parameterType="map" resultType="DryGardenDtl">
 		SELECT *
 	    FROM drygardenDtl
-	    <where>
-	        <if test="searchValue != null">
-	            AND title LIKE CONCAT('%', #{searchValue}, '%')
-	        </if>
-	    </where>
+	    <if test="searchValue != null and searchValue != ''">
+            WHERE cntntsSj LIKE CONCAT('%', #{searchValue}, '%')
+        </if>
 	    ORDER BY cntntsNo DESC LIMIT ${limit} OFFSET ${offset}
 		</select>
 		
+
 		
 		<select id="selectDryGardenCount" parameterType="map" resultType="int">
 		    SELECT COUNT(*)
 		    FROM drygardenDtl
+		     <if test="searchValue != null and searchValue != ''">
+            WHERE cntntsSj LIKE CONCAT('%', #{searchValue}, '%')
+            </if>
 		</select>
 		
 		

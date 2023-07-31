@@ -52,35 +52,35 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-7 mb-5 mt-3">
-          <div>
-            <a href="${path}/PlantSearch" type="button" class="btn btn-outline-primary" style="margin-right: 10px;">실내정원용</a>
-			<a href="${path}/FlowerSearch" type="button" class="btn btn-outline-primary " style="margin-right: 10px;">꽃</a>
-			<a href="${path}/DryGardenSearch" type="button" class="btn btn-outline-primary active" style="margin-right: 10px;">다육이</a>
-          </div>
-        </div>
-        
-        
-		<!-- 검색창 -->
-		<div class="col-md-5 mb-5 mt-3">
-		<form name="searchForm" action="${path}/PlantSearch" method="get">
-              <input type="hidden" name="page" value="1">
+	<div class="row">
+		<div class="col-md-7 mb-5 mt-3">
 			<div>
-				<div class="input-group input-group-sm rounded-pill">
-					<span class="input-group-text"> <i class="ai-search"></i>
-					</span> <input type="search" id="searchValue" name="searchValue"
-						value="${param.searchValue}" class="form-control"
-						placeholder="Search...">
-					<button type="button" class="btn btn-primary rounded-pill">Search</button>
-				</div>
+				<a href="${path}/PlantSearch" type="button"
+					class="btn btn-outline-primary" style="margin-right: 10px;">실내정원용</a>
+				<a href="${path}/FlowerSearch" type="button"
+					class="btn btn-outline-primary " style="margin-right: 10px;">꽃</a>
+				<a href="${path}/DryGardenSearch" type="button"
+					class="btn btn-outline-primary active" style="margin-right: 10px;">다육이</a>
 			</div>
 		</div>
-	</div>
-	</form>
-	
-	
-      <!-- Product grid-->
+
+
+		<!-- 검색창 -->
+<div class="col-md-5 mb-5 mt-3">
+    <form name="searchForm" action="${path}/DryGardenSearch" method="get">
+        <input type="hidden" name="page" value="1">
+        <div>
+            <div class="input-group input-group-sm rounded-pill">
+                <span class="input-group-text"> <i class="ai-search"></i></span>
+                <input type="search" id="searchValue" name="searchValue" value="${param.searchValue}" class="form-control" placeholder="Search...">
+                <button type="button" class="btn btn-primary rounded-pill" onclick="submitSearchForm()">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+	<!-- Product grid-->
       <div class="col-lg-12">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
@@ -103,20 +103,10 @@
               </div>
             </div>
           </div>
-          </c:forEach>
-          
-         
-
-          
-
-
-
-
-         
-          
+          </c:forEach>     
         </div>
       </div>
-   <!-- Pagination-->
+    <!-- Pagination-->
       <div class="col-12 pt-sm-4 mt-md-2 text-end">
           <!-- Pagination-->
             <div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
@@ -134,18 +124,23 @@
 					<li class="page-item">
 					<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
 					</li>
-					<!-- 10개 페이지가 보여지는 부분 -->
-					<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
-						<c:if test="${status.current == pageInfo.currentPage}">
-							<button class="page-link" disabled>${status.current}</button>
-						</c:if>
-						<c:if test="${status.current != pageInfo.currentPage}">
-							<button class="page-link" onclick="movePage(${status.current})">
-								${status.current}
-							</button>
-						</c:if>
-					</c:forEach>
-                    <!-- 다음 페이지 -->
+					<!-- 12개 페이지가 보여지는 부분 -->
+							<c:forEach begin="${pageInfo.startPage}"
+								end="${pageInfo.endPage}" varStatus="status" step="1">
+								<c:if test="${status.current == pageInfo.currentPage}">
+									<li class="page-item active" aria-current="page">
+										<button class="page-link" disabled>${status.current}</button>
+									</li>
+								</c:if>
+								<c:if test="${status.current != pageInfo.currentPage}">
+									<li class="page-item">
+										<button class="page-link"
+											onclick="movePage(${status.current})">${status.current}</button>
+									</li>
+								</c:if>
+							</c:forEach>
+
+							<!-- 다음 페이지 -->
                     <li class="page-item">
 					<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
 					</li>
@@ -158,6 +153,7 @@
               </div>
             </div>
     </div>
+   
 
     <!-- Sidebar toggle button-->
     <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas"
@@ -165,10 +161,17 @@
   </main>
   
  <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-   <script type="text/javascript">
-	function movePage(page){
-		searchForm.page.value = page;
-		searchForm.submit();
-	}
+<script type="text/javascript">
+    function movePage(page) {
+        searchForm.page.value = page;
+        searchForm.submit();
+    }
+
+    function submitSearchForm() {
+        var searchValue = document.getElementById("searchValue").value;
+        var form = document.forms["searchForm"];
+        form.action = "${path}/DryGardenSearch?searchValue=" + searchValue + "&page=1";
+        form.submit();
+    }
 </script>
  
