@@ -94,15 +94,12 @@
 									width="48" alt="Comment author">
 								<div class="ps-3">
 									<h6 class="mb-0">${reply.id}</h6>
-									<span class="fs-sm text-muted"><fmt:formatDate
-											type="both" value="${reply.createDate}" /></span>
+									<span class="fs-sm text-muted"><fmt:formatDate type="both" value="${reply.createDate}" /></span>
 								</div>
 							</div>
 							<p class="pb-2 mb-0">${reply.content}</p>
-							<c:if
-								test="${ !empty loginMember && (loginMember.id == reply.id 	|| loginMember.role == 'ROLE_ADMIN') }">
-								<button class="btn-delete"
-									onclick="deleteHoneyReply('${reply.RNo}','${honeyBoard.BNo}');">삭제</button>
+							<c:if	test="${!empty loginMember && (loginMember.id == reply.id 	|| loginMember.role == 'ROLE_ADMIN') }">
+								<button class="btn-delete"	onclick="deleteHoneyReply('${reply.RNo}','${honeyBoard.BNo}');">삭제</button>
 							</c:if>
 						</div>
 					</c:forEach>
@@ -163,9 +160,9 @@
 		});
 	});
 	
-	function deleteHoneyReply(replyNo, honeyBoardNo){
-		var url = "${path}/HoneyTip/replyDel?rNo=";
-		var requestURL = url + replyNo +"&bNo=" + honeyBoardNo;
+	function deleteHoneyReply(honeyReplyNo, honeyBoardNo){
+		var url = "${path}/HoneyTip/replyDel?RNo=";
+		var requestURL = url + honeyReplyNo +"&BNo=" + honeyBoardNo;
 		location.replace(requestURL);
 	}
 	
