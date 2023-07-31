@@ -83,7 +83,7 @@ public class PlantShopController {
 	public String view(Model model, @RequestParam("parcelno") int parcelno) {
 		Plantshop plantshop = service.findByNo(parcelno);
 		if(plantshop == null) {
-			return "redirect:error";
+			return "redirect:plantshoperror";
 		}
 		model.addAttribute("plantshop", plantshop);
 		model.addAttribute("parcelreplyList", plantshop.getParcelreplies());
@@ -91,9 +91,9 @@ public class PlantShopController {
 	}
 	
 	
-	@GetMapping("/error")
+	@GetMapping("/plantshoperror")
 	public String error() {
-		return "/common/error";
+		return "/common/plantshoperror";
 	}
 	
 	@GetMapping("/selling_plant")

@@ -45,11 +45,11 @@
 	<!--				  문제점 : parameterMap으로 되어 있었음 -> 안돌아갑니다.  -->
 	<select id="selectPlantshopList" parameterType="map" resultMap="plantshopResultMap">
 		SELECT 
-			P.PARCELNO, P.PARCELTITLE, M.ID, P.CRTDATE, P.PARCELIMG, P.PARCELCOUNT, P.PARCELPRICE, P.STATUS
+			P.PARCELNO, P.PARCELTITLE, M.ID, P.CRTDATE, P.PARCELIMG, P.PARCELCOUNT, P.PARCELPRICE, P.PARCELSTATUS
 		FROM PLANTSHOP P 
 		JOIN MEMBER M ON(P.PARCELNO = M.mNO)
 		WHERE 1 = 1
-		AND P.STATUS = 'Y'
+		AND P.PARCELSTATUS = 'Y'
 		<if test="id != null">
 			AND M.ID LIKE '%${id}%'
 		</if>
@@ -68,7 +68,7 @@
 		FROM PLANTSHOP P 
 		JOIN MEMBER M ON(P.PARCELNO = M.mNO)
 		WHERE 1 = 1
-		AND P.STATUS = 'Y'
+		AND P.PARCELSTATUS = 'Y'
 		<if test="id != null">
 			AND M.ID LIKE '%${id}%'
 		</if>
@@ -92,7 +92,7 @@
 		JOIN MEMBER M ON(P.mNO = M.mNO)
 		LEFT OUTER JOIN PLANTPARCELREPLY R ON(R.PARCELNO = P.PARCELNO)
 		LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
-		WHERE B.STATUS = 'Y' AND  P.PARCELNO= #{parcelno}
+		WHERE P.PARCELSTATUS = 'Y' AND  P.PARCELNO= #{parcelno}
 	</select>
 
 	<insert id="insertPlantshop" parameterType="Plantshop">
