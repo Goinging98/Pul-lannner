@@ -209,7 +209,7 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link" href="${path}/PlantManage" >풀레너</a>
+							<a class="nav-link" href="${path}/Myplant" >풀레너</a>
 						</li>
 					</ul>
 				</nav>
