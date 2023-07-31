@@ -11,11 +11,9 @@
 	    SUBSTRING_INDEX(SUBSTRING_INDEX(rtnStreFileNm, '|', -2), '|', 1) AS imageB,
 	    SUBSTRING_INDEX(rtnStreFileNm, '|', -1) AS imageC
 	    FROM gardenDtl
-	    <where>
 	        <if test="searchValue != null">
 	            AND title LIKE CONCAT('%', #{searchValue}, '%')
 	        </if>
-	    </where>
 	    ORDER BY cntntsNo DESC LIMIT ${limit} OFFSET ${offset}
 		</select>
 		

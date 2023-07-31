@@ -16,9 +16,9 @@ public interface plantSearchMapper {
 	
 	// --------------실내식물 관련----------------
 	
-	List<GardenList> selectGardentList(Map<String, Object> map); 
+	List<GardenList> selectGardentList(Map<String, String> map); 
 	
-	int selectGardenCount(Map<String, Object> map);
+	int selectGardenCount(Map<String, String> param);
 	
 	GardenDtl selectByContentDetailId(int id);
 	
@@ -28,9 +28,9 @@ public interface plantSearchMapper {
 	
 	
 	// --------------꽃 관련----------------
-	List<FlowerDtl> selectFlowerList(Map<String, Object> map); // 추가된 메서드
+	List<FlowerDtl> selectFlowerList(Map<String, String> map); // 추가된 메서드
 	
-	int selectFlowerCount (Map<String, Object> map);
+	int selectFlowerCount (Map<String, String> param);
 	
 	FlowerDtl selectByFlowerId(int id);
 	
@@ -38,9 +38,9 @@ public interface plantSearchMapper {
 	
 	
 	// --------------다육이 관련----------------
-	List<DryGardenDtl> selectDryGardenList(Map<String, Object> map); // 추가된 메서드
+	List<DryGardenDtl> selectDryGardenList(Map<String, String> map); // 추가된 메서드
 	
-	int selectDryGardenCount (Map<String, Object> map);
+	int selectDryGardenCount (Map<String, String> param);
 	
 	DryGardenDtl selectByDryGardenId(int id);
 	

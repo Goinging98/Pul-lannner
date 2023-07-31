@@ -327,6 +327,33 @@ SELECT * FROM REPLY;
 
 
 ------------------------------------------------------------------
+------------------------- COMMREPLY 관련 테이블 -------------------------
+------------------------------------------------------------------
+CREATE TABLE COMMREPLY(
+  rNo INT PRIMARY KEY AUTO_INCREMENT,
+  bNo INT,
+  mNo INT,
+  CONTENT VARCHAR(1000),
+  TYPE VARCHAR(10),
+  STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN ('Y', 'N')),
+  CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
+  MODIFY_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (bNo) REFERENCES COMMBOARD(bNo),
+  FOREIGN KEY (mNo) REFERENCES MEMBER(mNo)
+);
+
+COMMIT;
+SELECT * FROM COMMREPLY;
+
+INSERT INTO COMMREPLY(
+				RNO, BNO, MNO, 
+				CONTENT, STATUS, CREATE_DATE, MODIFY_DATE, TYPE
+		) VALUES(
+				0, 1, 1, '멋져요',
+				DEFAULT, DEFAULT, DEFAULT, 'HONEY'
+			);
+
+------------------------------------------------------------------
 ------------------------- Shop 관련 테이블 -------------------------
 ------------------------------------------------------------------
 create table Product
@@ -521,5 +548,33 @@ LEFT OUTER JOIN PLANTPARCELREPLY R ON(R.PARCELNO = P.PARCELNO)
 LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
 WHERE P.STATUS = 'Y' AND  P.PARCELNO=1;
 
+------------------------------------------------------------------
+------------------------- PLANT MANAGE 관련 테이블 -------------------------
+------------------------------------------------------------------
 
 
+CREATE TABLE plantManage ( 
+	cno INT PRIMARY KEY AUTO_INCREMENT, #이 테이블 주키
+    bno INT, #식물 번호
+    mno INT, #회원번호 
+    working INT, # 1=환기하기 2=물주기~ 
+    feedDate DATETIME, 
+    enrollDate DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    content VARCHAR(2000) #메모 
+    );   
+
+# 식물 리스트 
+CREATE TABLE manageList ( 
+	bno INT PRIMARY KEY AUTO_INCREMENT, 
+	mno INT,     
+    plantName VARCHAR(100), 
+    petName VARCHAR(100), #애칭 
+    location VARCHAR(1000), #식물 키우는 위치  
+    content VARCHAR(2000), #소개
+	IMG VARCHAR(500),    #사진 
+    startDate DATETIME,
+	enrollDate DATETIME DEFAULT CURRENT_TIMESTAMP,   #키우기 시작한 날 
+    modifyDate DATETIME DEFAULT CURRENT_TIMESTAMP 
+ );
+ 
+ select * from manageList;

@@ -21,16 +21,16 @@ public class plantSearchService {
 
 
 	// --------------실내식물 관련----------------
-	public List<GardenList> selectGardentList(PageInfo pageInfo, Map<String, Object> param) {
-	    param.put("limit", String.valueOf(pageInfo.getListLimit())); // 정수를 문자열로 변환하여 추가
-	    param.put("offset", String.valueOf(pageInfo.getStartList() - 1)); // 정수를 문자열로 변환하여 추가
+	public List<GardenList> selectGardentList(PageInfo pageInfo, Map<String, String> param) {
+		param.put("limit", "" + pageInfo.getListLimit());
+		param.put("offset", "" + (pageInfo.getStartList() - 1));
 	    // 매퍼 인터페이스의 selectGardentList 메서드 호출
 	    return mapper.selectGardentList(param);
 	}
 
-	public int selectGardenCount(Map<String, Object> map) {
+	public int selectGardenCount(Map<String, String> param) {
 	    // 매퍼 인터페이스의 selectGardenCount 메서드 호출
-	    return mapper.selectGardenCount(map);
+	    return mapper.selectGardenCount(param);
 	}
 
 	public GardenList selectByContentId(int id) {
@@ -46,14 +46,14 @@ public class plantSearchService {
 	
 	
 	// --------------꽃 관련----------------
-	public List<FlowerDtl> selectFlowerList(PageInfo pageInfo, Map<String, Object> param) {
-	    param.put("limit", String.valueOf(pageInfo.getListLimit())); // 정수를 문자열로 변환하여 추가
-	    param.put("offset", String.valueOf(pageInfo.getStartList() - 1)); // 정수를 문자열로 변환하여 추가
+	public List<FlowerDtl> selectFlowerList(PageInfo pageInfo, Map<String, String> param) {
+	    param.put("limit", "" + pageInfo.getListLimit());
+	    param.put("offset", "" + (pageInfo.getStartList() - 1));
 	    return mapper.selectFlowerList(param);
 	}
 	
-	public int selectFlowerCount(Map<String, Object> map) {
-	    return mapper.selectFlowerCount(map);
+	public int selectFlowerCount(Map<String, String> param) {
+	    return mapper.selectFlowerCount(param);
 	}
 	
 	public FlowerDtl selectByFlowerId(int id) {
@@ -65,14 +65,14 @@ public class plantSearchService {
 	
 	
 	// --------------다육이 관련----------------
-	public List<DryGardenDtl> selectDryGardenList(PageInfo pageInfo, Map<String, Object> param) {
-	    param.put("limit", String.valueOf(pageInfo.getListLimit())); // 정수를 문자열로 변환하여 추가
-	    param.put("offset", String.valueOf(pageInfo.getStartList() - 1)); // 정수를 문자열로 변환하여 추가
+	public List<DryGardenDtl> selectDryGardenList(PageInfo pageInfo, Map<String, String> param) {
+	    param.put("limit", "" + pageInfo.getListLimit());
+	    param.put("offset", "" + (pageInfo.getStartList() - 1));
 	    return mapper.selectDryGardenList(param);
 	}
 	
-	public int selectDryGardenCount(Map<String, Object> map) {
-	    return mapper.selectDryGardenCount(map);
+	public int selectDryGardenCount(Map<String, String> param) {
+	    return mapper.selectDryGardenCount(param);
 	}
 	
     public DryGardenDtl selectByDryGardenId(int id) {

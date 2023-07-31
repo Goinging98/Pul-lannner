@@ -94,7 +94,7 @@
 									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2" href="#">${item.readCount}<i class="ai-heart fs-lg ms-1" ></i></a>
 									<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
 									<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span>
-									<span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">"${item.id}"</a>
+									<span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a>
 								</div>
 							</div>
 						</div>
@@ -167,8 +167,8 @@
 									${searchType == 'content' ? 'checked' : ''}> 내용
 				</label>
 				<label>
-					<input type="radio" name="searchType" value="writer" 
-									${searchType == 'writer' ? 'checked' : ''}> 작성자
+					<input type="radio" name="searchType" value="name" 
+									${searchType == 'name' ? 'checked' : ''}> 작성자
 				</label>
                 <i class="ai-search position-absolute top-50 bottom-50 start-0 translate-middle-y ms-3"></i>
                   <input class="form-control ps-5" type="text" id="searchValue" name="searchValue" class="input_text" value="${param.searchValue}" placeholder="search"/>
@@ -217,7 +217,6 @@
       </div>
       <!-- Sidebar toggle button-->
       <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarBlog"><i class="ai-layout-column me-2"></i>Sidebar</button>
-    </main>
 		
 		
     

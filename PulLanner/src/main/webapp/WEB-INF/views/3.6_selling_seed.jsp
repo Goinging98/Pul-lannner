@@ -165,7 +165,7 @@
 
 
 
-    <!-- Footer-->
+<%--     <!-- Footer-->
     <footer class="footer pt-lg-5 pt-4 pb-5">
       <div class="container">
         <div class="row gy-md-5 gy-4 mb-md-5 mb-4 pb-lg-2">
@@ -227,6 +227,6 @@
     <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="assets/vendor/shufflejs/dist/shuffle.min.js"></script>
     <!-- Main theme script-->
-    <script src="assets/js/theme.min.js"></script>
+    <script src="assets/js/theme.min.js"></script> --%>
   </body>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

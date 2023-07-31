@@ -123,30 +123,20 @@ public class MemberController {
 	}
 	
 	
-//	@GetMapping("/member/view")
-//	public String memberView() {
-//		log.info("회원 정보 페이지 요청");
-//		return "member/view";
-//	}
-	
-//	@GetMapping("/mypage/updatePwd")
-//	public String updatePwdPage() {
-//		return "member/updatePwd";
-//	}
-	
 	@PostMapping("/mypage/updatePwd")
 	public String updatePwd(Model model,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			String userPwd
+			String password
 			) {
-		int result = service.updatePwd(loginMember, userPwd);
+		int result = service.updatePwd(loginMember, password);
 		
 		if(result > 0) {
 			model.addAttribute("msg", "비밀번호 수정에 성공하였습니다.");
+			model.addAttribute("location", "/mypage/infochange");
 		}else {
 			model.addAttribute("msg", "비밀번호 변경에 실패했습니다.");
+			model.addAttribute("location", "/mypage/infochange");
 		}
-		model.addAttribute("script", "self.close()");
 		return "common/msg";
 	}
 	
