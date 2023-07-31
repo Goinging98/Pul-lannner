@@ -20,7 +20,7 @@
         <section class="card border-3 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4" style="max-width: 1000px;">
           <div class="card-body">
             <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3"><i class="ai-user text-primary lead pe-1 me-2"></i>
-              <h2 class="h4 mb-0">무민의꽃밭세상(ID)</h2><a class="btn btn-sm btn-secondary ms-auto" href="account-settings.html"><i class="ai-edit ms-n1 me-2"></i>식물등록</a>
+              <h2 class="h4 mb-0">무민의꽃밭세상(ID)</h2><a class="btn btn-sm btn-secondary ms-auto" href="sickmool-gwanri (1).html"><i class="ai-edit ms-n1 me-2"></i>식물등록</a>
             </div>
             <div class="d-md-flex align-items-center">
               <div class="d-sm-flex align-items-center">
@@ -377,10 +377,8 @@
               <div class="col col-md-4 col-6 order-md-1 order-1">
                 <div class="d-flex align-items-center"><span class="text-muted fs-sm"></span>
                   <select class="form-select form-select-flush w-auto">
-                   <!-- <option value="12">12</option>
-                    <option value="18">18</option>
-                    <option value="24">24</option>
-                    <option value="30">30</option> -->
+           
+                   
                   </select>
                 </div>
               </div>
@@ -390,11 +388,7 @@
               <div class="col col-md-4 col-6 order-md-3 order-2">
                 <nav aria-label="Page navigation">
                   <ul class="pagination pagination-sm justify-content-end">
-                   <!-- <li class="page-item active" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>-->
+                   
                   </ul>
                 </nav>
               </div>
