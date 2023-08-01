@@ -8,7 +8,7 @@
 
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
-		<!-- Sidebar (offcanvas on sreens < 992px)-->
+		<!-- Side bar -->
 		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
@@ -47,6 +47,8 @@
 				</div>
 			</div>
 		</aside>
+		
+		
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
 			<h1 class="h2 mb-4">내 글 관리</h1>
@@ -69,43 +71,58 @@
 					</div>
 					<div class="col-lg-4 col-sm-7">
 						<div class="position-relative">
-							<i
-								class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+							<i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
 							<input class="form-control ps-5" type="search"
 								placeholder="Enter keyword">
 						</div>
 					</div>
 				</div>
+				
+				
+				
 				<!-- Post-->
-				<article class="row g-0 border-0 pt-3 pt-sm-0 mb-4">
-					<a
-						class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5"
-						href="blog-single-v2.html"
-						style="background-image: url(/resources/assets/img/blog/list/05.jpg); min-height: 16rem"></a>
-					<div class="col-sm-7 col-lg-8">
-						<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-							<h3>
-								<a href="blog-single-v2.html">New series from Netflix</a>
-							</h3>
-							<p class="d-sm-none d-md-block">Egestas in neque scelerisque
-								semper sit at eu cursus faucibus velit cras at aliquam sed
-								dictum at at orci curabitur dictumst viverra non pharetra etiam
-								non, vitae tristique eu in morbi felis nulla. Tellus sagittis
-								dolor pellentesque vel porttitor magna aliquet arcu. Interdum
-								risus mauris pulvinar et vel morbi ...</p>
-							<div class="d-flex flex-wrap align-items-center mt-n2">
-								<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2 me-3"
-									href="#">19<i class="ai-share fs-lg ms-1"></i></a><a
-									class="nav-link text-muted fs-sm fw-normal d-flex align-items-end p-0 mt-2"
-									href="#">7<i class="ai-message fs-lg ms-1"></i></a><span
-									class="fs-xs opacity-20 mt-2 mx-3">|</span><span
-									class="fs-sm text-muted mt-2">December 15, 2022</span><span
-									class="fs-xs opacity-20 mt-2 mx-3">|</span><a
-									class="badge text-nav fs-xs border mt-2" href="#">TV shows</a>
+	        	<c:if test="${empty list}">
+					<tr>
+						<td colspan="6">작성한 글이 없습니다.</td>
+					</tr>
+				</c:if>
+				
+				<c:if test="${not empty list}">
+					<c:forEach var="item" items="${list}">
+						<article class="row g-0 border-0 pt-3 pt-sm-0 mb-4">
+							<a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5"
+								style="background-image: url(/resources/assets/img/blog/list/01.jpg); min-height: 16rem">
+								<c:if test="${not empty board.originalFileName 
+									and (fn:contains(board.originalFileName,'.jpg')
+										 or fn:contains(board.originalFileName,'.png')
+										  or fn:contains(board.originalFileName,'.jpeg'))}">
+								<img src="${path}/resources/static/upload/board/${board.renamedFileName}" width="100%" height="100%"/>
+								</c:if>
+							</a>
+								
+							<div class="col-sm-7 col-lg-8">
+								<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
+									<h3>
+										<a href="blog-single-v2.html">
+											<c:out value="${item.title}"></c:out>
+										</a>
+									</h3>
+									<p class="d-sm-none d-md-block">
+										<c:out value="${item.content}"></c:out>
+									</p>
+									<div class="d-flex flex-wrap align-items-center mt-n2">
+										${item.readCount}<i class="ai-heart fs-lg ms-1" ></i>
+										<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
+										<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span>
+										<span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</article>
+						</article>
+					</c:forEach>
+				</c:if>
+				
+				
 				<!-- Pagination-->
 				<div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-3 pt-lg-0 mb-md-2 mb-xl-4">
 					<div class="col col-md-4 col-6 order-md-1 order-1"></div>
@@ -124,13 +141,16 @@
 						</nav>
 					</div>
 				</div>
+				
+				
 			</section>
 		</div>
 	</div>
 </div>
 
-<!-- Sidebar toggle button-->
+<!-- Side bar toggle button-->
 <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
 	<i class="ai-menu me-2"></i>
 </button>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

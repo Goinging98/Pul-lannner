@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.bbs.member.model.mapper.MyproudMapper">
+
+	<resultMap type="ProudBoard" id="myproudBoardListResultMap">
+		<id property="bNo" column="bNo"/>
+		<result property="title" column="TITLE"/>
+		<result property="mNo" column="mNo"/>
+		<result property="id" column="ID"/>
+		<result property="readCount" column="READCOUNT"/>
+		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
+		<result property="renamedFileName" column="RENAMED_FILENAME"/>
+		<result property="content" column="CONTENT"/>
+		<result property="type" column="TYPE"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="modifyDate" column="MODIFY_DATE"/>
+	</resultMap>
+
+	
+	<resultMap type="ProudBoard" id="myproudBoardDetailResultMap" extends="myproudBoardListResultMap">
+	</resultMap>
+	
+	<select id="selectmyProudBoardList" resultMap="myproudBoardListResultMap">
+		SELECT  
+			DISTINCT B.BNO, B.TITLE, B.CONTENT, M.ID, M.NAME, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
+		FROM COMMBOARD B
+		JOIN MEMBER M ON B.MNO = M.MNO
+		WHERE B.STATUS = 'Y' AND B.TYPE = 'PROUD'
+			AND M.ID = '${ID}'
+		ORDER BY B.BNO DESC 
+	</select>
+	
+	
+	<select id="selectmyProudBoardCount" resultType="int">
+		SELECT  
+			 COUNT(DISTINCT B.BNO)
+		FROM COMMBOARD B
+			JOIN MEMBER M ON B.MNO = M.MNO
+		WHERE B.STATUS = 'Y' AND B.TYPE = 'PROUD'
+			AND M.ID = '${ID}'	
+	</select>
+	
+	<select id="selectmyProudBoardByNo" parameterType="int" resultMap="myproudBoardDetailResultMap">
+		SELECT  
+			B.BNO, B.TITLE, M.ID, B.READCOUNT, B.TYPE, B.ORIGINAL_FILENAME, B.RENAMED_FILENAME, B.CONTENT, B.CREATE_DATE, B.MODIFY_DATE,
+			R.RNO AS R_RNO, 
+		    R.BNO AS R_BNO,
+		    R.CONTENT  AS R_CONTENT, 
+		    M2.ID  AS R_ID, 
+		    R.CREATE_DATE  AS R_CREATE_DATE, 
+		    R.MODIFY_DATE  AS R_MODIFY_DATE
+		FROM COMMBOARD B
+		JOIN MEMBER M ON(B.MNO = M.MNO)
+			LEFT OUTER JOIN REPLY R ON (B.BNO = R.BNO)
+			LEFT OUTER JOIN MEMBER M2 ON (R.MNO = M2.MNO)
+		WHERE B.STATUS = 'Y' AND B.TYPE = 'PROUD' AND B.BNO = #{bNo} 
+	</select>
+	
+
+</mapper>
