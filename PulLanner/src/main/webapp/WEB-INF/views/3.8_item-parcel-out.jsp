@@ -52,7 +52,7 @@
 					<h3 class="h5 mb-1">${product.category2}</h3>
 				</div>
 				<h1 class="d-none d-md-inline-block pb-1 mb-2">${product.title}</h1>
-				<p class="fs-sm mb-4">링크</p>
+				
 				<div class="d-none d-md-flex align-items-center pb-3 mb-3">
 					<div class="h3 mb-0 me-3">
 						<fmt:formatNumber value="${product.lprice}" pattern="#,###" />
@@ -84,6 +84,7 @@
 
 
 				<!-- Color button selector-->
+				<a class="btn btn-link p-0" href="${product.link}">제품 상세보기<i class="ai-arrow-right ms-2"></i></a>
 				<div class="d-flex pb-3">
 					<div class="accordion-item mb-0">
 						<h4 class="accordion-header">
@@ -92,7 +93,7 @@
 								data-bs-target="#difficulty" aria-expanded="true"
 								aria-controls="difficulty">
 								<span class="fs-base"> <i class="ai-chevrons-down"></i>&nbsp;상세
-									정보
+									카테고리
 								</span>
 							</button>
 						</h4>
@@ -137,8 +138,8 @@
 					<c:forEach var="item" items="${replyList}">
 						<img class="rounded-circle" src="assets/img/avatar/08.jpg"
 							width="48" alt="Comment author">
-						<div class="ps-3">
-							<h6 class="mb-0">${item.name}</h6>
+						<div class="ps-3" >
+							<h6 class="mb-0" >${item.name}</h6>
 							<span class="fs-sm text-muted"> <fmt:formatDate
 									type="both" value="${item.createDate}" />
 							</span>
@@ -247,7 +248,7 @@
 		<c:forEach var="item" items="${plist1 }">
 			<!-- Item-->
 			<div class="swiper-slide">
-					<a href="${path}/shop/product?pno=${item.pno}"> 
+					<a href="${path}/shop/product?pno=${item.pno}" style="text-decoration-line: none; color: black;">> 
 				<div class="card-hover position-relative bg-secondary rounded-1  mb-4">
 					<button
 						class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"
