@@ -18,8 +18,8 @@
         <!-- Breadcrumb-->
         <nav aria-label="breadcrumb">
           <ol class="pt-lg-3 pb-2 breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Shop catalog</li>
+<!--             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Shop catalog</li> -->
           </ol>
         </nav>
         <!-- Banner-->
@@ -40,7 +40,10 @@
         <!-- Page title-->
         <div class="row pt-xl-3 mt-n1 mt-sm-0">
           <div class="col-lg-9 offset-lg-3 pt-lg-3">
-            <h1 class="pb-2 pb-sm-3">식물 판매</h1>
+            <h1 class="pb-2 pb-sm-3" style="display:inline;">식물 분양</h1>
+            <c:if test="${loginMember != null }"><button type="button" class="btn btn-primary btn-icon" style="margin-left: 75%; margin-bottom: 1%; width: 55px; height:55px;" onclick="location.href='${path}/selling_plant'">
+			  <i class="ai-edit-alt"></i></c:if>
+			</button>
           </div>
         </div>
         <div class="row pb-2 pb-sm-4">
@@ -176,24 +179,30 @@
           <div class="col-lg-9">
             <!-- Active filters + Sorting-->
             <div class="d-flex align-items-start justify-content-between mb-4">
-             <a href="/Around/03_2.html"> <button class="btn btn-lg btn-primary" type="submit">내 식물분양</button></a>
-             <a href="/Around/03_3.html"> <button class="btn btn-lg btn-primary mx-3" type="submit">내 씨앗분양</button></a>
-              <div class="input-group" style="width: 500px; margin-left: 30%;">
-				<form name="searchForm" action="${path}/Plantshop" method="get">
-				<label>
-					<input type="radio" name="searchType" value="title" 
-									${searchType == 'title' ? 'checked' : ''}> 제목
-				</label>
-				<label>
-					<input type="radio" name="searchType" value="content" 
-									${searchType == 'content' ? 'checked' : ''}> 내용
-				</label>
-				<label>
-					<input type="radio" name="searchType" value="writer" 
-									${searchType == 'writer' ? 'checked' : ''}> 작성자
-				</label>
-                <input type=text id="searchValue" name="searchValue" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="${param.searchValue}" />
-                <button type="button" class="btn btn-outline-primary">search</button>
+<!--              <a href="/Around/03_2.html"> <button class="btn btn-lg btn-primary" type="submit">내 식물분양</button></a>
+             <a href="/Around/03_3.html"> <button class="btn btn-lg btn-primary mx-3" type="submit">내 씨앗분양</button></a> -->
+			<div class="input-group"   >
+                <div class="col-8"  style=" height: 70px;  "   >
+                <form name="searchForm" action="${path}/Plantshop" method="get">
+                <input type="hidden" name="page" value="1">
+                <label>
+                    <input type="radio" name="searchType" value="title" 
+                                    ${searchType == 'title' ? 'checked' : ''}> 제목
+                </label>
+                <label>
+                    <input type="radio" name="searchType" value="content" 
+                                    ${searchType == 'content' ? 'checked' : ''}> 내용
+                </label>
+                <label>
+                    <input type="radio" name="searchType" value="writer" 
+                                    ${searchType == 'writer' ? 'checked' : ''}> 작성자
+                </label>
+
+                <input type=text id="searchValue" name="searchValue" class="form-control rounded" placeholder="검색어를 입력해주세요" aria-label="Search" aria-describedby="search-addon" value="${param.searchValue}" />
+              </div>
+                <span class="col-4">
+                <button type="button" class="btn btn-outline-primary " style=" float:right; height: 65px" >검색</button>
+                </span>
                 </form>
               </div>
             </div>
@@ -232,13 +241,14 @@
                   </div>
                 </div>
                 <div class="d-flex mb-1">
-                  <h3 class="h6 mb-0"><a href="${path}/selling_plant?parcelno=${item.parcelno}"><c:out value="${item.parceltitle}"/></a></h3>
+                  <h3 class="h6 mb-0"><a href="${path}/plant-parcel-out?parcelno=${item.parcelno}"><c:out value="${item.parceltitle}"/></a></h3>
                   <div class="d-flex ps-2 mt-n1 ms-auto">
 
                   </div>
                 </div>
                 <div class="d-flex align-items-center"><span class="me-2"><c:out value="${item.parcelprice}"/></span>
-                  <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
+                  <div class="nav ms-auto" data-bs-toggle="" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left">
+                  <a class="nav-link fs-lg py-2 px-1">${item.writerId}</a></div>
                 </div>
               </div>
 			</c:forEach>
@@ -247,27 +257,42 @@
             </div>
             <!-- Pagination-->
             <div class="row gy-3 align-items-center pt-3 pt-sm-4 mt-md-2">
-              <div class="col col-md-4 col-6 order-md-1 order-1">
-                <!-- <div class="d-flex align-items-center"><span class="text-muted fs-sm">Show</span>
+<!--               <div class="col col-md-4 col-6 order-md-1 order-1">
+                <div class="d-flex align-items-center"><span class="text-muted fs-sm">Show</span>
                   <select class="form-select form-select-flush w-auto">
                     <option value="12">12</option>
                     <option value="18">18</option>
                     <option value="24">24</option>
                     <option value="30">30</option>
                   </select>
-                </div> -->
-              </div>
+                </div>
+              </div> -->
               <div class="col col-md-4 col-12 order-md-2 order-3 text-center">
                 <!-- <button class="btn btn-primary w-md-auto w-100" type="button">Load more products</button> -->
               </div>
               <div class="col col-md-4 col-6 order-md-3 order-2">
                 <nav aria-label="Page navigation">
                   <ul class="pagination pagination-sm justify-content-end">
-                    <li class="page-item active" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  	<li class="page-item">
+				      <a href="javascript:void(0);"  onclick="movePage(1); return false;" class="page-link">&lt;&lt;</a>
+				    </li>
+                  	<li class="page-item">
+				      <a href="javascript:void(0);"  onclick="movePage(${pageInfo.prevPage}); return false;" class="page-link">Prev</a>
+				    </li>
+				    <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
+				    <c:if test="${status.current == pageInfo.currentPage}">
+                    <li class="page-item active" aria-current="page"><span class="page-link">${status.current}<span class="visually-hidden">(current)</span></span></li>
+                    </c:if>
+                    <c:if test="${status.current != pageInfo.currentPage}">
+                    <li class="page-item"><a class="page-link" href="#">${status.current}</a></li>
+                    </c:if>
+                    </c:forEach>
+                    <li class="page-item">
+				      <a href="javascript:void(0);"  onclick="movePage(${pageInfo.nextPage}); return false;" class="page-link">Next</a>
+				    </li>
+                    <li class="page-item">
+				      <a href="javascript:void(0);"  onclick="movePage(${pageInfo.maxPage}); return false;" class="page-link">&gt;&gt;</a>
+				    </li>
                   </ul>
                 </nav>
               </div>
@@ -279,3 +304,10 @@
       <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#shopSidebar"><i class="ai-filter me-2"></i>Filters</button>
   </body>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+<script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+</script>

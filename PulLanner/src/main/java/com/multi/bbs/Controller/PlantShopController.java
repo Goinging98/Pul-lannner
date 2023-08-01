@@ -1,6 +1,7 @@
 package com.multi.bbs.Controller;
 
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -28,6 +29,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.member.model.vo.Member;
+import com.multi.bbs.plantSearch.model.service.plantSearchService;
+import com.multi.bbs.plantSearch.model.vo.GardenDtl;
+import com.multi.bbs.plantSearch.model.vo.GardenList;
 import com.multi.bbs.plantShop.model.service.PlantShopService;
 import com.multi.bbs.plantShop.model.vo.PlantparcelReply;
 import com.multi.bbs.plantShop.model.vo.Plantshop;
@@ -86,7 +90,7 @@ public class PlantShopController {
 			return "redirect:plantshoperror";
 		}
 		model.addAttribute("plantshop", plantshop);
-		model.addAttribute("parcelreplyList", plantshop.getParcelreplies());
+		model.addAttribute("plantparcelreplylist", plantshop.getParcelreplies());
 		return "/3.3_plant-parcel-out";
 	}
 	
@@ -110,12 +114,11 @@ public class PlantShopController {
 			) {
 		log.info("selling_plant 요청, plantshop : " + plantshop);
 		
-		// 보안코드 예시
-		if(loginMember.getId().equals(plantshop.getWriterId()) == false) {
-			model.addAttribute("msg","잘못된 접근입니다.");
-			model.addAttribute("location","/");
-			return "common/msg";
-		}
+		/*
+		 * // 보안코드 예시 if(loginMember.getId().equals(plantshop.getWriterId()) == false) {
+		 * model.addAttribute("msg","잘못된 접근입니다."); model.addAttribute("location","/");
+		 * return "common/msg"; }
+		 */
 		
 		plantshop.setMno(loginMember.getMNo());
 		
@@ -135,10 +138,10 @@ public class PlantShopController {
 		
 		if(result > 0) {
 			model.addAttribute("msg", "게시글이 등록 되었습니다.");
-			model.addAttribute("location", "/3.1_PlantShop");
+			model.addAttribute("location", "/PlantShop");
 		}else {
 			model.addAttribute("msg", "게시글 작성에 실패하였습니다.");
-			model.addAttribute("location", "/3.1_PlantShop");
+			model.addAttribute("location", "/PlantShop");
 		}
 		return "common/msg";
 	}
@@ -192,10 +195,10 @@ public class PlantShopController {
 		
 		if(result > 0) {
 			model.addAttribute("msg", "게시글이 수정이 완료 되었습니다.");
-			model.addAttribute("location", "/3.1_PlantShop");
+			model.addAttribute("location", "/PlantShop");
 		}else {
 			model.addAttribute("msg", "게시글 수정에 실패하였습니다.");
-			model.addAttribute("location", "/3.1_PlantShop");
+			model.addAttribute("location", "/PlantShop");
 		}
 		return "common/msg";
 	}
@@ -217,7 +220,7 @@ public class PlantShopController {
 		}else {
 			model.addAttribute("msg", "게시글 삭제에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/3.1_PlantShop");
+		model.addAttribute("location", "/PlantShop");
 		return "/common/msg";
 	}
 	
@@ -236,7 +239,7 @@ public class PlantShopController {
 		} else {
 			model.addAttribute("msg","리플 등록에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/3.5_selling_plant?parcelno="+plantparcelreply.getParcelno());
+		model.addAttribute("location", "/plant-parcel-out?parcelno="+plantparcelreply.getParcelno());
 		return "/common/msg";
 	}
 	
@@ -253,7 +256,7 @@ public class PlantShopController {
 		}else {
 			model.addAttribute("msg", "리플 삭제에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/3.5_selling_plant?parcelno=" + parcelno);
+		model.addAttribute("location", "/selling_plant?parcelno=" + parcelno);
 		return "/common/msg";
 	}
 	

@@ -31,43 +31,60 @@
          
   
           <div class="col-lg-12 col-xl-12 ">
-            <form class="row g-4 needs-validation" novalidate>
+            <form class="row g-4 needs-validation" action="${path}/selling_plant" method="post" enctype="multipart/form-data">
 
               <div class="col-sm-12">
-                <input class="form-control form-control-lg"  type="text" placeholder="게시물 제목" required id="title" name="title">
+                <input class="form-control form-control-lg"  type="text" placeholder="제목" required id="title" name="parceltitle">
               </div>
 
               <div class="col-sm-12">
-                <textarea class="form-control form-control-lg" rows="15"
-                 placeholder="식물 분양 관련 글을 작성하는 곳입니다." required id="message"></textarea>
+                <textarea name="parcelcontent" class="form-control form-control-lg" rows="15"
+                 placeholder="내용" required id="message"></textarea>
               </div>
 
               <div class="alert alert-primary d-flex mb-4"><i class="ai-bell fs-xl me-2"></i>
-                <p class="mb-0">분양하려는 식물에 대해 알려주세요.</p>
+                <p class="mb-0"></p>
               </div>
-
+              
+           	<label class="form-label fs-base" for="category">분류를 선택하세요</label>   
+			<select name="parceltype" class="form-select" aria-label="Default select example" id="category">
+			<option value="">${plantshop.parceltype}</option>
+			  <option value="P1">식물</option>
+			  <option value="P2">씨앗</option>
+			</select>
+			<div class="btn-group dropdown">
+			  <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    식물/씨앗
+			  </button>
+			  
+<%-- 			  <c:forEach var="item" items="${list}">
+			  <div class="dropdown-menu my-1">
+			    <a href="#" class="dropdown-item">${item.cntntsSj}</a>
+			  </div>
+			  </c:forEach> --%>
+			</div>
 
               <div class="col-sm-6 inline-col">
                   <label class="form-label fs-base text-end" for="plantName">식물학명</label>
-                  <input class="form-control form-control-lg"  type="text" placeholder="식물학명" required id="plantName" name="plantName">
+                  <input class="form-control form-control-lg"  type="text" placeholder="식물학명"  id="plantName" name="plantName">
               </div>
 
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="amount">금액</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="금액" required id="amount" name="amount">
+                <input class="form-control form-control-lg"  type="number" placeholder="가격"  id="amount" name="parcelprice">
               </div>
 
 
               <div class="col-sm-12 inline-col">
                 <label class="form-label fs-base " for="picture" style="width: 9%;">사진첨부</label>
-                <input class="form-control form-control-lg"  type="file" placeholder="사진첨부" required id="picture" name="picture">
+                <input class="form-control form-control-lg"  type="file" placeholder="사진첨부"  id="picture" name="upfile">
               </div>
                 
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="originInformation">원산지 정보</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="원산지 정보" required id="originInformation" name="originInformation">
+                <input class="form-control form-control-lg"  type="text" placeholder="원산지 정보"  id="originInformation" name="originInformation">
               </div>
 
               <div class="col-sm-6 inline-col">
@@ -83,60 +100,60 @@
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="temperature">생육 온도</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="생육 온도" required id="temperature" name="temperature">
+                <input class="form-control form-control-lg"  type="text" placeholder="생육 온도"  id="temperature" name="temperature">
               </div>
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="height">성장 높이</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="성장 높이" required id="height" name="height">
+                <input class="form-control form-control-lg"  type="text" placeholder="성장 높이"  id="height" name="height">
               </div>
 
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base text-end" for="humidity">습도</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="습도" required id="humidity" name="humidity">
+                <input class="form-control form-control-lg"  type="text" placeholder="습도"  id="humidity" name="humidity">
               </div>
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="area">성장 넓이</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="성장 넓이" required id="area" name="area">
+                <input class="form-control form-control-lg"  type="text" placeholder="성장 넓이"  id="area" name="area">
               </div>
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="fertilizer">비료</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="비료" required id="fertilizer" name="fertilizer">
+                <input class="form-control form-control-lg"  type="text" placeholder="비료"  id="fertilizer" name="fertilizer">
               </div>
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="leaf">잎 형태</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="잎 형태" required id="leaf" name="leaf">
+                <input class="form-control form-control-lg"  type="text" placeholder="잎 형태"  id="leaf" name="leaf">
               </div>
 
      
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="smell">냄새 정보</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="냄새 정보" required id="smell" name="smell">
+                <input class="form-control form-control-lg"  type="text" placeholder="냄새 정보"  id="smell" name="smell">
               </div>
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="flowerColor">꽃색 </label>
-                <input class="form-control form-control-lg"  type="text" placeholder="꽃색" required id="flowerColor" name="flowerColor">
+                <input class="form-control form-control-lg"  type="text" placeholder="꽃색"  id="flowerColor" name="flowerColor">
               </div>
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="breeding">번식 시기</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="번식 시기" required id="breeding" name="breeding">
+                <input class="form-control form-control-lg"  type="text" placeholder="번식 시기"  id="breeding" name="breeding">
               </div>
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="soil">토양 정보</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="토양 정보" required id="soil" name="soil">
+                <input class="form-control form-control-lg"  type="text" placeholder="토양 정보"  id="soil" name="soil">
               </div>
 
 
               <div class="col-sm-6 inline-col">
                 <label class="form-label fs-base" for="toxicity">독성 정보</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="독성 정보" required id="toxicity" name="toxicity">
+                <input class="form-control form-control-lg"  type="text" placeholder="독성 정보"  id="toxicity" name="toxicity">
               </div>
 
               <div class="col-sm-12 pt-2 text-end">

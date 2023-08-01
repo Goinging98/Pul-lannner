@@ -10,35 +10,40 @@
       <section class="container py-5 mt-5 mb-sm-2 mb-lg-3 mb-xl-4 mb-xxl-5">
         <!-- Breadcrumb-->
         <nav aria-label="breadcrumb">
-          <ol class="pt-lg-3 pb-2 pb-md-4 breadcrumb">
+<!--           <ol class="pt-lg-3 pb-2 pb-md-4 breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
             <li class="breadcrumb-item"><a href="shop-catalog.html">Shop catalog</a></li>
             <li class="breadcrumb-item active" aria-current="page">Single product</li>
-          </ol>
+          </ol> -->
         </nav>
         <!-- Title + price shown on screens < 768px-->
         <h2 class="h1 d-md-none">Scented candle</h2>
         <div class="d-flex d-md-none align-items-center pb-3 mb-3">
           <div class="h3 mb-0 me-3">$14.00</div>
-          <del class="fs-5 fw-medium text-muted me-3">$19.00</del><span class="badge bg-faded-danger text-danger d-md-none">Sale</span>
+          <!--  <del class="fs-5 fw-medium text-muted me-3">$19.00</del><span class="badge bg-faded-danger text-danger d-md-none">Sale</span>-->
         </div>
         <div class="row pb-sm-1 pb-md-4">
           <!-- Gallery-->
           <div class="col-md-6 gallery mb-3 mb-md-0">
-            <!-- Item -->
+            <!-- IMAGE -->
             <div class="col">
-              <a href="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_01.jpg" class="gallery-item d-block card-hover">
+              <a href="" class="gallery-item d-block card-hover">
                 <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
                   <i class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
                   <div class="position-absolute bottom-0 start-0 w-100 text-center text-white fs-sm fw-medium zindex-2 pb-3">
-                    Image #1
                   </div>
                   <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-40"></div>
                 </div>
-                <img src="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_01.jpg" class="d-block rounded-4" alt="Image #1">
+                <!-- 첨부 이미지 -->
+                <c:if test="${not empty plantshop.parcelimg 
+								and (fn:contains(plantshop.parcelimg,'.jpg')
+									 or fn:contains(plantshop.parcelimg,'.png')
+									  or fn:contains(plantshop.parcelimg,'.jpeg'))}">
+                <img src="${path}/upload/plantshop/${plantshop.parcelimgedt}" class="d-block rounded-4" alt="Image #1">
+                </c:if>
               </a>
             </div>
-                <!-- Item -->
+<!--                 Item
               <div class="d-flex justify-content-between mt-3">
                 <a href="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_02.jpg" style="width: 310px; height: 100%;" class="gallery-item d-block card-hover">
                   <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
@@ -51,7 +56,7 @@
                   <img src="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_02.jpg" style="width: 310px; height: 100%;" class="d-block rounded-4" alt="Image #1">
                 </a>
               
-              <!-- Item -->
+              Item
               
                 <a href="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_02.jpg" style="width: 310px; height: 100%;" class="gallery-item d-block card-hover">
                   <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
@@ -63,20 +68,19 @@
                   </div>
                   <img src="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_02.jpg" style="width: 310px; height: 100%;" class="d-block rounded-4" alt="Image #1">
                 </a>
-              </div>
+              </div> -->
             <!-- Item -->
-              <div class="col mt-3">
+<!--               <div class="col mt-3">
                 <a href="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_03.jpg" class="gallery-item d-block card-hover">
                   <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
                     <i class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
                     <div class="position-absolute bottom-0 start-0 w-100 text-center text-white fs-sm fw-medium zindex-2 pb-3">
-                      Image #1
                     </div>
                     <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-40"></div>
                   </div>
                   <img src="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_03.jpg" class="d-block rounded-4" alt="Image #1">
                 </a>
-              </div>
+              </div> -->
 </a>
           </div>
           <!-- Product details-->
@@ -86,13 +90,13 @@
               <div class="d-none d-md-block" style="padding-top: 90px;"></div>
               <!-- <div class="d-flex align-items-center pt-3 py-3"><span class="badge bg-faded-danger text-danger d-none d-md-inline-block me-4">Sale</span><span class="fs-sm">V00273124</span></div> -->
               <div class="pb-2 pb-lg-0 mb-4 mb-lg-5"><img class="d-block rounded-circle mb-2" src="assets/img/avatar/02.jpg" width="80" alt="Isabella Bocouse">
-                <h3 class="h5 mb-1">Isabella Bocouse</h3>
+                <h3 class="h5 mb-1"><c:out value="${plantshop.writerId}" /></h3>
               </div>
-              <h1 class="d-none d-md-inline-block pb-1 mb-2">가울 테리아</h1>
-              <p class="fs-sm mb-4">진달래과의 작은 관목으로 척박한 산성토양에서 잘 자라며 키는 20cm정도로 포복형이고, 암석정원에 잘 어울립니다.</p>
+              <h1 class="d-none d-md-inline-block pb-1 mb-2"><c:out value="${plantshop.parceltitle}" /></h1>
+              <p class="fs-sm mb-4"><c:out value="${plantshop.parcelcontent}" /></p>
               <div class="d-none d-md-flex align-items-center pb-3 mb-3">
-                <div class="h3 mb-0 me-3">$14.00</div>
-                <del class="fs-5 fw-medium text-muted">$19.00</del>
+                <div class="h3 mb-0 me-3"><c:out value="${plantshop.parcelprice}" />원</div>
+                <!--  <del class="fs-5 fw-medium text-muted">$19.00</del>-->
               </div>
               <!-- Color button selector-->
               <!-- <div class="h6">Color:<span class="text-muted fw-normal ms-1" id="colorOption">Gray concrete</span></div> -->
@@ -189,23 +193,43 @@
         </div>
       </section>
       <!-- Dscription section #1-->
-            <!-- Comments-->
+            <!-- 댓글 입력창-->
+        <c:if test="${loginMember != null }">
+		<div class="card-body py-3">
+			<form action="${path}/plantshop/plantparcelreply" method="post" class="row needs-validation">
+				<div class="col-12">
+					<input type="hidden" name="parcelno" value="${plantshop.parcelno}" /> 
+					<input type="hidden" name="writerId" value="${loginMember.id}" />
+				<%-- 	<input type="hidden" name="mno" value="${loginMember.mno}" />  --%>
+					<textarea name="parcelrcontent" id="replyContent" class="form-control" cols="55" rows="3" placeholder="댓글을 적어주세요!" required id="c-comment" ></textarea>
+						<div class="invalid-feedback">최소 1글자 이상이어야 합니다</div>
+				</div>
+				<div class="col-1 offset-9">
+					<button id="btn-insert" class="btn btn-primary ms-5 my-2 px-4 py-2 fs-xs rounded-0 rounded-1" type="submit">등록</button>
+				</div>
+			</form>
+		</div>
+		</c:if>
+			<!-- Comments-->					
             <section class="container pt-xl-2 pb-5 mb-md-2 mb-lg-4 mb-xl-5" id="comments">
+            <c:if test="${!empty plantparcelreplylist}">
+            <c:forEach var="reply" items="${plantparcelreplylist}">
               <div class="border-top border-bottom">
                 <!-- Comments collapse-->
                 <div class="collapse" id="commentsCollapse" style="max-width: 54rem;">
+                
                   <!-- Comment-->
                   <div class="border-bottom py-4 mt-2 mb-4">
-                    <div class="d-flex align-items-center pb-1 mb-3"><img class="rounded-circle" src="assets/img/avatar/08.jpg" width="48" alt="Comment author">
+                    <div class="d-flex align-items-center pb-1 mb-3"><!-- <img class="rounded-circle" src="assets/img/avatar/08.jpg" width="48" alt="Comment author"> -->
                       <div class="ps-3">
-                        <h6 class="mb-0">Albert Flores</h6><span class="fs-sm text-muted">5 hours ago</span>
+                        <h6 class="mb-0">${plantparcelreply.writerId}</h6><span class="fs-sm text-muted"><fmt:formatDate type="both" value="${plantparcelreply.rcrtDate}"/></span>
                       </div>
                     </div>
-                    <p class="pb-2 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tellus lectus, tempus eu urna eu, imperdiet dignissim augue. Aliquam fermentum est a ligula bibendum, ac gravida ipsum dictum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur suscipit quam ut velit condimentum, nec mollis risus semper. Curabitur quis mauris eget ligula tincidunt venenatis. Sed congue pulvinar hendrerit.</p>
-                    <button class="nav-link fs-sm fw-semibold px-0 py-2" type="button">Reply<i class="ai-redo fs-xl ms-2"></i></button>
+                    <p class="pb-2 mb-0"><c:out value="${plantparcelreply.parcelrcontent}"/></p>
+                    <!--  <button class="nav-link fs-sm fw-semibold px-0 py-2" type="button">Reply<i class="ai-redo fs-xl ms-2"></i></button>-->
                   </div>
                   <!-- Comment-->
-                  <div class="border-bottom pt-2 pb-4">
+<!--                   <div class="border-bottom pt-2 pb-4">
                     <div class="d-flex align-items-center pb-1 mb-3"><img class="rounded-circle" src="assets/img/avatar/11.jpg" width="48" alt="Comment author">
                       <div class="ps-3">
                         <h6 class="mb-0">Jenny Wilson</h6><span class="fs-sm text-muted">2 days ago at 9:20</span>
@@ -213,7 +237,7 @@
                     </div>
                     <p class="pb-2 mb-0">Pellentesque urna pharetra, quis maecenas. Sit dolor amet nulla aenean eu, ac. Nisl mi tempus, iaculis viverra vestibulum scelerisque imperdiet montes mauris massa elit pretium elementum eget tortor quis</p>
                     <button class="nav-link fs-sm fw-semibold px-0 py-2" type="button">Reply<i class="ai-redo fs-xl ms-2"></i></button>
-                    <!-- Comment reply-->
+                    Comment reply
                     <div class="card card-body border-0 bg-secondary mt-4">
                       <div class="d-flex align-items-center pb-1 mb-3"><img class="rounded-circle" src="assets/img/avatar/10.jpg" width="48" alt="Comment author">
                         <div class="ps-3">
@@ -222,23 +246,16 @@
                       </div>
                       <p class="mb-0"><a class="fw-bold text-decoration-none" href="#">@Jenny Wilson</a> Massa morbi duis et ornare urna dictum vestibulum pulvinar nunc facilisis ornare id at at ut arcu integer tristique placerat non turpis nibh turpis ullamcorper est porttitor.</p>
                     </div>
-                  </div>
-                  <!-- Comment-->
-                  <div class="pt-4 mt-2 mb-2">
-                    <div class="d-flex align-items-center pb-1 mb-3"><img class="rounded-circle" src="assets/img/avatar/07.jpg" width="48" alt="Comment author">
-                      <div class="ps-3">
-                        <h6 class="mb-0">Esther Howard</h6><span class="fs-sm text-muted">May 19, 2022</span>
-                      </div>
-                    </div>
-                    <p class="pb-2 mb-0">Donec et sollicitudin tellus. Duis maximus, dui eget egestas mattis, purus ex tempor nulla, quis tempor sapien neque at nisl. Aliquam eu nisi ut nisl ultrices posuere. Praesent dignissim efficitur nisi, a hendrerit ipsum elementum sit amet. Vivamus non ante nisl. Nunc faucibus velit at eros mollis semper.</p>
-                    <button class="nav-link fs-sm fw-semibold px-0 py-2" type="button">Reply<i class="ai-redo fs-xl ms-2"></i></button>
-                  </div>
+                  </div> -->
                 </div>
+              </c:forEach>
+              </c:if>
                 <!-- Comments toggle-->
                 <div class="nav">
-                  <button class="btn-more nav-link collapsed w-100 justify-content-center p-3" type="button" data-bs-toggle="collapse" data-bs-target="#commentsCollapse" aria-expanded="false" aria-controls="commentsCollapse" data-show-label="리뷰 보기" data-hide-label="리뷰 숨기기"><span class="fw-normal opacity-70 ms-1">(4)</span></button>
+                  <button class="btn-more nav-link collapsed w-100 justify-content-center p-3" type="button" data-bs-toggle="collapse" data-bs-target="#commentsCollapse" aria-expanded="false" aria-controls="commentsCollapse" data-show-label="댓글 보기" data-hide-label="댓글 숨기기"><span class="fw-normal opacity-70 ms-1"></span></button>
                 </div>
               </div>
+
             </section>
       <!-- <section class="container pb-4 pb-md-5 mb-lg-4">
         <div class="bg-size-cover bg-repeat-0 bg-position-center rounded-1 mb-md-2 py-xl-4 py-xxl-5" style="background-image: url(assets/img/shop/single/01.jpg);">
@@ -445,8 +462,8 @@
         }
       }
     }">
-          <div class="swiper-wrapper">
-            <!-- Item-->
+ <!--          <div class="swiper-wrapper">
+            Item
             <div class="swiper-slide text-center text-sm-start">
               <div class="text-primary mb-3 mb-sm-4">
                 <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -456,7 +473,7 @@
               <h3 class="h5 mb-2 mb-sm-3">Fast and free delivery</h3>
               <p class="fs-sm mb-0">Free delivery for all orders over $200 honcus egestas lorem honcus egestas</p>
             </div>
-            <!-- Item-->
+            Item
             <div class="swiper-slide text-center text-sm-start">
               <div class="text-primary mb-3 mb-sm-4">
                 <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -466,7 +483,7 @@
               <h3 class="h5 mb-2 mb-sm-3">Money back guarantee</h3>
               <p class="fs-sm mb-0">We return money within 30 days honcus egestas lorem honcus egestas</p>
             </div>
-            <!-- Item-->
+            Item
             <div class="swiper-slide text-center text-sm-start">
               <div class="text-primary mb-3 mb-sm-4">
                 <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -476,7 +493,7 @@
               <h3 class="h5 mb-2 mb-sm-3">24/7 customer support</h3>
               <p class="fs-sm mb-0">Friendly 24/7 customer support honcus egestas lorem honcus egestas</p>
             </div>
-            <!-- Item-->
+            Item
             <div class="swiper-slide text-center text-sm-start">
               <div class="text-primary mb-3 mb-sm-4">
                 <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -487,7 +504,7 @@
               <h3 class="h5 mb-2 mb-sm-3">Secure online payment</h3>
               <p class="fs-sm mb-0">We possess SSL / Secure сertificate honcus egestas lorem honcus egestas</p>
             </div>
-          </div>
+          </div> -->
           <!-- Pagination (Bullets)-->
           <div class="swiper-pagination position-relative bottom-0 pt-1 mt-4 d-lg-none"></div>
         </div>

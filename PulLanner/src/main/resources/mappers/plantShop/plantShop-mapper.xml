@@ -99,11 +99,11 @@
 		INSERT INTO PLANTSHOP(
 			PARCELNO, mNO, PARCELTITLE, PARCELCONTENT, PARCELTYPE,	
 			PARCELIMG, PARCELIMGEDT, PARCELPRICE, CRTDATE, MDFDATE, 
-			PARCELPRICE, PARCELSTATUS
+			PARCELSTATUS
 		) VALUES (
 			default, #{mno}, #{parceltitle}, #{parcelcontent}, #{parceltype},		
 			#{parcelimg}, #{parcelimgedt}, #{parcelprice}, default, default, 
-			#{parcelprice}, default
+			default
 		)
 	</insert>
 		
