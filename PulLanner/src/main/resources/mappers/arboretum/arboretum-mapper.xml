@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.bbs.Arboretum.model.mapper.arboretumMapper">
+
+	<select id="selectArboretumList" parameterType="map" resultType="TourVO">
+			SELECT  *,
+			case when cat3 ='A01010700' then '식물원'
+				 end as Arboretum
+		FROM Tourlist
+		WHERE 1 = 1 
+		<if test="searchValue != null">
+			AND title LIKE '%${searchValue}%' 
+		</if>
+		<if test='cat3 != null and cat3 != "etc"'>
+			AND cat3 = #{cat3}
+		</if>
+		<if test='cat3 != null and cat3 == "etc"'>
+			AND cat3 NOT IN ('A01010700','A01010400','A01010100','A01010600')
+		</if>
+		ORDER BY contentid LIMIT ${limit} OFFSET ${offset}
+	</select>
+
+
+</mapper>

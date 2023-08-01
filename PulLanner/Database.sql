@@ -587,4 +587,56 @@ CREATE TABLE MANAGELIST (
  select * from MANAGELIST;
  
  SELECT COUNT(*) FROM MANAGELIST WHERE STATUS= 'Y'
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ ------------------------------------------------------------------
+------------------------- tour 관련 테이블 -------------------------
+------------------------------------------------------------------
+  CREATE TABLE Tourlist(
+	contentid      	INT,
+	contenttypeid      VARCHAR(100),
+	homepage           VARCHAR(200),
+	tel                VARCHAR(100),
+	title              VARCHAR(200),
+	firstimage         VARCHAR(200),
+	firstimage2        VARCHAR(200),
+	areacode           VARCHAR(100),
+	sigungucode        VARCHAR(100),
+	cat1               VARCHAR(100),
+	cat2               VARCHAR(100),
+	cat3               VARCHAR(100),
+	addr1              VARCHAR(100),
+	addr2              VARCHAR(100),
+    zipcode      		VARCHAR(100),
+	mapx               VARCHAR(100),
+	mapy               VARCHAR(100),
+	overview           VARCHAR(2000),
+	mlevel             VARCHAR(100),
+	accomcount   		VARCHAR(100),
+	chkbabycarriage     VARCHAR(100),
+	chkcreditcard       VARCHAR(100),
+	chkpet        		VARCHAR(100),
+	expagerange         VARCHAR(100),
+	expguide           	VARCHAR(100),
+	heritage1           VARCHAR(100),
+	heritage2           VARCHAR(100),
+	heritage3   		VARCHAR(100),
+	infocenter      	VARCHAR(100),
+	opendate            VARCHAR(100),
+	parking           	VARCHAR(100),
+	restdate  			VARCHAR(100),
+	useseason      		VARCHAR(100),
+	usetime            	VARCHAR(300),
+	PRIMARY KEY (contentid)
+);
+
+DESC Tourlist;
+
+select * from Tourlist;
 
