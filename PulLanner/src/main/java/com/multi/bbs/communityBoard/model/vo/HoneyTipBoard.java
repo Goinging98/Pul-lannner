@@ -15,6 +15,7 @@ public class HoneyTipBoard {
 	private int bNo;
 	private int mNo;
 	private String id;
+	private String name;
 	private String title;
 	private String content;
 	private String originalFileName;

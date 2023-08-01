@@ -14,6 +14,7 @@ public class HoneyTipReply {
 	private int bNo;
 	private int mNo;
 	private String id;
+	private String name;
 	private String content;
 	private String type;
 	private Date createDate;
