@@ -46,7 +46,7 @@
         <!-- Page title-->
         <div class="row">
           <div class="col-lg-11 col-xl-10">
-            <h1 class="display-2 pb-3 pb-md-4 pb-lg-5">아침고요수목원</h1>
+            <h1 class="display-2 pb-3 pb-lg-5 mt-5">${aItem.title}</h1>
           </div>
         </div>
 
@@ -114,7 +114,7 @@
               <div class="row my-5">
                 <div class="col-md-12 col-lg-12 col-xl-11">
                   <h2 class="h1 pb-2">개요</h2>
-                  <p class="fs-lg">Sit congue tellus urna phasellus sagittis interdum sed laoreet eget curabitur. Vel magna sit aliquet viverra morbi massa mattis urna, feugiat egestas tincidunt ipsum diam quam massa amet odio nisi duis dolor. Morbi et massa fames ac scelerisque sit commodo dignissim faucibus quisque proin lectus laoreet sem adipiscing sollicitudin erat massa tellus lorem enim aenean phasellus in hendrerit interdum lorem proin pretium dictum urna suspendisse quis risus et.</p>
+                  <p class="fs-lg">${aItem.overview}</p>
                   <h2 class="h1 pt-3 pt-sm-4 pt-xl-5 pb-2">이용안내(있으면 넣고 아님 빼셈)</h2>
                   <p class="fs-lg">Sit diam nunc, et pellentesque ornare elit, ut. Interdum feugiat id ut egestas tellus congue faucibus habitant semper nunc et etiam ultrices id nisi urna amet, odio mauris risus nam aliquam pharetra amet nunc, enim aliquet egestas purus penatibus ac, elit ultricies proin adipiscing suspendisse sit proin.</p>
               </div>

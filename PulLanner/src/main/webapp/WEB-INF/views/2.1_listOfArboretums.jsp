@@ -45,165 +45,40 @@
         </div>
         
         <!-- Item-->
+        <c:forEach var="aItem" items="${aroboretumList}">
         <div class="row align-items-center pt-xl-2 pb-5 mb-lg-2 mb-xl-3 mb-xxl-4">
-          <div class="col-md-7 col-lg-6 mb-4 mb-md-0">
+          <div class="col-md-6 col-lg-6 mb-4 mb-md-0">
             <a class="d-block position-relative image-container" href="portfolio-single-v1.html">
               <div class="rounded-5 position-absolute top-0 start-0 w-100 h-100" style="background-color: #d7e4f4;"
                    data-aos="zoom-in" data-aos-duration="600" data-aos-offset="250"></div>
               <img class="d-block position-relative zindex-2 mx-auto rounded-5 fit-cover"
-                   src="assets\img\landing\yoga-studio\trainers\sample3.jpeg" width="636" alt="Image" data-aos="fade-in"
+                   src="${aItem.firstimage}" width="636" alt="Image" data-aos="fade-in"
                    data-aos-duration="400" data-aos-offset="250">
             </a>
           </div>
-          <div class="col-md-5 col-xl-4 offset-lg-1" data-aos="fade-up" data-aos-duration="400" data-aos-offset="170">
+          
+          <div class="col-md-5 col-xl-5" data-aos="fade-up" data-aos-duration="400" data-aos-offset="170" style="padding-left: 60px;">
             <div class="ps-md-3 ps-lg-0">
               <div class="d-flex align-items-center">
-                <h2 class="h4">아침고요수목원</h2>
+                <h2 class="h4">${aItem.title}</h2>
                 <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4">
                   <i class="ai ai-bookmark"></i>
                 </button>
               </div>
-              <p class="fs-sm pb-1 pb-lg-1 mb-1">수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다.</p>
+              <p class="fs-sm pb-1 pb-lg-1 mb-1">${aItem.overview}</p>
               <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
                 <h6 class="stext-body mb-0 me-3"><i class="ai ai-compass "></i> 주소:</h6>
-                <p class="mb-0">주소를 입력하세요</p>
+                <p class="mb-0">${aItem.addr1}</p>
               </div>
               <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
                 <h6 class="stext-body mb-0 me-3"><i class="ai ai-phone-call"></i> 전화번호:</h6>
-                <p class="mb-0">전화번호를 입력하세요</p>
+                <p class="mb-0">${aItem.infocenter}</p>
               </div>
-              <a class="btn btn-sm btn-outline-dark rounded-pill mt-4" href="portfolio-single-v1.html">Read the full story</a>
+              <a class="btn btn-sm btn-outline-dark rounded-pill mt-4" href="${path}/arboretumDetail?id=${aItem.contentid}">더 알아보기</a>
             </div>
           </div>
         </div>
-        <!-- Item-->
-        <div class="row align-items-center pt-xl-2 pb-5 mb-lg-2 mb-xl-3 mb-xxl-4">
-          <div class="col-md-7 col-lg-6 mb-4 mb-md-0">
-            <a class="d-block position-relative image-container" href="portfolio-single-v1.html">
-              <div class="rounded-5 position-absolute top-0 start-0 w-100 h-100" style="background-color: #d7e4f4;"
-                   data-aos="zoom-in" data-aos-duration="600" data-aos-offset="250"></div>
-              <img class="d-block position-relative zindex-2 mx-auto rounded-5 fit-cover"
-                   src="assets\img\landing\yoga-studio\trainers\sample2.jpeg" width="636" alt="Image" data-aos="fade-in"
-                   data-aos-duration="400" data-aos-offset="250">
-            </a>
-          </div>
-          <div class="col-md-5 col-xl-4 offset-lg-1" data-aos="fade-up" data-aos-duration="400" data-aos-offset="170">
-            <div class="ps-md-3 ps-lg-0">
-              <div class="d-flex align-items-center">
-                <h2 class="h4">아침고요수목원</h2>
-                <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4">
-                  <i class="ai ai-bookmark"></i>
-                </button>
-              </div>
-              <p class="fs-sm pb-1 pb-lg-1 mb-1">수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다.</p>
-              <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
-                <h6 class="stext-body mb-0 me-3"><i class="ai ai-compass"></i> 주소:</h6>
-                <p class="mb-0">주소를 입력하세요</p>
-              </div>
-              <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
-                <h6 class="stext-body mb-0 me-3"><i class="ai ai-phone-call"></i> 전화번호:</h6>
-                <p class="mb-0">전화번호를 입력하세요</p>
-              </div>
-              <a class="btn btn-sm btn-outline-dark rounded-pill mt-4" href="portfolio-single-v1.html">Read the full story</a>
-            </div>
-          </div>
-        </div>
-        <!-- Item-->
-        <div class="row align-items-center pt-xl-2 pb-5 mb-lg-2 mb-xl-3 mb-xxl-4">
-          <div class="col-md-7 col-lg-6 mb-4 mb-md-0">
-            <a class="d-block position-relative image-container" href="portfolio-single-v1.html">
-              <div class="rounded-5 position-absolute top-0 start-0 w-100 h-100" style="background-color: #d7e4f4;"
-                   data-aos="zoom-in" data-aos-duration="600" data-aos-offset="250"></div>
-              <img class="d-block position-relative zindex-2 mx-auto rounded-5 fit-cover"
-                   src="assets\img\landing\yoga-studio\trainers\sample3.jpeg" width="636" alt="Image" data-aos="fade-in"
-                   data-aos-duration="400" data-aos-offset="250">
-            </a>
-          </div>
-          <div class="col-md-5 col-xl-4 offset-lg-1" data-aos="fade-up" data-aos-duration="400" data-aos-offset="170">
-            <div class="ps-md-3 ps-lg-0">
-              <div class="d-flex align-items-center">
-                <h2 class="h4">아침고요수목원</h2>
-                <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4">
-                  <i class="ai ai-bookmark"></i>
-                </button>
-              </div>
-              <p class="fs-sm pb-1 pb-lg-1 mb-1">수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다.</p>
-              <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
-                <h6 class="stext-body mb-0 me-3"><i class="ai ai-compass"></i> 주소:</h6>
-                <p class="mb-0">주소를 입력하세요</p>
-              </div>
-              <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
-                <h6 class="stext-body mb-0 me-3"><i class="ai ai-phone-call"></i> 전화번호:</h6>
-                <p class="mb-0">전화번호를 입력하세요</p>
-              </div>
-              <a class="btn btn-sm btn-outline-dark rounded-pill mt-4" href="portfolio-single-v1.html">Read the full story</a>
-            </div>
-          </div>
-        </div>
-        <!-- Item 수정완-->
-        <div class="row align-items-center pt-xl-2 pb-5 mb-lg-2 mb-xl-3 mb-xxl-4">
-          <div class="col-md-7 col-lg-6 mb-4 mb-md-0">
-            <a class="d-block position-relative image-container" href="portfolio-single-v1.html">
-              <div class="rounded-5 position-absolute top-0 start-0 w-100 h-100" style="background-color: #d7e4f4;"
-                   data-aos="zoom-in" data-aos-duration="600" data-aos-offset="250"></div>
-              <img class="d-block position-relative zindex-2 mx-auto rounded-5 fit-cover"
-                   src="assets\img\landing\yoga-studio\trainers\sample2.jpeg" width="636" alt="Image" data-aos="fade-in"
-                   data-aos-duration="400" data-aos-offset="250">
-            </a>
-          </div>
-          <div class="col-md-5 col-xl-4 offset-lg-1" data-aos="fade-up" data-aos-duration="400" data-aos-offset="170">
-            <div class="ps-md-3 ps-lg-0">
-              <div class="d-flex align-items-center">
-                <h2 class="h4">아침고요수목원</h2>
-                <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4">
-                  <i class="ai ai-bookmark"></i>
-                </button>
-              </div>
-              <p class="fs-sm pb-1 pb-lg-1 mb-1">수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다.</p>
-              <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
-                <h6 class="stext-body mb-0 me-3"><i class="ai ai-compass"></i> 주소:</h6>
-                <p class="mb-0">주소를 입력하세요</p>
-              </div>
-              <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
-                <h6 class="stext-body mb-0 me-3"><i class="ai ai-phone-call"></i> 전화번호:</h6>
-                <p class="mb-0">전화번호를 입력하세요</p>
-              </div>
-              <a class="btn btn-sm btn-outline-dark rounded-pill mt-4" href="portfolio-single-v1.html">Read the full story</a>
-            </div>
-          </div>
-        </div>
-        <!-- Item-->
-        <div class="row align-items-center pt-xl-2 pb-5 mb-lg-2 mb-xl-3 mb-xxl-4">
-          <div class="col-md-7 col-lg-6 mb-4 mb-md-0">
-            <a class="d-block position-relative image-container" href="portfolio-single-v1.html">
-              <div class="rounded-5 position-absolute top-0 start-0 w-100 h-100" style="background-color: #d7e4f4;"
-                   data-aos="zoom-in" data-aos-duration="600" data-aos-offset="250"></div>
-              <img class="d-block position-relative zindex-2 mx-auto rounded-5 fit-cover"
-                   src="assets\img\landing\yoga-studio\trainers\sample3.jpeg" width="636" alt="Image" data-aos="fade-in"
-                   data-aos-duration="400" data-aos-offset="250">
-            </a>
-          </div>
-          <div class="col-md-5 col-xl-4 offset-lg-1" data-aos="fade-up" data-aos-duration="400" data-aos-offset="170">
-            <div class="ps-md-3 ps-lg-0">
-              <div class="d-flex align-items-center">
-                <h2 class="h4">아침고요수목원</h2>
-                <button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4">
-                  <i class="ai ai-bookmark"></i>
-                </button>
-              </div>
-              <p class="fs-sm pb-1 pb-lg-1 mb-1">수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다 수목원 또는 식물원 개요를 적는 곳입니다.</p>
-              <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
-                <h6 class="stext-body mb-0 me-3"><i class="ai ai-compass"></i> 주소:</h6>
-                <p class="mb-0">주소를 입력하세요</p>
-              </div>
-              <div class="d-flex align-items-center pt-2 pt-lg-3 mt-1">
-                <h6 class="stext-body mb-0 me-3"><i class="ai ai-phone-call"></i> 전화번호:</h6>
-                <p class="mb-0">전화번호를 입력하세요</p>
-              </div>
-              <a class="btn btn-sm btn-outline-dark rounded-pill mt-4" href="portfolio-single-v1.html">Read the full story</a>
-            </div>
-          </div>
-        </div>
+        </c:forEach>
       </section>
     </main>
 

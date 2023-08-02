@@ -5,22 +5,29 @@
 <mapper namespace="com.multi.bbs.Arboretum.model.mapper.arboretumMapper">
 
 	<select id="selectArboretumList" parameterType="map" resultType="TourVO">
-			SELECT  *,
-			case when cat3 ='A01010700' then '식물원'
-				 end as Arboretum
-		FROM Tourlist
-		WHERE 1 = 1 
-		<if test="searchValue != null">
-			AND title LIKE '%${searchValue}%' 
-		</if>
-		<if test='cat3 != null and cat3 != "etc"'>
-			AND cat3 = #{cat3}
-		</if>
-		<if test='cat3 != null and cat3 == "etc"'>
-			AND cat3 NOT IN ('A01010700','A01010400','A01010100','A01010600')
-		</if>
-		ORDER BY contentid LIMIT ${limit} OFFSET ${offset}
+	    SELECT *
+	    FROM Tourlist
+	    WHERE cat3 = 'A01010700'
+	    <if test="searchValue != null">
+	        AND title LIKE '%${searchValue}%' 
+	    </if>
+	    ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
+			
+	<select id="selectArboretumCount" parameterType="map" resultType="int">
+	    SELECT COUNT(*)
+	    FROM Tourlist
+	    WHERE cat3 = 'A01010700'
+	    <if test="searchValue != null and searchValue != ''">
+	        AND title LIKE CONCAT('%', #{searchValue}, '%')
+	    </if>
+	</select>
+	
+	<select id="selectByArboretumId" parameterType="int" resultType="TourVO">
+		SELECT *
+		FROM Tourlist
+		WHERE contentid = #{id}
+		</select>
 
 
 </mapper>

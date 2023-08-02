@@ -20,6 +20,9 @@ public String mapy;
 public String overview;
 public String mlevel;
 
+//추가코드 
+public String infocenter;
+
 public TourVO() {
 	super();
 	// TODO Auto-generated constructor stub
@@ -211,7 +214,17 @@ public void setMlevel(String mlevel) {
 	this.mlevel = mlevel;
 }
 
+
+//추가코드
+public String getInfocenter() {
+	return infocenter;
 }
+
+public void setInfocenter(String infocenter) {
+	this.infocenter = infocenter;
+}
+}
+
 
 
 //contentid          ,

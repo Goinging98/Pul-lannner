@@ -586,7 +586,7 @@ CREATE TABLE MANAGELIST (
     
  select * from MANAGELIST;
  
- SELECT COUNT(*) FROM MANAGELIST WHERE STATUS= 'Y'
+ SELECT COUNT(*) FROM MANAGELIST WHERE STATUS= 'Y';
  
  
  
@@ -601,7 +601,7 @@ CREATE TABLE MANAGELIST (
   CREATE TABLE Tourlist(
 	contentid      	INT,
 	contenttypeid      VARCHAR(100),
-	homepage           VARCHAR(200),
+	homepage           VARCHAR(2000),
 	tel                VARCHAR(100),
 	title              VARCHAR(200),
 	firstimage         VARCHAR(200),
@@ -623,7 +623,7 @@ CREATE TABLE MANAGELIST (
 	chkcreditcard       VARCHAR(100),
 	chkpet        		VARCHAR(100),
 	expagerange         VARCHAR(100),
-	expguide           	VARCHAR(100),
+	expguide           	VARCHAR(2000),
 	heritage1           VARCHAR(100),
 	heritage2           VARCHAR(100),
 	heritage3   		VARCHAR(100),
@@ -637,6 +637,6 @@ CREATE TABLE MANAGELIST (
 );
 
 DESC Tourlist;
-
+DROP TABLE Tourlist;
 select * from Tourlist;
 
