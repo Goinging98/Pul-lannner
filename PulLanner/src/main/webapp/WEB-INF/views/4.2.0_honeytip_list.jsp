@@ -31,72 +31,58 @@
 				<c:forEach var="item" items="${list}">
               <article class="masonry-grid-item">
                 <div class="card border-0 bg-secondary">
-                  <div class="card-body pb-4">
-                    <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted"><fmt:formatDate type="both" dateStyle="full" value="${item.createDate}"/></span></div>
+                  <div class="card-body pb-4"><a href="${path}/HoneyTip/view?no=${item.BNo}"><img class="card-img-top" src="honey/file/${item.renamedFileName}"></a>
+                    <div class="d-flex align-items-center mb-4 mt-1"><span class="fs-sm text-muted"><fmt:formatDate type="both" dateStyle="full" value="${item.createDate}"/></span></div>
                     <h3 class="h4 card-title"><a href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a></h3>
                     <p class="card-text">${item.content}</p>
                   </div>
                   <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#">
-                      <h6 class="ps-3 mb-0">${item.id}</h6></a></div>
+                      <h6 class="ps-3 mb-0">${item.name}</h6></a></div>
                 </div>
               </article>
               </c:forEach>
               </c:if>
-              <!-- Post-->
-              <article class="masonry-grid-item">
-                <div class="card border-0 bg-secondary"><a href="blog-single-v3.html"><img class="card-img-top" src="resources/assets/img/blog/grid/01.jpg" alt="Post image"></a>
-                  <div class="card-body pb-4">
-                    <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">12 hours ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Books</a></div>
-                    <h3 class="h4 card-title"><a href="blog-single-v3.html">세번 죽이고 네번째 분양 드디어 성공</a></h3>
-                    <p class="card-text">Vulputate auctor lacus imperdiet facilisi tristique nisl pulvinar porta diam duis odio</p>
-                  </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/06.jpg" width="48" alt="Post author">
-                      <h6 class="ps-3 mb-0">Jenny Wilson</h6></a></div>
-                </div>
-              </article>
-              <!-- Post-->
-              <article class="masonry-grid-item">
-                <div class="card border-0 bg-secondary">
-                  <div class="card-body pb-4">
-                    <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">July 16, 2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Inspiration</a></div>
-                    <h3 class="h4 card-title"><a href="blog-single-v3.html">분갈이는 함부로 해선 안돼요</a></h3>
-                    <p class="card-text">Pharetra in morbi quis is massa maecenas arcu vulputate pulvinar elit non nullage a, duis tortor mi massa ipsum in eu eu eget libero pulvinar elit vulputate...</p>
-                  </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/12.jpg" width="48" alt="Post author">
-                      <h6 class="ps-3 mb-0">Guy Hawkins</h6></a></div>
-                </div>
-              </article>
-
- 
+               
             </div>
             
             <!-- Pagination-->
-            <div class="row gy-3 align-items-center">
-              <div class="col col-md-4 col-6 order-md-1 order-1">
-                <div class="d-flex align-items-center"><span class="text-muted fs-sm">Show</span>
-                  <select class="form-select form-select-flush w-auto">
-                    <option value="6">6</option>
-                    <option value="9">9</option>
-                    <option value="12">12</option>
-                    <option value="24">24</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col col-md-4 col-12 order-md-2 order-3 text-center">
-                <button class="btn btn-primary w-md-auto w-100" type="button">Load more posts</button>
-              </div>
-              <div class="col col-md-4 col-6 order-md-3 order-2">
-                <nav aria-label="Page navigation">
-                  <ul class="pagination pagination-sm justify-content-end">
-                    <li class="page-item active" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
+			<div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
+				<div class="col col-md-4 col-6 order-md-1 order-1"></div>
+				<div class="col col-md-4 col-6 order-md-3 order-2">
+					<nav aria-label="Page navigation">
+						<ul class="pagination justify-content-end">
+							<li class="page-item active" aria-current="page">
+								<!-- 처음 페이지 -->
+							<li class="page-item">
+								<button class="page-link" onclick="movePage(1)">&lt;&lt;</button>
+							</li>
+							<!-- 이전 페이지 -->
+							<li class="page-item">
+								<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+							</li>
+							<!-- 10개 페이지가 보여지는 부분 -->
+							<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
+								<c:if test="${status.current == pageInfo.currentPage}">
+									<li class="page-item active" aria-current="page">
+										<button class="page-link" disabled>${status.current}</button>
+									</li>
+								</c:if>
+								<c:if test="${status.current != pageInfo.currentPage}">
+									<button class="page-link" onclick="movePage(${status.current})">${status.current}</button>
+								</c:if>
+							</c:forEach>
+							<!-- 다음 페이지 -->
+							<li class="page-item">
+								<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+							</li>
+							<!-- 마지막 페이지 -->
+							<li class="page-item">
+								<button class="page-link" onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
           </div>
           
           <!-- Sidebar (offcanvas on sreens < 992px)-->
@@ -108,16 +94,35 @@
               </div>
               <div class="offcanvas-body">
                 <!-- Search box-->
-                <div class="position-relative mb-4 mb-lg-5"><i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                  <input class="form-control ps-5" type="search" placeholder="Enter keyword">
+					<form name="searchForm" action="${path}/HoneyTip/list" method="get">
+						<input type="hidden" name="page" value="1">
+						<div class="position-relative mb-4 mb-lg-5">
+                <label>
+					<input type="radio" name="searchType" value="title" 
+									${searchType == 'title' ? 'checked' : ''}> 제목
+				</label>
+				<label>
+					<input type="radio" name="searchType" value="content" 
+									${searchType == 'content' ? 'checked' : ''}> 내용
+				</label>
+				<label>
+					<input type="radio" name="searchType" value="name" 
+									${searchType == 'name' ? 'checked' : ''}> 작성자
+				</label>
+               <div class="input-group input-group-sm rounded-pill">
+						<span class="input-group-text"> <i class="ai-search"></i></span> 
+						<input type="search" id="searchValue" name="searchValue" value="${param.searchValue}" class="form-control" placeholder="검색">
+						<button type="submit" class="btn btn-primary rounded-pill">검색</button>
+					</div>
                 </div>
-                
-                <!-- Category links-->
+					</form>
+						</div>
+
+					<!-- Category links-->
                 <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
                 <ul class="nav flex-column mb-lg-5 mb-4">
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="#">All categories<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(${proudBoardCount})</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(${honeyBoardCount})</span></a></li>
                   <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
                 </ul>
                 <!-- Featured posts widget-->
@@ -172,3 +177,29 @@
   </body>
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+   
+   <script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+	
+	$(document).ready(() => {
+		$("#btnUpdate").click((e) => {
+			location.href = "${path}/board/update?no=${board.BNo}";
+		});
+		
+		$("#btnDelete").click((e) => {
+			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
+				location.replace("${path}/board/delete?no=${board.BNo}");
+			}
+		});
+	});
+	
+	function fileDownload(oriname, rename) {
+		const url = "/board/fileDown";
+		let oName = encodeURIComponent(oriname);
+		let rName = encodeURIComponent(rename);
+		location.assign(url + "?oriname=" + oName + "&rename=" + rName);
+	}
+</script>

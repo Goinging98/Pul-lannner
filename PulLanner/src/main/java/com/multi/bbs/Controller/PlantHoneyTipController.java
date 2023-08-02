@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,10 @@ public class PlantHoneyTipController {
 	@Autowired
 	private HoneyBoardService service;
 	
-	final static private String savePath = "/Users/kimjoohwan/Desktop/dev";
+	@Autowired
+	private ResourceLoader resourceLoader; // 파일 다운로드 기능시 활용하는 loader
+	
+	final static private String savePath = "/Users/kimjoohwan/Desktop/Dev/";
 	
 	@GetMapping("/list")
 	public String HoneyTip(Model model, @RequestParam Map<String, String> paramMap) {
@@ -63,7 +67,7 @@ public class PlantHoneyTipController {
 		} catch (Exception e) {}
 		
 		int honeyBoardCount = service.getHoneyBoardCount(searchMap);
-		PageInfo pageInfo = new PageInfo(page, 10, honeyBoardCount, 5);
+		PageInfo pageInfo = new PageInfo(page, 10, honeyBoardCount, 6);
 		List<HoneyTipBoard> list = service.getHoneyBoardList(pageInfo, searchMap);
 		
 		model.addAttribute("list", list);
@@ -236,37 +240,38 @@ public class PlantHoneyTipController {
 		return "common/msg";
 	}
 	
-	@GetMapping("/file/{fileName}")
-	@ResponseBody
-	public Resource downloadImage(@PathVariable("fileName") String fileName, Model model) throws IOException {
-		return new UrlResource("file:" + savePath + fileName);
-	}
-	
-	@RequestMapping("/fileDown")
-	public ResponseEntity<Resource> fileDown(@RequestParam("oriname") String oriname,
-			@RequestParam("rename") String rename, @RequestHeader(name = "user-agent") String userAgent) {
-		try {
-			Resource resource = new UrlResource("file:" + savePath + rename + "");
-			String downName = null;
-
-			// 인터넷 익스플로러 인 경우
-			boolean isMSIE = userAgent.indexOf("MSIE") != -1 || userAgent.indexOf("Trident") != -1;
-
-			if (isMSIE) { // 익스플로러 처리하는 방법
-				downName = URLEncoder.encode(oriname, "UTF-8").replaceAll("\\+", "%20");
-			} else {
-				downName = new String(oriname.getBytes("UTF-8"), "ISO-8859-1"); // 크롬
+	// 첨부이미지(스프링부트)
+			@GetMapping("/honey/file/{fileName}") // 이미지 출력 경로 ex) 3.3_plant-parcel-out.jsp  42번째줄
+			@ResponseBody
+			public Resource downloadImage(@PathVariable("fileName") String fileName, Model model) throws IOException {
+				return new UrlResource("file:" + savePath + fileName);
 			}
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + downName + "\"")
-					.header(HttpHeaders.CONTENT_LENGTH, String.valueOf(resource.contentLength()))
-					.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM.toString()).body(resource);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			
+			@RequestMapping("/honey/fileDown")
+			public ResponseEntity<Resource> fileDown(@RequestParam("oriname") String oriname,
+					@RequestParam("rename") String rename, @RequestHeader(name = "user-agent") String userAgent) {
+				try {
+					Resource resource = new UrlResource("file:" + savePath + rename + "");
+					String downName = null;
 
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // 실패했을 경우
-	}
+					// 인터넷 익스플로러 인 경우
+					boolean isMSIE = userAgent.indexOf("MSIE") != -1 || userAgent.indexOf("Trident") != -1;
+
+					if (isMSIE) { // 익스플로러 처리하는 방법
+						downName = URLEncoder.encode(oriname, "UTF-8").replaceAll("\\+", "%20");
+					} else {
+						downName = new String(oriname.getBytes("UTF-8"), "ISO-8859-1"); // 크롬
+					}
+					return ResponseEntity.ok()
+							.header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + downName + "\"")
+							.header(HttpHeaders.CONTENT_LENGTH, String.valueOf(resource.contentLength()))
+							.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM.toString()).body(resource);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // 실패했을 경우
+			}
 
 
 }

@@ -37,48 +37,9 @@
             <!-- Post content-->
             
             <!-- Slider with fade transition between slides -->
-            <div class="swiper" data-swiper-options='{
-              "effect": "fade",
-              "loop": true,
-              "navigation": {
-                "prevEl": ".btn-prev",
-                "nextEl": ".btn-next"
-              }
-            }'>
-              <div class="swiper-wrapper">
-
-                <!-- Item -->
-                <div class="swiper-slide bg-light">
-                  <div class="ratio ratio-16x9 bg-faded-info">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center display-5">First</div>
-                  </div>
-                </div>
-
-                <!-- Item -->
-                <div class="swiper-slide bg-light">
-                  <div class="ratio ratio-16x9 bg-faded-danger">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center display-5">Second</div>
-                  </div>
-                </div>
-
-                <!-- Item -->
-                <div class="swiper-slide bg-light">
-                  <div class="ratio ratio-16x9 bg-faded-warning">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center display-5">Third</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Prev button -->
-              <button type="button" class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle">
-                <i class="ai-arrow-left"></i>
-              </button>
-
-              <!-- Next button -->
-              <button type="button" class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle">
-                <i class="ai-arrow-rigsht"></i>
-              </button>
-            </div>
+            <!-- 여기 수정해야 합니다. 8월 3일 목요일 -->
+            <div style="background-image: url('/honey/file/${honeyBoard.renamedFileName}');"></div>
+            <p>${honeyBoard.renamedFileName}</p>
             <p class="fs-lg pt-2 pt-sm-3">${honeyBoard.content}</p>
             <hr>
             

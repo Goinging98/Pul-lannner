@@ -172,8 +172,11 @@
 					<input type="radio" name="searchType" value="name" 
 									${searchType == 'name' ? 'checked' : ''}> 작성자
 				</label>
-                <i class="ai-search position-absolute top-50 bottom-50 start-0 translate-middle-y ms-3"></i>
-                  <input class="form-control ps-5" type="text" id="searchValue" name="searchValue" class="input_text" value="${param.searchValue}" placeholder="search"/>
+				<div class="input-group input-group-sm rounded-pill">
+						<span class="input-group-text"> <i class="ai-search"></i></span> 
+						<input type="search" id="searchValue" name="searchValue" value="${param.searchValue}" class="form-control" placeholder="검색">
+						<button type="submit" class="btn btn-primary rounded-pill">검색</button>
+					</div>
                 </div>
                 <!-- Category links-->
                 <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
