@@ -4,6 +4,8 @@
 
 <mapper namespace="com.multi.bbs.Arboretum.model.mapper.arboretumMapper">
 
+
+<!-- =======================식목원 관련============================= -->	
 	<select id="selectArboretumList" parameterType="map" resultType="TourVO">
 	    SELECT *
 	    FROM Tourlist
@@ -27,7 +29,91 @@
 		SELECT *
 		FROM Tourlist
 		WHERE contentid = #{id}
-		</select>
+	</select>
+	
+	
+<!-- =======================산/숲 관련============================= -->
+	<select id="selectMountList" parameterType="map" resultType="TourVO">
+	    SELECT *
+	    FROM Tourlist
+	    WHERE cat3 = 'A01010400'
+	    <if test="searchValue != null">
+	        AND title LIKE '%${searchValue}%' 
+	    </if>
+	    ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
+	</select>	
+	
+	<select id="selectMountCount" parameterType="map" resultType="int">
+	    SELECT COUNT(*)
+	    FROM Tourlist
+	    WHERE cat3 = 'A01010400'
+	    <if test="searchValue != null and searchValue != ''">
+	        AND title LIKE CONCAT('%', #{searchValue}, '%')
+	    </if>
+	</select>
+	
+	<select id="selectMountId" parameterType="int" resultType="TourVO">
+		SELECT *
+		FROM Tourlist
+		WHERE contentid = #{id}
+	</select>
+	
+
+
+
+<!-- =================공원(국립공원, 도립공원, 군립공원) 관련===================== -->
+	<select id="selectParkList" parameterType="map" resultType="TourVO">
+		SELECT *
+		FROM Tourlist
+		WHERE cat3 IN ('A01010100', 'A01010200', 'A01020300')
+		<if test="searchValue != null">
+		    AND title LIKE '%${searchValue}%' 
+		</if>
+		    ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
+	</select>
+	
+	<select id="selectParkCount" parameterType="map" resultType="int">
+	    SELECT COUNT(*)
+	    FROM Tourlist
+	    WHERE cat3 IN ('A01010100', 'A01010200', 'A01020300')
+	    <if test="searchValue != null and searchValue != ''">
+	        AND title LIKE CONCAT('%', #{searchValue}, '%')
+	    </if>
+	</select>
+	
+	<select id="selectParkId" parameterType="int" resultType="TourVO">
+		SELECT *
+		FROM Tourlist
+		WHERE contentid = #{id}
+	</select>
+	
+	
+	
+<!-- =================휴양림 관련===================== -->
+	<select id="selectForestLodgeList" parameterType="map" resultType="TourVO">
+	    SELECT *
+	    FROM Tourlist
+	    WHERE cat3 = 'A01010600'
+	    <if test="searchValue != null">
+	        AND title LIKE '%${searchValue}%' 
+	    </if>
+	    ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
+	</select>	
+	
+	<select id="selectForestLodgeCount" parameterType="map" resultType="int">
+	    SELECT COUNT(*)
+	    FROM Tourlist
+	    WHERE cat3 = 'A01010600'
+	    <if test="searchValue != null and searchValue != ''">
+	        AND title LIKE CONCAT('%', #{searchValue}, '%')
+	    </if>
+	</select>
+	
+	<select id="selectForestLodgeId" parameterType="int" resultType="TourVO">
+		SELECT *
+		FROM Tourlist
+		WHERE contentid = #{id}
+	</select>
 
 
 </mapper>

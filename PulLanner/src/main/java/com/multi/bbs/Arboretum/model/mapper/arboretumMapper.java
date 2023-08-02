@@ -19,9 +19,34 @@ public interface arboretumMapper {
 	
 	TourVO selectByArboretumId(int id);
 	
+
+	
+	//----------------산/숲 관련-------------------------
+	
+	List<TourVO> selectMountList(Map<String, String> searchMap);
+	
+	int selectMountCount(Map<String, String> param);
+	
+	TourVO selectMountId(int id);
 	
 	
 	
-	//--------------------
+	//----------------휴양림 관련----------------------------
+	
+	List<TourVO> selectParkList(Map<String, String> searchMap);
+	
+	int selectParkCount(Map<String, String> param);
+	
+	TourVO selectParkId(int id);
+	
+	
+	
+	//----------------휴양림 관련----------------------------
+	
+	List<TourVO> selectForestLodgeList(Map<String, String> searchMap);
+	
+	int selectForestLodgeCount(Map<String, String> param);
+	
+	TourVO selectForestLodgeId(int id);
 	
 }

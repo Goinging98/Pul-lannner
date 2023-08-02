@@ -22,6 +22,7 @@ public String mlevel;
 
 //추가코드 
 public String infocenter;
+public String category;
 
 public TourVO() {
 	super();
@@ -223,8 +224,9 @@ public String getInfocenter() {
 public void setInfocenter(String infocenter) {
 	this.infocenter = infocenter;
 }
-}
 
+
+}
 
 
 //contentid          ,

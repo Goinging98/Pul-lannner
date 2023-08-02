@@ -35,7 +35,56 @@ public class arboretumService {
 	
 	
 	
+	//-----------------------산/숲 관련-----------------------------------------
+	public List<TourVO> selectMountList(PageInfo pageInfo, Map<String, String> searchMap) {
+		searchMap.put("limit", "" + pageInfo.getListLimit());
+		searchMap.put("offset", "" + (pageInfo.getStartList() - 1));
+	    return mapper.selectMountList(searchMap);
+	}
 	
-	//--------------------------------
+	public int selectMountCount(Map<String, String> searchMap) {
+		 return mapper.selectMountCount(searchMap);
+	}
+	
+	public TourVO selectMountId(int id) {
+		return mapper.selectMountId(id);	
+	}
+	
+	
+	//-------------------공원(국립공원, 도립공원, 군립공원) 관련------------------------------
+	public List<TourVO> selectParkList(PageInfo pageInfo, Map<String, String> searchMap) {
+		searchMap.put("limit", "" + pageInfo.getListLimit());
+		searchMap.put("offset", "" + (pageInfo.getStartList() - 1));
+	    return mapper.selectParkList(searchMap);
+	}
+	
+	public int selectParkCount(Map<String, String> searchMap) {
+		 return mapper.selectParkCount(searchMap);
+	}
+	
+	public TourVO selectParkId(int id) {
+		return mapper.selectParkId(id);	
+	}
+	
+	
+	
+	//-------------------휴양림 관련------------------------------
+	public List<TourVO> selectForestLodgeList(PageInfo pageInfo, Map<String, String> searchMap) {
+		searchMap.put("limit", "" + pageInfo.getListLimit());
+		searchMap.put("offset", "" + (pageInfo.getStartList() - 1));
+	    return mapper.selectForestLodgeList(searchMap);
+	}
+	
+	public int selectForestLodgeCount(Map<String, String> searchMap) {
+		 return mapper.selectForestLodgeCount(searchMap);
+	}
+	
+	public TourVO selectForestLodgeId(int id) {
+		return mapper.selectForestLodgeCount(id);	
+	}
+	
 
+	
+	
+	
 }

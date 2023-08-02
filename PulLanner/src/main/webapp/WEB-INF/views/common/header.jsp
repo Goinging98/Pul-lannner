@@ -187,7 +187,7 @@
 								<li><a class="dropdown-item" href="${path}/arboretumList">식물원</a></li>
 								<li><a class="dropdown-item" href="${path}/mountainList">숲/산</a></li>
 								<li><a class="dropdown-item" href="${path}/parkList">국립공원</a></li>
-								<li><a class="dropdown-item" href="${path}/forestList">휴양림</a></li>
+								<li><a class="dropdown-item" href="${path}/forestLodgeList">휴양림</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
