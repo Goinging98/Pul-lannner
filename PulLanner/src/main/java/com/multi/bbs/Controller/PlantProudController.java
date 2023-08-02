@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,10 @@ public class PlantProudController {
 	@Autowired
 	private ProudBoardService service;
 	
-	final static private String savePath = "/Users/kimjoohwan/Desktop/dev";	
+	@Autowired
+	private ResourceLoader resourceLoader; // 파일 다운로드 기능시 활용하는 loader
+	
+	final static private String savePath = "/Users/kimjoohwan/Desktop/Dev/";	
 	
 	@GetMapping("/PlantProud")
 	public String list(Model model, @RequestParam Map<String, String> paramMap) {
@@ -62,7 +66,7 @@ public class PlantProudController {
 		int proudBoardCount = service.getProudBoardCount(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 10, proudBoardCount, 5); // 게시글이 보여지는 갯수 = 10
 		List<ProudBoard> list = service.getProudBoardList(pageInfo, searchMap);
-//		System.out.println("list : " + list);
+		System.out.println("list : " + list);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("param", paramMap);
@@ -128,37 +132,38 @@ public class PlantProudController {
 		return "common/msg";
 	}
 	
-	@GetMapping("/file/{fileName}")
-	@ResponseBody
-	public Resource downloadImage(@PathVariable("fileName") String fileName, Model model) throws IOException {
-		return new UrlResource("file:" + savePath + fileName);
-	}
-	
-	@RequestMapping("/fileDown")
-	public ResponseEntity<Resource> fileDown(@RequestParam("oriname") String oriname,
-			@RequestParam("rename") String rename, @RequestHeader(name = "user-agent") String userAgent) {
-		try {
-			Resource resource = new UrlResource("file:" + savePath + rename + "");
-			String downName = null;
-
-			// 인터넷 익스플로러 인 경우
-			boolean isMSIE = userAgent.indexOf("MSIE") != -1 || userAgent.indexOf("Trident") != -1;
-
-			if (isMSIE) { // 익스플로러 처리하는 방법
-				downName = URLEncoder.encode(oriname, "UTF-8").replaceAll("\\+", "%20");
-			} else {
-				downName = new String(oriname.getBytes("UTF-8"), "ISO-8859-1"); // 크롬
-			}
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + downName + "\"")
-					.header(HttpHeaders.CONTENT_LENGTH, String.valueOf(resource.contentLength()))
-					.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM.toString()).body(resource);
-		} catch (Exception e) {
-			e.printStackTrace();
+	// 첨부이미지(스프링부트)
+		@GetMapping("/proud/file/{fileName}") // 이미지 출력 경로 ex) 3.3_plant-parcel-out.jsp  42번째줄
+		@ResponseBody
+		public Resource downloadImage(@PathVariable("fileName") String fileName, Model model) throws IOException {
+			return new UrlResource("file:" + savePath + fileName);
 		}
+		
+		@RequestMapping("/proud/fileDown")
+		public ResponseEntity<Resource> fileDown(@RequestParam("oriname") String oriname,
+				@RequestParam("rename") String rename, @RequestHeader(name = "user-agent") String userAgent) {
+			try {
+				Resource resource = new UrlResource("file:" + savePath + rename + "");
+				String downName = null;
 
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // 실패했을 경우
-	}
+				// 인터넷 익스플로러 인 경우
+				boolean isMSIE = userAgent.indexOf("MSIE") != -1 || userAgent.indexOf("Trident") != -1;
+
+				if (isMSIE) { // 익스플로러 처리하는 방법
+					downName = URLEncoder.encode(oriname, "UTF-8").replaceAll("\\+", "%20");
+				} else {
+					downName = new String(oriname.getBytes("UTF-8"), "ISO-8859-1"); // 크롬
+				}
+				return ResponseEntity.ok()
+						.header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + downName + "\"")
+						.header(HttpHeaders.CONTENT_LENGTH, String.valueOf(resource.contentLength()))
+						.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM.toString()).body(resource);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // 실패했을 경우
+		}
 	
 }
 	

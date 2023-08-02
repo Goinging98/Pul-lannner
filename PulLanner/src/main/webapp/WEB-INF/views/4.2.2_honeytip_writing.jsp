@@ -18,29 +18,35 @@
             <li class="breadcrumb-item active" aria-current="page">글쓰기</li>
           </ol>
         </nav>
+        
+        <!-- 글 작성 -->
         <div class="row">
           <div style="padding-left: 100px; padding-right: 100px;">
+        <form action="${path}/HoneyTip/write" method="post" enctype="multipart/form-data" >
+        <input type="hidden" name="id" value="${loginMember.id}" readonly class="input-text">
             <h1 class="pb-2 pb-lg-3">글쓰기</h1>
             <div class="mb-3">
-              <label for="text-input" class="form-label">Title</label>
-              <input class="form-control" type="text" id="text-input" value="title">
+              <label class="form-label">제목</label>
+              <input class="form-control" type="text" name="title" id="fl-text" placeholder="Title"> 
             </div>
+            
             <!-- File input -->
             <div class="mb-3">
-              <label for="file-input" class="form-label">File</label>
-              <input class="form-control" type="file" id="file-input">
+              <label for="file-input" class="form-label">사진</label>
+              <input class="form-control" name="upfile" type="file" id="file-input">
             </div>
+            
             <!-- Textarea -->
             <div class="mb-3">
-              <label for="textarea-input" class="form-label">Content</label>
-              <textarea class="form-control" id="textarea-input" rows="20">꿀팁을 작성해주세요</textarea>
+              <label for="textarea-input" class="form-label">내용</label>
+              <textarea class="form-control" name="content" id="fi-textarea" rows="20" placeholder="꿀팁을 작성해주세요"></textarea>
             </div>
-            <button type="button" class="btn btn-primary" style="float:right;">등록</button>
+            <button type="submit" class="btn btn-primary" style="float:right;">등록</button>
+            <button type="reset" class="btn btn-primary" style="float:right;">취소</button>
+        </form>
           </div>
         </div>
-      </div>
     </section>
-  </main>
 
     <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll>
       <svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

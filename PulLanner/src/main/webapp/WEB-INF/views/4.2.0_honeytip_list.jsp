@@ -32,11 +32,11 @@
               <article class="masonry-grid-item">
                 <div class="card border-0 bg-secondary">
                   <div class="card-body pb-4">
-                    <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">9 hours ago</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="">Brand strategy</a></div>
+                    <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted"><fmt:formatDate type="both" dateStyle="full" value="${item.createDate}"/></span></div>
                     <h3 class="h4 card-title"><a href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a></h3>
                     <p class="card-text">${item.content}</p>
                   </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/05.jpg" width="48" alt="Post author">
+                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#">
                       <h6 class="ps-3 mb-0">${item.id}</h6></a></div>
                 </div>
               </article>
@@ -66,42 +66,8 @@
                       <h6 class="ps-3 mb-0">Guy Hawkins</h6></a></div>
                 </div>
               </article>
-              <!-- Post-->
-              <article class="masonry-grid-item">
-                <div class="card border-0 bg-secondary">
-                  <div class="card-body pb-4">
-                    <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">June 10, 2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Ecommerce</a></div>
-                    <h3 class="h4 card-title"><a href="blog-single-v3.html">풀래너 모두 취업 잘 될거야!</a></h3>
-                    <p class="card-text">Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque proin lectus et massa fames ac scelerisque sit commodo dignissim...</p>
-                  </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/11.jpg" width="48" alt="Post author">
-                      <h6 class="ps-3 mb-0">Lillia Black</h6></a></div>
-                </div>
-              </article>
-              <!-- Post-->
-              <article class="masonry-grid-item">
-                <div class="card border-0 bg-secondary"><a href="blog-single-v3.html"><img class="card-img-top" src="resources/assets/img/blog/grid/02.jpg" alt="Post image"></a>
-                  <div class="card-body pb-4">
-                    <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">January 9, 2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Travel</a></div>
-                    <h3 class="h4 card-title"><a href="blog-single-v3.html">이번 프로젝트 잘해봅시다!</a></h3>
-                    <p class="card-text">Duis consectetur quis enim iaculis eu sagittis posuere imperdiet scelerisque</p>
-                  </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/05.jpg" width="48" alt="Post author">
-                      <h6 class="ps-3 mb-0">Darlene Robertson</h6></a></div>
-                </div>
-              </article>
-              <!-- Post-->
-              <article class="masonry-grid-item">
-                <div class="card border-0 bg-secondary">
-                  <div class="card-body pb-4">
-                    <div class="d-flex align-items-center mb-4 mt-n1"><span class="fs-sm text-muted">December 15,  2022</span><span class="fs-xs opacity-20 mx-3">|</span><a class="badge text-nav fs-xs border" href="#">Inspiration</a></div>
-                    <h3 class="h4 card-title"><a href="blog-single-v3.html">시들어 버린 잎사귀만 제거하는 방법</a></h3>
-                    <p class="card-text">Non purus odio venenatis velit sed tellus sed ultrices neque adipiscing sit turpis vel nisl lacus, aenean sed luctus adipiscing ut orci molestie arcu, sapien sed felis...</p>
-                  </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#"><img class="rounded-circle" src="resources/assets/img/avatar/06.jpg" width="48" alt="Post author">
-                      <h6 class="ps-3 mb-0">Jenny Wilson</h6></a></div>
-                </div>
-              </article>
+
+ 
             </div>
             
             <!-- Pagination-->

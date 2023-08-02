@@ -122,10 +122,10 @@ public class PlantHoneyTipController {
 
 		if(result > 0) {
 			model.addAttribute("msg", "게시글이 등록 되었습니다.");
-			model.addAttribute("location", "/HoneyTip");
+			model.addAttribute("location", "/HoneyTip/list");
 		}else {
 			model.addAttribute("msg", "게시글 작성에 실패하였습니다.");
-			model.addAttribute("location", "/HoneyTip");
+			model.addAttribute("location", "/HoneyTip/list");
 		}
 		
 		return "common/msg";
@@ -173,7 +173,7 @@ public class PlantHoneyTipController {
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			int honeyReplyNo, int honeyBoardNo
 			){
-		log.info("리플 삭제 요청");
+		log.info("리플 삭제 요청 : "+ honeyReplyNo);
 		int result = service.deleteHoneyReply(honeyReplyNo);
 		
 		if(result > 0) {

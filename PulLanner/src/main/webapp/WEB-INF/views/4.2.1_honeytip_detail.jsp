@@ -26,12 +26,13 @@
               <button type="button" class="btn btn-outline-info btn-icon rounded-pill" style="float:right; margin-left:20px" data-bs-toggle="tooltip" data-bs-placement="top" title="즐겨찾기">
                 <i class="ai-bookmark"></i>
               </button>
-              <button type="button" class="btn btn-secondary btn-icon" style="float:right" data-bs-toggle="tooltip" data-bs-placement="top" title="수정하기">
+              <button type="button" class="btn btn-secondary btn-icon" onclick="location.href='${path}/HoneyTip/write'" style="float:right" data-bs-toggle="tooltip" data-bs-placement="top" title="수정하기">
                 <i class="ai-edit-alt"></i>
               </button>
             </h1>
             <div class="d-flex flex-wrap align-items-center justify-content-between border-bottom mb-4">
-              <div class="d-flex align-items-center mb-4 me-4"><span class="fs-sm me-2">By:</span><a class="nav-link position-relative fw-semibold p-0" href="#author" data-scroll data-scroll-offset="80">${honeyBoard.name}<span class="d-block position-absolute start-0 bottom-0 w-100" style="background-color: currentColor; height: 1px;"></span></a></div>
+              <div class="d-flex align-items-center mb-4 me-4"><span class="fs-sm me-2">By:</span>
+              	<a class="nav-link position-relative fw-semibold p-0" href="#author" data-scroll data-scroll-offset="80">${honeyBoard.name}<span class="d-block position-absolute start-0 bottom-0 w-100" style="background-color: currentColor; height: 1px;"></span></a></div>
             </div>
             <!-- Post content-->
             
@@ -90,17 +91,19 @@
 					<c:forEach var="reply" items="${honeyReplyList}">
 						<div class="border-bottom pt-3 pb-2">
 							<div class="d-flex align-items-center pb-1 mb-3">
-								<img class="rounded-circle" src="/resources/assets/img/avatar/08.jpg"
-									width="48" alt="Comment author">
 								<div class="ps-3">
-									<h6 class="mb-0">${reply.id}</h6>
-									<span class="fs-sm text-muted"><fmt:formatDate type="both" value="${reply.createDate}" /></span>
+									<h6 class="mb-0">${reply.id}
+										<c:if	test="${!empty loginMember && (loginMember.id == reply.id 	|| loginMember.role == 'ROLE_ADMIN') }">
+											<button class="btn btn-outline-danger btn-icon" onclick="deleteHoneyReply('${reply.RNo}','${honeyBoard.BNo}');">
+												<i class="ai-trash"></i>
+											</button>
+										</c:if>
+									</h6>
+									<span class="fs-sm text-muted"><fmt:formatDate
+											type="both" value="${reply.createDate}" /></span>
 								</div>
 							</div>
-							<p class="pb-2 mb-0">${reply.content}</p>
-							<c:if	test="${!empty loginMember && (loginMember.id == reply.id 	|| loginMember.role == 'ROLE_ADMIN') }">
-								<button class="btn-delete"	onclick="deleteHoneyReply('${reply.RNo}','${honeyBoard.BNo}');">삭제</button>
-							</c:if>
+							<p class="pb-2 ps-3 mb-0">${reply.content}</p>
 						</div>
 					</c:forEach>
 				</c:if>
@@ -161,8 +164,8 @@
 	});
 	
 	function deleteHoneyReply(honeyReplyNo, honeyBoardNo){
-		var url = "${path}/HoneyTip/replyDel?RNo=";
-		var requestURL = url + honeyReplyNo +"&BNo=" + honeyBoardNo;
+		var url = "${path}/HoneyTip/replyDel?honeyReplyNo=";
+		var requestURL = url + honeyReplyNo +"&honeyBoardNo=" + honeyBoardNo;
 		location.replace(requestURL);
 	}
 	
