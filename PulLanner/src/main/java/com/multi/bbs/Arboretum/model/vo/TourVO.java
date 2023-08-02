@@ -199,7 +199,7 @@ public void setMapy(String mapy) {
 }
 
 public String getOverview() {
-	return overview;
+    return (overview == null || overview.isEmpty()) ? "정보없음" : overview;
 }
 
 public void setOverview(String overview) {
