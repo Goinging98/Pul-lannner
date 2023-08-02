@@ -45,9 +45,9 @@
 	<!--				  문제점 : parameterMap으로 되어 있었음 -> 안돌아갑니다.  -->
 	<select id="selectPlantshopList" parameterType="map" resultMap="plantshopResultMap">
 		SELECT 
-			P.PARCELNO, P.PARCELTITLE, M.ID, P.CRTDATE, P.PARCELIMG, P.PARCELCOUNT, P.PARCELPRICE, P.PARCELSTATUS
+			*
 		FROM PLANTSHOP P 
-		JOIN MEMBER M ON(P.PARCELNO = M.mNO)
+		JOIN MEMBER M ON(P.mNO = M.mNO)
 		WHERE 1 = 1
 		AND P.PARCELSTATUS = 'Y'
 		<if test="id != null">
@@ -66,7 +66,7 @@
 		SELECT 
 			COUNT(*)
 		FROM PLANTSHOP P 
-		JOIN MEMBER M ON(P.PARCELNO = M.mNO)
+		JOIN MEMBER M ON(P.mNO = M.mNO)
 		WHERE 1 = 1
 		AND P.PARCELSTATUS = 'Y'
 		<if test="id != null">

@@ -39,7 +39,7 @@
 								and (fn:contains(plantshop.parcelimg,'.jpg')
 									 or fn:contains(plantshop.parcelimg,'.png')
 									  or fn:contains(plantshop.parcelimg,'.jpeg'))}">
-                <img src="${path}/upload/plantshop/${plantshop.parcelimgedt}" class="d-block rounded-4" alt="Image #1">
+                <img src="${path}/plant/file/${plantshop.parcelimgedt}" class="d-block rounded-4" alt="Image #1">
                 </c:if>
               </a>
             </div>
@@ -222,10 +222,10 @@
                   <div class="border-bottom py-4 mt-2 mb-4">
                     <div class="d-flex align-items-center pb-1 mb-3"><!-- <img class="rounded-circle" src="assets/img/avatar/08.jpg" width="48" alt="Comment author"> -->
                       <div class="ps-3">
-                        <h6 class="mb-0">${plantparcelreply.writerId}</h6><span class="fs-sm text-muted"><fmt:formatDate type="both" value="${plantparcelreply.rcrtDate}"/></span>
+                        <h6 class="mb-0">${reply.writerId}</h6><span class="fs-sm text-muted"><fmt:formatDate type="both" value="${reply.rcrtDate}"/></span>
                       </div>
                     </div>
-                    <p class="pb-2 mb-0"><c:out value="${plantparcelreply.parcelrcontent}"/></p>
+                    <p class="pb-2 mb-0"><c:out value="${reply.parcelrcontent}"/></p>
                     <!--  <button class="nav-link fs-sm fw-semibold px-0 py-2" type="button">Reply<i class="ai-redo fs-xl ms-2"></i></button>-->
                   </div>
                   <!-- Comment-->

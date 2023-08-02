@@ -224,14 +224,10 @@
                   <div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;" data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
                     <a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html">
 
-                      <!-- Item -->
-                      <div class="swiper-slide rounded-2"  >
-                        <div class="rounded-2" style="background-image: url( 'https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDRfMTI2/MDAxNTgwNzc3MTk5MDAw.vMd7XrRNB_E0s9YGLufqnzc-CK_6keUUJ3bAuiVMBkgg.zoYguWvqLazUn7EUzXgRiTQ5RDnjkDq9_LZFgx5DJOcg.JPEG.flowervine/DSC03078.JPG?type=w800' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
-                      </div>
-                      </div>
+                      
                        <!-- Item -->
                        <div class="swiper-slide rounded-2"  >
-                      <div class="rounded-2" style="background-image: url( 'https://littledeep.com/wp-content/uploads/2020/12/illustration-plant-main-1024x607.png' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
+                      <div class="rounded-2" style="background-image: url('/plant/file/${item.parcelimgedt}' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product">
                       </div>
                       </div>
 
