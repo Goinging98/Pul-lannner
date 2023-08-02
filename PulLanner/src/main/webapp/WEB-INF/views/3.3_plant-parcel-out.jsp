@@ -222,7 +222,11 @@
                   <div class="border-bottom py-4 mt-2 mb-4">
                     <div class="d-flex align-items-center pb-1 mb-3"><!-- <img class="rounded-circle" src="assets/img/avatar/08.jpg" width="48" alt="Comment author"> -->
                       <div class="ps-3">
-                        <h6 class="mb-0">${reply.writerId}</h6><span class="fs-sm text-muted"><fmt:formatDate type="both" value="${reply.rcrtDate}"/></span>
+                        <h6 class="mb-0">${reply.writerId}</h6>
+                        <span class="fs-sm text-muted"><fmt:formatDate type="both" value="${reply.rcrtDate}"/></span>
+                        <c:if test="${ !empty loginMember && (loginMember.id == reply.writerId 	|| loginMember.role == 'ROLE_ADMIN') }">
+						<button class="btn btn-outline-danger btn-icon" onclick="deleteReply('${reply.parcelrno}','${plantshop.parcelno}');" ><i class="ai-trash"></i></button>
+						</c:if>
                       </div>
                     </div>
                     <p class="pb-2 mb-0"><c:out value="${reply.parcelrcontent}"/></p>
@@ -257,6 +261,10 @@
               </div>
 
             </section>
+              <div class="col-sm-12 pt-2 text-end">
+                <button class="btn btn-lg btn-primary" type="button" id="btnUpdate">수정</button>
+                <button class="btn btn-lg btn-danger" type="button" id="btnDelete">삭제</button>
+              </div>
       <!-- <section class="container pb-4 pb-md-5 mb-lg-4">
         <div class="bg-size-cover bg-repeat-0 bg-position-center rounded-1 mb-md-2 py-xl-4 py-xxl-5" style="background-image: url(assets/img/shop/single/01.jpg);">
           <div class="row py-lg-5">
@@ -512,3 +520,23 @@
     </main>
   </body>
   <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+  
+  <script type="text/javascript">
+	$(document).ready(() => {
+		$("#btnUpdate").click((e) => {
+			location.href = "${path}/selling_plant_update?parcelno=${plantshop.parcelno}";
+		});
+		
+		$("#btnDelete").click((e) => {
+			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
+				location.replace("${path}/deleteplantshop?parcelno=${plantshop.parcelno}");
+			}
+		});
+	});
+	
+	function deleteReply(parcelrno, parcelno){
+		var url = "${path}/plantshop/plantparcelreplyDel?parcelrno=";
+		var requestURL = url + parcelrno +"&parcelno=" + parcelno;
+		location.replace(requestURL);
+	}
+	</script>

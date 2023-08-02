@@ -31,116 +31,88 @@
          
   
           <div class="col-lg-12 col-xl-12 ">
-            <form class="row g-4 needs-validation" novalidate>
-
+            <form class="row g-4 needs-validation" action="${path}/selling_plant_update" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="parcelno" value="${plantshop.parcelno}">
+				<input type="hidden" name="parcelimg" value="${plantshop.parcelimg}" />
+				<input type="hidden" name="parcelimgedt" value="${plantshop.parcelimgedt}" />
               <div class="col-sm-12">
-                <input class="form-control form-control-lg"  type="text" placeholder="게시물 제목" required id="title" name="title">
+                <input class="form-control form-control-lg"  type="text" value="${plantshop.parceltitle}" required id="title" name="parceltitle">
               </div>
 
               <div class="col-sm-12">
-                <textarea class="form-control form-control-lg" rows="15"
-                 placeholder="식물 분양 관련 글을 작성하는 곳입니다." required id="message"></textarea>
+                <textarea name="parcelcontent" class="form-control form-control-lg" rows="15"
+                  required id="message">${plantshop.parcelcontent}</textarea>
               </div>
 
               <div class="alert alert-primary d-flex mb-4"><i class="ai-bell fs-xl me-2"></i>
-                <p class="mb-0">분양하려는 식물에 대해 알려주세요.</p>
+                <p class="mb-0"></p>
+              </div>
+              
+           	<label class="form-label fs-base" for="category">분류를 선택하세요</label>   
+			<select name="parceltype" class="form-select" aria-label="Default select example" id="category" required>
+			<option value="">${plantshop.parceltype}</option>
+			  <option value="P1">식물</option>
+			  <option value="P2">씨앗</option>
+			</select>
+			<div class="btn-group dropdown">
+			  <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    분양할 식물을 선택하세요
+			  </button>
+			  
+<%-- 			  <c:forEach var="item" items="${list}">
+			  <div class="dropdown-menu my-1">
+			    <a href="#" class="dropdown-item">${item.cntntsSj}</a>
+			  </div>
+			  </c:forEach> --%>
+			</div>
+
+              <div class="col-sm-6 inline-col">
+                  <label class="form-label fs-base text-end" for="picture">사진첨부</label><c:if test="${!empty plantshop.parcelimg}">${plantshop.parcelimg}</c:if>
+                  <input class="form-control form-control-lg"  type="file" placeholder="사진첨부"  id="picture" name="upfile">
               </div>
 
 
               <div class="col-sm-6 inline-col">
-                  <label class="form-label fs-base text-end" for="plantName">식물학명</label>
-                  <input class="form-control form-control-lg"  type="text" placeholder="식물학명" required id="plantName" name="plantName">
-              </div>
-
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="amount">금액</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="금액" required id="amount" name="amount">
+                <label class="form-label fs-base" for="amount">가격</label>
+                <input class="form-control form-control-lg"  type="number"   id="amount" name="parcelprice"  value="${plantshop.parcelprice}" required>
               </div>
 
 
               <div class="col-sm-12 inline-col">
-                <label class="form-label fs-base " for="picture" style="width: 9%;">사진첨부</label>
-                <input class="form-control form-control-lg"  type="file" placeholder="사진첨부" required id="picture" name="picture">
+                <label class="form-label fs-base " for="picture" style="width: 9%;">물주기</label>
+                <input class="form-control form-control-lg"  type="text" placeholder="물주기 정보"  id="water" name="water">
               </div>
                 
 
               <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="originInformation">원산지 정보</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="원산지 정보" required id="originInformation" name="originInformation">
+                <label class="form-label fs-base" for="originInformation">관리 수준</label>
+                <input class="form-control form-control-lg"  type="text" placeholder="관리 수준"  id="management" name="management">
+              </div>
+              
+              <div class="col-sm-6 inline-col">
+                <label class="form-label fs-base" for="originInformation">성장 속도</label>
+                <input class="form-control form-control-lg"  type="text" placeholder="성장 속도"  id="growspeed" name="growspeed">
               </div>
 
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="management">관리 요구도</label>
-                <select class="form-select form-select-lg" id="management" name="management">
-                  <option value="잘견딤">잘견딤</option>
-                  <option value="필요함">필요함</option>
-                  <option value="특별관리">특별관리</option>
-                  <option value="기타">기타</option>
-                </select>
-              </div>
+
 
 
               <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="temperature">생육 온도</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="생육 온도" required id="temperature" name="temperature">
+                <label class="form-label fs-base" for="temperature">알맞은 습도</label>
+                <input class="form-control form-control-lg"  type="text" placeholder="알맞은 습도"  id="humidity" name="humidity">
               </div>
 
               <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="height">성장 높이</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="성장 높이" required id="height" name="height">
+                <label class="form-label fs-base" for="height">잘 자라는 온도</label>
+                <input class="form-control form-control-lg"  type="text" placeholder="잘 자라는 온도"  id="temperature" name="temperature">
               </div>
 
 
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base text-end" for="humidity">습도</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="습도" required id="humidity" name="humidity">
-              </div>
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="area">성장 넓이</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="성장 넓이" required id="area" name="area">
-              </div>
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="fertilizer">비료</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="비료" required id="fertilizer" name="fertilizer">
-              </div>
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="leaf">잎 형태</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="잎 형태" required id="leaf" name="leaf">
-              </div>
-
-     
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="smell">냄새 정보</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="냄새 정보" required id="smell" name="smell">
-              </div>
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="flowerColor">꽃색 </label>
-                <input class="form-control form-control-lg"  type="text" placeholder="꽃색" required id="flowerColor" name="flowerColor">
-              </div>
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="breeding">번식 시기</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="번식 시기" required id="breeding" name="breeding">
-              </div>
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="soil">토양 정보</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="토양 정보" required id="soil" name="soil">
-              </div>
-
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="toxicity">독성 정보</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="독성 정보" required id="toxicity" name="toxicity">
-              </div>
+              
 
               <div class="col-sm-12 pt-2 text-end">
-                <button class="btn btn-lg btn-primary" type="submit">저장하기</button>
+                <button class="btn btn-lg btn-primary" type="submit" onclick="location.replace('${path}/plantshop')">저장하기</button>
+                <button class="btn btn-lg btn-secondary" type="reset">취소</button>
               </div>
 
             </form>
@@ -162,7 +134,7 @@
       </div>
     </main>
 
-
+<%-- 
 
     <!-- Footer-->
     <footer class="footer pt-lg-5 pt-4 pb-5">
@@ -227,5 +199,12 @@
     <script src="assets/vendor/shufflejs/dist/shuffle.min.js"></script>
     <!-- Main theme script-->
     <script src="assets/js/theme.min.js"></script>
+     --%>
+    
+    
   </body>
+  
+  
+  
+  
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

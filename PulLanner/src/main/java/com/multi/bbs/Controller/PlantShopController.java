@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.multi.bbs.board.model.vo.Board;
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.member.model.vo.Member;
 import com.multi.bbs.plantSearch.model.service.plantSearchService;
@@ -161,40 +162,34 @@ public class PlantShopController {
 			) {
 		Plantshop plantshop = service.findByNo(parcelno);
 		model.addAttribute("plantshop",plantshop);
-		return "/selling_plant_update";
+		return "/3.5_selling_plant_update";
 	}
 	
 	@PostMapping("/selling_plant_update")
-	public String update(Model model, HttpSession session,
-			@SessionAttribute(name="loginMember", required = false) Member loginMember,
-			@ModelAttribute Plantshop plantshop,
-			@RequestParam("upfile") MultipartFile upfile
-			) {
-		log.info("게시글 수정 요청");
-		
-		// 보안상의 코드라 프로젝트때는 없어도 된다. 잘못된 접근 체킹하는 예시
-		if(loginMember.getId().equals(plantshop.getWriterId()) == false) {
-			model.addAttribute("msg", "잘못된 접근입니다.");
-			model.addAttribute("location", "/");
-			return "common/msg";
-		}
-		
-		plantshop.setMno(loginMember.getMNo());
-		
-		// 파일 저장 로직
-		if(upfile != null && upfile.isEmpty() == false) {
-			String parcelimgedt = service.saveFile(upfile, savePath); // 실제 파일 저장로직
+		public String updateBoard(Model model, HttpSession session,
+				@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+				@ModelAttribute Plantshop plantshop,
+				@RequestParam("reloadFile") MultipartFile reloadFile
+				) {
+			log.info("게시글 수정 요청");
 			
-			// 기존파일이 있었다면 삭제
-			if(plantshop.getParcelimgedt() != null) {
-				service.deleteFile(savePath + "/" + plantshop.getParcelimgedt());
+			plantshop.setMno(loginMember.getMNo());
+			
+			// 파일 저장 로직
+			if(reloadFile != null && reloadFile.isEmpty() == false) {
+				// 기존 파일이 있는 경우 삭제
+				if(plantshop.getParcelimgedt() != null) {
+					service.deleteFile(savePath + "/" +plantshop.getParcelimgedt());
+				}
+				
+				String parcelimgedt = service.saveFile(reloadFile, savePath); // 실제 파일 저장하는 로직
+				
+				if(parcelimgedt != null) {
+					plantshop.setParcelimg(reloadFile.getOriginalFilename());
+					plantshop.setParcelimgedt(parcelimgedt);
+				}
 			}
 			
-			if(parcelimgedt != null) {
-				plantshop.setParcelimgedt(parcelimgedt);
-				plantshop.setParcelimg(upfile.getOriginalFilename());
-			}
-		}
 		log.debug(" plantshop : " + plantshop);
 		int result = service.savePlantshop(plantshop);
 		
@@ -209,15 +204,12 @@ public class PlantShopController {
 	}
 	
 	// http://localhost/mvc/board/delete?no=51
-	@RequestMapping("/delete/plantshop")
+	@RequestMapping("/deleteplantshop")
 	public String deleteBoard(Model model,  HttpSession session,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			int parcelno
 			) {
-		log.info("게시글 삭제 요청 parcelno : " + parcelno);
-		
-		String rootPath = session.getServletContext().getRealPath("resources");
-		String savePath = rootPath +"/upload/plantshop";
+		log.info("게시글 삭제 요청 boardNo : " + parcelno);
 		int result = service.deletePlantshop(parcelno, savePath);
 		
 		if(result > 0) {
@@ -226,7 +218,7 @@ public class PlantShopController {
 			model.addAttribute("msg", "게시글 삭제에 실패하였습니다.");
 		}
 		model.addAttribute("location", "/PlantShop");
-		return "/common/msg";
+		return "common/msg";
 	}
 	
 	
@@ -235,8 +227,9 @@ public class PlantShopController {
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			@ModelAttribute PlantparcelReply plantparcelreply
 			) {
-		log.info("리플 작성, reply : "+ plantparcelreply);
 		plantparcelreply.setMno(loginMember.getMNo());
+		log.info("리플 작성, reply : "+ plantparcelreply);
+		
 		int result = service.savePlantparcelReply(plantparcelreply);
 		
 		if(result > 0) {
@@ -248,7 +241,7 @@ public class PlantShopController {
 		return "/common/msg";
 	}
 	
-	@RequestMapping("plantshop/plantparcelreplyDel")
+	@RequestMapping("/plantshop/plantparcelreplyDel")
 	public String deleteReply(Model model, 
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			int parcelrno, int parcelno
@@ -261,7 +254,7 @@ public class PlantShopController {
 		}else {
 			model.addAttribute("msg", "리플 삭제에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/selling_plant?parcelno=" + parcelno);
+		model.addAttribute("location", "/plant-parcel-out?parcelno=" + parcelno);
 		return "/common/msg";
 	}
 	
