@@ -35,13 +35,20 @@
           <div class="me-auto">
             <h1 class="me-3">숲 / 산</h1>
           </div>
-            <div class="input-group input-group-sm rounded-pill" style="max-width: 500px;">
-              <span class="input-group-text">
-                <i class="ai-search"></i>
-              </span>
-              <input type="search" class="form-control" placeholder="Search...">
-              <button type="button" class="btn btn-primary rounded-pill">Search</button>
-            </div>
+          
+		<!-- 검색창 -->
+		<div class="col-md-5 mb-5 mt-3">
+			<form name="searchForm" action="${path}/mountainList" method="get">
+				<input type="hidden" name="page" value="1">
+				<div>
+					<div class="input-group input-group-sm rounded-pill">
+						<span class="input-group-text"> <i class="ai-search"></i></span>
+						<input type="search" id="searchValue" name="searchValue" value="${param.searchValue}" class="form-control" placeholder="검색">
+						<button type="submit" class="btn btn-primary rounded-pill">검색</button>
+					</div>
+				</div>
+			</form>
+		</div>
         </div>
         
         <!-- Item-->
@@ -79,9 +86,74 @@
           </div>
         </div>
         </c:forEach>
-      </section>
+<!-- Pagination-->
+		<div class="col-12 pt-sm-4 mt-md-2 text-end">
+			<div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
+				<div class="col col-md-4 col-6 order-md-1 order-1"></div>
+				<div class="col col-md-4 col-6 order-md-3 order-2">
+					<nav aria-label="Page navigation">
+						<ul class="pagination justify-content-end">
+							<li class="page-item active" aria-current="page">
+								<!-- 처음 페이지 -->
+							<li class="page-item">
+								<button class="page-link" onclick="movePage(1)">&lt;&lt;</button>
+							</li>
+							<!-- 이전 페이지 -->
+							<li class="page-item">
+								<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+							</li>
+							<!-- 12개 페이지가 보여지는 부분 -->
+							<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
+								<c:if test="${status.current == pageInfo.currentPage}">
+									<li class="page-item active" aria-current="page">
+										<button class="page-link" disabled>${status.current}</button>
+									</li>
+								</c:if>
+								<c:if test="${status.current != pageInfo.currentPage}">
+									<li class="page-item">
+										<button class="page-link"
+											onclick="movePage(${status.current})">${status.current}</button>
+									</li>
+								</c:if>
+							</c:forEach>
+
+							<!-- 다음 페이지 -->
+							<li class="page-item">
+								<button class="page-link"
+									onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+							</li>
+							<!-- 마지막 페이지 -->
+							<li class="page-item">
+								<button class="page-link"
+									onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+        
+        
+      </section>     
     </main>
 
-
+<!-- Sidebar toggle button-->
+<button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#shopSidebar">
+	<i class="ai-filter me-2"></i>
+</button>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+<script type="text/javascript">
+	function movePage(page) {
+	    searchForm.page.value = page;
+	    searchForm.submit();
+	}
+	
+	function submitSearchForm() {
+	    var searchValue = document.getElementById("searchValue").value;
+	    var form = document.forms["searchForm"];
+	    form.action = "${path}/mountainList?searchValue=" + searchValue + "&page=1";
+	    form.submit();
+	}
+</script>

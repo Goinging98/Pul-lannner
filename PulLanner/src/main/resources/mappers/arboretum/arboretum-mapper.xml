@@ -114,6 +114,16 @@
 		FROM Tourlist
 		WHERE contentid = #{id}
 	</select>
+	
+	
+<!-- =================랜덤으로 불러오기===================== -->	
+	<select id="selectRandomList" parameterType="map" resultType="TourVO">
+	    SELECT *
+	    FROM Tourlist
+	    WHERE cat3 IN ('A01010700', 'A01010400', 'A01010100', 'A01010200', 'A01020300', 'A01010600')
+	    ORDER BY RAND()
+	    LIMIT 4
+	</select>
 
 
 </mapper>

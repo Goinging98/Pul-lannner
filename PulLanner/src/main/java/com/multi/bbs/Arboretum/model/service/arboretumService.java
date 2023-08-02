@@ -1,5 +1,6 @@
 package com.multi.bbs.Arboretum.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -80,11 +81,15 @@ public class arboretumService {
 	}
 	
 	public TourVO selectForestLodgeId(int id) {
-		return mapper.selectForestLodgeCount(id);	
+		return mapper.selectForestLodgeId(id);	
 	}
 	
 
 	
-	
-	
+	//-------------------랜덤으로 불러오기------------------------------
+		public List<TourVO> selectRandomList(int count) {
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("count", count);
+	    return mapper.selectRandomList(map);
+	}
 }

@@ -70,51 +70,7 @@ public class ArboretumController {
         return "2.1_listOfArboretums";
         
     }
-	
-	@RequestMapping("/arboretumDetail")
-    public String arboretumDetail(Model model, @RequestParam Map<String, String> paramMap, Integer id) {
-		int page = 1;
-        Map<String, String> searchMap = new HashMap<String, String>();
-
-        try {
-            String searchValue = (String) paramMap.get("searchValue");
-            if (searchValue != null && searchValue.length() > 0) {
-                // 검색 값이 있는 경우에만 검색을 수행하도록 설정합니다.
-                searchMap.put("searchValue", searchValue);
-            } else {
-                // 검색 값이 없는 경우, 기본적으로 모든 레코드를 검색하도록 설정합니다.
-                searchMap.put("searchType", "all");
-            }
-            page = Integer.parseInt((String) paramMap.get("page"));
-        } catch (Exception e) {
-            // 파라미터가 올바르지 않은 경우에 대한 예외 처리를 할 수 있습니다.
-            // 필요에 따라 로깅하거나 에러 페이지로 리다이렉트하는 등의 처리를 추가할 수 있습니다.
-        }
-        
-        int count = arboretumService.selectArboretumCount(searchMap);
-        PageInfo pageInfo = new PageInfo(page, 5, count, 12); // 게시글이 보여지는 갯수 = 10
-        List<TourVO> aroboretumList = arboretumService.selectArboretumList(pageInfo, searchMap);
-        
-        model.addAttribute("aroboretumList", aroboretumList);
-        model.addAttribute("param", paramMap);
-        model.addAttribute("count", count);
-        model.addAttribute("page", page);
-        model.addAttribute("pageInfo", pageInfo);
-        
-        if (id != null) {
-        	TourVO aItem = arboretumService.selectByArboretumId(id);
-            model.addAttribute("aItem", aItem);
-            
-            // id가 null이 아닌 경우에만 id를 출력합니다.
-            System.out.println("id: " + id);
-            System.out.println("aItem: " + aItem); // 또는 gardenDtl의 필드들을 하나씩 출력
-        }
-        return "2.2_arboretumDetailPage";
-        
-    }
-	
-	
-	
+		
 	// =========================== 산/숲 리스트 관련====================================================
 	@RequestMapping("/mountainList")
 	public String mountainList(Model model, @RequestParam Map<String, String> paramMap, Integer id) {
@@ -251,5 +207,62 @@ public class ArboretumController {
 	
 	}
 	
+	
+	
+	// =========================== 공통 디테일페이지 관련================================	
+	@RequestMapping("/arboretumDetail")
+    public String arboretumDetail(Model model, @RequestParam Map<String, String> paramMap, Integer id) {
+		int page = 1;
+        Map<String, String> searchMap = new HashMap<String, String>();
+
+        try {
+            String searchValue = (String) paramMap.get("searchValue");
+            if (searchValue != null && searchValue.length() > 0) {
+                // 검색 값이 있는 경우에만 검색을 수행하도록 설정합니다.
+                searchMap.put("searchValue", searchValue);
+            } else {
+                // 검색 값이 없는 경우, 기본적으로 모든 레코드를 검색하도록 설정합니다.
+                searchMap.put("searchType", "all");
+            }
+            page = Integer.parseInt((String) paramMap.get("page"));
+        } catch (Exception e) {
+            // 파라미터가 올바르지 않은 경우에 대한 예외 처리를 할 수 있습니다.
+            // 필요에 따라 로깅하거나 에러 페이지로 리다이렉트하는 등의 처리를 추가할 수 있습니다.
+        }
+        
+        int count = arboretumService.selectArboretumCount(searchMap);
+        PageInfo pageInfo = new PageInfo(page, 5, count, 12); // 게시글이 보여지는 갯수 = 10
+        List<TourVO> aroboretumList = arboretumService.selectArboretumList(pageInfo, searchMap);
+        
+        model.addAttribute("aroboretumList", aroboretumList);
+        model.addAttribute("param", paramMap);
+        model.addAttribute("count", count);
+        model.addAttribute("page", page);
+        model.addAttribute("pageInfo", pageInfo);
+        
+        if (id != null) {
+        	TourVO aItem = arboretumService.selectByArboretumId(id);
+            model.addAttribute("aItem", aItem);
+            
+            // id가 null이 아닌 경우에만 id를 출력합니다.
+            System.out.println("id: " + id);
+            System.out.println("aItem: " + aItem); // 또는 gardenDtl의 필드들을 하나씩 출력
+        }
+        
+        
+		// selectRandomAccom을 호출하여 무작위 숙박 시설 목록을 가져옴
+		List<TourVO> randomList = arboretumService.selectRandomList(4);
+
+//		for (Accommodation a : randomAccommodations) {
+//			if (a.firstimage == null) {
+//				a.firstimage = "http://tong.visitkorea.or.kr/cms/resource/35/1359335_image2_1.jpg";
+//			}
+//		}
+		model.addAttribute("randomList", randomList);
+		
+		
+        return "2.2_arboretumDetailPage";
+        
+    }
 
 }
