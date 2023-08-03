@@ -12,27 +12,17 @@
 	<!-- Breadcrumb-->
 	<nav aria-label="breadcrumb">
 		<ol class="pt-lg-3 pb-2 pb-md-4 breadcrumb">
-			<li class="breadcrumb-item"><a href="/main">Home</a></li>
-			<li class="breadcrumb-item"><a href="${path}/ItemShop">아이템
-					쇼핑</a></li>
-			<li class="breadcrumb-item active" aria-current="page">아이템</li>
+			<li class="breadcrumb-item"><a href="${path}/ItemShop">아이템쇼핑</a></li>
+			<li class="breadcrumb-item active" aria-current="page">${product.title}</li>
 		</ol>
 	</nav>
-	<!-- Title + price shown on screens < 768px-->
-	<h2 class="h1 d-md-none">Scented candle</h2>
-	<div class="d-flex d-md-none align-items-center pb-3 mb-3">
-		<div class="h3 mb-0 me-3">$14.00</div>
-		<del class="fs-5 fw-medium text-muted me-3">$19.00</del>
-		<span class="badge bg-faded-danger text-danger d-md-none">Sale</span>
-	</div>
+	
 	<div class="row pb-sm-1 pb-md-4">
 		<!-- Gallery-->
 		<div class="col-md-6 gallery mb-3 mb-md-0">
 			<!-- Item -->
 			<div class="col justify-content-center align-items-center">
-				<a
-					href="${product.image}"
-					class="gallery-item d-block card-hover">
+				<a href="${product.image}" class="gallery-item d-block card-hover">
 					<div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
 						<i class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
 						<div class="position-absolute bottom-0 start-0 w-100 text-center text-white fs-sm fw-medium zindex-2 pb-3">
@@ -126,23 +116,19 @@
 </section>
 <!-- Comments-->
 
-<section class="container pt-xl-2 pb-5 mb-md-2 mb-lg-4 mb-xl-5"
-	id="comments">
+<section class="container pt-xl-2 pb-5 mb-md-2 mb-lg-4 mb-xl-5" id="comments">
 	<div class="border-top border-bottom">
 		<!-- Comments collapse-->
 		<div class="collapse" id="commentsCollapse" style="max-width: 54rem;">
-
 			<!-- Comment-->
 			<div class="border-bottom py-4 mt-2 mb-4">
-
 				<div class="d-flex align-items-center pb-1 mb-3">
 					<c:forEach var="item" items="${replyList}">
 						<img class="rounded-circle" src="assets/img/avatar/08.jpg"
 							width="48" alt="Comment author">
 						<div class="ps-3" >
 							<h6 class="mb-0" >${item.name}</h6>
-							<span class="fs-sm text-muted"> <fmt:formatDate
-									type="both" value="${item.createDate}" />
+							<span class="fs-sm text-muted"> <fmt:formatDate type="both" value="${item.createDate}" />
 							</span>
 						</div>
 					</c:forEach>
@@ -162,8 +148,7 @@
 				</c:if>
 			</div>
 			<!-- Comment form-->
-			<div
-				class="card border-0 bg-secondary pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-0">
+			<div class="card border-0 bg-secondary pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-0">
 				<div class="card-body">
 					<h2 class="pb-2 pb-lg-3 pb-xl-4">리뷰 쓰기</h2>
 					<form class="needs-validation" action="${path}/shop/writeReply"
@@ -193,12 +178,9 @@
 		</div>
 		<!-- Comments toggle-->
 		<div class="nav">
-			<button
-				class="btn-more nav-link collapsed w-100 justify-content-center p-3"
-				type="button" data-bs-toggle="collapse"
-				data-bs-target="#commentsCollapse" aria-expanded="false"
-				aria-controls="commentsCollapse" data-show-label="리뷰 보기"
-				data-hide-label="리뷰 숨기기"></button>
+			<button class="btn-more nav-link collapsed w-100 justify-content-center p-3"
+				type="button" data-bs-toggle="collapse" data-bs-target="#commentsCollapse" aria-expanded="false"
+				aria-controls="commentsCollapse" data-show-label="리뷰 보기" data-hide-label="리뷰 숨기기"></button>
 		</div>
 	</div>
 </section>
@@ -207,18 +189,15 @@
 <hr class="d-md-none mb-5">
 <!-- Relevant products carousel-->
 <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">
-	<div
-		class="d-flex align-items-center justify-content-between pb-4 mb-2 mb-md-3">
+	<div class="d-flex align-items-center justify-content-between pb-4 mb-2 mb-md-3">
 		<h2 class="h1 pt-1 mb-0">추천 상품</h2>
 		<!-- Slider prev/next buttons-->
 		<div class="d-flex">
-			<button
-				class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
+			<button class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
 				type="button" id="relevant-prev">
 				<i class="ai-arrow-left"></i>
 			</button>
-			<button
-				class="btn btn-next btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
+			<button class="btn btn-next btn-icon btn-sm btn-outline-primary rounded-circle ms-3"
 				type="button" id="relevant-next">
 				<i class="ai-arrow-right"></i>
 			</button>
@@ -248,10 +227,10 @@
       }
     }">
 		<div class="swiper-wrapper">
-		<c:forEach var="item" items="${plist1 }">
+		<c:forEach var="item" items="${plist1}">
 			<!-- Item-->
 			<div class="swiper-slide">
-					<a href="${path}/shop/product?pno=${item.pno}" style="text-decoration-line: none; color: black;">> 
+					<a href="${path}/shop/product?pno=${item.pno}" style="text-decoration-line: none; color: black;"> 
 				<div class="card-hover position-relative bg-secondary rounded-1  mb-4">
 					<button
 						class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0"

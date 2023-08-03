@@ -26,7 +26,7 @@
 		<!-- Breadcrumb-->
 		<nav aria-label="breadcrumb">
 			<ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
-				<li class="breadcrumb-item">식물 검색</li>
+				<li class="breadcrumb-item">식물검색</li>
 				<li class="breadcrumb-item"><a href="/PlantSearch">실내정원용</a></li>
 				<li class="breadcrumb-item active" aria-current="page">${itemDetail.cntntsSj}</li>
 			</ol>

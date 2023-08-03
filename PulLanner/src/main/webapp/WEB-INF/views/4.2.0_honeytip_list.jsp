@@ -13,15 +13,14 @@
         <!-- Breadcrumb-->
         <nav aria-label="breadcrumb">
           <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">기르기 꿀팁</li>
+            <li class="breadcrumb-item">커뮤니티</li>
+            <li class="breadcrumb-item active" aria-current="page">식물 기르기 꿀팁</li>
           </ol>
         </nav>
         <div class="row mb-md-2 mb-xl-4">
-        
           <!-- Blog posts-->
           <div class="col-lg-9 col-xl-8 pe-lg-4 pe-xl-0">
-            <h1 class="pb-3 pb-lg-4">기르기 꿀팁<button type="button" class="btn btn-secondary btn-icon" 
+            <h1 class="pb-3 pb-lg-4">식물 기르기 꿀팁<button type="button" class="btn btn-secondary btn-icon" 
               onClick="location.href='${path}/HoneyTip/write'" style="margin-left:45em" data-bs-toggle="tooltip" data-bs-placement="top" title="글쓰기"><i class="ai-edit-alt"></i>
             </button></h1>
             <div class="masonry-grid mb-2 mb-md-4 pb-lg-3" data-columns="2">
@@ -42,7 +41,6 @@
               </article>
               </c:forEach>
               </c:if>
-               
             </div>
             
             <!-- Pagination-->
@@ -119,11 +117,10 @@
 						</div>
 
 					<!-- Category links-->
-                <h4 class="pt-1 pt-lg-0 mt-lg-n2">Categories:</h4>
+                <h4 class="pt-1 pt-lg-0 mt-lg-n2">커뮤니티</h4>
                 <ul class="nav flex-column mb-lg-5 mb-4">
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/PlantProud">내 식물 자랑하기<span class="fs-sm text-muted ms-2">(${proudBoardCount})</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/HoneyTip">기르기 꿀팁<span class="fs-sm text-muted ms-2">(${honeyBoardCount})</span></a></li>
-                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/Observe">관찰일지<span class="fs-sm text-muted ms-2">(contents count)</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0" href="${path}/PlantProud">식물 자랑하기<span class="fs-sm text-muted ms-2">(${proudBoardCount})</span></a></li>
+                  <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/HoneyTip/list">식물 기르기 꿀팁<span class="fs-sm text-muted ms-2">(${honeyBoardCount})</span></a></li>
                 </ul>
                 <!-- Featured posts widget-->
                 <h4 class="pt-3 pt-lg-0 pb-1">인기글</h4>
@@ -144,9 +141,6 @@
                     </div>
                   </article>
                 </div>
-                <!-- Social buttons-->
-                <h4 class="pt-3 pt-lg-0 pb-1">Join us:</h4>
-                <div class="mt-n3 ms-n3 mb-lg-5 mb-4 pb-3 pb-lg-0"><a class="btn btn-secondary btn-icon btn-sm btn-instagram rounded-circle mt-3 ms-3" href="#"><i class="ai-instagram"></i></a><a class="btn btn-secondary btn-icon btn-sm btn-facebook rounded-circle mt-3 ms-3" href="#"><i class="ai-facebook"></i></a><a class="btn btn-secondary btn-icon btn-sm btn-telegram rounded-circle mt-3 ms-3" href="#"><i class="ai-telegram"></i></a><a class="btn btn-secondary btn-icon btn-sm btn-twitter rounded-circle mt-3 ms-3" href="#"><i class="ai-twitter"></i></a></div>
                 <!-- Banner-->
                 <div class="position-relative mb-3">
                   <div class="ignore-dark-mode position-absolute w-100 text-center top-0 start-50 translate-middle-x pt-4" style="max-width: 15rem;">

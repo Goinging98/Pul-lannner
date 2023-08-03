@@ -174,15 +174,15 @@
 				<nav class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물검색</a>
+							<a class="nav-link dropdown-toggle" href="${path}/PlantSearch" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물검색</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/PlantSearch">실내정원</a></li>
-								<li><a class="dropdown-item" href="${path}/PlantSearch">꽃</a></li>
-								<li><a class="dropdown-item" href="${path}/PlantSearch">다육이</a></li>
+								<li><a class="dropdown-item" href="${path}/FlowerSearch">꽃</a></li>
+								<li><a class="dropdown-item" href="${path}/DryGardenSearch">다육이</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물명소</a>
+							<a class="nav-link dropdown-toggle" href="${path}/arboretumList" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물명소</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/arboretumList">식물원</a></li>
 								<li><a class="dropdown-item" href="${path}/mountainList">숲/산</a></li>
@@ -191,25 +191,21 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물분양</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="${path}/PlantShop">식물 판매</a></li>
-								<li><a class="dropdown-item" href="${path}/PlantShop">씨앗 분양</a></li>
-							</ul>
+							<a class="nav-link" href="${path}/PlantShop">식물분양</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link" href="${path}/ItemShop">아이템쇼핑</a>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
+							<a class="nav-link dropdown-toggle" href="${path}/PlantProud" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="${path}/PlantProud">식물 자랑</a></li>
-								<li><a class="dropdown-item" href="${path}/HoneyTip/list">식물 기르기꿀팁</a></li>
+								<li><a class="dropdown-item" href="${path}/PlantProud">식물 자랑하기</a></li>
+								<li><a class="dropdown-item" href="${path}/HoneyTip/list">식물 기르기 꿀팁</a></li>
 								<li><a class="dropdown-item" href="${path}/Observe">관찰일지</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link" href="${path}/Myplant" >풀레너</a>
+							<a class="nav-link" href="${path}/Myplant">풀레너</a>
 						</li>
 					</ul>
 				</nav>
@@ -238,7 +234,6 @@
 						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">쇼핑관리</h6>
 						    <a class="dropdown-item" href="/mypage/orders"><i class="ai-note fs-5 opacity-60 me-2"></i>주문내역</a> 
 						    <a class="dropdown-item" href="/mypage/shoppingbag"><i class="ai-cart fs-5 opacity-60 me-2"></i>장바구니</a> 
-						    <a class="dropdown-item" href="/mypage/favorites"><i class="ai-heart fs-5 opacity-60 me-2"></i>찜한 상품</a>
 						    <div class="dropdown-divider"></div>
 						    <a class="dropdown-item" href="/logout"><i class="ai-logout fs-lg opacity-70 me-2"></i>로그아웃</a>
 						</div>

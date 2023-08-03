@@ -26,7 +26,7 @@
 		<!-- Breadcrumb-->
 		<nav aria-label="breadcrumb">
 			<ol class="pt-lg-3 pb-lg-4 pb-lg-4 breadcrumb" style="margin-bottom: 45px;">
-				<li class="breadcrumb-item">식물 검색</li>
+				<li class="breadcrumb-item">식물검색</li>
 				<li class="breadcrumb-item"><a href="/DryGardenSearch">다육이</a></li>
 				<li class="breadcrumb-item active" aria-current="page">${Ditem.cntntsSj}</li>
 			</ol>
