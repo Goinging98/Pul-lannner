@@ -204,7 +204,7 @@
 								<div class="nav ms-auto" data-bs-toggle="tooltip"
 									data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;"
 									data-bs-placement="left" title="Add to cart">
-									<a class="nav-link fs-lg py-2 px-1" href="#"><i
+									<a class="nav-link fs-lg py-2 px-1" href="${path}/mypage/shoppingbag/addcart?pno=${item.pno}&returnURL=/ItemShop"><i
 										class="ai-cart"></i></a>
 								</div>
 							</div>
