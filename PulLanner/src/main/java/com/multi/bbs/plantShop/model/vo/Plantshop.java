@@ -24,5 +24,7 @@ public class Plantshop {
 	private String parcelstatus;
 	private Date crtDate;
 	private Date mdfDate;
+	private String planttype;
+	private String plantno;
 	private List<PlantparcelReply> parcelreplies;
 }

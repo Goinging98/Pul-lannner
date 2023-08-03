@@ -135,6 +135,11 @@
                     </div>
                   </div>
                 </div>
+                
+                <c:if test="plantshop.plantType == 'P1'">
+                	${item.}
+                </c:if>
+                
                 <!-- <div class="me-2 mb-2">
                   <input class="btn-check" type="radio" name="color" data-binded-label="colorOption" value="Gray concrete" checked id="color1">
                   <label class="btn btn-icon btn-sm btn-outline-secondary rounded-circle" for="color1"><span class="d-block bg-size-cover bg-position-center rounded-circle" style="width: 1.5rem; height: 1.5rem; background-color: #c0c0c0; background-image: url(../assets/img/shop/pattern/marble.jpg);"></span></label>

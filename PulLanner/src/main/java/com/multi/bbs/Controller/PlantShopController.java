@@ -2,13 +2,9 @@ package com.multi.bbs.Controller;
 
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -25,18 +21,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.multi.bbs.board.model.vo.Board;
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.member.model.vo.Member;
 import com.multi.bbs.plantSearch.model.service.plantSearchService;
-import com.multi.bbs.plantSearch.model.vo.GardenDtl;
-import com.multi.bbs.plantSearch.model.vo.GardenList;
+import com.multi.bbs.plantSearch.model.vo.FlowerDtl;
+import com.multi.bbs.plantSearch.model.vo.PlantNameVO;
 import com.multi.bbs.plantShop.model.service.PlantShopService;
 import com.multi.bbs.plantShop.model.vo.PlantparcelReply;
 import com.multi.bbs.plantShop.model.vo.Plantshop;
@@ -49,7 +43,10 @@ import lombok.extern.slf4j.Slf4j;
 public class PlantShopController {
 	
 	@Autowired
-	private PlantShopService service;
+	private PlantShopService plantShopService;
+	
+	@Autowired
+	private plantSearchService plantSearchService;
 
 	@Autowired
 	private ResourceLoader resourceLoader; // 파일 다운로드 기능시 활용하는 loader
@@ -78,10 +75,10 @@ public class PlantShopController {
 			page = Integer.parseInt((String) param.get("page"));
 		} catch (Exception e) {}
 		
-		int plantshopCount = service.getPlantShopCount(param);
+		int plantshopCount = plantShopService.getPlantShopCount(param);
 //		PageInfo pageInfo = new PageInfo(page, 10, boardCount, 15); // 게시글이 보여지는 갯수 = 15
 		PageInfo pageInfo = new PageInfo(page, 10, plantshopCount, 10); // 게시글이 보여지는 갯수 = 10
-		List<Plantshop> list = service.getPlantShopList(pageInfo, param);
+		List<Plantshop> list = plantShopService.getPlantShopList(pageInfo, param);
 		System.out.println("plantshopCount : " + plantshopCount);
 		System.out.println("list : " + list.toString().replace("),", "),\n"));
 		
@@ -94,10 +91,28 @@ public class PlantShopController {
 	
 	@RequestMapping("/plant-parcel-out")
 	public String view(Model model, @RequestParam("parcelno") int parcelno) {
-		Plantshop plantshop = service.findByNo(parcelno);
+		Plantshop plantshop = plantShopService.findByNo(parcelno);
 		if(plantshop == null) {
 			return "redirect:plantshoperror";
 		}
+		
+		
+		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P1")) {
+			FlowerDtl item = plantSearchService.selectByFlowerId(Integer.parseInt(plantshop.getPlantno()));
+			model.addAttribute("item",item);
+		}
+		
+		// 여기 미완성
+		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P2")) {
+			FlowerDtl item = plantSearchService.selectByFlowerId(Integer.parseInt(plantshop.getPlantno()));
+			model.addAttribute("item",item);
+		}
+		
+		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P3")) {
+			FlowerDtl item = plantSearchService.selectByFlowerId(Integer.parseInt(plantshop.getPlantno()));
+			model.addAttribute("item",item);
+		}
+		
 		model.addAttribute("plantshop", plantshop);
 		System.out.println(plantshop.getParcelreplies());
 		model.addAttribute("plantparcelreplylist", plantshop.getParcelreplies());
@@ -109,17 +124,37 @@ public class PlantShopController {
 	public String error() {
 		return "/common/plantshoperror";
 	}
-	
+
 	@GetMapping("/selling_plant")
-	public String writeView() {
+	public String writeView(Model model) {
+		List<PlantNameVO> list1 = plantSearchService.selectPlantNoName();
+		List<PlantNameVO> list2 = plantSearchService.selectFlowerNoName();
+		List<PlantNameVO> list3 = plantSearchService.selectDryGardenNoName();
+		for (PlantNameVO item : list1) {
+			item.setName(item.getName().replaceAll("'", ""));
+		}
+
+		for (PlantNameVO item : list2) {
+			item.setName(item.getName().replaceAll("'", ""));
+		}
+
+		for (PlantNameVO item : list3) {
+			item.setName(item.getName().replaceAll("'", ""));
+		}
+
+		model.addAttribute("area1", list1);
+		model.addAttribute("area2", list2);
+		model.addAttribute("area3", list3);
 		return "/3.5_selling_plant";
 	}
-	
+
 	// 게시글 처리 + 파일 업로드
 	@PostMapping("/selling_plant")
 	public String write(Model model, HttpSession session,
 			@SessionAttribute(name="loginMember", required = false) Member loginMember,
 			@ModelAttribute Plantshop plantshop,
+			@RequestParam(required = false) String type1,
+			@RequestParam(required = false) String type2,
 			@RequestParam("upfile") MultipartFile upfile
 			) {
 		log.info("selling_plant 요청, plantshop : " + plantshop);
@@ -130,11 +165,13 @@ public class PlantShopController {
 		 * return "common/msg"; }
 		 */
 		
+		plantshop.setPlanttype(type1);
+		plantshop.setPlantno(type2);
 		plantshop.setMno(loginMember.getMNo());
 		
 		// 파일 저장 로직
 		if(upfile != null && upfile.isEmpty() == false) {
-			String parcelimgedt = service.saveFile(upfile, savePath); // 실제 파일 저장로직
+			String parcelimgedt = plantShopService.saveFile(upfile, savePath); // 실제 파일 저장로직
 			
 			if(parcelimgedt != null) {
 				plantshop.setParcelimgedt(parcelimgedt);
@@ -142,7 +179,7 @@ public class PlantShopController {
 			}
 		}
 		log.debug(" plantshop : " + plantshop);
-		int result = service.savePlantshop(plantshop);
+		int result = plantShopService.savePlantshop(plantshop);
 		
 		if(result > 0) {
 			model.addAttribute("msg", "게시글이 등록 되었습니다.");
@@ -160,7 +197,7 @@ public class PlantShopController {
 			@SessionAttribute(name="loginMember", required = false) Member loginMember,
 			@RequestParam("parcelno") int parcelno
 			) {
-		Plantshop plantshop = service.findByNo(parcelno);
+		Plantshop plantshop = plantShopService.findByNo(parcelno);
 		model.addAttribute("plantshop",plantshop);
 		return "/3.5_selling_plant_update";
 	}
@@ -179,10 +216,10 @@ public class PlantShopController {
 			if(reloadFile != null && reloadFile.isEmpty() == false) {
 				// 기존 파일이 있는 경우 삭제
 				if(plantshop.getParcelimgedt() != null) {
-					service.deleteFile(savePath + "/" +plantshop.getParcelimgedt());
+					plantShopService.deleteFile(savePath + "/" +plantshop.getParcelimgedt());
 				}
 				
-				String parcelimgedt = service.saveFile(reloadFile, savePath); // 실제 파일 저장하는 로직
+				String parcelimgedt = plantShopService.saveFile(reloadFile, savePath); // 실제 파일 저장하는 로직
 				
 				if(parcelimgedt != null) {
 					plantshop.setParcelimg(reloadFile.getOriginalFilename());
@@ -191,7 +228,7 @@ public class PlantShopController {
 			}
 			
 		log.debug(" plantshop : " + plantshop);
-		int result = service.savePlantshop(plantshop);
+		int result = plantShopService.savePlantshop(plantshop);
 		
 		if(result > 0) {
 			model.addAttribute("msg", "게시글이 수정이 완료 되었습니다.");
@@ -210,7 +247,7 @@ public class PlantShopController {
 			int parcelno
 			) {
 		log.info("게시글 삭제 요청 boardNo : " + parcelno);
-		int result = service.deletePlantshop(parcelno, savePath);
+		int result = plantShopService.deletePlantshop(parcelno, savePath);
 		
 		if(result > 0) {
 			model.addAttribute("msg", "게시글 삭제가 정상적으로 완료되었습니다.");
@@ -230,7 +267,7 @@ public class PlantShopController {
 		plantparcelreply.setMno(loginMember.getMNo());
 		log.info("리플 작성, reply : "+ plantparcelreply);
 		
-		int result = service.savePlantparcelReply(plantparcelreply);
+		int result = plantShopService.savePlantparcelReply(plantparcelreply);
 		
 		if(result > 0) {
 			model.addAttribute("msg","리플이 등록되었습니다.");
@@ -247,7 +284,7 @@ public class PlantShopController {
 			int parcelrno, int parcelno
 			){
 		log.info("리플 삭제 요청");
-		int result = service.deletePlantparcelReply(parcelrno);
+		int result = plantShopService.deletePlantparcelReply(parcelrno);
 		
 		if(result > 0) {
 			model.addAttribute("msg", "리플 삭제가 정상적으로 완료되었습니다.");

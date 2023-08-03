@@ -26,7 +26,7 @@
 <meta name="msapplication-TileColor" content="#080032">
 <meta name="msapplication-config" content="/resources/assets/favicon/browserconfig.xml">
 <meta name="theme-color" content="white">
-
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
 <!-- Page loading styles-->
 <style>

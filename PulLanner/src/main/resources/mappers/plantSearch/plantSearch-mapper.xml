@@ -203,11 +203,24 @@
 		  FROM drygardenDtl
 		  WHERE cntntsNo = #{id}
 		</select>
-	
 		
 		
+		<!-- plantshop 관련 코드 -->
+			
+		<select id="selectPlantNoName" parameterType="map" resultType="PlantNameVO">
+		    SELECT cntntsNo as no, cntntsSj as name
+		    FROM gardenDtl
+		</select>
 		
-
+		<select id="selectFlowerNoName" parameterType="map" resultType="PlantNameVO">
+		    SELECT dataNo as no, flowNm as name
+		    FROM flowerList
+		</select>
 		
+		<select id="selectDryGardenNoName" parameterType="map" resultType="PlantNameVO">
+		    SELECT cntntsNo as no, cntntsSj as name
+		    FROM drygardenDtl
+		</select>
+				
 		
 </mapper>

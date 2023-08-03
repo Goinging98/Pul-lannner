@@ -17,6 +17,8 @@
 		<result property="parcelstatus" column="PARCELSTATUS" />
 		<result property="crtDate" column="CRTDATE" />
 		<result property="mdfDate" column="MDFDATE" />
+		<result property="planttype" column="PLANTTYPE" />
+		<result property="plantno" column="PLANTNO" />
 	</resultMap>
 
 	<resultMap type="PlantparcelReply" id="plantparcelReplyResultMap">
@@ -81,7 +83,7 @@
 	</select>
 	
 	<select id="selectPlantshopByNo" parameterType="int" resultMap="plantshopDetailResultMap">
-		SELECT  P.PARCELNO, P.PARCELTITLE, M.ID, P.PARCELCOUNT, P.PARCELIMG, P.PARCELIMGEDT, P.PARCELCONTENT, P.CRTDATE, P.MDFDATE, P.PARCELPRICE,
+		SELECT  P.PARCELNO, P.PARCELTITLE, M.ID, P.PARCELCOUNT, P.PARCELIMG, P.PARCELIMGEDT, P.PARCELCONTENT, P.CRTDATE, P.MDFDATE, P.PARCELPRICE, P.PLANTTYPE, P.PLANTNO,
 				R.PARCELRNO as R_PARCELRNO, 
 		        R.PARCELNO as R_PARCELNO, 
 		        R.PARCELRCONTENT as R_PARCELRCONTENT, 
@@ -99,11 +101,11 @@
 		INSERT INTO PLANTSHOP(
 			PARCELNO, mNO, PARCELTITLE, PARCELCONTENT, PARCELTYPE,	
 			PARCELIMG, PARCELIMGEDT, PARCELPRICE, CRTDATE, MDFDATE, 
-			PARCELSTATUS
+			PARCELSTATUS, P.PLANTTYPE, P.PLANTNO
 		) VALUES (
 			default, #{mno}, #{parceltitle}, #{parcelcontent}, #{parceltype},		
 			#{parcelimg}, #{parcelimgedt}, #{parcelprice}, default, default, 
-			default
+			default, #{planttype},#{plantno}
 		)
 	</insert>
 		
@@ -123,6 +125,9 @@
 			PARCELTITLE = #{parceltitle},
 			PARCELCONTENT = #{parcelcontent},
 			PARCELPRICE = #{parcelprice}
+			P.PLANTTYPE = #{planttype}
+			P.PLANTNO = #{plantno}
+		    
 			<if test="parcelimg != null">
 				PARCELIMG = #{parcelimg},
 			</if>

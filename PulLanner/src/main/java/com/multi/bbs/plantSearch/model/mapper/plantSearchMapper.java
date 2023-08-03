@@ -9,6 +9,7 @@ import com.multi.bbs.plantSearch.model.vo.DryGardenDtl;
 import com.multi.bbs.plantSearch.model.vo.FlowerDtl;
 import com.multi.bbs.plantSearch.model.vo.GardenDtl;
 import com.multi.bbs.plantSearch.model.vo.GardenList;
+import com.multi.bbs.plantSearch.model.vo.PlantNameVO;
 
 
 @Mapper
@@ -44,7 +45,9 @@ public interface plantSearchMapper {
 	
 	DryGardenDtl selectByDryGardenId(int id);
 	
-
-
 	
+	// plantshop 관련 코드
+	List<PlantNameVO> selectPlantNoName();
+	List<PlantNameVO> selectFlowerNoName();
+	List<PlantNameVO> selectDryGardenNoName();
 }
