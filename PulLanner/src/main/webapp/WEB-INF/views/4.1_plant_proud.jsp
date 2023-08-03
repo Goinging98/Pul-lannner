@@ -19,8 +19,7 @@
 
 		<!-- Blog posts-->
 		<div class="col-lg-9 pe-lg-4 pe-xl-5">
-			<h1 class="pb-3 pb-lg-4">
-				식물 자랑하기
+			<h1 class="pb-3 pb-lg-4">식물 자랑하기
 
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-secondary btn-icon" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 60%">
@@ -31,9 +30,7 @@
 				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<label class="form-label mt-3">
-								<h3>글쓰기</h3>
-							</label>
+							<label class="form-label mt-3"><br/><h3>내 식물 자랑하기</h3></label>
 							<form method="post" action="${path}/PlantProud" enctype="multipart/form-data">
 								<input type="hidden" name="id" value="${loginMember.id}" readonly class="input-text"> <label class="form-label">제목</label>
 								<div class="form-floating">
@@ -42,7 +39,7 @@
 										<label for="fl-text">Title</label>
 									</div>
 								</div>
-								<label class="form-label">내용</label>
+								<label class="form-label">자랑글</label>
 								<textarea class="form-control" name="content" id="fl-textarea" style="height: 100px;" placeholder="자랑해주세요!"></textarea>
 
 								<!-- File input -->
@@ -60,14 +57,13 @@
 				</div>
 			</h1>
 
-
+			<!-- Post-->
 			<c:if test="${empty list}">
 				<tr>
 					<td colspan="6">조회된 글이 없습니다.</td>
 				</tr>
 			</c:if>
 
-			<!-- Post-->
 			<c:if test="${not empty list}">
 				<c:forEach var="item" items="${list}">
 					<article class="row g-0 border-0 mb-4 ">
@@ -78,10 +74,13 @@
 							<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
 								<h3>
 									<c:out value="${item.title}"></c:out>
+									
+								<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;"
+									onclick="location.href='${path}/scrapwriting?num=${item.BNo}'" >
+									<i class="ai ai-bookmark"></i>
+								</button>
 								</h3>
-								<p class="d-sm-none d-md-block">
-									<c:out value="${item.content}"></c:out>
-								</p>
+								<p class="d-sm-none d-md-block"><c:out value="${item.content}"></c:out></p>
 								<div class="d-flex flex-wrap align-items-center mt-n2">
 									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2" href="#">${item.readCount}<i class="ai-heart fs-lg ms-1"></i></a>
 									<span class="fs-xs opacity-20 mt-2 mx-3">|</span> 

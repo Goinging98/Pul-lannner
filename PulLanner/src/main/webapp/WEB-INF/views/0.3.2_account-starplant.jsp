@@ -88,30 +88,6 @@
 						</div>
 					</c:forEach>
 				</div>
-
-
-
-
-				
-				<!-- Pagination-->
-				<div
-					class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-3 pt-lg-0 mb-md-2 mb-xl-4">
-					<div class="col col-md-4 col-6 order-md-1 order-1"></div>
-					<div class="col col-md-4 col-12 order-md-2 order-3 text-center">
-					</div>
-					<div class="col col-md-4 col-6 order-md-3 order-2">
-						<nav aria-label="Page navigation">
-							<ul class="pagination pagination-sm justify-content-end">
-								<li class="page-item active" aria-current="page"><span
-									class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-								<li class="page-item"><a class="page-link" href="#">5</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
 			</section>
 		</div>
 	</div>

@@ -241,6 +241,22 @@ INSERT INTO MEMBER (
 COMMIT;
 SELECT * FROM MEMBER;
 
+------------------------------------------------
+--------------- SCRAP 관련 테이블 ----------------
+------------------------------------------------
+CREATE TABLE SCRAP_PLANT (
+	mNO INT,
+    NUM INT
+);
+CREATE TABLE SCRAP_PLACE (
+	mNO INT,
+    NUM INT
+);
+CREATE TABLE SCRAP_WRITING (
+	mNO INT,
+    NUM INT
+);
+
 -------------------------------------------------
 --------------- Board 관련 테이블 ------------------
 -------------------------------------------------

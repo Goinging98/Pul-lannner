@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 향후 Mapper interface가 정의 될 위치 -->
+<mapper namespace="com.multi.bbs.scrap.model.mapper.ScrapWritingMapper">
+
+	
+	<!-- 스크랩 -->
+	<insert id="insertWritingscrap" parameterType="Scrap_writing">
+		INSERT INTO Scrap_writing(
+			mNO, NUM
+		)
+		VALUES (
+			#{mNO}, #{num}
+		)
+	</insert>
+	
+	<!-- 스크랩 조회 -->
+	<select id="selectWritingScrap" resultType="Scrap_writing" parameterType="int">
+		SELECT *
+		FROM Scrap_writing
+		WHERE mNO = #{mNO} 
+	</select> 
+	
+	<!-- 스크랩 리스트 출력 -->
+	<select id="selectScrapWritingList" resultType="map" parameterType="int">
+		SELECT SP.*
+			, CASE WHEN F.flowNm IS NOT NULL THEN F.flowNm
+				WHEN G.cntntsSj IS NOT NULL THEN G.cntntsSj
+		        WHEN D.cntntsSj IS NOT NULL THEN D.cntntsSj
+		        END AS NAME
+			, F.imgUrl1 AS FLOWER
+			, SUBSTRING_INDEX(G.rtnStreFileNm, '|', 1) AS INNERPLANT
+			, D.mainImgUrl1 AS DRY,
+				CASE WHEN F.IMGURL1 IS NOT NULL THEN 'A'
+					WHEN G.rtnStreFileNm IS NOT NULL THEN 'B'
+					WHEN D.MAINIMGURL1 IS NOT NULL THEN 'C'
+		            END AS TYPE
+		FROM SCRAP_PLANT SP
+			LEFT JOIN FLOWERLIST F ON F.DATANO = SP.NUM
+			LEFT JOIN GARDENDTL G ON G.cntntsNo = SP.NUM
+            LEFT JOIN DRYGARDENDTL D ON D.cntntsNo = SP.NUM
+        WHERE SP.mNO = #{mNO}
+	</select>
+		
+</mapper>
