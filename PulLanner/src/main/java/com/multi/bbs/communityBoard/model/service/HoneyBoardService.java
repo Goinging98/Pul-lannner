@@ -99,6 +99,10 @@ public class HoneyBoardService {
 	public int deleteHoneyReply(int no) {
 		return mapper.deleteHoneyReply(no);
 	}
+
+	public int getProudBoardCount(Map<String, String> param) {
+		return mapper.selectProudBoardCount(param);
+	}
 	
 }
 

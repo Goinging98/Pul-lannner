@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.multi.bbs.communityBoard.model.vo.BoardLike;
 import com.multi.bbs.communityBoard.model.vo.ProudBoard;
 
 @Mapper
@@ -16,4 +17,10 @@ public interface ProudBoardMapper {
 	int updateProudBoard(ProudBoard proudBoard);
 	int updateProudReadCount(ProudBoard proudBoard);
 	int deleteProudBoard(int no);
+	int selectHoneyBoardCount(Map<String, String> param);
+	
+	int insertProudBoardLike(BoardLike proudBoardLike);
+	int deleteProudBoardLike(Map<String, String> param);
+	int selectProudBoardLikeCount(Map<String, String> param);
+	
 }

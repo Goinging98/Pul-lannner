@@ -19,4 +19,5 @@ public interface HoneyBoardMapper {
 	int updateHoneyReadCount(HoneyTipBoard honeyBoard);
 	int deleteHoneyBoard(int no);
 	int deleteHoneyReply(int no);
+	int selectProudBoardCount(Map<String, String> param);
 }

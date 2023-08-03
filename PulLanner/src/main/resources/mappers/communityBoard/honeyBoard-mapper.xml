@@ -94,6 +94,34 @@
 		</if>		
 	</select>
 	
+	<select id="selectProudBoardCount" resultType="int" parameterType="map">
+		SELECT  
+			 COUNT(DISTINCT B.BNO)
+		FROM COMMBOARD B
+		LEFT OUTER JOIN MEMBER M1 ON B.MNO = M1.MNO
+		LEFT OUTER JOIN COMMREPLY R ON R.BNO = B.BNO 
+		LEFT OUTER JOIN MEMBER M2 ON R.MNO = M2.MNO 
+		WHERE B.STATUS = 'Y' AND B.TYPE = 'PROUD'
+		<if test="writer != null">
+			AND M1.ID LIKE '%${writer}%' 
+		</if>		
+		<if test="title != null">
+			AND B.TITLE LIKE '%${title}%' 
+		</if>		
+		<if test="content != null">
+			AND B.CONTENT LIKE '%${content}%' 
+		</if>		
+		<if test="all != null">
+			AND(
+				b.title like 			'%${all}%' 
+				OR b.content like 		'%${all}%'
+				OR m1.id like 			'%${all}%'
+				OR r.content like 		'%${all}%'
+				OR m2.id like 			'%${all}%'
+			)
+		</if>		
+	</select>
+	
 	<select id="selectHoneyBoardByNo" parameterType="int" resultMap="honeyBoardDetailResultMap">
 		SELECT  
 			B.BNO, B.TITLE, M.ID, M.NAME, B.READCOUNT, B.TYPE, B.ORIGINAL_FILENAME, B.RENAMED_FILENAME, B.CONTENT, B.CREATE_DATE, B.MODIFY_DATE,

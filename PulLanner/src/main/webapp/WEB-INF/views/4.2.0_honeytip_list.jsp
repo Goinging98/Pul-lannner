@@ -21,27 +21,39 @@
           <!-- Blog posts-->
           <div class="col-lg-9 col-xl-8 pe-lg-4 pe-xl-0">
             <h1 class="pb-3 pb-lg-4">식물 기르기 꿀팁<button type="button" class="btn btn-secondary btn-icon" 
-              onClick="location.href='${path}/HoneyTip/write'" style="margin-left:45em" data-bs-toggle="tooltip" data-bs-placement="top" title="글쓰기"><i class="ai-edit-alt"></i>
+              onClick="location.href='${path}/HoneyTip/write'" style="margin-left:60%" data-bs-toggle="tooltip" data-bs-placement="top" title="글쓰기"><i class="ai-edit-alt"></i>
             </button></h1>
             <div class="masonry-grid mb-2 mb-md-4 pb-lg-3" data-columns="2">
             
               <!-- Post-->
-              <c:if test="${not empty list}">
-				<c:forEach var="item" items="${list}">
-              <article class="masonry-grid-item">
-                <div class="card border-0 bg-secondary">
-                  <div class="card-body pb-4"><a href="${path}/HoneyTip/view?no=${item.BNo}"><img class="card-img-top" src="honey/file/${item.renamedFileName}"></a>
-                    <div class="d-flex align-items-center mb-4 mt-1"><span class="fs-sm text-muted"><fmt:formatDate type="both" dateStyle="full" value="${item.createDate}"/></span></div>
-                    <h3 class="h4 card-title"><a href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a></h3>
-                    <p class="card-text">${item.content}</p>
-                  </div>
-                  <div class="card-footer pt-3"><a class="d-flex align-items-center text-decoration-none pb-2" href="#">
-                      <h6 class="ps-3 mb-0">${item.name}</h6></a></div>
-                </div>
-              </article>
-              </c:forEach>
-              </c:if>
-            </div>
+				<c:if test="${not empty list}">
+					<c:forEach var="item" items="${list}">
+						<article class="masonry-grid-item">
+							<div class="card border-0 bg-secondary">
+								<div class="card-body pb-4">
+									<a href="${path}/HoneyTip/view?no=${item.BNo}"> <img
+										class="card-img-top" src="honey/file/${item.renamedFileName}">
+									</a>
+									<div class="d-flex align-items-center mb-4 mt-1">
+										<span class="fs-sm text-muted"><fmt:formatDate
+												type="both" dateStyle="full" value="${item.createDate}" /></span>
+									</div>
+									<h3 class="h4 card-title">
+										<a href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a>
+									</h3>
+									<p class="card-text">${item.content}</p>
+								</div>
+								<div class="card-footer pt-3">
+									<a class="d-flex align-items-center text-decoration-none pb-2"
+										href="#">
+										<h6 class="ps-3 mb-0">${item.name}</h6>
+									</a>
+								</div>
+							</div>
+						</article>
+					</c:forEach>
+				</c:if>
+			</div>
             
             <!-- Pagination-->
 			<div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">

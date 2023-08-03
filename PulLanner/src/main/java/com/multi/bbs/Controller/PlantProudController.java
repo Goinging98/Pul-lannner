@@ -64,6 +64,7 @@ public class PlantProudController {
 		} catch (Exception e) {}
 		
 		int proudBoardCount = service.getProudBoardCount(searchMap);
+		int honeyBoardCount = service.getHoneyBoardCount(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 10, proudBoardCount, 5); // 게시글이 보여지는 갯수 = 10
 		List<ProudBoard> list = service.getProudBoardList(pageInfo, searchMap);
 		System.out.println("list : " + list);
@@ -72,6 +73,7 @@ public class PlantProudController {
 		model.addAttribute("param", paramMap);
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("proudBoardCount", proudBoardCount);
+		model.addAttribute("honeyBoardCount", honeyBoardCount);
 		
 		return "/4.1_plant_proud";
 	}

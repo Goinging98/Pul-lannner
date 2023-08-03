@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.communityBoard.model.mapper.ProudBoardMapper;
+import com.multi.bbs.communityBoard.model.vo.BoardLike;
 import com.multi.bbs.communityBoard.model.vo.ProudBoard;
 
 @Service
@@ -87,6 +88,24 @@ public class ProudBoardService {
 		ProudBoard proudBoard = mapper.selectProudBoardByNo(no);
 		deleteFile(rootPath + "\\" + proudBoard.getRenamedFileName());
 		return mapper.deleteProudBoard(no);
+	}
+
+
+	public int getHoneyBoardCount(Map<String, String> param) {
+		return mapper.selectHoneyBoardCount(param);
+	}
+	
+	@Transactional()
+	public int insertProudBoardLike(BoardLike proudBoardLike) {
+		return mapper.insertProudBoardLike(proudBoardLike);
+	}
+	
+	public int getProudBoardLikeCount(Map<String, String> param) {
+		return mapper.selectProudBoardLikeCount(param);
+	}
+	
+	public int removeProudBoardLike(Map<String, String> param) {
+		return mapper.deleteProudBoardLike(param);
 	}
 	
 }

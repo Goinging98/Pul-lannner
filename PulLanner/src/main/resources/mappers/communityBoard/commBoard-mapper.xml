@@ -18,7 +18,7 @@
 		<result property="createDate" column="CREATE_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
 	</resultMap>
-
+	
 	
 	<resultMap type="ProudBoard" id="proudBoardDetailResultMap" extends="proudBoardListResultMap">
 	</resultMap>
@@ -59,6 +59,34 @@
 		FROM COMMBOARD B
 		LEFT OUTER JOIN MEMBER M1 ON B.MNO = M1.MNO
 		WHERE B.STATUS = 'Y' AND B.TYPE = 'PROUD'
+		<if test="writer != null">
+			AND M1.ID LIKE '%${writer}%' 
+		</if>		
+		<if test="title != null">
+			AND B.TITLE LIKE '%${title}%' 
+		</if>		
+		<if test="content != null">
+			AND B.CONTENT LIKE '%${content}%' 
+		</if>		
+		<if test="all != null">
+			AND(
+				b.title like 			'%${all}%' 
+				OR b.content like 		'%${all}%'
+				OR m1.id like 			'%${all}%'
+				OR r.content like 		'%${all}%'
+				OR m2.id like 			'%${all}%'
+			)
+		</if>		
+	</select>
+	
+	<select id="selectHoneyBoardCount" resultType="int" parameterType="map">
+		SELECT  
+			 COUNT(DISTINCT B.BNO)
+		FROM COMMBOARD B
+		LEFT OUTER JOIN MEMBER M1 ON B.MNO = M1.MNO
+		LEFT OUTER JOIN COMMREPLY R ON R.BNO = B.BNO 
+		LEFT OUTER JOIN MEMBER M2 ON R.MNO = M2.MNO 
+		WHERE B.STATUS = 'Y' AND B.TYPE = 'HONEY'
 		<if test="writer != null">
 			AND M1.ID LIKE '%${writer}%' 
 		</if>		
@@ -134,5 +162,26 @@
 		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo} AND TYPE = 'PROUD'
 	</update>
 	
+	<!-- 좋아요 -->
+	<insert id="insertProudBoardLike" parameterType="map">
+		INSERT INTO BOARDLIKE (MNO, BNO, TYPE) VALUES (#{mNo}, #{bNo}, 'PROUD')
+	</insert>
+	
+	<delete id="deleteProudBoardLike" parameterType="map">
+		DELETE FROM BOARDLIKE
+		WHERE 1 = 1
+		AND MNO = #{mNo}
+		AND BNO = #{bNo}
+	</delete>
+	
+	<select id="selectProudBoardLikeCount" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM BOARDLIKE
+		WHERE 1 = 1
+		AND MNO = #{mNo}
+		AND BNO = #{bNo}
+		AND TYPE = 'PROUD'
+	</select>
+	
 
 </mapper>
+
