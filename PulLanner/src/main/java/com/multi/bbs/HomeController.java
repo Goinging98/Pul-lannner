@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.multi.bbs.Arboretum.model.service.arboretumService;
+import com.multi.bbs.Arboretum.model.vo.TourVO;
 import com.multi.bbs.api.naver.NaverSearchAPI;
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.shop.model.service.ShopService;
@@ -35,12 +37,14 @@ public class HomeController {
 	
 	@Autowired
 	ShopService shopService;
+	@Autowired
+    private arboretumService arboretumService;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpSession session) {
+	public String home(Locale locale, Model model, HttpSession session, Map<String, Object> map) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 //		Member loginMember = memberService.login("admin", "1212");
 //		session.setAttribute("loginMember", loginMember);
@@ -51,6 +55,10 @@ public class HomeController {
 		PageInfo pageInfo = new PageInfo(page, 5, count, 6);
 		List<Product> plist1 = shopService.getProductList(pageInfo, paramMap);
 		model.addAttribute("plist1", plist1);
+		
+		
+		List<TourVO> randomList = arboretumService.selectRandomList3(3);
+		model.addAttribute("randomList", randomList);
 		
 		return "0.0_main";
 	}

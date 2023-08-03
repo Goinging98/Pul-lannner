@@ -92,4 +92,12 @@ public class arboretumService {
 	    map.put("count", count);
 	    return mapper.selectRandomList(map);
 	}
+		
+		public List<TourVO> selectRandomList3(int count) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("count", count);
+		return mapper.selectRandomList3(map);
+	}
+		
+		
 }

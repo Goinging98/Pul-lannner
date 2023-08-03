@@ -54,4 +54,5 @@ public interface arboretumMapper {
 	
 	//----------------랜덤으로 불러오기----------------------------
 	List<TourVO> selectRandomList(Map<String, Object> map);
+	List<TourVO> selectRandomList3(Map<String, Object> map);
 }

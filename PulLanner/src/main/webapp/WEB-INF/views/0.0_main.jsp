@@ -624,53 +624,28 @@
 
 			<!-- Binded images-->
 
-
-			<div
-				class="col-md-4 col-lg-4 col-xl-4 offset-1 d-none d-sm-none d-md-block"
-				style="margin-top: -100px;">
-				<div class="ps-lg-4 ps-xl-0">
-					<h2>오늘의 꽃 나들이 장소 추천</h2>
-					<div class="position-relative d-flex align-items-center mb-4">
-						<img class="rounded"
-							src="https://i.namu.wiki/i/rLVLCqzMl8LdATocQsOXyFOLgUASgznbOQbK4SkPNpO5ZpVZfHFW7So-U8w4P94WFm7SGd16xzypYYPcNyqGKw.webp"
-							style="max-width: 110px; max-height: 110px; min-width: 110px; min-height: 110px;"
-							alt="Post image">
-						<div class="ps-3">
-							<h4 class="h5 mb-2">
-								<a class="stretched-link" href="blog-single-v1.html">세종식물원</a>
-							</h4>
-							<span class="text-muted" style="font-size: 16px;">17:00에
-								운영 종료</span>
+				<div
+					class="col-md-4 col-lg-4 col-xl-4 offset-1 d-none d-sm-none d-md-block"
+					style="margin-top: -100px;">
+					<div class="ps-lg-4 ps-xl-0">
+						<h2>나들이 장소 추천</h2>
+						<c:forEach var="random" items="${randomList}">
+						<div class="position-relative d-flex align-items-center mb-4">
+							<img class="rounded"
+								src="${random.firstimage}"
+																onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAALVBMVEX////d3d3k5OTs7Oz6+vrh4eH19fXy8vL8/Pzm5ubq6ur09PTr6+vb29vv7+/imAPPAAADoElEQVR4nO3ci3KjIBiGYUVAwIT7v9wVNYfdCDRNWjc/7zPT3Xbtzsg3nARM1wEAAAAAAAAAAAAAAAAAAAAAAOBzOZszWXf0zR1jUn2W8fro2zvCmE9k0WAozlQy8e01n1iJpDf26Fv8daGWST8efYu/rp5JPPoWf91gatqrJ07XtNfHAtinx+F9RhGT2qE2TX2OETAw12cfzxqOLtKrqhP35338VP+9DWcVji7Ui34gkl4dXagXfaWM596ocDqdfGFpqa1MjL8bX3VU9dYmPpPwz4TDWd94JruLrbbShkRnkpt/uaHdTG4TDaettXdrAsVla8GZmEu70YMy59l9d2sLXa3gTLZaosN98c2wVZZCTZGbybT+wkPZL1P3/FOB2ExO6/XTzqWt582OyVIzMWsT2YvkEkq2SxGayXldis+1j7Vd7QcmNhOzXLSZq1st0m1lsraO/Hi7Lgdk1qNkZrKOLdlqMlsqSmY8lpmJWopcethbKpLer0gyM1maRqbEd6m5/dRkZrLUglLT2Sb++x2KzEyWsba8fF34FZmZLF1sbvqxWiYw+52s4EzKOz9LJhOZPGTSUj2hP8lUgv2GsTGFqiQzk2XLtz4/yczqZGbiq/PYUmoyM1lnZKWF6NIDkcxMqs/Ffrne1HPxVqxsRVl72Nyhc6GZbIv2uSnKeuwmN1hLzWQr1343u64oZcclqZlsPYrb2xoO6/p1dp4rNpOt9bjHJ8FtKyM/KsnNxFw2/P6uKv6yPZj/n3Izub6q5MZrr2LCZVtdF85bCM5km78nzo4xxvH2PmR53n9MUd6mlEmvcqc6p+IBLtGZzBORvddQdOWcsfBMevVwVMnF2ik/6ZmkEyd3LcjZwLnHNZYwjMngv3TsuolMnvTpmXDe/lF5E+d7Pv010syW7ys+vZr8QChBwJu1bgrqfcKnv9AEAAAAAE1yLX5mYY0hkwdzJk7b+Q+7hKOvfzl9+7ExRtveR3/yQwhdN4Toh7QDeArKdF1UgxfwKUHPMlrPXYo+j51LVSZtEs/fTekTmOZv9fKvrZkzSbsSqas1tnNTjL3T6QSGNV00Yxwb/EzDLROzZOKUn0bjbHp5cq4v0acPXhaw8vqkuT+51ZOoUhbXejJ9+r7WN/X3mUxzGOE8f4VOq9SvNNjBzpTTaatGzZl4O3esakwnl07Kh1RnvFL+6Dv8fzjfXt9aFJVSRAIAAAAAAAAAAAAAAAAAAAAAAADI9QcjtCABFpqPswAAAABJRU5ErkJggg=='"
+								style="max-width: 110px; max-height: 110px; min-width: 110px; min-height: 110px;"
+								alt="Post image">
+							<div class="ps-3">
+								<h4 class="h5 mb-2">
+									<a class="stretched-link" href="blog-single-v1.html">${random.title}</a>
+								</h4>
+								<span class="text-muted" style="font-size: 16px;">${random.restdate}</span>
+							</div>
 						</div>
+						</c:forEach>
 					</div>
-					<article class="position-relative d-flex align-items-center mb-4">
-						<img class="rounded"
-							src="https://img.newspim.com/news/2020/10/15/2010151646296730.jpg"
-							style="max-width: 110px; max-height: 110px; min-width: 110px; min-height: 110px;"
-							alt="Post image">
-						<div class="ps-3">
-							<h4 class="h5 mb-2">
-								<a class="stretched-link" href="blog-single-v2.html">한택식물원</a>
-							</h4>
-							<span class="text-muted" style="font-size: 16px;">17:00에
-								운영 종료</span>
-						</div>
-					</article>
-					<article class="position-relative d-flex align-items-center">
-						<img class="rounded"
-							src="https://50plus.or.kr/upload/im/2020/07/3bebe063-4899-4dce-bc1a-0048f6af1e49.jpg"
-							style="max-width: 110px; max-height: 110px; min-width: 110px; min-height: 110px;"
-							alt="Post image">
-						<div class="ps-3">
-							<h4 class="h5 mb-2">
-								<a class="stretched-link" href="blog-single-v3.html">식물원들꽃세상</a>
-							</h4>
-							<span class="text-muted" style="font-size: 16px;">17:00에
-								운영 종료</span>
-						</div>
-					</article>
 				</div>
-			</div>
 		</div>
 	</section>
 

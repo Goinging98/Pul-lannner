@@ -23,6 +23,7 @@ public String mlevel;
 //추가코드 
 public String infocenter;
 public String category;
+public String restdate;
 
 public TourVO() {
 	super();
@@ -225,6 +226,13 @@ public void setInfocenter(String infocenter) {
 	this.infocenter = infocenter;
 }
 
+public String getRestdate() {
+	return (restdate == null || restdate.isEmpty()) ? "정보없음" : restdate;
+}
+
+public void setRestdate(String restdate) {
+	this.restdate = restdate;
+}
 
 }
 
