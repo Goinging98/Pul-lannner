@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 향후 Mapper interface가 정의 될 위치 -->
+<mapper namespace="com.multi.bbs.scrap.model.mapper.ScrapPlaceMapper">
+	<!-- 스크랩 -->
+	<insert id="insertplacescrap" parameterType="Scrap_place">
+		INSERT INTO Scrap_place(
+			mNO, NUM
+		)
+		VALUES (
+			#{mNO}, #{num}
+		)
+	</insert>
+	
+	<!-- 스크랩 조회 -->
+	<select id="selectPlaceScrap" resultType="Scrap_place" parameterType="int">
+		SELECT *
+		FROM Scrap_place
+		WHERE mNO = #{mNO} 
+	</select> 
+	
+	<!-- 스크랩 리스트 출력 -->
+	<select id="selectScrapPlaceList" resultType="map" parameterType="int">
+		SELECT SC.*, T.TITLE, T.FIRSTIMAGE
+		FROM SCRAP_PLACE SC
+			LEFT JOIN TOURLIST T ON T.CONTENTID = SC.NUM
+        WHERE SC.mNO = #{mNO}
+	</select>
+	
+</mapper>

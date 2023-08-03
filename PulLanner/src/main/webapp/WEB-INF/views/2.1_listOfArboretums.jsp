@@ -63,8 +63,8 @@
 				<div class="ps-md-3 ps-lg-0">
 					<div class="d-flex align-items-center">
 						<h2 class="h4">${aItem.title}</h2>
-						<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4">
-							<i class="ai ai-bookmark"></i>
+						<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4"
+							onclick="location.href='${path}/scrapplace?num=${aItem.contentid}'"><i class="ai ai-bookmark"></i>
 						</button>
 					</div>
 					<p class="fs-sm pb-1 pb-lg-1 mb-1">${aItem.overview}</p>
