@@ -6,10 +6,9 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
-		<!-- Sidebar (offcanvas on sreens < 992px)-->
+		<!-- Sidebar -->
 		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
@@ -49,43 +48,27 @@
 			</div>
 		</aside>
 		
-		
-		
-		
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
 			<div class="d-flex align-items-center mb-4">
 				<h1 class="h2 mb-0">장바구니</h1>
 			</div>
-			
-			
-			<%-- <c:forEach var="item" items="${list }">
-				${item.title},
-				${item.lprice},
-				${item.lprice * item.amount},
-				${item.image}
-				@@@@@@
-				<br>
-			</c:forEach> --%>
 			<div class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4">
 				<div class="card-body pb-4">
 					<!-- Orders accordion-->
-					<c:forEach var="item" items="${list }">
+					<c:forEach var="item" items="${list}">
 					<div class="accordion accordion-alt accordion-orders" id="orders">
 						<table class="table align-middle w-100" style="min-width: 450px;">
 							<tr>
 								<td class="border-0 py-1 px-0">
 									<div class="d-flex align-items-center">
-										<a
-											class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3"
-											href="shop-single.html"><img
-											src=${item.image} width="110"
+										<a class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3" href="/shop/product?pno=${item.pno }">
+										<img src=${item.image} width="110"
 											alt="Product"></a>
 										<div class="ps-3 ps-sm-4">
 											<h4 class="h6 mb-2">
 												<a href="shop-single.html">${item.title}</a>
 											</h4>
-											
 										</div>
 									</div>
 								</td>
@@ -95,14 +78,13 @@
 								</td>
 								<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
 									<div class="fs-sm text-muted mb-2">가격</div>
-									<div class="fs-sm fw-medium text-dark">${item.lprice}</div>
+									<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${item.lprice}" pattern="#,###"/></div>
 								</td>
 								<td class="border-0 text-end py-1 pe-0 ps-3 ps-sm-4">
 									<div class="fs-sm text-muted mb-2">총합</div>
-									<div class="fs-sm fw-medium text-dark">${item.lprice * item.amount}</div>
+									<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${item.lprice * item.amount}" pattern="#,###"/></div>
 								</td>
 							</tr>
-							
 						</table>
 					</div>
 					</c:forEach>
@@ -110,16 +92,9 @@
 					<!-- Coupon input + total-->
 					<div class="px-4 pb-3 pb-sm-4 pb-sm-5">
 						<div class="d-sm-flex align-items-center border-top pt-4">
-							<div
-								class="input-group input-group-sm border-dashed mb-3 mb-sm-0 me-sm-4 me-md-5">
-								<input class="form-control text-uppercase" type="text"
-									placeholder="쿠폰 코드">
-								<button class="btn btn-secondary" type="button">쿠폰 적용</button>
-							</div>
 							<div class="d-flex align-items-center justify-content-center">
-								<span class="fs-xl me-3">합계:</span> <span class="h3 mb-0"> 
-								<fmt:formatNumber value="${totalPrice}" pattern="#,###" />
-								 원</span>
+								<span class="fs-xl me-3">합계:</span> 
+								<span class="h3 mb-0"><fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</span>
 							</div>
 						</div>
 					</div>

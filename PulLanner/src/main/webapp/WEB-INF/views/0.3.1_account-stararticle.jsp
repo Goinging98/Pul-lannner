@@ -51,65 +51,29 @@
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
 			<h1 class="h2 mb-4">관심 글</h1>
-
 			<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4">
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 					<!-- Item-->
-					<c:forEach var = "spitem" items = "${splist}">
+					<c:forEach var = "switem" items = "${swlist}">
 						<div class="col-md-3">
 							<div class="card">
 								<div class="image-container">
-									<c:if test="${spitem.TYPE=='A'}">
-										<img src="${spitem.FLOWER}" class="card-img-top fit-cover" alt="image">
-									</c:if>
-									<c:if test="${spitem.TYPE=='B'}">
-										<img src="${spitem.INNERPLANT}" class="card-img-top fit-cover" alt="image">
-									</c:if>
-									<c:if test="${spitem.TYPE=='C'}">
-										<img src="${spitem.DRY}" class="card-img-top fit-cover" alt="image">
-									</c:if>
+									<img src="${switem.RENAMED_FILENAME}" class="card-img-top fit-cover" alt="image">
 								</div>
 								<div class="card-body">
-									<h5 class="card-title text-truncate">${spitem.NAME}</h5>
+									<h5 class="card-title text-truncate">${switem.TITLE}</h5>
 									<div class="d-flex justify-content-between">
-										<c:if test="${spitem.TYPE=='A'}">
-											<a href="/FlowerDetail?id=${spitem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+										<c:if test="${switem.TYPE=='PROUD'}">
+											<a href="/PlantProud" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
 										</c:if>
-										<c:if test="${spitem.TYPE=='B'}">
-											<a href="/GardenDetail?id=${spitem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
-										</c:if>
-										<c:if test="${spitem.TYPE=='C'}">
-											<a href="/DryGardenDetail?id=${spitem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+										<c:if test="${spitem.TYPE=='HONEY'}">
+											<a href="/HoneyTip/list?id=${switem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
 										</c:if>
 									</div>
 								</div>
 							</div>
 						</div>
 					</c:forEach>
-				</div>
-
-
-
-
-				
-				<!-- Pagination-->
-				<div
-					class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-3 pt-lg-0 mb-md-2 mb-xl-4">
-					<div class="col col-md-4 col-6 order-md-1 order-1"></div>
-					<div class="col col-md-4 col-12 order-md-2 order-3 text-center">
-					</div>
-					<div class="col col-md-4 col-6 order-md-3 order-2">
-						<nav aria-label="Page navigation">
-							<ul class="pagination pagination-sm justify-content-end">
-								<li class="page-item active" aria-current="page"><span
-									class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-								<li class="page-item"><a class="page-link" href="#">5</a></li>
-							</ul>
-						</nav>
-					</div>
 				</div>
 			</section>
 		</div>
