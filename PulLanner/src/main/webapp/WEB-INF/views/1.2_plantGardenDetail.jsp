@@ -47,11 +47,6 @@
 							<h2 class="mb-lg-3">${itemDetail.cntntsSj}</h2>
 							<h4 class="mb-lg-3 text-muted" style='line-height: 30%'>${itemDetail.plntbneNm}</h4>
 						</div>
-						<div class="col-1">
-							<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-top: 50px;">
-								<i class="ai-bookmark"></i>
-							</button>
-						</div>
 					</div>
 					<div style="width: 750px; height: 100px; overflow: auto; margin-bottom: 15px;">
 						<p class="mb-lg-3 mb-md-1 mb-lg-3 mt-3 pb-2">${itemDetail.adviseInfo}
@@ -89,11 +84,10 @@
 			</div>
 		</article>
 
+		<hr><br/><br/><br/>
 
 		<!-- 세부정보-->
-		<h4 class="mb-lg-3" style="text-align: center;">자세히 알아보기</h4>
-		<hr>
-
+		<h4 class="mb-lg-3" style="text-align: center;">상세정보</h4>
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-4 pb-2 pb-sm-4 pb-lg-5 mt-lg-3" style="text-align: center;">
 			<!-- Address-->
 			<div class="col overflow-auto" style="height: 170px;">

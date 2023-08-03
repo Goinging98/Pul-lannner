@@ -92,8 +92,8 @@
 								<h5 class="card-title text-truncate">${Ditem.cntntsSj}</h5>
 								<div class="d-flex justify-content-between">
 									<a href="${path}/DryGardenDetail?id=${Ditem.cntntsNo}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
-									<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;">
-										<i class="ai-bookmark"></i>
+									<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;"
+										onclick="location.href='${path}/scrapplant?num=${Ditem.cntntsNo}'"><i class="ai-bookmark"></i>
 									</button>
 								</div>
 							</div>

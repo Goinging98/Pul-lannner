@@ -47,11 +47,6 @@
 							<h2 class="mb-lg-3">${Fitem.flowNm}</h2>
 							<h4 class="mb-lg-3 text-muted" style='line-height: 30%'>${Fitem.fSctNm}</h4>
 						</div>
-						<div class="col-1">
-							<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-top: 50px;">
-								<i class="ai-bookmark"></i>
-							</button>
-						</div>
 					</div>
 					<div style="width: 750px; height: 120px; overflow: auto; margin-bottom: 15px;">
 						<p class="mb-lg-3 mb-md-1 mb-lg-3 mt-3 pb-2">${Fitem.fContent}</p>

@@ -42,11 +42,7 @@
 		</article>
 		<div class="text-center text-muted mb-2">다육이</div>
 		<div>
-			<h2 class="text-center">${Ditem.cntntsSj}
-				<button type="submit" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="justify-content: center; margin-left: 2px;">
-					<i class="ai-bookmark"></i>
-				</button>
-			</h2>
+			<h2 class="text-center">${Ditem.cntntsSj}</h2>
 		</div>
 		<h4 class="text-center text-muted" style='line-height: 50%'>${Ditem.enNm}</h4>
 
@@ -76,9 +72,9 @@
 				</div>
 			</div>
 		</div>
+		<hr><br/><br/><br/>
 
-		<h4 class="mb-lg-3" style="text-align: center;">자세히 알아보기</h4>
-		<hr>
+		<h4 class="mb-lg-3" style="text-align: center;">상세정보</h4>
 		<!--표 구성을 바꾸고 싶다면 row-cols-wl-2 마지막 숫자를 바꾸면됨 2는 두개씩 한줄에 보여진다는 뜻-->
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-xl-2 g-4 pb-2 pb-sm-4 pb-lg-5 mt-lg-3" style="text-align: center;">
 			<!-- Address-->

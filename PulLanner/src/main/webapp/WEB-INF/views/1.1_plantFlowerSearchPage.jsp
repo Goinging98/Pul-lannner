@@ -93,7 +93,8 @@
 								<h5 class="card-title text-truncate">${fitem.flowNm}</h5>
 								<div class="d-flex justify-content-between">
 									<a href="${path}/FlowerDetail?id=${fitem.dataNo}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
-									<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;">
+									<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;"
+										onclick="location.href='${path}/scrapplant?num=${fitem.dataNo}'">
 										<i class="ai-bookmark"></i>
 									</button>
 								</div>

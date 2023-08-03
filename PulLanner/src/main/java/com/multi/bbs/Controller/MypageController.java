@@ -33,19 +33,17 @@ public class MypageController {
 	@RequestMapping(value = "/mypage/mywriting", method = RequestMethod.GET)
 	public String mywriting(Model model, HttpSession session) {
 		Member member = (Member) session.getAttribute("loginMember");
-//		if(member == null) {
-//			model.addAttribute("msg", "로그인이 필요합니다.");
-//			model.addAttribute("location", "/login");
-//			return "common/msg";
-//		}
+		if(member == null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("location", "/login");
+			return "common/msg";
+		}
 		
 		String id = member.getId();
 		logger.info("account writinglist page");
 		
-		
 		int proudBoardCount = service.getmyProudBoardCount(id);
 		List<ProudBoard> list = service.getmyProudBoardList(id);
-//		System.out.println("list : " + list);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("proudBoardCount", proudBoardCount);
@@ -68,24 +66,6 @@ public class MypageController {
 	public String favorites(Locale locale, Model model, HttpSession session) {
 		logger.info("my favorites page");
 		return "0.2.3_account-favorites";
-	}
-
-	@RequestMapping(value = "/mypage/stararticle", method = RequestMethod.GET)
-	public String stararticle(Locale locale, Model model, HttpSession session) {
-		logger.info("star plant page");
-		return "0.3.1_account-article";
-	}
-
-	@RequestMapping(value = "/mypage/starplant", method = RequestMethod.GET)
-	public String starplant(Locale locale, Model model, HttpSession session) {
-		logger.info("star plant page");
-		return "0.3.1_account-article";
-	}
-
-	@RequestMapping(value = "/mypage/stargarden", method = RequestMethod.GET)
-	public String stargarden(Locale locale, Model model, HttpSession session) {
-		logger.info("star plant page");
-		return "0.3.1_account-article";
 	}
 
 	@RequestMapping(value = "/mypage/overview", method = RequestMethod.GET)

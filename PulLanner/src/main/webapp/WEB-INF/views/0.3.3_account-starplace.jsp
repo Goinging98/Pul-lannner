@@ -8,7 +8,7 @@
 
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
-		<!-- Side bar -->
+		<!-- Sidebar (offcanvas on sreens < 992px)-->
 		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
@@ -21,7 +21,7 @@
 						</div>
 						<nav class="nav flex-column pb-2 pb-lg-4 mb-3">
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">내 글 관리</h4>
-							<a class="nav-link fw-semibold py-2 px-0 active" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>풀레너</a> 
+							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>풀레너</a> 
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>커뮤니티</a>
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>판매글</a>
 						</nav>
@@ -35,7 +35,7 @@
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">스크랩</h4>
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a> 
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/starplant"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a> 
-							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/starplace"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 장소</a>
+							<a class="nav-link fw-semibold py-2 px-0 active" href="/mypage/starplace"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 장소</a>
 						</nav>
 						<nav class="nav flex-column pb-2 pb-lg-4 mb-3">
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">내 정보 관리</h4>
@@ -48,83 +48,54 @@
 			</div>
 		</aside>
 		
-		
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
-			<h1 class="h2 mb-4">내 글 관리</h1>
-			<!-- Basic info-->
-			<!-- Page title + filters-->
+			<h1 class="h2 mb-4">관심 식물</h1>
+
 			<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4">
-				<div class="row align-items-center gy-2 mb-4 pb-1 pb-sm-2 pb-lg-3">
-					<div class="col-lg-5">
-						<h1 class="mb-lg-0"></h1>
-					</div>
-					<div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5">
-						<select class="form-select">
-							<option>게시판</option>
-							<option>식물판매</option>
-							<option>씨앗분양</option>
-							<option>식물자랑</option>
-							<option>식물기르기꿀팁</option>
-							<option>관찰일지</option>
-						</select>
-					</div>
-					<div class="col-lg-4 col-sm-7">
-						<div class="position-relative">
-							<i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-							<input class="form-control ps-5" type="search"
-								placeholder="Enter keyword">
-						</div>
-					</div>
-				</div>
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 				
-				
-				
-				<!-- Post-->
-	        	<c:if test="${empty list}">
-					<tr>
-						<td colspan="6">작성한 글이 없습니다.</td>
-					</tr>
-				</c:if>
-				
-				<c:if test="${not empty list}">
-					<c:forEach var="item" items="${list}">
-						<article class="row g-0 border-0 pt-3 pt-sm-0 mb-4">
-							<a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5"
-								style="background-image: url(/resources/assets/img/blog/list/01.jpg); min-height: 16rem">
-								<c:if test="${not empty board.originalFileName 
-									and (fn:contains(board.originalFileName,'.jpg')
-										 or fn:contains(board.originalFileName,'.png')
-										  or fn:contains(board.originalFileName,'.jpeg'))}">
-								<img src="${path}/resources/static/upload/board/${board.renamedFileName}" width="100%" height="100%"/>
-								</c:if>
-							</a>
-								
-							<div class="col-sm-7 col-lg-8">
-								<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
-									<h3>
-										<a href="blog-single-v2.html">
-											<c:out value="${item.title}"></c:out>
-										</a>
-									</h3>
-									<p class="d-sm-none d-md-block">
-										<c:out value="${item.content}"></c:out>
-									</p>
-									<div class="d-flex flex-wrap align-items-center mt-n2">
-										${item.readCount}<i class="ai-heart fs-lg ms-1" ></i>
-										<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
-										<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span>
-										<span class="fs-xs opacity-20 mt-2 mx-3">|</span><a class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a>
+					<!-- Item-->
+					<c:forEach var = "spitem" items = "${splist}">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="image-container">
+									<c:if test="${spitem.TYPE=='A'}">
+										<img src="${spitem.FLOWER}" class="card-img-top fit-cover" alt="image">
+									</c:if>
+									<c:if test="${spitem.TYPE=='B'}">
+										<img src="${spitem.INNERPLANT}" class="card-img-top fit-cover" alt="image">
+									</c:if>
+									<c:if test="${spitem.TYPE=='C'}">
+										<img src="${spitem.DRY}" class="card-img-top fit-cover" alt="image">
+									</c:if>
+								</div>
+								<div class="card-body">
+									<h5 class="card-title text-truncate">${spitem.NAME}</h5>
+									<div class="d-flex justify-content-between">
+										<c:if test="${spitem.TYPE=='A'}">
+											<a href="/FlowerDetail?id=${spitem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+										</c:if>
+										<c:if test="${spitem.TYPE=='B'}">
+											<a href="/GardenDetail?id=${spitem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+										</c:if>
+										<c:if test="${spitem.TYPE=='C'}">
+											<a href="/DryGardenDetail?id=${spitem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+										</c:if>
 									</div>
 								</div>
 							</div>
-						</article>
+						</div>
 					</c:forEach>
-				</c:if>
-				
+				</div>
+
+
+
+
 				
 				<!-- Pagination-->
-				<div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-3 pt-lg-0 mb-md-2 mb-xl-4">
+				<div
+					class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-3 pt-lg-0 mb-md-2 mb-xl-4">
 					<div class="col col-md-4 col-6 order-md-1 order-1"></div>
 					<div class="col col-md-4 col-12 order-md-2 order-3 text-center">
 					</div>
@@ -141,16 +112,17 @@
 						</nav>
 					</div>
 				</div>
-				
-				
 			</section>
 		</div>
 	</div>
 </div>
 
-<!-- Side bar toggle button-->
-<button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
-	<i class="ai-menu me-2"></i>
+<!-- Divider for dark mode only-->
+<hr class="d-none d-dark-mode-block">
+<!-- Sidebar toggle button-->
+<button
+	class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom"
+	data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
+	<i class="ai-menu me-2"></i>Account menu
 </button>
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
