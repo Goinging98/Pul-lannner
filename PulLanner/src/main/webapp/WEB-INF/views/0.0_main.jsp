@@ -592,29 +592,28 @@
 		<div class="row align-items-lg-center">
 			<!-- Accordion-->
 			<div class="col-md-7 col-lg-7 pb-2 pb-lg-0 mb-4 mb-md-0">
-				<img class="rounded-5"
-					src="https://cdn.imweb.me/upload/S2017101359e025984d346/bff36a6d2ced4.jpg"
-					alt="Image">
-
-				<div class="accordion accordion-alt" id="industries">
-					<div class="accordion-item mb-n3 mb-lg-n2 mb-xl-1 mt-sm-3">
-						<h2 class="accordion-header" style="color: rgb(0, 0, 0);">
-							<button class="accordion-button" type="button"
-								data-bs-toggle="collapse" data-binded-content="#finance-img"
-								data-bs-target="#finance" aria-expanded="true"
-								aria-controls="finance">꽃베고니아</button>
-						</h2>
-						<div class="accordion-collapse collapse show" id="finance"
-							data-bs-parent="#industries">
-							<div class="accordion-body">Sit purus platea nunc semper
-								auctor integer semper et ac odio eget a lacus eu duis ante sed
-								molestie varius tempus gravida libero pretium sit etiam morbi
-								orci et vestibulum velit.</div>
+			<h1>오늘의 꽃</h1>
+				<c:forEach var="todayFlower" items="${todayFlower}">
+					<img class="rounded-5"
+						src="${todayFlower.imgUrl1}"
+						alt="Image">
+					<div class="accordion accordion-alt" id="industries">
+						<div class="accordion-item mb-n3 mb-lg-n2 mb-xl-1 mt-sm-3">
+							<h2 class="accordion-header" style="color: rgb(0, 0, 0);">
+								<button class="accordion-button" type="button"
+									data-bs-toggle="collapse" data-binded-content="#finance-img"
+									data-bs-target="#finance" aria-expanded="true"
+									aria-controls="finance">${todayFlower.flowNm}</button>
+							</h2>
+							<div class="accordion-collapse collapse show" id="finance"
+								data-bs-parent="#industries">
+								<div class="accordion-body">${todayFlower.fContent}</div>
+							</div>
 						</div>
 					</div>
-
-				</div>
+				</c:forEach>
 			</div>
+
 
 
 
@@ -624,28 +623,29 @@
 
 			<!-- Binded images-->
 
-				<div
-					class="col-md-4 col-lg-4 col-xl-4 offset-1 d-none d-sm-none d-md-block"
-					style="margin-top: -100px;">
-					<div class="ps-lg-4 ps-xl-0">
-						<h2>나들이 장소 추천</h2>
-						<c:forEach var="random" items="${randomList}">
+			<div
+				class="col-md-4 col-lg-4 col-xl-4 offset-1 d-none d-sm-none d-md-block"
+				style="margin-top: -100px;">
+				<div class="ps-lg-4 ps-xl-0">
+					<h2>나들이 장소 추천</h2>
+					<c:forEach var="random" items="${randomList}">
 						<div class="position-relative d-flex align-items-center mb-4">
-							<img class="rounded"
-								src="${random.firstimage}"
-																onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAALVBMVEX////d3d3k5OTs7Oz6+vrh4eH19fXy8vL8/Pzm5ubq6ur09PTr6+vb29vv7+/imAPPAAADoElEQVR4nO3ci3KjIBiGYUVAwIT7v9wVNYfdCDRNWjc/7zPT3Xbtzsg3nARM1wEAAAAAAAAAAAAAAAAAAAAAAOBzOZszWXf0zR1jUn2W8fro2zvCmE9k0WAozlQy8e01n1iJpDf26Fv8daGWST8efYu/rp5JPPoWf91gatqrJ07XtNfHAtinx+F9RhGT2qE2TX2OETAw12cfzxqOLtKrqhP35338VP+9DWcVji7Ui34gkl4dXagXfaWM596ocDqdfGFpqa1MjL8bX3VU9dYmPpPwz4TDWd94JruLrbbShkRnkpt/uaHdTG4TDaettXdrAsVla8GZmEu70YMy59l9d2sLXa3gTLZaosN98c2wVZZCTZGbybT+wkPZL1P3/FOB2ExO6/XTzqWt582OyVIzMWsT2YvkEkq2SxGayXldis+1j7Vd7QcmNhOzXLSZq1st0m1lsraO/Hi7Lgdk1qNkZrKOLdlqMlsqSmY8lpmJWopcethbKpLer0gyM1maRqbEd6m5/dRkZrLUglLT2Sb++x2KzEyWsba8fF34FZmZLF1sbvqxWiYw+52s4EzKOz9LJhOZPGTSUj2hP8lUgv2GsTGFqiQzk2XLtz4/yczqZGbiq/PYUmoyM1lnZKWF6NIDkcxMqs/Ffrne1HPxVqxsRVl72Nyhc6GZbIv2uSnKeuwmN1hLzWQr1343u64oZcclqZlsPYrb2xoO6/p1dp4rNpOt9bjHJ8FtKyM/KsnNxFw2/P6uKv6yPZj/n3Izub6q5MZrr2LCZVtdF85bCM5km78nzo4xxvH2PmR53n9MUd6mlEmvcqc6p+IBLtGZzBORvddQdOWcsfBMevVwVMnF2ik/6ZmkEyd3LcjZwLnHNZYwjMngv3TsuolMnvTpmXDe/lF5E+d7Pv010syW7ys+vZr8QChBwJu1bgrqfcKnv9AEAAAAAE1yLX5mYY0hkwdzJk7b+Q+7hKOvfzl9+7ExRtveR3/yQwhdN4Toh7QDeArKdF1UgxfwKUHPMlrPXYo+j51LVSZtEs/fTekTmOZv9fKvrZkzSbsSqas1tnNTjL3T6QSGNV00Yxwb/EzDLROzZOKUn0bjbHp5cq4v0acPXhaw8vqkuT+51ZOoUhbXejJ9+r7WN/X3mUxzGOE8f4VOq9SvNNjBzpTTaatGzZl4O3esakwnl07Kh1RnvFL+6Dv8fzjfXt9aFJVSRAIAAAAAAAAAAAAAAAAAAAAAAADI9QcjtCABFpqPswAAAABJRU5ErkJggg=='"
+							<img class="rounded" src="${random.firstimage}"
+								href="${path}/arboretumDetail?id=${random.contentid}"
+								onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAALVBMVEX////d3d3k5OTs7Oz6+vrh4eH19fXy8vL8/Pzm5ubq6ur09PTr6+vb29vv7+/imAPPAAADoElEQVR4nO3ci3KjIBiGYUVAwIT7v9wVNYfdCDRNWjc/7zPT3Xbtzsg3nARM1wEAAAAAAAAAAAAAAAAAAAAAAOBzOZszWXf0zR1jUn2W8fro2zvCmE9k0WAozlQy8e01n1iJpDf26Fv8daGWST8efYu/rp5JPPoWf91gatqrJ07XtNfHAtinx+F9RhGT2qE2TX2OETAw12cfzxqOLtKrqhP35338VP+9DWcVji7Ui34gkl4dXagXfaWM596ocDqdfGFpqa1MjL8bX3VU9dYmPpPwz4TDWd94JruLrbbShkRnkpt/uaHdTG4TDaettXdrAsVla8GZmEu70YMy59l9d2sLXa3gTLZaosN98c2wVZZCTZGbybT+wkPZL1P3/FOB2ExO6/XTzqWt582OyVIzMWsT2YvkEkq2SxGayXldis+1j7Vd7QcmNhOzXLSZq1st0m1lsraO/Hi7Lgdk1qNkZrKOLdlqMlsqSmY8lpmJWopcethbKpLer0gyM1maRqbEd6m5/dRkZrLUglLT2Sb++x2KzEyWsba8fF34FZmZLF1sbvqxWiYw+52s4EzKOz9LJhOZPGTSUj2hP8lUgv2GsTGFqiQzk2XLtz4/yczqZGbiq/PYUmoyM1lnZKWF6NIDkcxMqs/Ffrne1HPxVqxsRVl72Nyhc6GZbIv2uSnKeuwmN1hLzWQr1343u64oZcclqZlsPYrb2xoO6/p1dp4rNpOt9bjHJ8FtKyM/KsnNxFw2/P6uKv6yPZj/n3Izub6q5MZrr2LCZVtdF85bCM5km78nzo4xxvH2PmR53n9MUd6mlEmvcqc6p+IBLtGZzBORvddQdOWcsfBMevVwVMnF2ik/6ZmkEyd3LcjZwLnHNZYwjMngv3TsuolMnvTpmXDe/lF5E+d7Pv010syW7ys+vZr8QChBwJu1bgrqfcKnv9AEAAAAAE1yLX5mYY0hkwdzJk7b+Q+7hKOvfzl9+7ExRtveR3/yQwhdN4Toh7QDeArKdF1UgxfwKUHPMlrPXYo+j51LVSZtEs/fTekTmOZv9fKvrZkzSbsSqas1tnNTjL3T6QSGNV00Yxwb/EzDLROzZOKUn0bjbHp5cq4v0acPXhaw8vqkuT+51ZOoUhbXejJ9+r7WN/X3mUxzGOE8f4VOq9SvNNjBzpTTaatGzZl4O3esakwnl07Kh1RnvFL+6Dv8fzjfXt9aFJVSRAIAAAAAAAAAAAAAAAAAAAAAAADI9QcjtCABFpqPswAAAABJRU5ErkJggg=='"
 								style="max-width: 110px; max-height: 110px; min-width: 110px; min-height: 110px;"
 								alt="Post image">
 							<div class="ps-3">
 								<h4 class="h5 mb-2">
-									<a class="stretched-link" href="blog-single-v1.html">${random.title}</a>
+									<a class="stretched-link"
+										href="${path}/arboretumDetail?id=${random.contentid}">${random.title}</a>
 								</h4>
-								<span class="text-muted" style="font-size: 16px;">${random.restdate}</span>
+								<span class="text-muted" style="font-size: 16px;">휴무일: ${random.restdate}</span>
 							</div>
 						</div>
-						</c:forEach>
-					</div>
+					</c:forEach>
 				</div>
+			</div>
 		</div>
 	</section>
 

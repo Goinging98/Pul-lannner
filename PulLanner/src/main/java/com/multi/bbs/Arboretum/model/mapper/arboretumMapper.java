@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.multi.bbs.Arboretum.model.vo.TourVO;
-import com.multi.bbs.plantSearch.model.vo.GardenDtl;
 
 @Mapper
 public interface arboretumMapper {
@@ -54,5 +53,6 @@ public interface arboretumMapper {
 	
 	//----------------랜덤으로 불러오기----------------------------
 	List<TourVO> selectRandomList(Map<String, Object> map);
+	//---------랜덤으로 3개불러오기 (메인페이지)
 	List<TourVO> selectRandomList3(Map<String, Object> map);
 }

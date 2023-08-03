@@ -124,7 +124,7 @@
 	    ORDER BY RAND()
 	    LIMIT 4
 	</select>
-	<!-- 랜덤으로 3개 불러오기 (메인 페이지) -->
+<!-- 랜덤으로 3개 불러오기 (메인 페이지) -->
 	<select id="selectRandomList3" parameterType="map" resultType="TourVO">
 	    SELECT *
 	    FROM Tourlist

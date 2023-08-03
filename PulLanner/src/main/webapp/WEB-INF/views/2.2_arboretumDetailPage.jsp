@@ -103,22 +103,28 @@
 		<div class="row">
 			<div class="border-bottom py-md-2 py-lg-3 py-xl-4 py-xxl-5">
 				<div class="row my-5">
-					<div class="col-md-12 col-lg-12 col-xl-11">
+					<div class="col-12">
 						<h2 class="h1 pb-2">개요</h2>
 						<p class="fs-lg">${aItem.overview}</p>
 					</div>
-					<div class="col-lg-12 col-xl-12">
-						<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 g-sm-4 pt-4 pt-xxl-5 mb-2 mb-sm-3 pb-xxl-4">
-							<div class="col">
-								<h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 ai ai-compass"> 주소</h2>
+					<div class="col-lg-12 col-xl-12" style="text-align: center;">
+						<div
+							class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 g-sm-4 pt-4 pt-xxl-5 mb-2 mb-sm-3 pb-xxl-4">
+							<div class="col" style="border-right: 1px solid #ccc;">
+								<h2
+									class="fs-base fw-normal text-muted mb-2 mb-sm-3 ai ai-compass">
+									주소</h2>
 								<p class="list-unstyled fs-lg fw-semibold text-dark mb-0">${aItem.addr1}</p>
 							</div>
-							<div class="col">
-								<h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 ai ai-phone-call"> 전화번호</h2>
+							<div class="col" style="border-right: 1px solid #ccc;">
+								<h2
+									class="fs-base fw-normal text-muted mb-2 mb-sm-3 ai ai-phone-call">
+									전화번호</h2>
 								<p class="list-unstyled fs-lg fw-semibold text-dark mb-0">${aItem.infocenter}</p>
 							</div>
 							<div class="col">
-								<h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 ai-globe"> 홈페이지</h2>
+								<h2 class="fs-base fw-normal text-muted mb-2 mb-sm-3 ai-globe">
+									홈페이지</h2>
 								<p class="list-unstyled fs-lg fw-semibold text-dark mb-0">
 									<a href="https://www.naver.com" target="_blank">${aItem.homepage}</a>
 								</p>
@@ -129,11 +135,16 @@
 			</div>
 
 			<div class="border-bottom">
-				<div class="col-md-12 d-flex align-items-center justify-content-center" style="margin-top: 60px; margin-bottom: 60px;">
+				<div
+					class="col-md-12 d-flex align-items-center justify-content-center"
+					style="margin-top: 60px; margin-bottom: 60px;">
 					<!-- Location (Map) start -->
-					<div id="map" class="rounded" style="width: 1000px; height: 550px; background-color: rgb(160, 179, 186);"></div>
-					<div class="d-flex h-25 flex-column align-items-center justify-content-center">
-						<a href="https://www.google.com/maps/search/${aItem.title} ${aItem.addr1}"></a>
+					<div id="map" class="rounded"
+						style="width: 1000px; height: 550px; background-color: rgb(160, 179, 186);"></div>
+					<div
+						class="d-flex h-25 flex-column align-items-center justify-content-center">
+						<a
+							href="https://www.google.com/maps/search/${aItem.title} ${aItem.addr1}"></a>
 					</div>
 					<!-- Location (Map) end -->
 				</div>
@@ -141,13 +152,18 @@
 
 
 			<!-- More projects carousel-->
-			<div class="d-flex align-items-center pb-3 mb-3 mb-lg-4" style="margin-top: 80px;">
+			<div class="d-flex align-items-center pb-3 mb-3 mb-lg-4"
+				style="margin-top: 80px;">
 				<h2 class="h1 mb-0">추천 장소</h2>
 				<div class="d-flex ms-auto">
-					<button class="btn btn-sm btn-icon btn-outline-primary rounded-circle ms-3" type="button" id="prev-project">
+					<button
+						class="btn btn-sm btn-icon btn-outline-primary rounded-circle ms-3"
+						type="button" id="prev-project">
 						<i class="ai-arrow-left"></i>
 					</button>
-					<button class="btn btn-sm btn-icon btn-outline-primary rounded-circle ms-3" type="button" id="next-project">
+					<button
+						class="btn btn-sm btn-icon btn-outline-primary rounded-circle ms-3"
+						type="button" id="next-project">
 						<i class="ai-arrow-right"></i>
 					</button>
 				</div>
@@ -169,11 +185,15 @@
 					<!-- Item-->
 					<c:forEach var="random" items="${randomList}">
 						<div class="swiper-slide">
-							<a class="d-block position-relative image-container2" href="${path}/arboretumDetail?id=${random.contentid}">
-								<div class="bg-info rounded-5 position-absolute top-0 start-0 w-100 h-100"></div>
-								<img class="d-block position-relative zindex-2 mx-auto fit-cover2 rounded-5" src="${random.firstimage}"
+							<a class="d-block position-relative image-container2"
+								href="${path}/arboretumDetail?id=${random.contentid}">
+								<div
+									class="bg-info rounded-5 position-absolute top-0 start-0 w-100 h-100"></div>
+								<img
+								class="d-block position-relative zindex-2 mx-auto fit-cover2 rounded-5"
+								src="${random.firstimage}"
 								onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAALVBMVEX////d3d3k5OTs7Oz6+vrh4eH19fXy8vL8/Pzm5ubq6ur09PTr6+vb29vv7+/imAPPAAADoElEQVR4nO3ci3KjIBiGYUVAwIT7v9wVNYfdCDRNWjc/7zPT3Xbtzsg3nARM1wEAAAAAAAAAAAAAAAAAAAAAAOBzOZszWXf0zR1jUn2W8fro2zvCmE9k0WAozlQy8e01n1iJpDf26Fv8daGWST8efYu/rp5JPPoWf91gatqrJ07XtNfHAtinx+F9RhGT2qE2TX2OETAw12cfzxqOLtKrqhP35338VP+9DWcVji7Ui34gkl4dXagXfaWM596ocDqdfGFpqa1MjL8bX3VU9dYmPpPwz4TDWd94JruLrbbShkRnkpt/uaHdTG4TDaettXdrAsVla8GZmEu70YMy59l9d2sLXa3gTLZaosN98c2wVZZCTZGbybT+wkPZL1P3/FOB2ExO6/XTzqWt582OyVIzMWsT2YvkEkq2SxGayXldis+1j7Vd7QcmNhOzXLSZq1st0m1lsraO/Hi7Lgdk1qNkZrKOLdlqMlsqSmY8lpmJWopcethbKpLer0gyM1maRqbEd6m5/dRkZrLUglLT2Sb++x2KzEyWsba8fF34FZmZLF1sbvqxWiYw+52s4EzKOz9LJhOZPGTSUj2hP8lUgv2GsTGFqiQzk2XLtz4/yczqZGbiq/PYUmoyM1lnZKWF6NIDkcxMqs/Ffrne1HPxVqxsRVl72Nyhc6GZbIv2uSnKeuwmN1hLzWQr1343u64oZcclqZlsPYrb2xoO6/p1dp4rNpOt9bjHJ8FtKyM/KsnNxFw2/P6uKv6yPZj/n3Izub6q5MZrr2LCZVtdF85bCM5km78nzo4xxvH2PmR53n9MUd6mlEmvcqc6p+IBLtGZzBORvddQdOWcsfBMevVwVMnF2ik/6ZmkEyd3LcjZwLnHNZYwjMngv3TsuolMnvTpmXDe/lF5E+d7Pv010syW7ys+vZr8QChBwJu1bgrqfcKnv9AEAAAAAE1yLX5mYY0hkwdzJk7b+Q+7hKOvfzl9+7ExRtveR3/yQwhdN4Toh7QDeArKdF1UgxfwKUHPMlrPXYo+j51LVSZtEs/fTekTmOZv9fKvrZkzSbsSqas1tnNTjL3T6QSGNV00Yxwb/EzDLROzZOKUn0bjbHp5cq4v0acPXhaw8vqkuT+51ZOoUhbXejJ9+r7WN/X3mUxzGOE8f4VOq9SvNNjBzpTTaatGzZl4O3esakwnl07Kh1RnvFL+6Dv8fzjfXt9aFJVSRAIAAAAAAAAAAAAAAAAAAAAAAADI9QcjtCABFpqPswAAAABJRU5ErkJggg=='"
-							    width="636" alt="Image">
+								width="636" alt="Image">
 							</a>
 							<div class="pt-1 mt-sm-3">
 								<div class="row pt-1 pt-lg-1 mt-1" style="margin-left: 8px;">
@@ -201,7 +221,7 @@
 
 		</div>
 	</div>
-</main>
+	</main>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 

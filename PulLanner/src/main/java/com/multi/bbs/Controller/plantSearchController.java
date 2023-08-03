@@ -146,7 +146,7 @@ public class plantSearchController {
 		
         int count = plantSearchService.selectGardenCount(searchMap);
         PageInfo pageInfo = new PageInfo(page, 5, count, 12); // 게시글이 보여지는 갯수 = 10
-	        List<FlowerDtl> flowerlist = plantSearchService.selectFlowerList(pageInfo, searchMap);;
+	        List<FlowerDtl> flowerlist = plantSearchService.selectFlowerList(pageInfo, searchMap);
 	        
 	      
 	        model.addAttribute("flowerlist", flowerlist);
@@ -165,6 +165,9 @@ public class plantSearchController {
 	            System.out.println("fitem: " + floweritem); // 또는 gardenDtl의 필드들을 하나씩 출력
 	        }
 	        
+	        
+	        List<FlowerDtl> todayFlower = plantSearchService.todayFlower(1);
+	        model.addAttribute("todayFlower", todayFlower);
 
 	        
 	        

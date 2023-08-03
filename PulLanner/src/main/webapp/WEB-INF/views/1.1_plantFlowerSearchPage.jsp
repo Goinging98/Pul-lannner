@@ -104,52 +104,59 @@
 				</c:forEach>
 			</div>
 		</div>
-		
-		<!-- Pagination-->
-		<div class="col-12 pt-sm-4 mt-md-2 text-end">
-			<div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
-				<div class="col col-md-4 col-6 order-md-1 order-1"></div>
-				<div class="col col-md-4 col-6 order-md-3 order-2">
-					<nav aria-label="Page navigation">
-						<ul class="pagination justify-content-end">
-							<li class="page-item active" aria-current="page">
-								<!-- 처음 페이지 -->
-							<li class="page-item">
-								<button class="page-link" onclick="movePage(1)">&lt;&lt;</button>
-							</li>
-							<!-- 이전 페이지 -->
-							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
-							</li>
-							<!-- 12개 페이지가 보여지는 부분 -->
-							<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
-								<c:if test="${status.current == pageInfo.currentPage}">
-									<li class="page-item active" aria-current="page">
-										<button class="page-link" disabled>${status.current}</button>
-									</li>
-								</c:if>
-								<c:if test="${status.current != pageInfo.currentPage}">
-									<li class="page-item">
-										<button class="page-link" onclick="movePage(${status.current})">${status.current}</button>
-									</li>
-								</c:if>
-							</c:forEach>
 
-							<!-- 다음 페이지 -->
-							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
-							</li>
-							<!-- 마지막 페이지 -->
-							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
-							</li>
-						</ul>
-					</nav>
+
+		<!-- Pagination-->
+				<div class="col-12 pt-sm-4 mt-md-2 text-end">
+					<div
+						class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
+						<div class="col col-md-4 col-6 order-md-1 order-1"></div>
+						<div class="col col-md-4 col-6 order-md-3 order-2">
+							<nav aria-label="Page navigation">
+								<ul class="pagination justify-content-end">
+									<li class="page-item active" aria-current="page">
+										<!-- 처음 페이지 -->
+									<li class="page-item">
+										<button class="page-link" onclick="movePage(1)">&lt;&lt;</button>
+									</li>
+									<!-- 이전 페이지 -->
+									<li class="page-item">
+										<button class="page-link"
+											onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+									</li>
+									<!-- 12개 페이지가 보여지는 부분 -->
+									<c:forEach begin="${pageInfo.startPage}"
+										end="${pageInfo.endPage}" varStatus="status" step="1">
+										<c:if test="${status.current == pageInfo.currentPage}">
+											<li class="page-item active" aria-current="page">
+												<button class="page-link" disabled>${status.current}</button>
+											</li>
+										</c:if>
+										<c:if test="${status.current != pageInfo.currentPage}">
+											<li class="page-item">
+												<button class="page-link"
+													onclick="movePage(${status.current})">${status.current}</button>
+											</li>
+										</c:if>
+									</c:forEach>
+
+									<!-- 다음 페이지 -->
+									<li class="page-item">
+										<button class="page-link"
+											onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+									</li>
+									<!-- 마지막 페이지 -->
+									<li class="page-item">
+										<button class="page-link"
+											onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
 				</div>
-			</div>
 		</div>
 	</div>
-</div>
 
 <!-- Sidebar toggle button-->
 <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#shopSidebar">

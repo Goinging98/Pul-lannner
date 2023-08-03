@@ -20,6 +20,8 @@ import com.multi.bbs.Arboretum.model.service.arboretumService;
 import com.multi.bbs.Arboretum.model.vo.TourVO;
 import com.multi.bbs.api.naver.NaverSearchAPI;
 import com.multi.bbs.common.util.PageInfo;
+import com.multi.bbs.plantSearch.model.service.plantSearchService;
+import com.multi.bbs.plantSearch.model.vo.FlowerDtl;
 import com.multi.bbs.shop.model.service.ShopService;
 import com.multi.bbs.shop.model.vo.Product;
 
@@ -39,12 +41,14 @@ public class HomeController {
 	ShopService shopService;
 	@Autowired
     private arboretumService arboretumService;
+	@Autowired
+    private plantSearchService plantSearchService;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpSession session, Map<String, Object> map) {
+	public String home(Locale locale, Model model, HttpSession session, Map<String, Object> map, Integer id) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 //		Member loginMember = memberService.login("admin", "1212");
 //		session.setAttribute("loginMember", loginMember);
@@ -57,8 +61,13 @@ public class HomeController {
 		model.addAttribute("plist1", plist1);
 		
 		
+		//=============랜덤으로 장소 추천=====================
 		List<TourVO> randomList = arboretumService.selectRandomList3(3);
 		model.addAttribute("randomList", randomList);
+		//=============오늘의 꽃=====================
+        List<FlowerDtl> todayFlower = plantSearchService.todayFlower(1);
+        model.addAttribute("todayFlower", todayFlower);
+
 		
 		return "0.0_main";
 	}

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.multi.bbs.Arboretum.model.mapper.arboretumMapper;
 import com.multi.bbs.Arboretum.model.vo.TourVO;
 import com.multi.bbs.common.util.PageInfo;
-import com.multi.bbs.plantSearch.model.vo.GardenList;
 
 
 @Service
@@ -92,7 +91,7 @@ public class arboretumService {
 	    map.put("count", count);
 	    return mapper.selectRandomList(map);
 	}
-		
+	//-------랜덤으로 3개불러오기(메인페이지)
 		public List<TourVO> selectRandomList3(int count) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("count", count);

@@ -29,7 +29,7 @@ public interface plantSearchMapper {
 	
 	
 	// --------------꽃 관련----------------
-	List<FlowerDtl> selectFlowerList(Map<String, String> map); // 추가된 메서드
+	List<FlowerDtl> selectFlowerList(Map<String, String> map);
 	
 	int selectFlowerCount (Map<String, String> param);
 	
@@ -39,11 +39,21 @@ public interface plantSearchMapper {
 	
 	
 	// --------------다육이 관련----------------
-	List<DryGardenDtl> selectDryGardenList(Map<String, String> map); // 추가된 메서드
+	List<DryGardenDtl> selectDryGardenList(Map<String, String> map); 
 	
 	int selectDryGardenCount (Map<String, String> param);
 	
 	DryGardenDtl selectByDryGardenId(int id);
+	
+	
+	
+	// --------------오늘의 꽃(메인페이지) 관련----------------
+	List<FlowerDtl> todayFlower(Map<String, Object> map);
+	
+	
+	
+	
+	
 	
 	
 	// plantshop 관련 코드

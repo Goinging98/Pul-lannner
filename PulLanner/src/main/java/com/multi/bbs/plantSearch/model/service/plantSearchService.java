@@ -1,14 +1,15 @@
 package com.multi.bbs.plantSearch.model.service;
 
+
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.plantSearch.model.mapper.plantSearchMapper;
 import com.multi.bbs.plantSearch.model.vo.DryGardenDtl;
-import com.multi.bbs.plantSearch.model.vo.DryGardenList;
 import com.multi.bbs.plantSearch.model.vo.FlowerDtl;
 import com.multi.bbs.plantSearch.model.vo.GardenDtl;
 import com.multi.bbs.plantSearch.model.vo.GardenList;
 import com.multi.bbs.plantSearch.model.vo.PlantNameVO;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,9 @@ public class plantSearchService {
 	@Autowired // 의존성 주입
 	private plantSearchMapper mapper; // 매퍼 인터페이스를 멤버 변수로 선언
 
+	
+	
+	
 	// --------------실내식물 관련----------------
 	public List<GardenList> selectGardentList(PageInfo pageInfo, Map<String, String> searchMap) {
 		searchMap.put("limit", "" + pageInfo.getListLimit());
@@ -40,6 +44,9 @@ public class plantSearchService {
 	public GardenDtl selectByContentDetailId(int id) {
 		return mapper.selectByContentDetailId(id);
 	}
+	
+	
+	
 
 	// --------------꽃 관련----------------
 	public List<FlowerDtl> selectFlowerList(PageInfo pageInfo, Map<String, String> param) {
@@ -56,6 +63,8 @@ public class plantSearchService {
 		return mapper.selectByFlowerId(id);
 	}
 
+	
+	
 	// --------------다육이 관련----------------
 	public List<DryGardenDtl> selectDryGardenList(PageInfo pageInfo, Map<String, String> param) {
 		param.put("limit", "" + pageInfo.getListLimit());
@@ -71,6 +80,20 @@ public class plantSearchService {
 		return mapper.selectByDryGardenId(id);
 	}
 
+	
+	
+	
+	// --------------오늘의 꽃(메인페이지) 관련----------------
+	public List<FlowerDtl> todayFlower(int count) {
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("count", count);
+	    return mapper.todayFlower(map);
+	}
+
+
+	
+	
+	
 	
 	// plantshop 관련 코드 
 	public List<PlantNameVO> selectPlantNoName() {

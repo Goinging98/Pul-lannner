@@ -141,7 +141,7 @@
 	
 
 	
-	<!-- ===============꽃 관련================ -->	
+	<!-- =========================꽃 관련============================================= -->	
 	
 		<select id="selectFlowerList" parameterType="map" resultType="FlowerDtl">
 		SELECT *
@@ -171,7 +171,7 @@
 		
 		
 		
-	<!-- ===============다육이 관련================ -->	
+	<!-- ===========================다육이 관련============================================ -->	
 	
 		<select id="selectDryGardenList" parameterType="map" resultType="DryGardenDtl">
 		SELECT *
@@ -203,6 +203,21 @@
 		  FROM drygardenDtl
 		  WHERE cntntsNo = #{id}
 		</select>
+	
+	
+	
+		
+    <!-- ========================오늘의 꽃(메인페이지) 관련================================================ -->
+    
+		<select id="todayFlower" parameterType="map" resultType="FlowerDtl">
+		SELECT *
+		FROM flowerDetail
+		WHERE fMonth = MONTH(CURRENT_DATE()) AND fDay = DAY(CURRENT_DATE());
+		</select>
+
+		
+		
+		
 		
 		
 		<!-- plantshop 관련 코드 -->
