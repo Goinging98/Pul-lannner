@@ -48,14 +48,29 @@
 				</div>
 			</div>
 		</aside>
+		
+		
+		
+		
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
 			<div class="d-flex align-items-center mb-4">
 				<h1 class="h2 mb-0">장바구니</h1>
 			</div>
+			
+			
+			<%-- <c:forEach var="item" items="${list }">
+				${item.title},
+				${item.lprice},
+				${item.lprice * item.amount},
+				${item.image}
+				@@@@@@
+				<br>
+			</c:forEach> --%>
 			<div class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4">
 				<div class="card-body pb-4">
 					<!-- Orders accordion-->
+					<c:forEach var="item" items="${list }">
 					<div class="accordion accordion-alt accordion-orders" id="orders">
 						<table class="table align-middle w-100" style="min-width: 450px;">
 							<tr>
@@ -64,64 +79,33 @@
 										<a
 											class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3"
 											href="shop-single.html"><img
-											src="/resources/assets/img/shop/cart/01.png" width="110"
+											src=${item.image} width="110"
 											alt="Product"></a>
 										<div class="ps-3 ps-sm-4">
 											<h4 class="h6 mb-2">
-												<a href="shop-single.html">Candle in concrete bowl</a>
+												<a href="shop-single.html">${item.title}</a>
 											</h4>
-											<div class="text-muted fs-sm me-3">
-												Color: <span class='text-dark fw-medium'>Gray night</span>
-											</div>
+											
 										</div>
 									</div>
 								</td>
 								<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
-									<div class="fs-sm text-muted mb-2">Quantity</div>
+									<div class="fs-sm text-muted mb-2">수량</div>
 									<div class="fs-sm fw-medium text-dark">1</div>
 								</td>
 								<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
-									<div class="fs-sm text-muted mb-2">Price</div>
-									<div class="fs-sm fw-medium text-dark">$16</div>
+									<div class="fs-sm text-muted mb-2">가격</div>
+									<div class="fs-sm fw-medium text-dark">${item.lprice}</div>
 								</td>
 								<td class="border-0 text-end py-1 pe-0 ps-3 ps-sm-4">
-									<div class="fs-sm text-muted mb-2">Total</div>
-									<div class="fs-sm fw-medium text-dark">$16</div>
+									<div class="fs-sm text-muted mb-2">총합</div>
+									<div class="fs-sm fw-medium text-dark">${item.lprice * item.amount}</div>
 								</td>
 							</tr>
-							<tr>
-								<td class="border-0 py-1 px-0">
-									<div class="d-flex align-items-center">
-										<a
-											class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3"
-											href="shop-single.html"><img
-											src="/resources/assets/img/shop/cart/02.png" width="110"
-											alt="Product"></a>
-										<div class="ps-3 ps-sm-4">
-											<h4 class="h6 mb-2">
-												<a href="shop-single.html">Exquisite glass vase </a>
-											</h4>
-											<div class="text-muted fs-sm me-3">
-												Color: <span class='text-dark fw-medium'>Rose</span>
-											</div>
-										</div>
-									</div>
-								</td>
-								<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
-									<div class="fs-sm text-muted mb-2">Quantity</div>
-									<div class="fs-sm fw-medium text-dark">2</div>
-								</td>
-								<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
-									<div class="fs-sm text-muted mb-2">Price</div>
-									<div class="fs-sm fw-medium text-dark">$11</div>
-								</td>
-								<td class="border-0 text-end py-1 pe-0 ps-3 ps-sm-4">
-									<div class="fs-sm text-muted mb-2">Total</div>
-									<div class="fs-sm fw-medium text-dark">$22</div>
-								</td>
-							</tr>
+							
 						</table>
 					</div>
+					</c:forEach>
 
 					<!-- Coupon input + total-->
 					<div class="px-4 pb-3 pb-sm-4 pb-sm-5">
@@ -129,12 +113,13 @@
 							<div
 								class="input-group input-group-sm border-dashed mb-3 mb-sm-0 me-sm-4 me-md-5">
 								<input class="form-control text-uppercase" type="text"
-									placeholder="Your coupon code">
-								<button class="btn btn-secondary" type="button">Apply
-									coupon</button>
+									placeholder="쿠폰 코드">
+								<button class="btn btn-secondary" type="button">쿠폰 적용</button>
 							</div>
 							<div class="d-flex align-items-center justify-content-center">
-								<span class="fs-xl me-3">Total:</span> <span class="h3 mb-0">$92.00</span>
+								<span class="fs-xl me-3">합계:</span> <span class="h3 mb-0"> 
+								<fmt:formatNumber value="${totalPrice}" pattern="#,###" />
+								 원</span>
 							</div>
 						</div>
 					</div>

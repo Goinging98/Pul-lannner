@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.member.model.vo.Member;
+import com.multi.bbs.shop.model.service.ShopService;
+import com.multi.bbs.shop.model.vo.Product;
 import com.multi.bbs.member.model.service.MyproudService;
 import com.multi.bbs.communityBoard.model.vo.ProudBoard;
 
@@ -29,6 +31,10 @@ public class MypageController {
 
 	@Autowired
 	private MyproudService service;
+	
+	@Autowired
+	private ShopService shopService;
+
 	
 	@RequestMapping(value = "/mypage/mywriting", method = RequestMethod.GET)
 	public String mywriting(Model model, HttpSession session) {
@@ -58,7 +64,22 @@ public class MypageController {
 
 	@RequestMapping(value = "/mypage/shoppingbag", method = RequestMethod.GET)
 	public String shoppingbag(Locale locale, Model model, HttpSession session) {
-		logger.info("my shopping bag page");
+		Member member = (Member) session.getAttribute("loginMember");
+		if(member == null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("location", "/login");
+			return "common/msg";
+		}
+	
+		List<Product> list = shopService.getCartProductList(member.getMNo());
+		System.out.println(list);
+		model.addAttribute("list", list);
+		int totalPrice = 0;
+		for(Product item : list) {
+			totalPrice += item.getLprice() * item.getAmount(); 
+		}
+		model.addAttribute("totalPrice", totalPrice);
+		
 		return "0.2.2_account-shoppingbag";
 	}
 

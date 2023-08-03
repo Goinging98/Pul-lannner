@@ -70,13 +70,14 @@
 							<option value="5">5</option>
 						</select>
 						<div class="d-flex align-items-center">
+						<a href="${path}/mypage/shoppingbag/addcart?pno=${product.pno}&returnURL=/shop/product?pno=${product.pno}">
 							<button class="btn btn-lg btn-primary w-100 w-lg-auto me-2"
 								type="button">
 								<i class="ai-cart me-2 ms-n1"></i>Add to cart
 							</button>
+						</a>
 							<div class="nav">
-								<a class="nav-link fs-3 px-3" href="#" data-bs-toggle="tooltip"
-									title="Add to Favorites"><i class="ai-heart"></i></a>
+								<a class="nav-link fs-3 px-3" href="#" data-bs-toggle="tooltip" title="Add to Favorites"><i class="ai-heart"></i></a>
 							</div>
 						</div>
 					</div>
@@ -146,8 +147,10 @@
 						</div>
 					</c:forEach>
 				</div>
+				
+				
 				<p class="pb-2 mb-0">${item.content }</p>
-				<c:if test="${loginMember != null && loginMember.mno == item.mno}">
+				<c:if test="${loginMember != null && loginMember.MNo == item.MNo}">
 					<form class="text-end" action="${path}/shop/deleteReply"
 						method="post">
 						<input type="hidden" name="rno" value="${item.rno}"> <input
