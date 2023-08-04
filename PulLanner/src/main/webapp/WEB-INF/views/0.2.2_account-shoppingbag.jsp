@@ -74,7 +74,7 @@
 								</td>
 								<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
 									<div class="fs-sm text-muted mb-2">수량</div>
-									<div class="fs-sm fw-medium text-dark">1</div>
+									<div class="fs-sm fw-medium text-dark">${item.amount}</div>
 								</td>
 								<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
 									<div class="fs-sm text-muted mb-2">가격</div>
