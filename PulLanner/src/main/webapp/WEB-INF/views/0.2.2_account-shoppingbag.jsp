@@ -62,12 +62,11 @@
 							<tr>
 								<td class="border-0 py-1 px-0">
 									<div class="d-flex align-items-center">
-										<a class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3" href="/shop/product?pno=${item.pno }">
-										<img src=${item.image} width="110"
-											alt="Product"></a>
+										<a class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3" href="/shop/product?pno=${item.pno}">
+										<img src="${item.image}" width="110" alt="Product"></a>
 										<div class="ps-3 ps-sm-4">
 											<h4 class="h6 mb-2">
-												<a href="shop-single.html">${item.title}</a>
+												<a href="/shop/product?pno=${item.pno }">${item.title}</a>
 											</h4>
 										</div>
 									</div>
@@ -99,12 +98,10 @@
 						</div>
 					</div>
 					<!-- Action buttons-->
-					<div
-						class="d-flex align-items-center justify-content-between px-4 pb-3">
+					<div class="d-flex align-items-center justify-content-between px-4 pb-3">
 						<div class="nav d-none d-sm-block"></div>
-						<a class="btn btn-lg btn-primary w-100 w-sm-auto"
-							href="shop-checkout.html"> 결제하기<i
-							class="ai-chevron-right ms-2 me-n1"></i>
+						<a class="btn btn-lg btn-primary w-100 w-sm-auto"href="/shoppingbag/payment"> 
+							결제하기<i class="ai-chevron-right ms-2 me-n1"></i>
 						</a>
 					</div>
 				</div>
@@ -115,9 +112,7 @@
 <!-- Divider for dark mode only-->
 <hr class="d-none d-dark-mode-block">
 <!-- Sidebar toggle button-->
-<button
-	class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom"
-	data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
-	<i class="ai-menu me-2"></i>Account menu
+<button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
+	<i class="ai-menu me-2"></i>
 </button>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

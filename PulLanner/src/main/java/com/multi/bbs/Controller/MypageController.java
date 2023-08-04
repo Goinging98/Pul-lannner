@@ -72,7 +72,6 @@ public class MypageController {
 		}
 	
 		List<Product> list = shopService.getCartProductList(member.getMNo());
-		System.out.println(list);
 		model.addAttribute("list", list);
 		int totalPrice = 0;
 		for(Product item : list) {

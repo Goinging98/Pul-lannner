@@ -123,9 +123,9 @@ function findAddr(){
 							</div>
 							<div class="col-12">
 								<label class="form-label" for="address">주소</label>
-								<input class="form-control" id="member_post" type="text" placeholder="Zip Code" name="addr1" readonly onclick="findAddr()"><br>
-								<input class="form-control" id="member_addr" type="text" placeholder="Address" name="addr2" readonly > <br>
-								<input class="form-control" type="text" placeholder="Detailed Address" name="addr3">
+								<input class="form-control" id="member_post" type="text" value="${loginMember.addr1}" name="addr1" readonly onclick="findAddr()"><br>
+								<input class="form-control" id="member_addr" type="text" value="${loginMember.addr2}" name="addr2" readonly > <br>
+								<input class="form-control" type="text" value="${loginMember.addr3}" name="addr3">
 							</div>
 							<div class="col-12 d-flex justify-content-end pt-3">
 								<button class="btn btn-primary ms-3" type="submit">변경사항 저장</button>

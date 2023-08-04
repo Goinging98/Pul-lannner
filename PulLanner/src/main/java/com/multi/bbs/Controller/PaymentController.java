@@ -27,7 +27,7 @@ public class PaymentController {
 	@Autowired
 	ShopService shopService;
 
-	@RequestMapping("/mypage/shoppingbag/payment")
+	@RequestMapping("/shoppingbag/payment")
 	public String cartView(Model model, HttpSession session) {
 		Member member = (Member) session.getAttribute("loginMember");
 		if (member == null) {
@@ -35,9 +35,23 @@ public class PaymentController {
 			model.addAttribute("location", "/");
 			return "common/msg";
 		}
+		System.out.println(member);
 
 		List<Product> list = shopService.getCartProductList(member.getMNo());
 		model.addAttribute("list", list);
+		
+		int totalPrice = 0;
+		for(Product item : list) {
+			totalPrice += item.getLprice() * item.getAmount(); 
+		}
+		totalPrice += 3000;
+		int totalAmount = 0;
+		for(Product item : list) {
+			totalAmount += item.getAmount();
+		}
+		model.addAttribute("totalAmount", totalAmount);
+		model.addAttribute("totalPrice", totalPrice);
+		
 		return "3.4_shopping_bag";
 	}
 

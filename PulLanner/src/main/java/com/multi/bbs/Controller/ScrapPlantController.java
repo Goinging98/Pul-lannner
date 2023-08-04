@@ -1,21 +1,15 @@
 package com.multi.bbs.Controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.member.model.vo.Member;
 import com.multi.bbs.scrap.model.service.ScrapPlaceService;
 import com.multi.bbs.scrap.model.service.ScrapPlantService;
@@ -25,9 +19,7 @@ import com.multi.bbs.scrap.model.vo.Scrap_plant;
 import com.multi.bbs.scrap.model.vo.Scrap_writing;
 
 import jakarta.servlet.http.HttpSession;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller
 public class ScrapPlantController {
 	@Autowired
@@ -157,6 +149,4 @@ public class ScrapPlantController {
 		model.addAttribute("sclist", sclist);
 		return "0.3.3_account-starplace";
 	}
-
-	
 }
