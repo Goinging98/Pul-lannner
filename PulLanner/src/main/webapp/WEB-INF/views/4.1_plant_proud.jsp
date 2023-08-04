@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -19,38 +20,48 @@
 
 		<!-- Blog posts-->
 		<div class="col-lg-9 pe-lg-4 pe-xl-5">
-			<h1 class="pb-3 pb-lg-4">식물 자랑하기
+			<h1 class="pb-3 pb-lg-4">
+				식물 자랑하기
 
 				<!-- Button trigger modal -->
 				<c:if test="${loginMember != null}">
-				<button type="button" class="btn btn-secondary btn-icon" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 60%">
-					<i class="ai-edit-alt"></i>
-				</button>
+					<button type="button" class="btn btn-secondary btn-icon"
+						data-bs-toggle="modal" data-bs-target="#exampleModal"
+						style="margin-left: 60%">
+						<i class="ai-edit-alt"></i>
+					</button>
 				</c:if>
 
 				<!-- Modal -->
-				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<label class="form-label mt-3"><br/><h3>내 식물 자랑하기</h3></label>
-							<form method="post" action="${path}/PlantProud" enctype="multipart/form-data">
-								<input type="hidden" name="id" value="${loginMember.id}" readonly class="input-text"> <label class="form-label">제목</label>
+							<label class="form-label mt-3"><br />
+							<h3>내 식물 자랑하기</h3></label>
+							<form method="post" action="${path}/PlantProud"
+								enctype="multipart/form-data">
+								<input type="hidden" name="id" value="${loginMember.id}"
+									readonly class="input-text"> <label class="form-label">제목</label>
 								<div class="form-floating">
 									<div class="form-floating">
-										<input class="form-control" type="text" name="title" id="fl-text" placeholder="Title"> 
-										<label for="fl-text">Title</label>
+										<input class="form-control" type="text" name="title"
+											id="fl-text" placeholder="Title"> <label
+											for="fl-text">Title</label>
 									</div>
 								</div>
 								<label class="form-label">자랑글</label>
-								<textarea class="form-control" name="content" id="fl-textarea" style="height: 100px;" placeholder="자랑해주세요!"></textarea>
+								<textarea class="form-control" name="content" id="fl-textarea"
+									style="height: 100px;" placeholder="자랑해주세요!"></textarea>
 
 								<!-- File input -->
 								<div class="mb-3">
-									<label for="file-input" class="form-label">첨부파일</label> 
-									<input class="form-control" name="upfile" type="file" id="file-input">
+									<label for="file-input" class="form-label">첨부파일</label> <input
+										class="form-control" name="upfile" type="file" id="file-input">
 								</div>
 								<div class="modal-footer">
-									<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+									<button type="reset" class="btn btn-secondary"
+										data-bs-dismiss="modal">취소</button>
 									<button type="submit" class="btn btn-primary">등록</button>
 								</div>
 							</form>
@@ -69,28 +80,26 @@
 			<c:if test="${not empty list}">
 				<c:forEach var="item" items="${list}">
 					<article class="row g-0 border-0 mb-4 ">
-						<a class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5"
+						<a
+							class="swiper-slide col-sm-5 bg-repeat-0 bg-size-cover bg-position-center rounded-5"
 							style="background-image: url('/proud/file/${item.renamedFileName}'); min-height: 14rem">
 						</a>
 						<div class="col-sm-7">
 							<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
 								<h3>
 									<c:out value="${item.title}"></c:out>
-									
-								<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm" style="margin-left: auto;"
-									onclick="location.href='${path}/scrapwriting?num=${item.BNo}'" >
-									<i class="ai ai-bookmark"></i>
-								</button>
 								</h3>
-								<p class="d-sm-none d-md-block"><c:out value="${item.content}"></c:out></p>
+								<p class="d-sm-none d-md-block">
+									<c:out value="${item.content}"></c:out>
+								</p>
 								<div class="d-flex flex-wrap align-items-center mt-n2">
-									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2" href="#">${item.readCount}
-										<i class="ai-heart fs-lg ms-1"></i>
-									</a>
-									<span class="fs-xs opacity-20 mt-2 mx-3">|</span> 
-									<span class="fs-sm text-muted mt-2"><fmt:formatDate type="both" dateStyle="full" value="${item.createDate}" /></span> 
-									<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
-									<a class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a>
+									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2"
+										href="#">${item.readCount} <i class="ai-heart fs-lg ms-1"></i>
+									</a> <span class="fs-xs opacity-20 mt-2 mx-3">|</span> <span
+										class="fs-sm text-muted mt-2"><fmt:formatDate
+											type="both" dateStyle="full" value="${item.createDate}" /></span> <span
+										class="fs-xs opacity-20 mt-2 mx-3">|</span> <a
+										class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a>
 								</div>
 							</div>
 						</div>
@@ -111,10 +120,12 @@
 							</li>
 							<!-- 이전 페이지 -->
 							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+								<button class="page-link"
+									onclick="movePage(${pageInfo.prevPage})">&lt;</button>
 							</li>
 							<!-- 10개 페이지가 보여지는 부분 -->
-							<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
+							<c:forEach begin="${pageInfo.startPage}"
+								end="${pageInfo.endPage}" varStatus="status" step="1">
 								<c:if test="${status.current == pageInfo.currentPage}">
 									<li class="page-item active" aria-current="page">
 										<button class="page-link" disabled>${status.current}</button>
@@ -126,11 +137,13 @@
 							</c:forEach>
 							<!-- 다음 페이지 -->
 							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+								<button class="page-link"
+									onclick="movePage(${pageInfo.nextPage})">&gt;</button>
 							</li>
 							<!-- 마지막 페이지 -->
 							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
+								<button class="page-link"
+									onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
 							</li>
 						</ul>
 					</nav>
