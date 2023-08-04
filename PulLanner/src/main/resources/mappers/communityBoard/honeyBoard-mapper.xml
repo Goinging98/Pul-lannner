@@ -140,12 +140,12 @@
 	
 	<insert id="insertHoneyBoard" parameterType="HoneyTipBoard">
 		INSERT INTO COMMBOARD(
-			BNO, MNO, TITLE,
+			BNO, MNO, TITLE, NAME
 			CONTENT, ORIGINAL_FILENAME,
 			RENAMED_FILENAME, READCOUNT, STATUS,
 			CREATE_DATE, MODIFY_DATE, TYPE	
 		) VALUES (
-			0, #{mNo}, #{title}, 
+			0, #{mNo}, #{title}, #{name},
 			#{content}, #{originalFileName}, 
 			#{renamedFileName}, DEFAULT, DEFAULT, 
 			DEFAULT, DEFAULT, 'HONEY'			
@@ -155,10 +155,10 @@
 
 	<insert id="insertHoneyReply" parameterType="HoneyTipReply">
 		INSERT INTO COMMREPLY(
-				RNO, BNO, MNO,
+				RNO, BNO, MNO, NAME,
 				CONTENT, STATUS, CREATE_DATE, MODIFY_DATE, TYPE
 		) VALUES(
-				0, #{bNo}, #{mNo}, #{content},
+				0, #{bNo}, #{mNo}, #{name}, #{content},
 				DEFAULT, DEFAULT, DEFAULT, 'HONEY'
 			)
 	</insert>
@@ -182,6 +182,12 @@
 	<update id="updateHoneyReadCount" parameterType="map">
 		UPDATE COMMBOARD SET READCOUNT=#{readCount} WHERE BNO=#{bNo}
 	</update>
+	
+	<select id="selectHoneyBoardReadCountList" resultMap="honeyBoardListResultMap" parameterType="map">
+		SELECT * FROM COMMBOARD 
+		WHERE TYPE = 'HONEY'
+		ORDER BY READCOUNT DESC LIMIT 5 
+	</select>
 	
 	<update id="deleteHoneyBoard" parameterType="int">
 		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo}

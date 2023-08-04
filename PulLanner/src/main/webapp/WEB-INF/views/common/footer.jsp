@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Footer-->
-<footer class="footer bg-secondary py-5" style="background-color: #ffffff;">
-	<div class="container pt-md-2 pt-lg-3 pt-xl-4">
-		<div class="row pb-4 pb-md-5 pt-sm-2 mb-lg-2">
+<footer class="footer bg-secondary py-4" style="background-color: #ffffff;">
+	<div class="container pt-md-2 pt-lg-4 pt-xl-4">
+		<div class="row pb-3 pb-md-3 pt-sm-2 mb-lg-2">
 			<div class="col-md-4 col-lg-3 pb-2 pb-md-0 mb-4 mb-md-0">
 				<a class="navbar-brand text-nav py-0 mb-3 mb-md-4" href="index.html"><span
 					class="text-primary flex-shrink-0 me-2"> <svg version="1.1"
@@ -21,21 +21,34 @@
 				</div>
 			</div>
 			<div class="col-xl-8 offset-xl-1 col-lg-9">
-				<div class="row row-cols-sm-4 row-cols-1">
+				<div class="row row-cols-sm-6 row-cols-1">
 					<div class="col">
 						<ul class="nav flex-column mb-0">
-							<li class="nav-item mb-2"><a class="nav-link p-0" href="#">식물검색</a></li>
+							<li class="nav-item mb-2"><h5>식물검색</h5></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/pharm/search">꽃</a></li>
+								href="${path}/PlantSearch">실내정원용</a></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/aidkit_k/asearch">실내정원용</a></li>
+								href="${path}/FlowerSearch">꽃</a></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/aidkit_k/asearch">다육이</a></li>
+								href="${path}/DryGardenSearch">다육이</a></li>
 						</ul>
 					</div>
 					<div class="col">
 						<ul class="nav flex-column mb-0">
-							<li class="nav-item mb-2"><a class="nav-link p-0" href="#">식물분양</a></li>
+							<li class="nav-item mb-2"><h5>식물명소</h5></li>
+							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
+								href="${path}/arboretumList">식물원</a></li>
+							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
+								href="${path}/mountainList">숲/산</a></li>
+							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
+								href="${path}/parkList">국립공원</a></li>
+							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
+								href="${path}/forestLodgeList">휴양림</a></li>
+						</ul>
+					</div>
+					<div class="col">
+						<ul class="nav flex-column mb-0">
+							<li class="nav-item mb-2"><h5>식물분양</h5></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
 								href="${path}/pharm/search">식물판매</a></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
@@ -44,33 +57,32 @@
 					</div>
 					<div class="col">
 						<ul class="nav flex-column mb-0">
-							<li class="nav-item mb-2"><a class="nav-link p-0" href="#">식물관리</a></li>
+							<li class="nav-item mb-2"><h5>아이템쇼핑</h5></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/pharm/search">사육일지</a></li>
-							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/aidkit_k/asearch">캘린더</a></li>
-							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/aidkit_k/asearch">다이어리</a></li>
+								href="${path}/ItemShop">쇼핑하기</a></li>
 						</ul>
 					</div>
 					<div class="col">
 						<ul class="nav flex-column mb-0">
-							<li class="nav-item mb-2"><a class="nav-link p-0" href="#">식물명소</a></li>
+							<li class="nav-item mb-2"><h5>커뮤니티</h5></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/pharm/search">식물원</a></li>
+								href="${path}/PlantProud">식물 자랑하기</a></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/aidkit_k/asearch">숲/산</a></li>
+								href="${path}/HoneyTip/list">기르기 꿀팁</a></li>
+						</ul>
+					</div>
+					<div class="col">
+						<ul class="nav flex-column mb-0">
+							<li class="nav-item mb-2"><h5>풀래너</h5></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/aidkit_k/asearch">국립공원</a></li>
-							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/aidkit_k/asearch">휴양림</a></li>
+								href="${path}/pharm/search">식물보기</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 		<p class="fs-sm mb-0">
-			<span class="opacity-70">&copy; MULTI Final 04 </span><a
+			<span class="opacity-70">&copy; MULTI Final 04 푸르름 </span><a
 				class="nav-link d-inline fw-normal p-0"
 				href="https://createx.studio/" target="_blank" rel="noopener"></a>
 		</p>

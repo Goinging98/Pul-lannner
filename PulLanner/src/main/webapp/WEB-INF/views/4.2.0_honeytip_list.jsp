@@ -49,7 +49,7 @@
 									<h3 class="h4 card-title">
 										<a href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a>
 										<button type="button"
-											class="btn btn-outline-info btn-icon rounded-pill btn-sm"
+											class="btn btn-icon btn-sm btn-success btn-instagram rounded-circle"
 											style="margin-left: auto;"
 											onclick="location.href='${path}/scrapwriting?num=${item.BNo}'">
 											<i class="ai ai-bookmark"></i>
@@ -138,10 +138,10 @@
 					<input type="radio" name="searchType" value="name" 
 									${searchType == 'name' ? 'checked' : ''}> 작성자
 				</label>
-               <div class="input-group input-group-sm rounded-pill">
+               <div class="input-group input-group-sm">
 						<span class="input-group-text"> <i class="ai-search"></i></span> 
 						<input type="search" id="searchValue" name="searchValue" value="${param.searchValue}" class="form-control" placeholder="검색">
-						<button type="submit" class="btn btn-primary rounded-pill">검색</button>
+						<button type="submit" class="btn btn-primary">검색</button>
 					</div>
                 </div>
 					</form>
@@ -155,11 +155,11 @@
                 </ul>
                 <!-- Featured posts widget-->
                 <h4 class="pt-3 pt-lg-0 pb-1">조회순</h4>
-                <c:forEach var="item" items="${list}">
+                <c:forEach var="item" items="${readCountList}">
                 <div class="mb-lg-5 mb-4">
                   <article class="position-relative d-flex align-items-center mb-4"><img class="rounded" src="honey/file/${item.renamedFileName}" width="50" alt="Post image">
                     <div class="ps-3">
-                      <h4 class="h6 mb-2"><a class="stretched-link" href="blog-single-v1.html">${item.title}</a></h4><span class="fs-sm text-muted"><fmt:formatDate type="date" value="${item.createDate}"/></span>
+                      <h4 class="h6 mb-2"><a class="stretched-link" href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a></h4><span class="fs-sm text-muted"><fmt:formatDate type="date" value="${item.createDate}"/></span>
                     </div>
                   </article>
                 </div>

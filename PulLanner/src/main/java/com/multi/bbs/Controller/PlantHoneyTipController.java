@@ -70,12 +70,14 @@ public class PlantHoneyTipController {
 		int proudBoardCount = service.getProudBoardCount(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 10, honeyBoardCount, 6);
 		List<HoneyTipBoard> list = service.getHoneyBoardList(pageInfo, searchMap);
+		List<HoneyTipBoard> readCountList = service.getHoneyBoardReadCountList(searchMap);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("param", paramMap);
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("honeyBoardCount", honeyBoardCount);
 		model.addAttribute("proudBoardCount", proudBoardCount);
+		model.addAttribute("readCountList", readCountList);
 		
 		return "4.2.0_honeytip_list";
 	}

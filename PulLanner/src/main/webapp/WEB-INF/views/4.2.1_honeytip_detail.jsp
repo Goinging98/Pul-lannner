@@ -59,10 +59,10 @@
 						<div class="border-bottom pt-3 pb-2">
 							<div class="d-flex align-items-center pb-1 mb-3">
 								<div class="ps-3">
-									<h6 class="mb-0">${reply.id}
-										<c:if	test="${!empty loginMember && (loginMember.id == reply.id 	|| loginMember.role == 'ROLE_ADMIN') }">
-											<button class="btn btn-outline-danger btn-icon" onclick="deleteHoneyReply('${reply.RNo}','${honeyBoard.BNo}');">
-												<i class="ai-trash"></i>
+									<h6 class="mb-0">${reply.name}
+										<c:if	test="${!empty loginMember && (loginMember.id == reply.id || loginMember.role == 'ROLE_ADMIN') }">
+											<button type="button" class="btn btn-icon btn-sm btn-danger rounded-circle">
+												<i class="ai-trash" onclick="deleteHoneyReply('${reply.RNo}','${honeyBoard.BNo}');"></i>
 											</button>
 										</c:if>
 									</h6>
@@ -77,11 +77,11 @@
 
 
 				<!-- All comments button-->
-              <div class="text-end pb-5 mb-lg-1 mb-xl-3"><a class="btn btn-link px-0" href="#">Show all comments<i class="ai-chevron-right fs-lg ms-1"></i></a></div>
+              <!-- <div class="text-end pb-5 mb-lg-1 mb-xl-3"><a class="btn btn-link px-0" href="#">Show all comments<i class="ai-chevron-right fs-lg ms-1"></i></a></div> -->
               
               <!-- 리플 작성 form-->
               
-              <div class="card border-0 bg-secondary pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-2">
+              <div class="card border-0 bg-secondary pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-2 mb-2">
                 <div class="card-body">
                   <h2 class="pb-2 pb-lg-3 pb-xl-4">Leave a comment</h2>
                   <form class="row needs-validation g-4" action="${path}/HoneyTip/reply" method="post" novalidate>
@@ -89,11 +89,14 @@
                       <label class="form-label" for="c-comment">Comment</label>
 	                  <input type="hidden" name="BNo" value="${honeyBoard.BNo}" />
 	                  <input type="hidden" name="id" value="${loginMember.id}" />
+	                  <input type="hidden" name="name" value="${loginMember.name}" />
                       <textarea class="form-control"  name="content" id="replyContent" rows="4" placeholder="Type your comment here..." required id="c-comment"></textarea>
                       <div class="invalid-feedback">Please enter a comment message!</div>
                     </div>
                     <div class="col-12">
+                    <c:if test="${loginMember != null}">
                       <button class="btn btn-primary" type="submit" id="btn-insert">Post a comment</button>
+                      </c:if>
                     </div>
                   </form>
                 </div>

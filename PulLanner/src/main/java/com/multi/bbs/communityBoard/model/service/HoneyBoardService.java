@@ -104,6 +104,10 @@ public class HoneyBoardService {
 		return mapper.selectProudBoardCount(param);
 	}
 	
+	public List<HoneyTipBoard> getHoneyBoardReadCountList(Map<String, String> param){
+		return mapper.selectHoneyBoardReadCountList(param);
+	}
+	
 }
 
 
