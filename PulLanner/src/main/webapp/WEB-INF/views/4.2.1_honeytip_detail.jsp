@@ -25,7 +25,7 @@
             <h1 class="pb-2 pb-lg-3"><c:out value="${honeyBoard.title}"/>
             <c:if test="${not empty loginMember && (loginMember.id == honeyBoard.id 
 									|| loginMember.role == 'ROLE_ADMIN')}">
-              <button type="button" class="btn btn-outline-info btn-icon rounded-pill" style="float:right; margin-left:20px" data-bs-toggle="tooltip" data-bs-placement="top" title="즐겨찾기">
+              <button type="button" class="btn btn-outline-info btn-icon rounded-pill" style="float:right; margin-left:20px" data-bs-toggle="tooltip" data-bs-placement="top" title="즐겨찾기" onclick="location.href='${path}/scrapwriting?num=${honeyBoard.BNo}'">
                 <i class="ai-bookmark"></i>
               </button>
               <button type="button" id="btnDelete" class="btn btn-outline-danger btn-icon" style="float:right; margin-left:20px" data-bs-toggle="tooltip" data-bs-placement="top" title="삭제하기">
