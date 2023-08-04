@@ -21,9 +21,9 @@
 						</div>
 						<nav class="nav flex-column pb-2 pb-lg-4 mb-3">
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">내 글 관리</h4>
-							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>풀레너</a> 
+							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/mypullanner"><i class="ai-pencil fs-5 opacity-60 me-2"></i>풀레너</a> 
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>커뮤니티</a>
-							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>판매글</a>
+							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/myselling"><i class="ai-pencil fs-5 opacity-60 me-2"></i>판매글</a>
 						</nav>
 						<nav class="nav flex-column pb-2 pb-lg-4 mb-1">
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">쇼핑관리</h4>
@@ -57,7 +57,12 @@
 						<div class="col-md-3">
 							<div class="card">
 								<div class="image-container">
-									<img src="${switem.RENAMED_FILENAME}" class="card-img-top fit-cover" alt="image">
+									<img src="${switem.RENAMED_FILENAME}" class="card-img-top fit-cover" alt="image"
+										style="max-height: 180px; min-height: 180px; object-fit : cover;">
+									<c:if test="${empty switem.RENAMED_FILENAME}">
+										<img src="/resources/assets/img/blog/list/01.jpg"class="card-img-top fit-cover" alt="image"
+										style="max-height: 180px; min-height: 180px; object-fit : cover;">
+									</c:if>
 								</div>
 								<div class="card-body">
 									<h5 class="card-title text-truncate">${switem.TITLE}</h5>

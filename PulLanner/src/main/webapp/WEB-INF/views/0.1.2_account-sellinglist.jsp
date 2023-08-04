@@ -108,7 +108,7 @@
 										<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span>
 										<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
 										<c:if test="${item.type =='HONEY'}">
-											<a class="badge text-nav fs-xs border mt-2" href="/HoneyTip/list">식물 기르기 꿀팁</a>
+											<a class="badge text-nav fs-xs border mt-2" href="/HoneyTip/view?no=${item.BNo}">식물 기르기 꿀팁</a>
 										</c:if>
 										<c:if test="${item.type =='PROUD'}">
 											<a class="badge text-nav fs-xs border mt-2" href="/PlantProud">식물 자랑하기</a>

@@ -31,7 +31,7 @@ function findAddr(){
 
 
 <!-- Page content-->
-<div class="d-none d-lg-block bg-secondary position-fixed top-0 start-0 h-100" style="width: 52.5%; height:50%;"></div>
+<div style="background: linear-gradient(to right, #F6F9FC 55%,  #ffffff 45%);">
 <form class="needs-validation container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2" novalidate>
 	<div class="row">
 		<div class="col-lg-6">
@@ -149,6 +149,7 @@ function findAddr(){
 		
 	</div>
 </form>
+</div>
 </main>
 
 
