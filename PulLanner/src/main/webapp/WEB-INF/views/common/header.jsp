@@ -227,8 +227,8 @@
 					    <div class="dropdown-menu">
 						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pb-1">내 정보 관리</h6>
 						    <a class="dropdown-item" href="/mypage/overview"><i class="ai-user-check fs-lg opacity-70 me-2"></i>마이페이지</a>
+						    <a class="dropdown-item" href="/mypage/mypullanner"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 풀레너</a>
 						    <a class="dropdown-item" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 글 관리</a>
-						    <a class="dropdown-item" href="/mypage/mywriting"><i class="ai-pencil fs-5 opacity-60 me-2"></i>내 풀레너</a>
 						    <a class="dropdown-item" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>스크랩 관리</a> 
 						    <div class="dropdown-divider"></div>
 						    <h6 class="dropdown-header fs-xs fw-medium text-muted text-uppercase pt-3 pb-1">쇼핑관리</h6>

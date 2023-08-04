@@ -57,8 +57,10 @@
 						<div class="col-md-3">
 							<div class="card">
 								<div class="image-container">
-									<img src="${switem.RENAMED_FILENAME}" class="card-img-top fit-cover" alt="image"
-										style="max-height: 180px; min-height: 180px; object-fit : cover;">
+									<c:if test="${not empty switem.RENAMED_FILENAME}">
+										<img src="${switem.RENAMED_FILENAME}" class="card-img-top fit-cover" alt="image"
+											style="max-height: 180px; min-height: 180px; object-fit : cover;">
+									</c:if>
 									<c:if test="${empty switem.RENAMED_FILENAME}">
 										<img src="/resources/assets/img/blog/list/01.jpg"class="card-img-top fit-cover" alt="image"
 										style="max-height: 180px; min-height: 180px; object-fit : cover;">
