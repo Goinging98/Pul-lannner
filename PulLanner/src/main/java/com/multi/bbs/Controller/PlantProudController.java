@@ -166,6 +166,10 @@ public class PlantProudController {
 
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // 실패했을 경우
 		}
+		
+		
+	// 좋아요 기능
+		
 	
 }
 	

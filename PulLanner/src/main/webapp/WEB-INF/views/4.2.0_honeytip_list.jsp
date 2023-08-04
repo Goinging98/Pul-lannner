@@ -19,13 +19,21 @@
         </nav>
         <div class="row mb-md-2 mb-xl-4">
           <!-- Blog posts-->
-          <div class="col-lg-9 col-xl-8 pe-lg-4 pe-xl-0">
-            <h1 class="pb-3 pb-lg-4">식물 기르기 꿀팁<button type="button" class="btn btn-secondary btn-icon" 
-              onClick="location.href='${path}/HoneyTip/write'" style="margin-left:60%" data-bs-toggle="tooltip" data-bs-placement="top" title="글쓰기"><i class="ai-edit-alt"></i>
-            </button></h1>
-            <div class="masonry-grid mb-2 mb-md-4 pb-lg-3" data-columns="2">
-            
-              <!-- Post-->
+		<div class="col-lg-9 col-xl-8 pe-lg-4 pe-xl-0">
+			<h1 class="pb-3 pb-lg-4">
+				식물 기르기 꿀팁
+				<c:if test="${loginMember != null}">
+					<button type="button" class="btn btn-secondary btn-icon"
+						onClick="location.href='${path}/HoneyTip/write'"
+						style="margin-left: 60%" data-bs-toggle="tooltip"
+						data-bs-placement="top" title="글쓰기">
+						<i class="ai-edit-alt"></i>
+					</button>
+				</c:if>
+			</h1>
+			<div class="masonry-grid mb-2 mb-md-4 pb-lg-3" data-columns="2">
+
+				<!-- Post-->
 				<c:if test="${not empty list}">
 					<c:forEach var="item" items="${list}">
 						<article class="masonry-grid-item">
@@ -40,22 +48,29 @@
 									</div>
 									<h3 class="h4 card-title">
 										<a href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a>
+										<button type="button"
+											class="btn btn-outline-info btn-icon rounded-pill btn-sm"
+											style="margin-left: auto;"
+											onclick="location.href='${path}/scrapwriting?num=${item.BNo}'">
+											<i class="ai ai-bookmark"></i>
+										</button>
 									</h3>
 									<p class="card-text">${item.content}</p>
 								</div>
 								<div class="card-footer pt-3">
-									<a class="d-flex align-items-center text-decoration-none pb-2"
-										href="#">
-										<h6 class="ps-3 mb-0">${item.name}</h6>
-									</a>
+									<h6 class="h6 card-title">
+										<a href="${path}/HoneyTip/view?no=${item.BNo}">${item.name}</a>
+										<a class="nav-link text-muted fs-sm fw-normal p-0 mt-1"><i
+											class="ai-show fs-lg me-1"></i>${item.readCount}</a>
+									</h6>
 								</div>
 							</div>
 						</article>
 					</c:forEach>
 				</c:if>
 			</div>
-            
-            <!-- Pagination-->
+
+			<!-- Pagination-->
 			<div class="row gy-3 align-items-center mt-lg-5 pt-2 pt-md-4 pt-lg-0">
 				<div class="col col-md-4 col-6 order-md-1 order-1"></div>
 				<div class="col col-md-4 col-6 order-md-3 order-2">
@@ -68,10 +83,12 @@
 							</li>
 							<!-- 이전 페이지 -->
 							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.prevPage})">&lt;</button>
+								<button class="page-link"
+									onclick="movePage(${pageInfo.prevPage})">&lt;</button>
 							</li>
 							<!-- 10개 페이지가 보여지는 부분 -->
-							<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1">
+							<c:forEach begin="${pageInfo.startPage}"
+								end="${pageInfo.endPage}" varStatus="status" step="1">
 								<c:if test="${status.current == pageInfo.currentPage}">
 									<li class="page-item active" aria-current="page">
 										<button class="page-link" disabled>${status.current}</button>
@@ -83,19 +100,21 @@
 							</c:forEach>
 							<!-- 다음 페이지 -->
 							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.nextPage})">&gt;</button>
+								<button class="page-link"
+									onclick="movePage(${pageInfo.nextPage})">&gt;</button>
 							</li>
 							<!-- 마지막 페이지 -->
 							<li class="page-item">
-								<button class="page-link" onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
+								<button class="page-link"
+									onclick="movePage(${pageInfo.maxPage})">&gt;&gt;</button>
 							</li>
 						</ul>
 					</nav>
 				</div>
 			</div>
-          </div>
-          
-          <!-- Sidebar (offcanvas on sreens < 992px)-->
+		</div>
+
+		<!-- Sidebar (offcanvas on sreens < 992px)-->
           <aside class="col-lg-3 offset-xl-1">
             <div class="offcanvas-lg offcanvas-end" id="sidebarBlog">
               <div class="offcanvas-header">
@@ -135,24 +154,16 @@
                   <li class="mb-2"><a class="nav-link d-flex p-0 active" href="${path}/HoneyTip/list">식물 기르기 꿀팁<span class="fs-sm text-muted ms-2">(${honeyBoardCount})</span></a></li>
                 </ul>
                 <!-- Featured posts widget-->
-                <h4 class="pt-3 pt-lg-0 pb-1">인기글</h4>
+                <h4 class="pt-3 pt-lg-0 pb-1">조회순</h4>
+                <c:forEach var="item" items="${list}">
                 <div class="mb-lg-5 mb-4">
-                  <article class="position-relative d-flex align-items-center mb-4"><img class="rounded" src="assets/img/blog/sidebar/01.jpg" width="92" alt="Post image">
+                  <article class="position-relative d-flex align-items-center mb-4"><img class="rounded" src="honey/file/${item.renamedFileName}" width="50" alt="Post image">
                     <div class="ps-3">
-                      <h4 class="h6 mb-2"><a class="stretched-link" href="blog-single-v1.html">Instagram trends that will definitely work</a></h4><span class="fs-sm text-muted">13 hours ago</span>
-                    </div>
-                  </article>
-                  <article class="position-relative d-flex align-items-center mb-4"><img class="rounded" src="assets/img/blog/sidebar/02.jpg" width="92" alt="Post image">
-                    <div class="ps-3">
-                      <h4 class="h6 mb-2"><a class="stretched-link" href="blog-single-v2.html">A session with a psychologist</a></h4><span class="fs-sm text-muted">May 12, 2022</span>
-                    </div>
-                  </article>
-                  <article class="position-relative d-flex align-items-center"><img class="rounded" src="assets/img/blog/sidebar/03.jpg" width="92" alt="Post image">
-                    <div class="ps-3">
-                      <h4 class="h6 mb-2"><a class="stretched-link" href="blog-single-v3.html">How to look for inspiration for new goals</a></h4><span class="fs-sm text-muted">June 10, 2022</span>
+                      <h4 class="h6 mb-2"><a class="stretched-link" href="blog-single-v1.html">${item.title}</a></h4><span class="fs-sm text-muted"><fmt:formatDate type="date" value="${item.createDate}"/></span>
                     </div>
                   </article>
                 </div>
+                </c:forEach>
                 <!-- Banner-->
                 <div class="position-relative mb-3">
                   <div class="ignore-dark-mode position-absolute w-100 text-center top-0 start-50 translate-middle-x pt-4" style="max-width: 15rem;">

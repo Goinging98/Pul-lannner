@@ -22,9 +22,11 @@
 			<h1 class="pb-3 pb-lg-4">식물 자랑하기
 
 				<!-- Button trigger modal -->
+				<c:if test="${loginMember != null}">
 				<button type="button" class="btn btn-secondary btn-icon" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 60%">
 					<i class="ai-edit-alt"></i>
 				</button>
+				</c:if>
 
 				<!-- Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,9 +84,11 @@
 								</h3>
 								<p class="d-sm-none d-md-block"><c:out value="${item.content}"></c:out></p>
 								<div class="d-flex flex-wrap align-items-center mt-n2">
-									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2" href="#">${item.readCount}<i class="ai-heart fs-lg ms-1"></i></a>
+									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2" href="#">${item.readCount}
+										<i class="ai-heart fs-lg ms-1"></i>
+									</a>
 									<span class="fs-xs opacity-20 mt-2 mx-3">|</span> 
-									<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span> 
+									<span class="fs-sm text-muted mt-2"><fmt:formatDate type="both" dateStyle="full" value="${item.createDate}" /></span> 
 									<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
 									<a class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a>
 								</div>

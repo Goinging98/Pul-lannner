@@ -47,10 +47,10 @@ public class ScrapPlantController {
 		
 		if(result >0) {
 			model.addAttribute("msg", "스크랩 되었습니다.");
-			model.addAttribute("location", "/PlantProud");
+			model.addAttribute("location", "/HoneyTip/list");
 		} else {
 			model.addAttribute("msg", "스크랩에 실패하였습니다.");
-			model.addAttribute("location", "/PlantProud");
+			model.addAttribute("location", "/HoneyTip/list");
 		}
 		return "common/msg";
 		

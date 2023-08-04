@@ -184,7 +184,7 @@
 	</update>
 	
 	<update id="deleteHoneyBoard" parameterType="int">
-		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo} AND TYPE = 'HONEY'
+		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo}
 	</update>
 	
 	<delete id="deleteHoneyReply" parameterType="int">

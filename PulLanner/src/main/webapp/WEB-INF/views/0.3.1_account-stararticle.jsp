@@ -73,7 +73,7 @@
 											<a href="/PlantProud" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
 										</c:if>
 										<c:if test="${spitem.TYPE=='HONEY'}">
-											<a href="/HoneyTip/list?id=${switem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
+											<a href="/HoneyTip/view?no=${switem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
 										</c:if>
 									</div>
 								</div>

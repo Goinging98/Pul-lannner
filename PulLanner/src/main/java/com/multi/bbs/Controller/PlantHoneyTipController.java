@@ -199,7 +199,7 @@ public class PlantHoneyTipController {
 			) {
 		HoneyTipBoard honeyBoard = service.findByNo(no);
 		model.addAttribute("honeyBoard",honeyBoard);
-		return "HoneyTip/update";
+		return "4.2.3_honeytip_update";
 	}
 	
 
@@ -233,10 +233,10 @@ public class PlantHoneyTipController {
 
 		if(result > 0) {
 			model.addAttribute("msg", "게시글이 수정 되었습니다.");
-			model.addAttribute("location", "/HoneyTip");
+			model.addAttribute("location", "/HoneyTip/view?no=honeyBoard.BNo");
 		}else {
 			model.addAttribute("msg", "게시글 수정에 실패하였습니다.");
-			model.addAttribute("location", "/HoneyTip");
+			model.addAttribute("location", "/HoneyTip/view?no=honeyBoard.BNo");
 		}
 		
 		return "common/msg";

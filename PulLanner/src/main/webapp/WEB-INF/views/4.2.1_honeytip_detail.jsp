@@ -14,7 +14,7 @@
         <nav aria-label="breadcrumb">
           <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="blog-grid-sidebar.html">기르기 꿀팁</a></li>
+            <li class="breadcrumb-item"><a href="${path}/HoneyTip/list">기르기 꿀팁</a></li>
             <li class="breadcrumb-item active" aria-current="page">글보기</li>
           </ol>
         </nav>
@@ -23,12 +23,18 @@
             <!-- Post title + post meta-->
             
             <h1 class="pb-2 pb-lg-3"><c:out value="${honeyBoard.title}"/>
+            <c:if test="${not empty loginMember && (loginMember.id == honeyBoard.id 
+									|| loginMember.role == 'ROLE_ADMIN')}">
               <button type="button" class="btn btn-outline-info btn-icon rounded-pill" style="float:right; margin-left:20px" data-bs-toggle="tooltip" data-bs-placement="top" title="즐겨찾기">
                 <i class="ai-bookmark"></i>
               </button>
-              <button type="button" class="btn btn-secondary btn-icon" onclick="location.href='${path}/HoneyTip/write'" style="float:right" data-bs-toggle="tooltip" data-bs-placement="top" title="수정하기">
+              <button type="button" id="btnDelete" class="btn btn-outline-danger btn-icon" style="float:right; margin-left:20px" data-bs-toggle="tooltip" data-bs-placement="top" title="삭제하기">
+				<i class="ai-trash"></i>
+			  </button>
+              <button type="button" id="btnUpdate" class="btn btn-secondary btn-icon" onclick="location.href='${path}/HoneyTip/update'" style="float:right" data-bs-toggle="tooltip" data-bs-placement="top" title="수정하기">
                 <i class="ai-edit-alt"></i>
               </button>
+              </c:if>
             </h1>
             <div class="d-flex flex-wrap align-items-center justify-content-between border-bottom mb-4">
               <div class="d-flex align-items-center mb-4 me-4"><span class="fs-sm me-2">By:</span>
@@ -37,7 +43,7 @@
             <!-- Post content-->
             
             <!-- Slider with fade transition between slides -->
-            <!-- 여기 수정해야 합니다. 8월 3일 목요일 -->
+            <!-- 여기 수정해야 합니다. 8월 3일 목요일@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
             <div style="background-image: url('/honey/file/${honeyBoard.renamedFileName}');"></div>
             <p>${honeyBoard.renamedFileName}</p>
             <p class="fs-lg pt-2 pt-sm-3">${honeyBoard.content}</p>
@@ -114,12 +120,12 @@
 <script type="text/javascript">
 	$(document).ready(() => {
 		$("#btnUpdate").click((e) => {
-			location.href = "${path}/board/update?no=${board.BNo}";
+			location.href = "${path}/HoneyTip/update?no=${honeyBoard.BNo}";
 		});
 		
 		$("#btnDelete").click((e) => {
 			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
-				location.replace("${path}/board/delete?no=${board.BNo}");
+				location.replace("${path}/HoneyTip/delete?no=${honeyBoard.BNo}");
 			}
 		});
 	});
