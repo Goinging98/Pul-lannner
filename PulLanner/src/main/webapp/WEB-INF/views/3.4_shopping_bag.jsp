@@ -83,13 +83,13 @@ function findAddr(){
 			<!-- 결제수단 -->
 			<h3 class="h4">결제수단</h3>
 			<div class="form-check mb-4">
-				<input class="form-check-input" type="radio" name="payment" checked id="card"> 
+				<input class="form-check-input" type="radio" name="payment" checked id="card" value="card"> 
 				<label class="form-check-label" for="card">
 					<span class="d-block fs-base text-dark fw-medium mb-1">카카오페이</span>
 				</label>
 			</div>
 			<div class="form-check mb-4">
-				<input class="form-check-input" type="radio" name="payment" id="cash"> 
+				<input class="form-check-input" type="radio" name="payment" id="cash" value="cash"> 
 				<label class="form-check-label" for="cash">
 				<span class="d-block fs-base text-dark fw-medium mb-1">배송 후 직접결제</span></label>
 			</div>

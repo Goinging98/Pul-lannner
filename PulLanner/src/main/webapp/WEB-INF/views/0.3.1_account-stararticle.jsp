@@ -72,7 +72,7 @@
 										<c:if test="${switem.TYPE=='PROUD'}">
 											<a href="/PlantProud" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
 										</c:if>
-										<c:if test="${spitem.TYPE=='HONEY'}">
+										<c:if test="${switem.TYPE=='HONEY'}">
 											<a href="/HoneyTip/view?no=${switem.NUM}" type="button" class="btn btn-primary btn-sm rounded-pill">자세히보기</a>
 										</c:if>
 									</div>
