@@ -257,6 +257,7 @@ CREATE TABLE SCRAP_WRITING (
     NUM INT
 );
 
+
 -------------------------------------------------
 --------------- Board 관련 테이블 ------------------
 -------------------------------------------------
@@ -304,6 +305,7 @@ INSERT INTO COMMBOARD VALUES(0, 1, '가시가 더 길어진다..', '이번 기�
 COMMIT;
 SELECT * FROM COMMBOARD;
 
+
 SELECT	B.bNO, B.TYPE, B.TITLE, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
 		FROM COMMBOARD B
 		JOIN MEMBER M ON(C.mNO = M.mNO)
@@ -321,7 +323,20 @@ INSERT INTO COMMBOARD(
 			'renamedFileName', DEFAULT, DEFAULT, 
 			DEFAULT, DEFAULT, 'PROUD'			
 		);
+        
+        
+------------------------------------------------------------------
+------------------- BOARDLIKE 관련 테이블 -------------------------
+------------------------------------------------------------------
+CREATE TABLE BOARDLIKE(
+	mNo INT NOT NULL,
+    bNo INT NOT NULL,
+    FOREIGN KEY (mNo) REFERENCES MEMBER(mNo),
+    FOREIGN KEY (bNo) REFERENCES COMMBOARD(bNo),
+    PRIMARY KEY (mNo,bNo)
+    );   
 
+SELECT * FROM BOARDLIKE;
 
 ------------------------------------------------------------------
 ------------------------- REPLY 관련 테이블 -------------------------
@@ -349,6 +364,7 @@ CREATE TABLE COMMREPLY(
   rNo INT PRIMARY KEY AUTO_INCREMENT,
   bNo INT,
   mNo INT,
+  name VARCHAR(10),
   CONTENT VARCHAR(1000),
   TYPE VARCHAR(10),
   STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN ('Y', 'N')),
@@ -361,13 +377,7 @@ CREATE TABLE COMMREPLY(
 COMMIT;
 SELECT * FROM COMMREPLY;
 
-INSERT INTO COMMREPLY(
-				RNO, BNO, MNO, 
-				CONTENT, STATUS, CREATE_DATE, MODIFY_DATE, TYPE
-		) VALUES(
-				0, 1, 1, '멋져요',
-				DEFAULT, DEFAULT, DEFAULT, 'HONEY'
-			);
+
 
 ------------------------------------------------------------------
 ------------------------- Shop 관련 테이블 -------------------------

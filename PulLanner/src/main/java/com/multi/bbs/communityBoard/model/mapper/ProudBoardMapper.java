@@ -19,8 +19,9 @@ public interface ProudBoardMapper {
 	int deleteProudBoard(int no);
 	int selectHoneyBoardCount(Map<String, String> param);
 	
-	int insertProudBoardLike(BoardLike proudBoardLike);
-	int deleteProudBoardLike(Map<String, String> param);
-	int selectProudBoardLikeCount(Map<String, String> param);
+	int insertProudBoardLike(Map<String, Object> map);
+	int deleteProudBoardLike(Map<String, Object> param);
+	int selectProudBoardLikeCount(Map<String, Object> param);
+	int selectProudBoardLikeMemberCount(Map<String, Object> param);
 	
 }

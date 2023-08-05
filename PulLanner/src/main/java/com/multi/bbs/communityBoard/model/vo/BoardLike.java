@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class BoardLike {
 	private int mNo;
 	private int bNo;
-	private String type;
 
 }

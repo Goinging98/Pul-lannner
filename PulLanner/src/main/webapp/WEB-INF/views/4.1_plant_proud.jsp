@@ -93,9 +93,10 @@
 									<c:out value="${item.content}"></c:out>
 								</p>
 								<div class="d-flex flex-wrap align-items-center mt-n2">
-									<a class="nav-link text-muted fs-sm fw-normal p-0 mt-2"
-										href="#">${item.readCount} <i class="ai-heart fs-lg ms-1"></i>
-									</a> <span class="fs-xs opacity-20 mt-2 mx-3">|</span> <span
+									<button class="nav-link text-muted fs-sm fw-normal p-0 mt-2" type="button">
+										<i class="ai-heart fs-xl" style="color: var(--ar-gray-500)" onclick="addLike(this, ${item.BNo})"></i>
+									</button>
+									<span class="fs-xs opacity-20 mt-2 mx-3">|</span> <span
 										class="fs-sm text-muted mt-2"><fmt:formatDate
 											type="both" dateStyle="full" value="${item.createDate}" /></span> <span
 										class="fs-xs opacity-20 mt-2 mx-3">|</span> <a
@@ -301,4 +302,43 @@
 		let rName = encodeURIComponent(rename);
 		location.assign(url + "?oriname=" + oName + "&rename=" + rName);
 	}
+	
+	function addLike(proudLike, bno) {
+		console.log('bno: ', bno);
+		var $proudLike = $(proudLike)
+		$.ajax({
+			type: "POST",
+			url: "/PlantProud/Like",
+			data: JSON.stringify({proudBoardNo: bno}),
+			dataType: "json",
+			contentType: "application/json;charset=UTF-8",
+			success: function (response){
+				alert(response.message);
+				
+				if(response.message === "좋아요 성공!"){
+					$proudLike.attr("class", "ai-heart-filled fs-xl");
+					$proudLike.css("color", "var(--ar-warning)");
+				}
+				if(response.message === "좋아요를 취소합니다!"){
+					$proudLike.attr("class", "ai-heart fs-xl");
+					$proudLike.css("color", "var(--ar-gray-500)");
+				}
+			},
+			error: function (xhr, status, error){
+				console.log("에러 발생:" , error);
+			}
+		});
+	}
+	
 </script>
+
+
+
+
+
+
+
+
+
+
+
