@@ -169,7 +169,7 @@ public class PlantProudController {
 		}
 		
 		
-	// 좋아요 기능
+	// 좋아요 기능 부분
 		@ResponseBody
 		@PostMapping(value = "/PlantProud/Like", produces = "application/json;charset=UTF-8")
 		public ResponseEntity<Map<String, Object>> addLike(HttpSession session,

@@ -95,28 +95,18 @@ public class ProudBoardService {
 		return mapper.selectHoneyBoardCount(param);
 	}
 	
-	
-	//좋아요 기능 서비스
-	
 	@Transactional()
-	public int insertProudBoardLike(Map<String, Object> map) {
-		return mapper.insertProudBoardLike(map);
+	public int insertProudBoardLike(BoardLike proudBoardLike) {
+		return mapper.insertProudBoardLike(proudBoardLike);
 	}
 	
-	public int getProudBoardLikeCount(Map<String, Object> param) {
+	public int getProudBoardLikeCount(Map<String, String> param) {
 		return mapper.selectProudBoardLikeCount(param);
 	}
 	
-	public int getProudBoardLikeMemberCount(Map<String, Object> param) {
-		return mapper.selectProudBoardLikeMemberCount(param);
-	}
-	
-	public int removeProudBoardLike(Map<String, Object> param) {
+	public int removeProudBoardLike(Map<String, String> param) {
 		return mapper.deleteProudBoardLike(param);
 	}
-	
-	
-
 	
 }
 
