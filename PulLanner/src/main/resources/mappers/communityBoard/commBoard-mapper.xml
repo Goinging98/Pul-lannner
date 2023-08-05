@@ -164,7 +164,7 @@
 	
 	<!-- 좋아요 -->
 	<insert id="insertProudBoardLike" parameterType="map">
-		INSERT INTO BOARDLIKE (MNO, BNO, TYPE) VALUES (#{mNo}, #{bNo}, 'PROUD')
+		INSERT INTO BOARDLIKE (MNO, BNO) VALUES (#{mNo}, #{bNo})
 	</insert>
 	
 	<delete id="deleteProudBoardLike" parameterType="map">
@@ -177,9 +177,20 @@
 	<select id="selectProudBoardLikeCount" resultType="int" parameterType="map">
 		SELECT COUNT(*) FROM BOARDLIKE
 		WHERE 1 = 1
+		AND BNO = #{bNo}
+	</select>
+	
+	<select id="selectProudBoardLikeMemberCount" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM BOARDLIKE
+		WHERE 1 = 1
 		AND MNO = #{mNo}
 		AND BNO = #{bNo}
-		AND TYPE = 'PROUD'
+	</select>
+	
+	<select id="selectRandomList" parameterType="map" resultMap="proudBoardListResultMap">
+		SELECT * FROM COMMBOARD
+		WHERE TYPE = 'PROUD'
+		ORDER BY RAND() LIMIT 6
 	</select>
 	
 
