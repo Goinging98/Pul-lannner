@@ -43,9 +43,8 @@
             <!-- Post content-->
             
             <!-- Slider with fade transition between slides -->
-            <!-- 여기 수정해야 합니다. 8월 3일 목요일@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-            <div style="background-image: url('/honey/file/${honeyBoard.renamedFileName}');"></div>
-            <p>${honeyBoard.renamedFileName}</p>
+            <div style="background-image: url('/HoneyTip/honey/file/${honeyBoard.renamedFileName}'); width: 500px; height: 900px; background-repeat: no-repeat;" >
+            </div>
             <p class="fs-lg pt-2 pt-sm-3">${honeyBoard.content}</p>
             <hr>
             
@@ -128,7 +127,7 @@
 		
 		$("#btnDelete").click((e) => {
 			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
-				location.replace("${path}/HoneyTip/delete?no=${honeyBoard.BNo}");
+				location.replace("${path}/HoneyTip/delete?honeyBoardNo=${honeyBoard.BNo}");
 			}
 		});
 	});

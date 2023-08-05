@@ -35,7 +35,7 @@
             <!-- File input -->
             <div class="mb-3">
               <label for="file-input" class="form-label">사진</label>
-              <input class="form-control" name="upfile" type="file" id="file-input">
+              <input class="form-control" name="reloadFile" type="file" id="file-input">
               <c:if test="${!empty honeyBoard.originalFileName}"><br>
 						현재 업로드 파일 :
 						<a>

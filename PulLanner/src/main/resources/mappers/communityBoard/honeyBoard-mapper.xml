@@ -128,6 +128,7 @@
 			R.RNO AS R_RNO, 
 		    R.BNO AS R_BNO,
 		    R.CONTENT  AS R_CONTENT, 
+		    R.NAME AS R_NAME,
 		    M2.ID  AS R_ID, 
 		    R.CREATE_DATE  AS R_CREATE_DATE, 
 		    R.MODIFY_DATE  AS R_MODIFY_DATE
@@ -140,12 +141,12 @@
 	
 	<insert id="insertHoneyBoard" parameterType="HoneyTipBoard">
 		INSERT INTO COMMBOARD(
-			BNO, MNO, TITLE, NAME
+			BNO, MNO, TITLE, 
 			CONTENT, ORIGINAL_FILENAME,
 			RENAMED_FILENAME, READCOUNT, STATUS,
 			CREATE_DATE, MODIFY_DATE, TYPE	
 		) VALUES (
-			0, #{mNo}, #{title}, #{name},
+			0, #{mNo}, #{title}, 
 			#{content}, #{originalFileName}, 
 			#{renamedFileName}, DEFAULT, DEFAULT, 
 			DEFAULT, DEFAULT, 'HONEY'			
@@ -185,7 +186,7 @@
 	
 	<select id="selectHoneyBoardReadCountList" resultMap="honeyBoardListResultMap" parameterType="map">
 		SELECT * FROM COMMBOARD 
-		WHERE TYPE = 'HONEY'
+		WHERE STATUS = 'Y' AND TYPE = 'HONEY'
 		ORDER BY READCOUNT DESC LIMIT 5 
 	</select>
 	

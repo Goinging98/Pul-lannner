@@ -39,8 +39,10 @@
 						<article class="masonry-grid-item">
 							<div class="card border-0 bg-secondary">
 								<div class="card-body pb-4">
-									<a href="${path}/HoneyTip/view?no=${item.BNo}"> <img
-										class="card-img-top" src="honey/file/${item.renamedFileName}">
+									<a href="${path}/HoneyTip/view?no=${item.BNo}">
+										<c:if test="${not empty item.renamedFileName}">
+											<img class="card-img-top" src="honey/file/${item.renamedFileName}">
+										</c:if>
 									</a>
 									<div class="d-flex align-items-center mb-4 mt-1">
 										<span class="fs-sm text-muted"><fmt:formatDate
