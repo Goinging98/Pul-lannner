@@ -58,61 +58,51 @@
 					<div class="col-lg-5">
 						<h1 class="mb-lg-0"></h1>
 					</div>
-					<div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5"></div>
+<!-- 					<div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5"></div>
 					<div class="col-lg-4 col-sm-7">
 						<div class="position-relative">
 							<i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
 							<input class="form-control ps-5" type="search" placeholder="검색">
 						</div>
-					</div>
+					</div> -->
 				</div>
 				
 				
 				
 				<!-- Post-->
-	        	<c:if test="${empty list}">
+	        	<c:if test="${empty myplantshoplist}">
 					<tr>
 						<td colspan="6">작성한 글이 없습니다.</td>
 					</tr>
 				</c:if>
 				
-				<c:if test="${not empty list}">
-					<c:forEach var="item" items="${list}">
+				<c:if test="${not empty myplantshoplist}">
+					<c:forEach var="item" items="${myplantshoplist}">
 						<article class="row g-0 border-0 pt-3 pt-sm-0 mb-4">
 							<a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5"
-								style="background-image: url(/resources/assets/img/blog/list/01.jpg); min-height: 16rem">
-								<c:if test="${not empty board.originalFileName 
-									and (fn:contains(board.originalFileName,'.jpg')
-										 or fn:contains(board.originalFileName,'.png')
-										  or fn:contains(board.originalFileName,'.jpeg'))}">
-								<img src="${path}/resources/static/upload/board/${board.renamedFileName}" width="100%" height="100%"/>
+								style="background-image: url(/plant/file/${item.parcelimgedt}); min-height: 16rem">
+								<c:if test="${not empty plantshop.parcelimg 
+									and (fn:contains(plantshop.parcelimg,'.jpg')
+										 or fn:contains(plantshop.parcelimg,'.png')
+										  or fn:contains(plantshop.parcelimg,'.jpeg'))}">
+								<img src="${path}/plant/file/${plantshop.parcelimgedt}" width="100%" height="100%"/>
 								</c:if>
 							</a>
 								
 							<div class="col-sm-7 col-lg-8">
 								<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
 									<h3>
-										<c:if test="${item.type =='HONEY'}">
-											<a href="/HoneyTip/view?no=${item.BNo}"><c:out value="${item.title}"></c:out></a>
-										</c:if>
-										<c:if test="${item.type =='PROUD'}">
-											<a href="/PlantProud"><c:out value="${item.title}"></c:out></a>
-										</c:if>
+											<a href="/plantshop/view?no=${item.parcelno}"><c:out value="${item.parceltitle}"></c:out></a>
 									</h3>
 									<p class="d-sm-none d-md-block">
-										<c:out value="${item.content}"></c:out>
+										<c:out value="${item.parcelcontent}"></c:out>
 									</p>
 									<div class="d-flex flex-wrap align-items-center mt-n2">
-										${item.readCount}<i class="ai-heart fs-lg ms-1" ></i>
+										${item.parcelcount}<i class="ai-show fs-lg ms-1" ></i>
 										<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
-										<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span>
+										<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.crtDate}" /></span>
 										<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
-										<c:if test="${item.type =='HONEY'}">
-											<a class="badge text-nav fs-xs border mt-2" href="/HoneyTip/view?no=${item.BNo}">식물 기르기 꿀팁</a>
-										</c:if>
-										<c:if test="${item.type =='PROUD'}">
-											<a class="badge text-nav fs-xs border mt-2" href="/PlantProud">식물 자랑하기</a>
-										</c:if>
+											<a class="badge text-nav fs-xs border mt-2" href="/plantshop/view?no=${item.parcelno}">식물 분양</a>
 									</div>
 								</div>
 							</div>

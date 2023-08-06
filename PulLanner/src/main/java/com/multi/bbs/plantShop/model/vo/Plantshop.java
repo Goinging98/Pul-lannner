@@ -14,6 +14,7 @@ public class Plantshop {
 	private int parcelno;
 	private int mno;
 	private String writerId;
+	private String writername;
 	private String parceltitle;
 	private String parcelcontent;
 	private String parceltype;

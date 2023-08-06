@@ -23,80 +23,40 @@
           <!--  <del class="fs-5 fw-medium text-muted me-3">$19.00</del><span class="badge bg-faded-danger text-danger d-md-none">Sale</span>-->
         </div>
         <div class="row pb-sm-1 pb-md-4">
-          <!-- Gallery-->
+        
+          <!-- 이미지 시작-->
           <div class="col-md-6 gallery mb-3 mb-md-0">
             <!-- IMAGE -->
-            <div class="col">
-              <a href="" class="gallery-item d-block card-hover">
-                <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
-                  <i class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
-                  <div class="position-absolute bottom-0 start-0 w-100 text-center text-white fs-sm fw-medium zindex-2 pb-3">
-                  </div>
-                  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-40"></div>
-                </div>
-                <!-- 첨부 이미지 -->
-                <c:if test="${not empty plantshop.parcelimg 
+<div class="gallery">
+<c:if test="${not empty plantshop.parcelimg 
 								and (fn:contains(plantshop.parcelimg,'.jpg')
 									 or fn:contains(plantshop.parcelimg,'.png')
 									  or fn:contains(plantshop.parcelimg,'.jpeg'))}">
-                <img src="${path}/plant/file/${plantshop.parcelimgedt}" class="d-block rounded-4" alt="Image #1">
-                </c:if>
-              </a>
-            </div>
-<!--                 Item
-              <div class="d-flex justify-content-between mt-3">
-                <a href="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_02.jpg" style="width: 310px; height: 100%;" class="gallery-item d-block card-hover">
-                  <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
-                    <i class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
-                    <div class="position-absolute bottom-0 start-0 w-100 text-center text-white fs-sm fw-medium zindex-2 pb-3">
-                      Image #1
-                    </div>
-                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-40"></div>
-                  </div>
-                  <img src="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_02.jpg" style="width: 310px; height: 100%;" class="d-block rounded-4" alt="Image #1">
-                </a>
-              
-              Item
-              
-                <a href="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_02.jpg" style="width: 310px; height: 100%;" class="gallery-item d-block card-hover">
-                  <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
-                    <i class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
-                    <div class="position-absolute bottom-0 start-0 w-100 text-center text-white fs-sm fw-medium zindex-2 pb-3">
-                      Image #1
-                    </div>
-                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-40"></div>
-                  </div>
-                  <img src="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_02.jpg" style="width: 310px; height: 100%;" class="d-block rounded-4" alt="Image #1">
-                </a>
-              </div> -->
-            <!-- Item -->
-<!--               <div class="col mt-3">
-                <a href="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_03.jpg" class="gallery-item d-block card-hover">
-                  <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-4 overflow-hidden zindex-2 opacity-0">
-                    <i class="ai-zoom-in fs-2 text-white position-relative zindex-2"></i>
-                    <div class="position-absolute bottom-0 start-0 w-100 text-center text-white fs-sm fw-medium zindex-2 pb-3">
-                    </div>
-                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-40"></div>
-                  </div>
-                  <img src="https://www.nongsaro.go.kr/cms_contents/301/12938_MF_ATTACH_03.jpg" class="d-block rounded-4" alt="Image #1">
-                </a>
-              </div> -->
-</a>
+				<a href="${path}/plant/file/${plantshop.parcelimgedt}" class="gallery-item d-block card-hover fit-cover">
+				<img src="${path}/plant/file/${plantshop.parcelimgedt}" class="d-block rounded-4 fit-cover" alt="Image #1" style="width: 500px;">
+				</a>
+</c:if>
+</div>
+
+
           </div>
+          <!-- 이미지 끝 -->
+          
           <!-- Product details-->
           <div class="col-md-6 col-xl-5 offset-xl-1">
             <div class="d-none d-md-block" style="margin-top: -90px;"></div>
             <div class="position-md-sticky top-0 ps-md-4 ps-lg-5 ps-xl-0">
               <div class="d-none d-md-block" style="padding-top: 90px;"></div>
               <!-- <div class="d-flex align-items-center pt-3 py-3"><span class="badge bg-faded-danger text-danger d-none d-md-inline-block me-4">Sale</span><span class="fs-sm">V00273124</span></div> -->
-              <div class="pb-2 pb-lg-0 mb-4 mb-lg-5"><img class="d-block rounded-circle mb-2" src="assets/img/avatar/02.jpg" width="80" alt="Isabella Bocouse">
-                <h3 class="h5 mb-1"><c:out value="${plantshop.writerId}" /></h3>
+              <div class="pb-2 pb-lg-0 mb-4 mb-lg-5">
+              <img class="d-block rounded-circle mb-2" src="" width="80" alt="">
+                <h3 class="h5 mb-1"><c:out value="${plantshop.writername}" /></h3>
               </div>
               <h1 class="d-none d-md-inline-block pb-1 mb-2"><c:out value="${plantshop.parceltitle}" /></h1>
               <p class="fs-sm mb-4"><c:out value="${plantshop.parcelcontent}" /></p>
               <div class="d-none d-md-flex align-items-center pb-3 mb-3">
-                <div class="h3 mb-0 me-3"><c:out value="${plantshop.parcelprice}" />원</div>
-                <!--  <del class="fs-5 fw-medium text-muted">$19.00</del>-->
+                <div class="h4 mb-0 me-3">가격&nbsp;<c:out value="${plantshop.parcelprice}" />원</div>
+                <!--  <del class="fs-5 fw-medium text-muted">\$19.00</del>-->
               </div>
               <!-- Color button selector-->
               <!-- <div class="h6">Color:<span class="text-muted fw-normal ms-1" id="colorOption">Gray concrete</span></div> -->
@@ -108,37 +68,65 @@
                   </h4>
                   <div class="accordion-collapse collapse show" id="difficulty" data-bs-parent="#shopCategories">
                     <div class="accordion-body py-1 mb-1">
+                    <!-- 실내정원 -->
+                        <c:if test="${plantshop.planttype == 'P1'}">
                       <div class="form-check">
-                        <!-- <input class="form-check-input" type="checkbox" id="difficulty-all"> -->
-                        <label class="form-check-label d-flex align-items-center" for="difficulty-all"><span class="text-nav fw-medium">관리 수준 : 경험자</span>
-                          <!-- <span class="fs-xs text-muted ms-auto">697</span> -->
-                        </label>
+					<h3 class="h5 ai-cloud-rain"> 물주기</h3>
+					<div class="fs-6" style="margin-bottom: 20px;">
+						봄 : ${item.watercycleSprng} <br> 여름 :
+						${item.watercycleSummer} <br> 가을 :
+						${item.watercycleAutumn} <br> 겨울 :
+						${item.watercycleWinter} <br>
+					</div>
+					<div class="row row-cols-1 row-cols-sm-2 g-4">
+						<div class="col">
+							<h3 class="h5 ai-chart"> 관리 수준</h3>
+							<p class="mb-1">${item.manageleveltext}</p>
+						</div>
+						<div class="col">
+							<h3 class="h5 ai-award"> 성장 속도</h3>
+							<p class="mb-1">${item.growthrate}</p>
+						</div>
+						<div class="col">
+							<h3 class="h5 ai-cloud-rain"> 알맞은 습도</h3>
+							<p class="mb-1">${item.humidity}</p>
+						</div>
+						<div class="col">
+							<h3 class="h5 ai-bulb-alt"> 잘 자라는 온도</h3>
+							<p class="mb-1">${item.growthTemperature}</p>
+						</div>
+					</div>
                       </div>
-                      <div class="form-check">
-                        <!-- <input class="form-check-input" type="checkbox" checked id="beginner"> -->
-                        <label class="form-check-label d-flex align-items-center" for="beginner"><span class="text-nav fw-medium">광요구도 : 중간 광도(800~1,500 Lux),높은 광도(1,500~10,000 Lux)</span>
-                          <!-- <span class="fs-xs text-muted ms-auto">234</span> -->
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <!-- <input class="form-check-input" type="checkbox" id="intermediate"> -->
-                        <label class="form-check-label d-flex align-items-center" for="intermediate"><span class="text-nav fw-medium">비료 : 비료를 보통 요구함</span>
-                          <!-- <span class="fs-xs text-muted ms-auto">182</span> -->
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <!-- <input class="form-check-input" type="checkbox" id="expert"> -->
-                        <label class="form-check-label d-flex align-items-center" for="expert"><span class="text-nav fw-medium">병충해 : 응애, 깍지벌레</span>
-                          <!-- <span class="fs-xs text-muted ms-auto">133</span> -->
-                        </label>
-                      </div>
+                      </c:if>
+                      <!-- 꽃 -->
+                      <c:if test="${plantshop.planttype == 'P2'}">
+                      <div>
+						<h3 class="h5 ai-message-minus"> 꽃말</h3>
+						<p class="mb-3">${item.flowLang}</p>
+
+						<h3 class="h5 ai-sun"> 기르는 방법</h3>
+						<p class="mb-3">${item.fGrow}</p>
+
+						<h3 class="h5 ai-tag"> 자생지</h3>
+						<p class="mb-3">${item.fType}</p>
+					</div>
+                      </c:if>
+                      <!-- 다육이 -->
+                      <c:if test="${plantshop.planttype == 'P3'}">
+                     <div>
+						<h3 class="h5 ai-message-minus">관리 수준</h3>
+						<p class="mb-3">${item.manageLevelNm}</p>
+
+						<h3 class="h5 ai-sun">성장 속도</h3>
+						<p class="mb-3">${item.grwtseVeNm}</p>
+
+						<h3 class="h5 ai-tag">특성</h3>
+						<p class="mb-3">${item.chartrInfo}</p>
+					</div>
+                      </c:if>
                     </div>
                   </div>
                 </div>
-                
-                <c:if test="plantshop.plantType == 'P1'">
-                	${item.}
-                </c:if>
                 
                 <!-- <div class="me-2 mb-2">
                   <input class="btn-check" type="radio" name="color" data-binded-label="colorOption" value="Gray concrete" checked id="color1">
@@ -202,11 +190,11 @@
         <c:if test="${loginMember != null }">
 		<div class="card-body py-3">
 			<form action="${path}/plantshop/plantparcelreply" method="post" class="row needs-validation">
-				<div class="col-12">
+				<div class="col-10" style="padding-left:300px;">
 					<input type="hidden" name="parcelno" value="${plantshop.parcelno}" /> 
 					<input type="hidden" name="writerId" value="${loginMember.id}" />
 				<%-- 	<input type="hidden" name="mno" value="${loginMember.mno}" />  --%>
-					<textarea name="parcelrcontent" id="replyContent" class="form-control" cols="55" rows="3" placeholder="댓글을 적어주세요!" required id="c-comment" ></textarea>
+					<textarea name="parcelrcontent" id="replyContent" class="form-control" cols="55" rows="3" placeholder="댓글을 적어주세요!" required id="c-comment"  ></textarea>
 						<div class="invalid-feedback">최소 1글자 이상이어야 합니다</div>
 				</div>
 				<div class="col-1 offset-9">
@@ -266,10 +254,12 @@
               </div>
 
             </section>
-              <div class="col-sm-12 pt-2 text-end">
+            <c:if test="${loginMember != null }">
+              <div class="col-sm-12 pt-2 text-end" style="padding-right: 300px;">
                 <button class="btn btn-lg btn-primary" type="button" id="btnUpdate">수정</button>
                 <button class="btn btn-lg btn-danger" type="button" id="btnDelete">삭제</button>
               </div>
+              </c:if>
       <!-- <section class="container pb-4 pb-md-5 mb-lg-4">
         <div class="bg-size-cover bg-repeat-0 bg-position-center rounded-1 mb-md-2 py-xl-4 py-xxl-5" style="background-image: url(assets/img/shop/single/01.jpg);">
           <div class="row py-lg-5">
@@ -307,7 +297,7 @@
       <!-- Relevant products carousel-->
       <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">
         <div class="d-flex align-items-center justify-content-between pb-4 mb-2 mb-md-3">
-          <h2 class="h1 pt-1 mb-0">추천 상품</h2>
+          <h2 class="h1 pt-1 mb-0">다른 식물들도 확인해보세요!</h2>
           <!-- Slider prev/next buttons-->
           <div class="d-flex">
             <button class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle ms-3" type="button" id="relevant-prev"><i class="ai-arrow-left"></i></button>
@@ -336,7 +326,7 @@
       }
     }">
           <div class="swiper-wrapper">
-                  
+          <c:forEach var="item" items="${recomlist}">        
             <!-- Item-->
             <div class="swiper-slide">
             <div class="card-hover position-relative bg-secondary rounded-1  mb-4">
@@ -344,110 +334,20 @@
                 <i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>
               </button>
               <a class="d-block " href="shop-single.html">
-                <img class="d-block mx-auto object-fit: cover;" src="https://blog.kakaocdn.net/dn/c93wPN/btrao7BzrpV/lkkqYbvkcIGQ0LvLwUEk31/img.jpg"  style="max-width: 280px; max-height: 280px; min-width: 280px; min-height: 280px;" alt="Product">
+                <img class="d-block mx-auto object-fit: cover;" src="${path}/plant/file/${item.parcelimgedt}"  style="max-width: 280px; max-height: 280px; min-width: 280px; min-height: 280px;" alt="Product">
               </a>
             </div>
             <div class="d-flex mb-1">
-              <h3 class="h6 mb-0"><a href="shop-single.html">개운죽</a></h3>
+              <h3 class="h6 mb-0"><a href="${path}/plant-parcel-out?parcelno=${item.parcelno}">${item.parceltitle}</a></h3>
               <div class="d-flex ps-2 mt-n1 ms-auto">
 
               </div>
             </div>
-            <div class="d-flex align-items-center"><span class="me-2">$21.00</span>
-              <del class="fs-sm text-muted">$35.00</del>
-              <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
+            <div class="d-flex align-items-center"><span class="me-2">${item.parcelprice}&nbsp;원</span>
             </div>
           </div>
 
-          <!-- Item-->
-            <!-- Item-->
-            <div class="swiper-slide">
-            <div class="card-hover position-relative bg-secondary rounded-1  mb-4">
-              <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
-                <i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>
-              </button>
-              <a class="d-block " href="shop-single.html">
-                <img class="d-block mx-auto object-fit: cover;" src="https://blog.kakaocdn.net/dn/c93wPN/btrao7BzrpV/lkkqYbvkcIGQ0LvLwUEk31/img.jpg"  style="max-width: 280px; max-height: 280px; min-width: 280px; min-height: 280px;" alt="Product">
-              </a>
-            </div>
-            <div class="d-flex mb-1">
-              <h3 class="h6 mb-0"><a href="shop-single.html">개운죽</a></h3>
-              <div class="d-flex ps-2 mt-n1 ms-auto">
-
-              </div>
-            </div>
-            <div class="d-flex align-items-center"><span class="me-2">$21.00</span>
-              <del class="fs-sm text-muted">$35.00</del>
-              <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-            </div>
-          </div>
-
-      <!-- Item-->
-      <div class="swiper-slide">
-      <div class="card-hover position-relative bg-secondary rounded-1  mb-4">
-      <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
-      <i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>
-      </button>
-      <a class="d-block " href="shop-single.html">
-      <img class="d-block mx-auto object-fit: cover;" src="https://blog.kakaocdn.net/dn/c93wPN/btrao7BzrpV/lkkqYbvkcIGQ0LvLwUEk31/img.jpg"  style="max-width: 280px; max-height: 280px; min-width: 280px; min-height: 280px;" alt="Product">
-      </a>
-      </div>
-      <div class="d-flex mb-1">
-      <h3 class="h6 mb-0"><a href="shop-single.html">개운죽</a></h3>
-      <div class="d-flex ps-2 mt-n1 ms-auto">
-
-      </div>
-      </div>
-      <div class="d-flex align-items-center"><span class="me-2">$21.00</span>
-      <del class="fs-sm text-muted">$35.00</del>
-      <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-      </div>
-      </div>
-
-          <!-- Item-->
-          <div class="swiper-slide">
-            <div class="card-hover position-relative bg-secondary rounded-1  mb-4">
-              <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
-                <i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>
-              </button>
-              <a class="d-block " href="shop-single.html">
-                <img class="d-block mx-auto object-fit: cover;" src="https://cdn.edujin.co.kr/news/photo/202004/32873_59244_305.jpg"  style="max-width: 280px; max-height: 280px; min-width: 280px; min-height: 280px;" alt="Product">
-              </a>
-            </div>
-            <div class="d-flex mb-1">
-              <h3 class="h6 mb-0"><a href="shop-single.html">개운죽</a></h3>
-              <div class="d-flex ps-2 mt-n1 ms-auto">
-
-              </div>
-            </div>
-            <div class="d-flex align-items-center"><span class="me-2">$21.00</span>
-              <del class="fs-sm text-muted">$35.00</del>
-              <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-            </div>
-          </div>
-
-      <!-- Item-->
-      <div class="swiper-slide">
-      <div class="card-hover position-relative bg-secondary rounded-1  mb-4">
-      <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
-      <i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>
-      </button>
-      <a class="d-block " href="shop-single.html">
-      <img class="d-block mx-auto object-fit: cover;" src="https://blog.kakaocdn.net/dn/c93wPN/btrao7BzrpV/lkkqYbvkcIGQ0LvLwUEk31/img.jpg"  style="max-width: 280px; max-height: 280px; min-width: 280px; min-height: 280px;" alt="Product">
-      </a>
-      </div>
-      <div class="d-flex mb-1">
-      <h3 class="h6 mb-0"><a href="shop-single.html">개운죽</a></h3>
-      <div class="d-flex ps-2 mt-n1 ms-auto">
-
-      </div>
-      </div>
-      <div class="d-flex align-items-center"><span class="me-2">$21.00</span>
-      <del class="fs-sm text-muted">$35.00</del>
-      <div class="nav ms-auto" data-bs-toggle="tooltip" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;" data-bs-placement="left" title="Add to cart"><a class="nav-link fs-lg py-2 px-1" href="#"><i class="ai-cart"></i></a></div>
-      </div>
-      </div>
-
+        </c:forEach>
         </div>
       </div>
       </section>

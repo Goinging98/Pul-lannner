@@ -155,7 +155,7 @@
 		</div>
 	</section>
 
-	<!-- Page title-->
+	<!-- 직접 엄선한 반려식물-->
 	<div class="masonry-filterable py-5 mt-5">
 
 		<h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-5 mb-lg-4">직접 엄선한
@@ -169,44 +169,21 @@
 				class="nav nav-tabs flex-nowrap overflow-auto text-nowrap fs-sm flex-nowrap overflow-auto text-nowrap w-100 mx-auto pb-4 mb-5 mb-sm-3"
 				style="max-width: 250px;">
 				<li class="nav-item mb-0"><a class="nav-link active bor"
-					href="#beginners" data-bs-toggle="tab" role="tab">식물분양</a></li>
+					href="#plantparcel" data-bs-toggle="tab" role="tab">식물분양</a></li>
 				<li class="nav-item mb-0"><a class="nav-link "
 					href="#stretching" data-bs-toggle="tab" role="tab">씨앗분양</a></li>
 
 			</ul>
 			<!-- Tab content-->
 			<div class="tab-content">
-
+			
 				<!-- Beginers A-->
-				<div class="tab-pane fade show active" id="beginners"
+				<div class="tab-pane fade show active" id="plantparcel"
 					role="tabpanel">
 					<div class="masonry-grid " data-columns="4" id="a">
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							role="tabpanel" data-groups="[&quot;a&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://cdn.imweb.me/upload/S201905295cee7c0f94cee/003a9e2fc6189.jpeg"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_3plant-parcel-out.html">가울테리아</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
 
 						<!-- Item-->
+						<c:forEach var="item" items="${parcellist}">
 						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
 							data-groups="[&quot;a&quot;]">
 							<div class="card-hover zoom-effect mx-auto">
@@ -214,7 +191,7 @@
 									style="max-width: 300px;">
 									<div class="zoom-effect-img">
 										<img
-											src="https://www.flowerrepublic.co.kr/shopimages/sungmo9160/0090010004832.jpg?1665473103"
+											src="${path}/plant/file/${item.parcelimgedt}"
 											alt="Image"
 											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
 									</div>
@@ -222,362 +199,17 @@
 								<div class="pt-4 mt-lg-2">
 									<h2 class="h5 mb-2" style="text-align: center;">
 										<a class="stretched-link text-nav"
-											href="/Around/02_3plant-parcel-out.html">개운죽</a>
+											href="${path}/plant-parcel-out?parcelno=${item.parcelno}"><c:out value="${item.parceltitle}" /></a>
 									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
+
 								</div>
 							</div>
 						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;a&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://cb.scene7.com/is/image/Crate/PottedZZPlantSHS20/$web_pdp_main_carousel_low$/191217102319/potted-zz-plant.jpg"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_3plant-parcel-out.html">공작야자</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;a&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://media.istockphoto.com/id/1372896722/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%ED%99%94%EB%B6%84-%EB%B0%94%EB%82%98%EB%82%98-%EC%8B%9D%EB%AC%BC.jpg?s=612x612&w=0&k=20&c=R_oZjWbJwOnW8oR6ORnkQrYHQmg1NL1NzCqnAYpiFCc="
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_3plant-parcel-out.html">금목서</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;a&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://img.freepik.com/free-photo/monstera-deliciosa-plant-in-a-pot_53876-133119.jpg"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_3plant-parcel-out.html">금사철나무</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;a&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://media.istockphoto.com/id/1330360581/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EB%83%84%EB%B9%84%EC%97%90-%EC%8B%A4%EB%82%B4-%EC%8B%9D%EB%AC%BC.jpg?s=612x612&w=0&k=20&c=UkMXBZroGOsdZ_IGczcfYkrYuMrB11F9FW7oYENwBbw="
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_3plant-parcel-out.html">나도풍란</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Product design</span><span
-										class="fs-sm text-muted d-sm-none">Product design</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;a&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://img.freepik.com/free-photo/calathea-plant-in-a-jug_53876-134281.jpg?w=2000"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_3plant-parcel-out.html">나한송</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Packaging design</span><span
-										class="fs-sm text-muted d-sm-none">Packaging design</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;a&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5 "
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://ll9flower.cafe24.com/prog/goods/imgz/st_d/d600/st_d600z02.jpg"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav "
-											href="/Around/02_3plant-parcel-out.html">꽃베고니아</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Cover design</span><span
-										class="fs-sm text-muted d-sm-none">Cover design</span>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
+
 					</div>
 				</div>
-
-
-				<!-- Stretching B-->
-				<div class="tab-pane fade " id="stretching" role="tabpanel">
-					<div class="masonry-grid " data-columns="4" id="b">
-						<!-- Item-->
-
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							role="tabpanel" data-groups="[&quot;b&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://cdn.imweb.me/upload/S201905295cee7c0f94cee/003a9e2fc6189.jpeg"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_2seed-parcel-out.html">가울테리아</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;b&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://www.flowerrepublic.co.kr/shopimages/sungmo9160/0090010004832.jpg?1665473103"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_2seed-parcel-out.html">개운죽</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;b&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://cb.scene7.com/is/image/Crate/PottedZZPlantSHS20/$web_pdp_main_carousel_low$/191217102319/potted-zz-plant.jpg"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_2seed-parcel-out.html">공작야자</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;b&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://media.istockphoto.com/id/1372896722/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%ED%99%94%EB%B6%84-%EB%B0%94%EB%82%98%EB%82%98-%EC%8B%9D%EB%AC%BC.jpg?s=612x612&w=0&k=20&c=R_oZjWbJwOnW8oR6ORnkQrYHQmg1NL1NzCqnAYpiFCc="
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_2seed-parcel-out.html">금목서</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
-
-
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;b&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://img.freepik.com/free-photo/monstera-deliciosa-plant-in-a-pot_53876-133119.jpg"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_2seed-parcel-out.html">금사철나무</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Branding, Strategy</span><span
-										class="fs-sm text-muted d-sm-none">Branding, Strategy</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;b&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://media.istockphoto.com/id/1330360581/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EB%83%84%EB%B9%84%EC%97%90-%EC%8B%A4%EB%82%B4-%EC%8B%9D%EB%AC%BC.jpg?s=612x612&w=0&k=20&c=UkMXBZroGOsdZ_IGczcfYkrYuMrB11F9FW7oYENwBbw="
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="/Around/02_2seed-parcel-out.html">나도풍란</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Product design</span><span
-										class="fs-sm text-muted d-sm-none">Product design</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;b&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://img.freepik.com/free-photo/calathea-plant-in-a-jug_53876-134281.jpg?w=2000"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="portfolio-single-v1.html">나한송</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Packaging design</span><span
-										class="fs-sm text-muted d-sm-none">Packaging design</span>
-								</div>
-							</div>
-						</div>
-						<!-- Item-->
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;b&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5 "
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="https://ll9flower.cafe24.com/prog/goods/imgz/st_d/d600/st_d600z02.jpg"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
-									</div>
-								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav "
-											href="/Around/02_2seed-parcel-out.html">꽃베고니아</a>
-									</h2>
-									<span class="fs-sm text-muted opacity-0 d-none d-sm-block"
-										style="text-align: center;">Cover design</span><span
-										class="fs-sm text-muted d-sm-none">Cover design</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 	</div>
 

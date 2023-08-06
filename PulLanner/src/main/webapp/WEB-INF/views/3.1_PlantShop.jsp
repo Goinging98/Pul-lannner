@@ -111,7 +111,8 @@
 		<!-- Product grid-->
 		<div class="col-lg-9">
 			<!-- Active filters + Sorting-->
-			<div class="d-flex align-items-start justify-content-between mb-4">
+			  
+			<%-- <div class="d-flex align-items-start justify-content-between mb-4">
 				<!--              <a href="/Around/03_2.html"> <button class="btn btn-lg btn-primary" type="submit">내 식물분양</button></a>
              <a href="/Around/03_3.html"> <button class="btn btn-lg btn-primary mx-3" type="submit">내 씨앗분양</button></a> -->
 				<div class="input-group">
@@ -137,8 +138,8 @@
 					</span>
 					</form>
 				</div>
-			</div>
-
+			</div> --%>
+			
 			<!-- 리스트 시작 -->
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 				<c:if test="${not empty list}">
@@ -176,10 +177,10 @@
 								<div class="d-flex ps-2 mt-n1 ms-auto"></div>
 							</div>
 							<div class="d-flex align-items-center">
-								<span class="me-2"><c:out value="${item.parcelprice}" /></span>
+								<span class="me-2"><c:out value="${item.parcelprice}" />&nbsp;원</span>
 								<div class="nav ms-auto" data-bs-toggle="" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;"
 									data-bs-placement="left">
-									<a class="nav-link fs-lg py-2 px-1">${item.writerId}</a>
+									<a class="nav-link fs-lg py-2 px-1" style=" font-weight: bold;">${item.writername}</a>
 								</div>
 							</div>
 						</div>

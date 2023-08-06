@@ -22,6 +22,8 @@ import com.multi.bbs.api.naver.NaverSearchAPI;
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.plantSearch.model.service.plantSearchService;
 import com.multi.bbs.plantSearch.model.vo.FlowerDtl;
+import com.multi.bbs.plantShop.model.service.PlantShopService;
+import com.multi.bbs.plantShop.model.vo.Plantshop;
 import com.multi.bbs.shop.model.service.ShopService;
 import com.multi.bbs.shop.model.vo.Product;
 
@@ -44,6 +46,9 @@ public class HomeController {
 	@Autowired
     private plantSearchService plantSearchService;
 	
+	@Autowired
+	private PlantShopService plantShopService;
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -60,7 +65,13 @@ public class HomeController {
 		List<Product> plist1 = shopService.getProductList(pageInfo, paramMap);
 		model.addAttribute("plist1", plist1);
 		
-		
+		//=============식물분양게시판=====================
+		int parcelpage = 1;
+		Map<String, Object> paramMap1 = new HashMap<>();
+		int count1 = plantShopService.getPlantShopCount(paramMap1);
+		PageInfo pageInfo1 = new PageInfo(page, 5, count1, 6);
+		List<Plantshop> parcellist = plantShopService.getPlantShopList(pageInfo1, paramMap1);
+		model.addAttribute("parcellist", parcellist);
 		//=============랜덤으로 장소 추천=====================
 		List<TourVO> randomList = arboretumService.selectRandomList3(3);
 		model.addAttribute("randomList", randomList);

@@ -60,13 +60,10 @@
 			  </div>
 			  </c:forEach>
 			</div> --%>
-           	<label class="form-label fs-base " for="category">식물 종류 선택</label>   
-			<select name="parceltype" class="form-select" aria-label="Default select example" id="category" required>
-			<option value="">${plantshop.parceltype}</option>
-			</select>
+           	<label class="form-label fs-base " for="category">분양하고자 하는 식물을 선택하세요</label>   
 			
-	        <select name="type1" id="type1"></select>
- 			<select name="type2" id="type2"></select>
+	        <select name="type1" id="type1" class="form-select" aria-label="Default select example"></select>
+ 			<select name="type2" id="type2" class="form-select" aria-label="Default select example"></select>
 			
 			<script>
 			    $(function() {
@@ -124,10 +121,6 @@
               </div>
 
 
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="amount">가격</label>
-                <input class="form-control form-control-lg"  type="number" placeholder="가격"  id="amount" name="parcelprice" required>
-              </div>
 
 
               <div class="col-sm-12 inline-col">

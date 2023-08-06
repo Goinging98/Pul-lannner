@@ -58,13 +58,13 @@
 					<div class="col-lg-5">
 						<h1 class="mb-lg-0"></h1>
 					</div>
-					<div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5"></div>
+<!-- 					<div class="col-xl-2 offset-xl-1 col-lg-3 col-sm-5"></div>
 					<div class="col-lg-4 col-sm-7">
 						<div class="position-relative">
 							<i class="ai-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
 							<input class="form-control ps-5" type="search" placeholder="검색">
 						</div>
-					</div>
+					</div> -->
 				</div>
 				
 				
@@ -103,7 +103,7 @@
 										<c:out value="${item.content}"></c:out>
 									</p>
 									<div class="d-flex flex-wrap align-items-center mt-n2">
-										${item.readCount}<i class="ai-heart fs-lg ms-1" ></i>
+										${item.readCount}<i class="ai-show fs-lg ms-1" ></i>
 										<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
 										<span class="fs-sm text-muted mt-2"><fmt:formatDate type="date" value="${item.createDate}" /></span>
 										<span class="fs-xs opacity-20 mt-2 mx-3">|</span>

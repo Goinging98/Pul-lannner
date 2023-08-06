@@ -7,6 +7,7 @@
 		<result property="parcelno" column="PARCELNO" />
 		<result property="mno" column="mNO" />
 		<result property="writerId" column="ID" />
+		<result property="writername" column="NAME" />
 		<result property="parceltitle" column="PARCELTITLE" />
 		<result property="parcelcontent" column="PARCELCONTENT" />
 		<result property="parceltype" column="PARCELTYPE" />
@@ -83,7 +84,7 @@
 	</select>
 	
 	<select id="selectPlantshopByNo" parameterType="int" resultMap="plantshopDetailResultMap">
-		SELECT  P.PARCELNO, P.PARCELTITLE, M.ID, P.PARCELCOUNT, P.PARCELIMG, P.PARCELIMGEDT, P.PARCELCONTENT, P.CRTDATE, P.MDFDATE, P.PARCELPRICE, P.PLANTTYPE, P.PLANTNO,
+		SELECT  P.PARCELNO, P.PARCELTITLE, M.ID, P.PARCELCOUNT, P.PARCELIMG, P.PARCELIMGEDT, P.PARCELCONTENT, P.CRTDATE, P.MDFDATE, P.PARCELPRICE, P.PLANTTYPE, P.PLANTNO, M.NAME,
 				R.PARCELRNO as R_PARCELRNO, 
 		        R.PARCELNO as R_PARCELNO, 
 		        R.PARCELRCONTENT as R_PARCELRCONTENT, 
@@ -94,18 +95,18 @@
 		JOIN MEMBER M ON(P.mNO = M.mNO)
 		LEFT OUTER JOIN PLANTPARCELREPLY R ON(R.PARCELNO = P.PARCELNO)
 		LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
-		WHERE P.PARCELSTATUS = 'Y' AND  P.PARCELNO= #{parcelno}
+		WHERE P.PARCELSTATUS = 'Y' AND  P.PARCELNO= #{parcelno} 
 	</select>
 
 	<insert id="insertPlantshop" parameterType="Plantshop">
 		INSERT INTO PLANTSHOP(
 			PARCELNO, mNO, PARCELTITLE, PARCELCONTENT, PARCELTYPE,	
 			PARCELIMG, PARCELIMGEDT, PARCELPRICE, CRTDATE, MDFDATE, 
-			PARCELSTATUS, P.PLANTTYPE, P.PLANTNO
+			PARCELSTATUS, PLANTTYPE, PLANTNO, NAME
 		) VALUES (
 			default, #{mno}, #{parceltitle}, #{parcelcontent}, #{parceltype},		
 			#{parcelimg}, #{parcelimgedt}, #{parcelprice}, default, default, 
-			default, #{planttype},#{plantno}
+			default, #{planttype}, #{plantno}, #{name}
 		)
 	</insert>
 		

@@ -2,7 +2,9 @@ package com.multi.bbs.Controller;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -29,12 +32,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.member.model.vo.Member;
 import com.multi.bbs.plantSearch.model.service.plantSearchService;
+import com.multi.bbs.plantSearch.model.vo.DryGardenDtl;
 import com.multi.bbs.plantSearch.model.vo.FlowerDtl;
+import com.multi.bbs.plantSearch.model.vo.GardenDtl;
 import com.multi.bbs.plantSearch.model.vo.PlantNameVO;
 import com.multi.bbs.plantShop.model.service.PlantShopService;
 import com.multi.bbs.plantShop.model.vo.PlantparcelReply;
 import com.multi.bbs.plantShop.model.vo.Plantshop;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
@@ -89,36 +95,93 @@ public class PlantShopController {
 		return "/3.1_PlantShop";
 	}
 	
-	@RequestMapping("/plant-parcel-out")
-	public String view(Model model, @RequestParam("parcelno") int parcelno) {
-		Plantshop plantshop = plantShopService.findByNo(parcelno);
-		if(plantshop == null) {
-			return "redirect:plantshoperror";
-		}
-		
-		
-		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P1")) {
-			FlowerDtl item = plantSearchService.selectByFlowerId(Integer.parseInt(plantshop.getPlantno()));
-			model.addAttribute("item",item);
-		}
-		
-		// 여기 미완성
-		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P2")) {
-			FlowerDtl item = plantSearchService.selectByFlowerId(Integer.parseInt(plantshop.getPlantno()));
-			model.addAttribute("item",item);
-		}
-		
-		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P3")) {
-			FlowerDtl item = plantSearchService.selectByFlowerId(Integer.parseInt(plantshop.getPlantno()));
-			model.addAttribute("item",item);
-		}
-		
-		model.addAttribute("plantshop", plantshop);
-		System.out.println(plantshop.getParcelreplies());
-		model.addAttribute("plantparcelreplylist", plantshop.getParcelreplies());
-		return "/3.3_plant-parcel-out";
-	}
+//-- plant-parcel-out 기존 코드 ----
 	
+//	@RequestMapping(value = {"/plant-parcel-out"}, method = RequestMethod.GET)
+//	public String recomlist(Locale locale, Model model, HttpSession session, Map<String, Object> map, Integer id) {
+//		int parcelrecompage = 1;
+//		Map<String, Object> paramMap1 = new HashMap<>();
+//		int count1 = plantShopService.getPlantShopCount(paramMap1);
+//		PageInfo pageInfo1 = new PageInfo(parcelrecompage, 5, count1, 6);
+//		List<Plantshop> recomlist = plantShopService.getPlantShopList(pageInfo1, paramMap1);
+//		model.addAttribute("recomlist", recomlist);
+//		
+//		return "3.3_plant-parcel-out";
+//		
+//	} 
+//	
+//	
+//	@RequestMapping("/plant-parcel-out")
+//	public String view(Model model, @RequestParam("parcelno") int parcelno) {
+//		Plantshop plantshop = plantShopService.findByNo(parcelno);
+//		if(plantshop == null) {
+//			return "redirect:plantshoperror";
+//		}
+//		
+//		
+//		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P1")) {
+//			GardenDtl item = plantSearchService.selectByContentDetailId(Integer.parseInt(plantshop.getPlantno()));
+//			model.addAttribute("item",item);
+//		}
+//		
+//		
+//		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P2")) {
+//			FlowerDtl item = plantSearchService.selectByFlowerId(Integer.parseInt(plantshop.getPlantno()));
+//			model.addAttribute("item",item);
+//		}
+//		
+//		if(plantshop.getPlanttype() != null && plantshop.getPlanttype().equals("P3")) {
+//			DryGardenDtl item = plantSearchService.selectByDryGardenId(Integer.parseInt(plantshop.getPlantno()));
+//			model.addAttribute("item",item);
+//		}
+//		
+//		model.addAttribute("plantshop", plantshop);
+//		System.out.println(plantshop.getParcelreplies());
+//		model.addAttribute("plantparcelreplylist", plantshop.getParcelreplies());
+//		
+//		return "/3.3_plant-parcel-out";
+//	}
+	
+	//-- plant-parcel-out 새로운 코드 --
+	@RequestMapping(value = {"/plant-parcel-out", "/plant-parcel-out/{parcelno}"}, method = RequestMethod.GET)
+	public String recomlistAndview(Locale locale, Model model, HttpSession session, Map<String, Object> map,
+	                               @RequestParam(name = "parcelno", required = false) Integer parcelno) {
+
+	    int parcelrecompage = 1;
+	    Map<String, Object> paramMap1 = new HashMap<>();
+	    int count1 = plantShopService.getPlantShopCount(paramMap1);
+	    PageInfo pageInfo1 = new PageInfo(parcelrecompage, 5, count1, 6);
+	    List<Plantshop> recomlist = plantShopService.getPlantShopList(pageInfo1, paramMap1);
+	    model.addAttribute("recomlist", recomlist);
+
+	    if (parcelno != null) {
+	        Plantshop plantshop = plantShopService.findByNo(parcelno);
+	        if (plantshop == null) {
+	            return "redirect:plantshoperror";
+	        }
+
+	        if (plantshop.getPlanttype() != null) {
+	            if (plantshop.getPlanttype().equals("P1")) {
+	                GardenDtl item = plantSearchService.selectByContentDetailId(Integer.parseInt(plantshop.getPlantno()));
+	                model.addAttribute("item", item);
+	            } else if (plantshop.getPlanttype().equals("P2")) {
+	                FlowerDtl item = plantSearchService.selectByFlowerId(Integer.parseInt(plantshop.getPlantno()));
+	                model.addAttribute("item", item);
+	            } else if (plantshop.getPlanttype().equals("P3")) {
+	                DryGardenDtl item = plantSearchService.selectByDryGardenId(Integer.parseInt(plantshop.getPlantno()));
+	                model.addAttribute("item", item);
+	            }
+	        }
+
+	        model.addAttribute("plantshop", plantshop);
+	        System.out.println(plantshop.getParcelreplies());
+	        model.addAttribute("plantparcelreplylist", plantshop.getParcelreplies());
+	    }
+
+	    return "/3.3_plant-parcel-out";
+	}
+
+	//--
 	
 	@GetMapping("/plantshoperror")
 	public String error() {
@@ -191,7 +254,7 @@ public class PlantShopController {
 		return "common/msg";
 	}
 	
-	
+	// -- selling_plant_update 기존 코드--
 	@GetMapping("/selling_plant_update")
 	public String updateView(Model model,
 			@SessionAttribute(name="loginMember", required = false) Member loginMember,
@@ -239,6 +302,12 @@ public class PlantShopController {
 		}
 		return "common/msg";
 	}
+	//--
+	
+	// -- selling_plant_update 새로운 코드 코드--
+	
+
+	//--
 	
 	// http://localhost/mvc/board/delete?no=51
 	@RequestMapping("/deleteplantshop")

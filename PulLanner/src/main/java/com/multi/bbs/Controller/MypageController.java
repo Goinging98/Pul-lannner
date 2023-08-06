@@ -66,25 +66,25 @@ public class MypageController {
 		return "0.1.1_account-writinglist";
 	}
 
-	@RequestMapping(value = "/mypage/myselling", method = RequestMethod.GET)
-	public String myselling(Model model, HttpSession session) {
-		Member member = (Member) session.getAttribute("loginMember");
-		if(member == null) {
-			model.addAttribute("msg", "로그인이 필요합니다.");
-			model.addAttribute("location", "/login");
-			return "common/msg";
-		}
-		
-		String id = member.getId();
-		logger.info("account writinglist page");
-		
-		int proudBoardCount = service.getmyProudBoardCount(id);
-		List<ProudBoard> list = service.getmyProudBoardList(id);
-		
-		model.addAttribute("list", list);
-		model.addAttribute("proudBoardCount", proudBoardCount);
-		return "0.1.2_account-sellinglist";
-	}
+//	@RequestMapping(value = "/mypage/myselling", method = RequestMethod.GET)
+//	public String myselling(Model model, HttpSession session) {
+//		Member member = (Member) session.getAttribute("loginMember");
+//		if(member == null) {
+//			model.addAttribute("msg", "로그인이 필요합니다.");
+//			model.addAttribute("location", "/login");
+//			return "common/msg";
+//		}
+//		
+//		String id = member.getId();
+//		logger.info("account writinglist page");
+//		
+//		int proudBoardCount = service.getmyProudBoardCount(id);
+//		List<ProudBoard> list = service.getmyProudBoardList(id);
+//		
+//		model.addAttribute("list", list);
+//		model.addAttribute("proudBoardCount", proudBoardCount);
+//		return "0.1.2_account-sellinglist";
+//	}
 
 	@RequestMapping(value = "/mypage/shoppingbag", method = RequestMethod.GET)
 	public String shoppingbag(Locale locale, Model model, HttpSession session) {
