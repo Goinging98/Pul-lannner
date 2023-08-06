@@ -502,6 +502,28 @@ INNER JOIN Product ON Cart.pNo = Product.pNo
 INNER JOIN Member ON Cart.mNo = Member.mNo
 where Member.mno = 1;
 
+
+------------------------------------------------------------------
+------------------------- 주문내역 관련 테이블 -------------------------
+------------------------------------------------------------------
+-- 주문내역 
+CREATE TABLE ORDERLIST (
+	oNO INT PRIMARY KEY AUTO_INCREMENT,
+    mNO INT,
+    ORDERDATE DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PAYMENT INT # 1 KAKAO 2 CASH 
+);
+-- 주문상품목록 
+CREATE TABLE ORDERPRODUCT (
+    oNO INT,
+    FOREIGN KEY (oNO) REFERENCES ORDERLIST(oNO),
+    pNO INT,
+    FOREIGN KEY (pNO) REFERENCES PRODUCT(pNO),
+    AMOUNT INT
+);
+
+
+
 ------------------------------------------------------------------
 ------------------------- PLANTSHOP 관련 테이블 -------------------------
 ------------------------------------------------------------------
@@ -578,11 +600,12 @@ LEFT OUTER JOIN PLANTPARCELREPLY R ON(R.PARCELNO = P.PARCELNO)
 LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
 WHERE P.PARCELSTATUS = 'Y' AND  P.PARCELNO=1;
 
+
+
 ------------------------------------------------------------------
 ------------------------- PLANT MANAGE 관련 테이블 -------------------------
 ------------------------------------------------------------------
-
-
+drop table PLANTMANAGE;
 CREATE TABLE PLANTMANAGE ( 
 	cNo INT PRIMARY KEY AUTO_INCREMENT, #이 테이블 주키
     bNo INT, #식물 번호
@@ -590,13 +613,16 @@ CREATE TABLE PLANTMANAGE (
     WORKING INT, # 1=환기하기 2=물주기~ 
     FEEDDATE DATETIME, 
     ENROLLDATE DATETIME DEFAULT CURRENT_TIMESTAMP, 
-    CONTENT VARCHAR(2000) #메모 
+    CONTENT VARCHAR(2000),  
+    CONSTRAINT FK_MANAGELIST_WRITER FOREIGN KEY(mNo) REFERENCES MEMBER(mNo) ON DELETE SET NULL
     );   
     
 COMMIT;
 
 select * from PLANTMANAGE;
+
 # 식물 리스트 
+drop table MANAGELIST;
 CREATE TABLE MANAGELIST ( 
 	bNo INT PRIMARY KEY AUTO_INCREMENT, 
 	mNo INT,   
@@ -605,26 +631,17 @@ CREATE TABLE MANAGELIST (
     PETNAME VARCHAR(100), #애칭 
     LOCATION VARCHAR(1000), #식물 키우는 위치  
     CONTENT VARCHAR(2000), #소개
-	IMG VARCHAR(500),    #사진 
-    STARTDDATE DATETIME,
+	ORIGINAL_IMG VARCHAR(100), 
+	RENAMED_IMG VARCHAR(100),    #사진 
+    STARTDATE DATETIME,
 	ENROLLDATE DATETIME DEFAULT CURRENT_TIMESTAMP,   #키우기 시작한 날 
     MODIFYDATE DATETIME DEFAULT CURRENT_TIMESTAMP 
  );
- INSERT INTO MANAGELIST VALUES(0, 1,'Y', '선인장', '인장이', '실내', '인장이 분양했어요!!', '변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
- INSERT INTO MANAGELIST VALUES(0, 1,'Y', '민들레', '들레1세', '실내', '들레 집에서 관찰하기!', '변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
+ 
+ INSERT INTO MANAGELIST VALUES(0, 3,'Y', '선인장', '인장이', '실내', '인장이 분양했어요!!', '변경된파일명.txt','변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
+ INSERT INTO MANAGELIST VALUES(0, 3,'Y', '민들레', '들레1세', '실내', '들레 집에서 관찰하기!', '변경된파일명.txt','변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
  COMMIT;
-    
-    
- select * from MANAGELIST;
- 
- SELECT COUNT(*) FROM MANAGELIST WHERE STATUS= 'Y';
- 
- 
- 
- 
- 
- 
- 
+
  
  ------------------------------------------------------------------
 ------------------------- tour 관련 테이블 -------------------------

@@ -6,10 +6,9 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
-		<!-- Sidebar (offcanvas on sreens < 992px)-->
+		<!-- Sidebar -->
 		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
@@ -49,7 +48,7 @@
 		</aside>
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
-			<div class="d-flex align-items-center mb-4">
+			<!-- <div class="d-flex align-items-center mb-4">
 				<h1 class="h2 mb-0">주문내역</h1>
 				<select class="form-select ms-auto" style="max-width: 200px;">
 					<option value="All tme">배송 상태</option>
@@ -57,7 +56,7 @@
 					<option value="Delivered">배송완료</option>
 					<option value="Canceled">취소</option>
 				</select>
-			</div>
+			</div> -->
 			<div class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4">
 				<div class="card-body pb-4">
 					<!-- Orders accordion-->
@@ -66,12 +65,10 @@
 						<!-- Order 토글 닫힌 버전-->
 						<div class="accordion-item border-top mb-0">
 							<div class="accordion-header">
-								<a
-									class="accordion-button d-flex fs-4 fw-normal text-decoration-none py-3 collapsed"
+								<a class="accordion-button d-flex fs-4 fw-normal text-decoration-none py-3 collapsed"
 									href="#orderOne" data-bs-toggle="collapse"
 									aria-expanded="false" aria-controls="orderOne">
-									<div class="d-flex justify-content-between w-100"
-										style="max-width: 440px;">
+									<div class="d-flex justify-content-between w-100" style="max-width: 440px;">
 										<div class="me-3 me-sm-4">
 											<div class="fs-sm text-muted">#78A6431D409</div>
 											<span class="badge bg-faded-info text-info fs-xs">In
@@ -168,12 +165,10 @@
 						<!-- Order : 토글 오픈 버전 -->
 						<div class="accordion-item border-top mb-0">
 							<div class="accordion-header">
-								<a
-									class="accordion-button fs-4 fw-normal text-decoration-none py-3"
+								<a class="accordion-button fs-4 fw-normal text-decoration-none py-3"
 									href="#orderThree" data-bs-toggle="collapse"
 									aria-expanded="true" aria-controls="orderThree">
-									<div class="d-flex justify-content-between w-100"
-										style="max-width: 440px;">
+									<div class="d-flex justify-content-between w-100" style="max-width: 440px;">
 										<div class="me-3 me-sm-4">
 											<div class="fs-sm text-muted">#34VB5540K83</div>
 											<span class="badge bg-faded-primary text-primary fs-xs">Delivered</span>
@@ -303,32 +298,16 @@
 					</div>
 
 
-					<!-- Pagination-->
-					<div class="d-sm-flex align-items-center pt-4 pt-sm-5">
-						<nav class="order-sm-2 ms-sm-auto mb-4 mb-sm-0"
-							aria-label="Orders pagination">
-							<ul class="pagination pagination-sm justify-content-center">
-								<li class="page-item active" aria-current="page"><span
-									class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-							</ul>
-						</nav>
-					</div>
-
-
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- Divider for dark mode only-->
-<hr class="d-none d-dark-mode-block">
+
+
 <!-- Sidebar toggle button-->
-<button
-	class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom"
-	data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
-	<i class="ai-menu me-2"></i>Account menu
+<button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
+	<i class="ai-menu me-2"></i>
 </button>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

@@ -27,6 +27,8 @@
 <meta name="msapplication-config" content="/resources/assets/favicon/browserconfig.xml">
 <meta name="theme-color" content="white">
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 <!-- Page loading styles-->
 <style>
@@ -201,7 +203,6 @@
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="${path}/PlantProud">식물 자랑하기</a></li>
 								<li><a class="dropdown-item" href="${path}/HoneyTip/list">식물 기르기 꿀팁</a></li>
-								<li><a class="dropdown-item" href="${path}/Observe">관찰일지</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">

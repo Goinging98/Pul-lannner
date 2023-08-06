@@ -12,6 +12,7 @@
         <div class="row pt-sm-2 pt-lg-0">
          
           
+          <form action="${path}/Plantwrite" method="post" enctype="multipart/form-data">
           <!-- Page content-->
           <div class="col-lg-9 pt-4 pb-2 pb-sm-4">
             <h1 class="h2 mb-4">식물관리</h1>
@@ -24,6 +25,7 @@
                 <div class="d-flex align-items-center">
                   <div class="dropdown">
                     <label for="profile-picture" class="d-flex flex-column justify-content-end position-relative overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" style="width: 80px; height: 80px; background-image: url(assets/img/avatar/36.jpg);">
+                      <input class="form-control" type="file" id="formfile" name="upfile">
                       <span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.5)"><i class="ai-camera"></i></span>
                     </label>
                     <input type="file" id="profile-picture" style="display: none;">
@@ -32,15 +34,20 @@
                       <a class="dropdown-item text-danger fw-normal" href="#" onclick="handleDeleteClick()"><i class="ai-trash fs-base me-2"></i>Delete photo</a>
                     </div>
                   </div>
+                  
                   <div class="ps-3">
-                    <h3 class="h6 mb-1">무민</h3>
-                    <p class="fs-sm text-muted mb-0">PNG or JPG no bigger than 1000px wide and tall.</p>
-                  </div>
+                    <h3 class="h6 mb-1"></h3>
+                    <p class="fs-sm text-muted mb-0"></p>
+                  </div>		
                 </div>
+                
+
+               
                 <div class="row g-3 g-sm-4 mt-0 mt-lg-2">
+                
                   <div class="col-sm-6">
-                    <label class="form-label" for="fn">키우기 시작한 날</label>
-                    <input class="form-control" type="text" id="fn" placeholder="choose date">
+                    <label class="form-label" for="startdate_date">키우기 시작한 날</label>
+                    <input class="form-control" type="date" id="fn" placeholder="choose date" id= "startdate_date" name="startdate_date">
                   </div>
                   
                  <!-- 달력 추가하기 (j.son으로 설정하는것같음) 물어볼것 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -52,58 +59,52 @@
                     });
                   </script> -->
                   <div class="col-sm-6">
-                    <label class="form-label" for="ln">마지막 물 준 날</label>
-                    <input class="form-control" type="text" placeholder="choose date" id="ln">
+                    <label class="form-label" for="waterdate_date">마지막 물 준 날</label>
+                    <input class="form-control" type="date" placeholder="choose date" id="waterdate_date" name="waterdate_date">
                   </div>
                   <div class="col-sm-6">
-                    <label class="form-label" for="email">애칭</label>
-                    <input class="form-control" type="text" placeholder="애칭을 입력해주세요" id="email">
+                    <label class="form-label" for="plantname">식물</label>
+                    <input class="form-control" type="text" name="plantname" placeholder="식물이름을 입력해주세요" id="plantname">
                   </div>
                   <div class="col-sm-6">
-                   <!-- <label class="form-label" for="phone">Phone <span class='text-muted'>(optional)</span></label>
-                    <input class="form-control" type="tel" data-format="{&quot;numericOnly&quot;: true, &quot;delimiters&quot;: [&quot;+1 &quot;, &quot; &quot;, &quot; &quot;], &quot;blocks&quot;: [0, 3, 3, 2]}" placeholder="+1 ___ ___ __" id="phone">
-                  --></div> 
+                    <label class="form-label" for="petname">애칭</label>
+                    <input class="form-control" type="text" name="petname" placeholder="애칭을 입력해주세요" id="petname">
+                 </div> 
                   <div class="col-sm-6">
-                    <label class="form-label" for="country">어느 화분에서 키우고 있나요?</label>
-                    <input class="form-control" type="text" value="" id="email">
+                    <label class="form-label" for="flowerpot">화분형태가 어떻게 되나요?</label>
+                    <input class="form-control" type="text" value="" name="flower pot" id="flowerpot">
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label" for="light">빛을 어떻게 받고 있나요?</label>
+                    <input class="form-control" type="text" value="" name="light" id="light">
 
+                    
                   </div>
                   <div class="col-sm-6">
-                    <label class="form-label" for="language">빛을 어떻게 받고 있나요?</label>
-                    <select class="form-select" id="language">
-                      <option value="" selected disabled>선택</option>
-                      <option value="실내">실내</option>
-                      <option value="야외">야외</option>
-                  
-                    </select>
-                  </div>
-                  <div class="col-sm-6">
-                    <label class="form-label" for="timezone">어떤 공간에서 키우고 있나요?</label>
-                    <input class="form-control" type="text" value="" id="email">
+                    <label class="form-label" for="timezone">어디에서 키우고 있나요?</label>
+                    <input class="form-control" type="text" name="timezone" id="timezone">
 
                   </div>
                   <div class="col-sm-6">
                     <label class="form-label" for="currency">바람은 얼마나 통하나요?</label>
-                    <select class="form-select" id="currency">
-                      <option value="" selected disabled>바람세기</option>
-                      <option value="약"> 약</option>
-                      <option value="중"> 중</option>
-                      <option value="강"> 강</option>
-                    </select>
+                  <input class="form-control" type="text" name="wind" id="wind">
+
                   </div>
                   <div class="col-12">
                     <label class="form-label" for="bio">식물을 소개해주세요.</label>
-                    <textarea class="form-control" rows="5" placeholder="식물을 소개해주세요!" id="bio"></textarea>
+                    <textarea class="form-control" rows="5" placeholder="식물을 소개해주세요!" name= "content" id="content"></textarea>
                   </div>
                  
                   </div>
                   <div class="col-12 d-flex justify-content-end pt-3">
-                    <button class="btn btn-secondary" type="button">취소</button>
-                    <button class="btn btn-primary ms-3" type="button">변경</button>
+                    <button class="btn btn-secondary" type="reset">취소</button>
+                    <button class="btn btn-primary ms-3" type="submit">등록</button>
                   </div>
                 </div>
-              </div>
-            </section>
+ 	           </section>
+             </div>
+             </form>
+             </div></div>
          
       <!-- Divider for dark mode only-->
       <hr class="d-none d-dark-mode-block">

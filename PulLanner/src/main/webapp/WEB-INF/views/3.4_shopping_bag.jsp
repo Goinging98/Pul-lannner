@@ -32,7 +32,8 @@ function findAddr(){
 
 <!-- Page content-->
 <div style="background: linear-gradient(to right, #F6F9FC 55%,  #ffffff 45%);">
-<form class="needs-validation container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2" novalidate>
+<form class="needs-validation container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2" 
+	action="${path}/shopping/payment/order" novalidate>
 	<div class="row">
 		<div class="col-lg-6">
 			<nav aria-label="breadcrumb"></nav>

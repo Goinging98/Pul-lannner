@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.multi.bbs.common.util.PageInfo;
 import com.multi.bbs.member.model.vo.Member;
 import com.multi.bbs.shop.model.service.ShopService;
 import com.multi.bbs.shop.model.vo.Product;
@@ -85,12 +84,6 @@ public class MypageController {
 		model.addAttribute("list", list);
 		model.addAttribute("proudBoardCount", proudBoardCount);
 		return "0.1.2_account-sellinglist";
-	}
-	
-	@RequestMapping(value = "/mypage/orders", method = RequestMethod.GET)
-	public String orders(Locale locale, Model model, HttpSession session) {
-		logger.info("my orders page");
-		return "0.2.1_account-orders";
 	}
 
 	@RequestMapping(value = "/mypage/shoppingbag", method = RequestMethod.GET)

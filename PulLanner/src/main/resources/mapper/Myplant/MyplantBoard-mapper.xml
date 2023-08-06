@@ -4,37 +4,96 @@
 
 <mapper namespace="com.multi.bbs.manage.model.mapper.ManageBoardMapper">
 
-	<resultMap type="MANAGELIST" id="ManagelistResultMap">
-		<id property="bNo" column="bNo"/>
-		<result property="mNo" column="mNo"/>
-		<result property="mNo" column="mNo"/>
+	<resultMap type="Managelist" id="ManagelistResultMap">
+		<id property="bno" column="bNo"/>
+		<result property="mno" column="mNo"/>
 		<result property="status" column="STATUS"/>
-		<result property="plantName" column="PLANTNAME"/>
-		<result property="petName" column="PETNAME"/>
+		<result property="plantname" column="PLANTNAME"/>
+		<result property="petname" column="PETNAME"/>
 		<result property="location" column="LOCATION"/>
 		<result property="content" column= "CONTENT"/>
-		<result property="IMG" column="IMG"/>
-		<result property="startDate" column="STARTDATE"/>
-		<result property="enrollDate" column="ENROLLDATE"/>
-		<result property="modifyDate" column="MODIFYDATE"/>
+		<result property="originalimg" column="ORIGINAL_IMG"/>
+		<result property="renamedimg" column="RENAMED_IMG"/>
+		<result property="startdate" column="START_DATE"/>
+		<result property="waterdate" column="WATER_DATE"/>
+		<result property="createdate" column="CREATE_DATE"/>
+	
 	</resultMap>
 
-	<resultMap type="PLANTMANAGE" id="PLANTMANAGEREsultMap">
-		<result property="cNO" column="cNo" />
-		<result property="bNo" column="bNo" />
-		<result property="mNo" column="mNO" />
+	
+	<select id="selectMANAGELISTCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM MANAGELIST WHERE STATUS = 'Y' and mNo = #{mno}
+	</select>
+	
+	<select id="selectMANAGELISTList" parameterType="int" resultMap="ManagelistResultMap">
+		SELECT 
+			*
+		 FROM MANAGELIST WHERE STATUS = 'Y' and mNo = #{mno}
+	</select>
+		
+	
+	<select id="selectMANAGELIST" parameterType="int" resultMap="ManagelistResultMap">
+		SELECT 
+			*
+		 FROM MANAGELIST WHERE STATUS = 'Y' and bno = #{bno}
+	</select>
+		
+		
+		
+	<insert id="insertMANAGELIST" parameterType="Managelist">
+		INSERT INTO MANAGELIST(
+			bNo, mNo, STATUS,
+			PLANTNAME, PETNAME,
+			LOCATION, CONTENT,
+			ORIGINAL_IMG, RENAMED_IMG,
+			START_DATE, WATER_DATE, CREATE_DATE
+		) VALUES (
+			0, #{mno}, DEFAULT, #{plantname}, 
+			#{petname}, #{location}, 
+			#{content}, #{originalimg}, #{renamedimg}, 
+			#{startdate}, #{waterdate}, DEFAULT
+		);
+	</insert>
+		
+	<update id="updateMANAGELIST" parameterType="Managelist">
+		UPDATE MANAGELIST
+		SET
+		PLANTNAME =#{plantname}
+		PETNAME = #{petname}
+		LOCATION = #{location}
+		CONTENT = #{content}
+		<if test="originalimg != null">
+                ORIGINAL_IMG = #{originalimg},
+            </if>
+            <if test="renamedimg != null">
+                RENAMED_IMG = #{renamedimg},
+            </if>
+		WATER_DATE = CURRENT_TIMESTAMP
+		WHERE
+			BNO=#{bNo}
+	</update>
+
+	<resultMap type="Plantmanage" id="PlantmanageResultMap">
+		<result property="cno" column="cNo" />
+		<result property="bno" column="bNo" />
+		<result property="mno" column="mNO" />
 		<result property="working" column="WORKING"/>
-		<result property="feeddate" column="FEEDDATE" />
-		<result property="enrolldate" column="ENROLLDATE" />
+		<result property="waterdate" column="WATER_DATE" />
+		<result property="createdate" column="CREATE_DATE" />
 		<result property="content" column="CONTENT" />
 	</resultMap>
 	
+	<insert id="insertPLANTMANAGE" parameterType="Plantmanage">
+		INSERT INTO PLANTMANAGE VALUES(
+			0, #{bno}, #{mno}, #{working}, 
+			#{waterdate}, default, 
+			#{content}
+		);
+	</insert>
+
+	<select id="selectPlantmanageList" parameterType="map" resultMap="PlantmanageResultMap">
+		select * from PLANTMANAGE where mNo = #{mno} and bNo = #{bno}
 	
-	<select id="selectCount" resultType="int">
-	SELECT COUNT(*) FROM MANAGELIST FROM WHERE STATUS
 	</select>
-	
-	<select id="selectMANAGELISTList" resultMap="ManagelistResultMap" parameterType="map">
-		SELECT PLANT NAME, PET NAME, IMG FROM MANAGELIST 
-		</select>
+
 </mapper>
