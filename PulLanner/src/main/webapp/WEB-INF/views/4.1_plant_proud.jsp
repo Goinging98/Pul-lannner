@@ -100,7 +100,13 @@
 										class="fs-sm text-muted mt-2"><fmt:formatDate
 											type="both" dateStyle="full" value="${item.createDate}" /></span> <span
 										class="fs-xs opacity-20 mt-2 mx-3">|</span> <a
-										class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a>
+										class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a><span
+										class="fs-xs opacity-20 mt-2 mx-3">|</span>
+										<c:if	test="${!empty loginMember && (loginMember.id == item.id || loginMember.role == 'ROLE_ADMIN') }">
+											<button type="button" id="btnDelete" class="btn btn-icon btn-sm btn-outline-danger rounded-circle">
+												<i class="ai-trash"></i>
+											</button>
+										</c:if>
 								</div>
 							</div>
 						</div>
@@ -286,12 +292,12 @@
 	
 	$(document).ready(() => {
 		$("#btnUpdate").click((e) => {
-			location.href = "${path}/board/update?no=${board.BNo}";
+			location.href = "${path}/PlantProud/update?no=${proudBoard.BNo}";
 		});
 		
 		$("#btnDelete").click((e) => {
 			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
-				location.replace("${path}/board/delete?no=${board.BNo}");
+				location.replace("${path}/PlantProud/delete?proudBoardNo=${proudBoard.BNo}");
 			}
 		});
 	});

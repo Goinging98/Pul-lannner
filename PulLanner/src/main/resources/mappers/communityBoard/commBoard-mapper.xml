@@ -159,7 +159,7 @@
 	</update>
 	
 	<update id="deleteProudBoard" parameterType="int">
-		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo} AND TYPE = 'PROUD'
+		UPDATE COMMBOARD SET STATUS='N' WHERE BNO=#{bNo}
 	</update>
 	
 	<!-- 좋아요 -->

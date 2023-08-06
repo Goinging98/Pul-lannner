@@ -135,6 +135,23 @@ public class PlantProudController {
 		return "common/msg";
 	}
 	
+	@RequestMapping("/delete")
+	public String deleteProudBoard(Model model,  HttpSession session,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+			int proudBoardNo
+			) {
+		log.info("게시글 삭제 요청 proudBoardNo : " + proudBoardNo);
+		int result = service.deleteProudBoard(proudBoardNo, savePath);
+		
+		if(result > 0) {
+			model.addAttribute("msg", "게시글 삭제가 정상적으로 완료되었습니다.");
+		}else {
+			model.addAttribute("msg", "게시글 삭제에 실패하였습니다.");
+		}
+		model.addAttribute("location", "/PlantProud");
+		return "common/msg";
+	}
+	
 	// 첨부이미지(스프링부트)
 		@GetMapping("/proud/file/{fileName}") // 이미지 출력 경로 ex) 3.3_plant-parcel-out.jsp  42번째줄
 		@ResponseBody

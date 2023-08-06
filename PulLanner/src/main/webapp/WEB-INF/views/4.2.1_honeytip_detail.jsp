@@ -63,7 +63,7 @@
 								<div class="ps-3">
 									<h6 class="mb-0">${reply.name}
 										<c:if	test="${!empty loginMember && (loginMember.id == reply.id || loginMember.role == 'ROLE_ADMIN') }">
-											<button type="button" class="btn btn-icon btn-sm btn-danger rounded-circle">
+											<button type="button" class="btn btn-icon btn-sm btn-outline-danger rounded-circle">
 												<i class="ai-trash" onclick="deleteHoneyReply('${reply.RNo}','${honeyBoard.BNo}');"></i>
 											</button>
 										</c:if>
