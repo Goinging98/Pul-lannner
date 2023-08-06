@@ -43,8 +43,11 @@
             <!-- Post content-->
             
             <!-- Slider with fade transition between slides -->
-            <div style="background-image: url('/HoneyTip/honey/file/${honeyBoard.renamedFileName}'); width: 500px; height: 900px; background-repeat: no-repeat;" >
+            <c:if test="${not empty honeyBoard.renamedFileName}">
+            <div class="col-12 image-container" style="display: flex; justify-content: center;">
+            <img src="honey/file/${honeyBoard.renamedFileName}" class="d-block rounded-5 fit-cover" style="text-align: center; width: 500px;">
             </div>
+            </c:if>
             <p class="fs-lg pt-2 pt-sm-3">${honeyBoard.content}</p>
             <hr>
             

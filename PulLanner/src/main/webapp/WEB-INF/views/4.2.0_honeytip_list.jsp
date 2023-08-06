@@ -7,6 +7,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+
       <!-- Page content-->
       <div class="container pt-5 pb-lg-5 pb-md-4 pb-2 my-5">
       
@@ -44,20 +45,14 @@
 											<img class="card-img-top" src="honey/file/${item.renamedFileName}">
 										</c:if>
 									</a>
-									<div class="d-flex align-items-center mb-4 mt-1">
+									<div class="d-flex align-items-center mb-2 mt-1">
 										<span class="fs-sm text-muted"><fmt:formatDate
 												type="both" dateStyle="full" value="${item.createDate}" /></span>
 									</div>
 									<h3 class="h4 card-title">
 										<a href="${path}/HoneyTip/view?no=${item.BNo}">${item.title}</a>
-										<button type="button"
-											class="btn btn-icon btn-sm btn-success btn-instagram rounded-circle"
-											style="margin-left: auto;"
-											onclick="location.href='${path}/scrapwriting?num=${item.BNo}'">
-											<i class="ai ai-bookmark"></i>
-										</button>
 									</h3>
-									<p class="card-text">${item.content}</p>
+									<p class="card-text text-truncate">${item.content}</p>
 								</div>
 								<div class="card-footer pt-3">
 									<h6 class="h6 card-title">
