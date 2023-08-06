@@ -281,10 +281,10 @@
 		</div>
 	</section>
 
-	<!-- Resources (Blog)-->
+	<!-- Resources (Blog) 식물 자랑하기-->
 	<section class="bg-faded-primary py-5 mt-5">
 		<div class="container py-sm-2 pt-md-3 py-lg-2 py-xl-4 py-xxl-5">
-			<h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-3 mb-lg-4">식물 자랑</h3>
+			<h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-3 mb-lg-4">식물 자랑하기</h3>
 			<!-- Swiper-->
 			<div class="swiper"
 				data-swiper-options="
@@ -301,83 +301,38 @@
         }
       ">
 				<div class="swiper-wrapper">
+				<c:forEach var="proud" items="${proudList}">
 					<!-- Item-->
 					<article class="swiper-slide h-auto">
 						<div class="card border-0 h-100">
 							<div class="card-body pb-4">
 								<div class="d-flex align-items-center mb-4 mt-n1">
-									<span class="fs-sm text-muted">August 13, 2022</span><span
-										class="fs-xs opacity-20 mx-3">|</span><a
-										class="badge text-nav fs-xs border" href="#">Inspiration</a>
+									<span class="fs-sm text-muted"><fmt:formatDate
+											type="both" dateStyle="full" value="${proud.createDate}"/></span><span
+										class="fs-xs opacity-20 mx-3">|</span>
 								</div>
 								<h3 class="h4 card-title">
-									<a href="#">나를 식집사로 만들어준 피쉬본 포실이 🌵</a>
+									<a href="#">${proud.title}</a>
 								</h3>
-								<p class="card-text">포실이가 우리집에 온지 한달째 되는 날 💚 아직은 많이 부족한 초보
-									식집사지만 .. 🥹 다행히 과습도 오지않고 그 사이 새로운 아기 자구가 올라온 거 같아 아마도 ?</p>
+								<p class="card-text">${proud.content}</p>
 							</div>
 							<div class="card-footer pt-3">
 								<a class="d-flex align-items-center text-decoration-none pb-2"
 									href="#"><img class="rounded-circle"
-									src="assets/img/avatar/10.jpg" width="48" alt="Post author">
-									<h6 class="ps-3 mb-0">Guy Hawkins</h6></a>
+									src="resources/assets/img/avatar/10.jpg" width="48" alt="Post author">
+									<h6 class="ps-3 mb-0">${proud.name}</h6></a>
 							</div>
 						</div>
 					</article>
-					<!-- Item-->
-					<article class="swiper-slide h-auto">
-						<div class="card border-0 h-100">
-							<div class="card-body pb-4">
-								<div class="d-flex align-items-center mb-4 mt-n1">
-									<span class="fs-sm text-muted">July 25, 2022</span><span
-										class="fs-xs opacity-20 mx-3">|</span><a
-										class="badge text-nav fs-xs border" href="#">Inspiration</a>
-								</div>
-								<h3 class="h4 card-title">
-									<a href="#">고슬딸기 열매가 빨갛게 익었어요</a>
-								</h3>
-								<p class="card-text">2개는 꽤나 튼실하게 잘 익은거 같아요 가장 작은 1개는 따서 먹어보니
-									역시 단맛은 안나네요🤣 물푸레 영양제를 줘야하는걸까 싶어요 지금은 알비료만 얹어놨어요</p>
-							</div>
-							<div class="card-footer pt-3">
-								<a class="d-flex align-items-center text-decoration-none pb-2"
-									href="#"><img class="rounded-circle"
-									src="assets/img/avatar/07.jpg" width="48" alt="Post author">
-									<h6 class="ps-3 mb-0">Cody Fisher</h6></a>
-							</div>
-						</div>
-					</article>
-					<!-- Item-->
-					<article class="swiper-slide h-auto">
-						<div class="card border-0 h-100">
-							<div class="card-body pb-4">
-								<div class="d-flex align-items-center mb-4 mt-n1">
-									<span class="fs-sm text-muted">July 08, 2022</span><span
-										class="fs-xs opacity-20 mx-3">|</span><a
-										class="badge text-nav fs-xs border" href="#">Inspiration</a>
-								</div>
-								<h3 class="h4 card-title">
-									<a href="#">비 자발적 미니멀리스트가 되었다🌿😐</a>
-								</h3>
-								<p class="card-text">어느새 식물들이 내 화장대를 점령했다🥹 장마와 무더위로 인해 베란다
-									식물들을 하나둘씩 방으로 피신시킨게 시작이었다. 그러면서도 식물공부를 하며</p>
-							</div>
-							<div class="card-footer pt-3">
-								<a class="d-flex align-items-center text-decoration-none pb-2"
-									href="#"><img class="rounded-circle"
-									src="assets/img/avatar/09.jpg" width="48" alt="Post author">
-									<h6 class="ps-3 mb-0">Jane Cooper</h6></a>
-							</div>
-						</div>
-					</article>
+					</c:forEach>
 				</div>
+				
 				<!-- Pagination (bullets)-->
-				<div
-					class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
+				<div class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
 			</div>
 			<!-- Read more button-->
 			<div class="text-center pt-4 pb-sm-2 pb-md-4 py-lg-5 my-2 mt-lg-0">
-				<a class="btn btn-outline-primary" href="#">식물자랑 더보기</a>
+				<a class="btn btn-outline-primary" href="${path}/PlantProud">식물자랑 더보기</a>
 			</div>
 
 

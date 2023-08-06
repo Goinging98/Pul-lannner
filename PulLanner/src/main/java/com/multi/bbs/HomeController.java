@@ -20,6 +20,8 @@ import com.multi.bbs.Arboretum.model.service.arboretumService;
 import com.multi.bbs.Arboretum.model.vo.TourVO;
 import com.multi.bbs.api.naver.NaverSearchAPI;
 import com.multi.bbs.common.util.PageInfo;
+import com.multi.bbs.communityBoard.model.service.ProudBoardService;
+import com.multi.bbs.communityBoard.model.vo.ProudBoard;
 import com.multi.bbs.plantSearch.model.service.plantSearchService;
 import com.multi.bbs.plantSearch.model.vo.FlowerDtl;
 import com.multi.bbs.plantShop.model.service.PlantShopService;
@@ -45,6 +47,8 @@ public class HomeController {
     private arboretumService arboretumService;
 	@Autowired
     private plantSearchService plantSearchService;
+	@Autowired
+	private ProudBoardService proudBoardService;
 	
 	@Autowired
 	private PlantShopService plantShopService;
@@ -78,6 +82,10 @@ public class HomeController {
 		//=============오늘의 꽃=====================
         List<FlowerDtl> todayFlower = plantSearchService.todayFlower(1);
         model.addAttribute("todayFlower", todayFlower);
+        
+        //==========식물 자랑=============
+        List<ProudBoard> proudList = proudBoardService.getProudBoardRandomList(map);
+        model.addAttribute("proudList", proudList);
 
 		
 		return "0.0_main";

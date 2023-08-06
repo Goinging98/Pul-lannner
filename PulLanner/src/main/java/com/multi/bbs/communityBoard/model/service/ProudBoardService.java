@@ -68,6 +68,10 @@ public class ProudBoardService {
 		return mapper.selectProudBoardList(param);
 	}
 	
+	public List<ProudBoard> getProudBoardRandomList(Map<String, Object> param){
+		return mapper.selectRandomList(param);
+	}
+	
 	@Transactional(rollbackFor = Exception.class)
 	public ProudBoard findByNo(int proudBoardNo) {
 		ProudBoard proudBoard = mapper.selectProudBoardByNo(proudBoardNo); 

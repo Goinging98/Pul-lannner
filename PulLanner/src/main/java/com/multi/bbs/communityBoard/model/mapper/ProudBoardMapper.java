@@ -23,5 +23,6 @@ public interface ProudBoardMapper {
 	int deleteProudBoardLike(Map<String, Object> param);
 	int selectProudBoardLikeCount(Map<String, Object> param);
 	int selectProudBoardLikeMemberCount(Map<String, Object> param);
+	List<ProudBoard> selectRandomList(Map<String, Object> Map);
 	
 }
