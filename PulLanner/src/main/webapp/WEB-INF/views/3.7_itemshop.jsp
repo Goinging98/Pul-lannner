@@ -177,12 +177,6 @@
 							</div>
 							<div class="d-flex align-items-center">
 								<span class="me-2"> <fmt:formatNumber value="${item.lprice }" pattern="#,###" />원</span>
-								<div class="nav ms-auto" data-bs-toggle="tooltip"
-									data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;"
-									data-bs-placement="left" title="Add to cart">
-									<a class="nav-link fs-lg py-2 px-1" href="#"><i
-										class="ai-cart"></i></a>
-								</div>
 							</div>
 						</div>
 					</c:forEach>

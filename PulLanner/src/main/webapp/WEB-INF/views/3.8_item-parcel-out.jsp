@@ -45,8 +45,7 @@
 				
 				<div class="d-none d-md-flex align-items-center pb-3 mb-3">
 					<div class="h3 mb-0 me-3">
-						<fmt:formatNumber value="${product.lprice}" pattern="#,###" />
-						원
+						<fmt:formatNumber value="${product.lprice}" pattern="#,###" />원
 					</div>
 				</div>
 
@@ -60,15 +59,11 @@
 							<option value="5">5</option>
 						</select>
 						<div class="d-flex align-items-center">
-						<a href="${path}/mypage/shoppingbag/addcart?pno=${product.pno}&returnURL=/shop/product?pno=${product.pno}">
-							<button class="btn btn-lg btn-primary w-100 w-lg-auto me-2"
-								type="button">
-								<i class="ai-cart me-2 ms-n1"></i>Add to cart
-							</button>
-						</a>
-							<div class="nav">
-								<a class="nav-link fs-3 px-3" href="#" data-bs-toggle="tooltip" title="Add to Favorites"><i class="ai-heart"></i></a>
-							</div>
+							<a href="${path}/mypage/shoppingbag/addcart?pno=${product.pno}&returnURL=/shop/product?pno=${product.pno}">
+								<button class="btn btn-lg btn-primary w-100 w-lg-auto me-2" type="button">
+									<i class="ai-cart me-2 ms-n1"></i>Add to cart
+								</button>
+							</a>
 						</div>
 					</div>
 				</form>
@@ -79,17 +74,13 @@
 				<div class="d-flex pb-3">
 					<div class="accordion-item mb-0">
 						<h4 class="accordion-header">
-							<button class="accordion-button fs-xl fw-medium py-2"
-								type="button" data-bs-toggle="collapse"
-								data-bs-target="#difficulty" aria-expanded="true"
-								aria-controls="difficulty">
-								<span class="fs-base"> <i class="ai-chevrons-down"></i>&nbsp;상세
-									카테고리
+							<button class="accordion-button fs-xl fw-medium py-2" type="button" data-bs-toggle="collapse"
+								data-bs-target="#difficulty" aria-expanded="true" aria-controls="difficulty">
+								<span class="fs-base"> <i class="ai-chevrons-down"></i>&nbsp;상세 카테고리
 								</span>
 							</button>
 						</h4>
-						<div class="accordion-collapse collapse show" id="difficulty"
-							data-bs-parent="#shopCategories">
+						<div class="accordion-collapse collapse show" id="difficulty" data-bs-parent="#shopCategories">
 							<div class="accordion-body py-1 mb-1">
 								<div class="form-check">
 									<!-- <input class="form-check-input" type="checkbox" id="difficulty-all"> -->
@@ -114,8 +105,9 @@
 			</div>
 		</div>
 </section>
-<!-- Comments-->
 
+
+<!-- Comments-->
 <section class="container pt-xl-2 pb-5 mb-md-2 mb-lg-4 mb-xl-5" id="comments">
 	<div class="border-top border-bottom">
 		<!-- Comments collapse-->

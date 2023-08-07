@@ -141,13 +141,18 @@ function findAddr(){
 			</div>
 			<div class="d-none d-lg-block pt-5 mt-n3">
 				<div class="form-check mb-4">
-					<input class="form-check-input" type="checkbox" checked id="save-info"> 
+					<input class="form-check-input" type="checkbox" checked id="save-info">
 					<label class="form-check-label" for="save-info">
 					<span class="text-muted">주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.</span></label>
+					<input type="hidden" name="total_amount" value="${totalPrice}"><br>
+					<input type="hidden" name="quantity" value="${totalAmount}"><br> 
 				</div>
 				<button class="btn btn-lg btn-primary" type="submit">주문하기</button>
 			</div>
 		</div>
+		<%-- <form action="${path}/kakaoPay" method="post">
+			<input type="submit" value="확인">
+		</form> --%>
 		
 	</div>
 </form>

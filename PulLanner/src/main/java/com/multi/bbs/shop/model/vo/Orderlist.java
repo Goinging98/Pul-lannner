@@ -1,6 +1,8 @@
 package com.multi.bbs.shop.model.vo;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +28,7 @@ public class Orderlist {
     private String memo;
     private String payment;
     private Date orderdate;
+    private List<Orderproduct> productList;
+    private int totalAmount;
+    private int totalPrice;
 }

@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -65,96 +66,90 @@
 						<h2 class="h4 mb-0">주문 목록</h2>
 					</div>
 					<div class="accordion accordion-alt accordion-orders" id="orders">
-						<c:forEach var="olist" items="${olist}">
+						<c:forEach var="item" items="${olist}">
 							<div class="accordion-item border-top mb-0">
 								<div class="accordion-header">
 									<a class="accordion-button d-flex fs-4 fw-normal text-decoration-none py-3 collapsed"
-										href="#orderOne" data-bs-toggle="collapse" aria-expanded="false" aria-controls="orderOne">
+										href="#order${item.ONO}" data-bs-toggle="collapse" aria-expanded="false" aria-controls="order${item.ONO}">
 										<div class="d-flex justify-content-between w-100" style="max-width: 440px;">
 											<div class="me-3 me-sm-4">
-												<div class="fs-sm text-muted">s</div>
-												<span class="badge bg-faded-info text-info fs-xs">In rogress</span>
+												<div class="fs-sm text-muted"></div>
+												<span class="badge bg-faded-info text-info fs-xs">주문완료</span>
 											</div>
 											<div class="me-3 me-sm-4">
 												<div class="d-none d-sm-block fs-sm text-muted mb-2">주문날짜</div>
-												<div class="d-sm-none fs-sm text-muted mb-2">Date</div>
-												<div class="fs-sm fw-medium text-dark">${olist.orderDate}</div>
+												<div class="fs-sm fw-medium text-dark"><fmt:formatDate value="${item.orderdate}" pattern="y년 M월 d일 E요일 H시 m분" type="date"/></div>
 											</div>
 											<div class="me-3 me-sm-4">
-												<div class="fs-sm text-muted mb-2">Total</div>
-												<div class="fs-sm fw-medium text-dark">$16.00</div>
+												<div class="fs-sm text-muted mb-2">결제금액</div>
+												<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${item.totalPrice}" pattern="#,###" />원</div>
+											</div>
+											<div class="me-3 me-sm-4">
+												<div class="fs-sm text-muted mb-2">주문수량</div>
+												<div class="fs-sm fw-medium text-dark">${item.totalAmount}</div>
 											</div>
 										</div>
 										<div class="accordion-button-img d-none d-sm-flex ms-auto">
-											<div class="mx-1">
-												<img src="/resources/assets/img/account/orders/01.png"
-													width="48" alt="Product">
-											</div>
+											<div class="mx-1"></div>
 										</div>
 									</a>
 								</div>
-								<div class="accordion-collapse collapse" id="orderOne"
-									data-bs-parent="#orders">
+								
+								
+								<div class="accordion-collapse collapse" id="order${item.ONO}" data-bs-parent="#orders">
 									<div class="accordion-body">
 										<div class="table-responsive pt-1">
-											<table class="table align-middle w-100"
-												style="min-width: 450px;">
+											<table class="table align-middle w-100" style="min-width: 450px;">
+											<c:forEach var="product" items="${item.productList}">
 												<tr>
 													<td class="border-0 py-1 px-0">
 														<div class="d-flex align-items-center">
-															<a
-																class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3"
-																href="shop-single.html"><img
-																src="/resources/assets/img/shop/cart/01.png" width="110"
-																alt="Product"></a>
+															<a class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3"
+																href="/shop/product?pno=${product.PNo}">
+															<img src="${product.image}" width="110" alt="Product"></a>
 															<div class="ps-3 ps-sm-4">
 																<h4 class="h6 mb-2">
-																	<a href="shop-single.html">Candle in concrete bowl</a>
+																	<a href="/shop/product?pno=${product.PNo}">${product.title}</a>
 																</h4>
-																<div class="text-muted fs-sm me-3">
-																	Color: <span class='text-dark fw-medium'>Gray
-																		night</span>
-																</div>
 															</div>
 														</div>
 													</td>
 													<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
-														<div class="fs-sm text-muted mb-2">Quantity</div>
-														<div class="fs-sm fw-medium text-dark">1</div>
+														<div class="fs-sm text-muted mb-2">수량</div>
+														<div class="fs-sm fw-medium text-dark">${product.amount}</div>
 													</td>
 													<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
-														<div class="fs-sm text-muted mb-2">Price</div>
-														<div class="fs-sm fw-medium text-dark">$16</div>
-													</td>
-													<td class="border-0 text-end py-1 pe-0 ps-3 ps-sm-4">
-														<div class="fs-sm text-muted mb-2">Total</div>
-														<div class="fs-sm fw-medium text-dark">$16</div>
+														<div class="fs-sm text-muted mb-2">가격</div>
+														<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${product.lprice}" pattern="#,###" />원</div>
 													</td>
 												</tr>
+												
+											</c:forEach>
 											</table>
 										</div>
 										<div class="bg-secondary rounded-1 p-4 my-2">
 											<div class="row">
 												<div class="col-sm-5 col-md-3 col-lg-4 mb-3 mb-md-0">
-													<div class="fs-sm fw-medium text-dark mb-1">Payment:</div>
-													<div class="fs-sm">Upon the delivery</div>
-													<a class="btn btn-link py-1 px-0 mt-2" href="#"><i
-														class="ai-time me-2 ms-n1"></i>Order history</a>
+													<div class="fs-sm fw-medium text-dark mb-1">결제수단</div>
+													<c:if test="${item.payment == 1 }">
+														<div class="fs-sm">카카오페이</div>
+													</c:if>
+													<c:if test="${item.payment == 2 }">
+														<div class="fs-sm">계좌이체</div>
+													</c:if>
 												</div>
 												<div class="col-sm-7 col-md-5 mb-4 mb-md-0">
-													<div class="fs-sm fw-medium text-dark mb-1">Delivery
-														address:</div>
+													<div class="fs-sm fw-medium text-dark mb-1">배달주소</div>
 													<div class="fs-sm">
-														401 Magnetic Drive Unit 2,<br>Toronto, Ontario, M3J
-														3H9, Canada
+														(${item.addr1}) ${item.addr2}, ${item.addr3}
 													</div>
 												</div>
 												<div class="col-md-4 col-lg-3 text-md-end">
-													<button
-														class="btn btn-sm btn-outline-primary w-100 w-md-auto"
-														type="button">
-														<i class="ai-star me-2 ms-n1"></i>Leave a review
-													</button>
+													<a href="/shop/product?pno=${product.PNo}">
+														<button class="btn btn-sm btn-outline-primary w-100 w-md-auto" type="button">
+															<i class="ai-star me-2 ms-n1"></i>리뷰를 남기세요
+														</button>
+													</a>
 												</div>
 											</div>
 										</div>

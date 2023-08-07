@@ -28,15 +28,17 @@
 	<select id="selectOrderList" resultType="Orderlist" parameterType="int">
 		SELECT OL.* FROM ORDERLIST OL WHERE OL.mNO = #{mNO}
 	</select>
+	
 	<select id="selectOrderId" resultType="int">
 		SELECT oNO FROM ORDERLIST WHERE mNO = #{mNO}
 	</select>
+	
 	<!-- 주문상품 출력 -->
-	<select id="selectOrderProduct" resultType="Map" parameterType="int">
+	<select id="selectOrderProduct" resultType="Orderproduct" parameterType="int">
 		SELECT O.*, P.*
 		FROM ORDERPRODUCT O
-			LEFT JOIN PRODUCT P ON P.pNO = O.pNO 
-		WHERE oNO = #{oNO}
+			LEFT JOIN PRODUCT P ON P.pno = O.pNO 
+		WHERE O.oNO = #{oNO}
 	</select>
 	
 	

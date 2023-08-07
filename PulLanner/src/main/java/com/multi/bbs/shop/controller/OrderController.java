@@ -49,25 +49,27 @@ public class OrderController {
 			model.addAttribute("location", "/login");
 			return "common/msg";
 		}
-		List<Orderlist> olist = service.getOrderList(member.getMNo());
-//		List<Orderproduct> plist = service.getOrderProduct(oNO);
-		model.addAttribute("olist", olist);
-
-
-		List<Product> list = shopService.getCartProductList(member.getMNo());
-		model.addAttribute("list", list);
+		int totalAmount;
+		int totalPrice;
 		
-		int totalPrice = 0;
-		for(Product item : list) {
-			totalPrice += item.getLprice() * item.getAmount(); 
+		List<Orderlist> olist = service.getOrderList(member.getMNo());
+		for(Orderlist order : olist) {
+			totalAmount = 0;
+			totalPrice = 0;
+			List<Orderproduct> list = service.getOrderProduct(order.getONO());
+			System.out.println(list);
+			order.setProductList(list);
+			System.out.println(order);
+			for(Orderproduct item : list) {
+				totalPrice += item.getLprice() * item.getAmount(); 
+				totalAmount += item.getAmount();
+			}
+			totalPrice += 3000;
+			order.setTotalAmount(totalAmount);
+			order.setTotalPrice(totalPrice);
+			
 		}
-		totalPrice += 3000;
-		int totalAmount = 0;
-		for(Product item : list) {
-			totalAmount += item.getAmount();
-		}
-		model.addAttribute("totalAmount", totalAmount);
-		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("olist", olist);
 		
 		return "0.2.1_account-orders";
 	}
@@ -104,15 +106,17 @@ public class OrderController {
 		int result = service.insertOrderlist(map);
 		int result2 = service.insertOrderProductlist(member.getMNo());
 		int result3 = service.deleteCart(member.getMNo());
-		if(result > 0) {
+		if (result > 0){
 			model.addAttribute("msg", "주문이 완료되었습니다.");
-			model.addAttribute("location", "/mypage/orders");
-		}else {
+			model.addAttribute("location", "/mypage/orders");			
+		}
+		else {
 			model.addAttribute("msg", "주문을 실패하였습니다.");
 			model.addAttribute("location", "/mypage/orders");
 		}
 		
 		return "common/msg";
 	}
+	
 	
 }
