@@ -131,11 +131,23 @@ public class MyplantController{
 			return "common/msg";
 		}
 		Managelist item = service.selectMANAGELIST(bno);
+		
+		 Date date = item.getStartdate();
+		 Date date2 = item.getWaterdate();
+		 long diffDay = (date2.getTime() - date.getTime()) / (24*60*60*1000);
+		 long startDay = (date2.getTime() - date.getTime()) / (24*60*60*1000);
+
+		 model.addAttribute("diffDay", diffDay);
+		 model.addAttribute("startDay", startDay);
 		// 댓글 리스트 코드 추가 필요
 		System.out.println(item);
 		model.addAttribute("item", item);
 		return "5.3_plant-main-in";
+		
+		
 	}
+	
+	
 	
 	@GetMapping("/Managelist/file/{fileName}") // 이미지 출력 경로 ex) 3.3_plant-parcel-out.jsp  42번째줄
     @ResponseBody

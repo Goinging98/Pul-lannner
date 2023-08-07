@@ -24,7 +24,7 @@
 			<div class="d-sm-flex align-items-center">
 				<div
 					class="rounded-circle bg-size-cover bg-position-center flex-shrink-0"
-					style="width: 65px; height: 65px; background-image: url(assets/img/avatar/02.jpg);"></div>
+					style="width: 65px; height: 65px; background-image: url(assets/img/avatar/01.jpg);"></div>
 				<div class="pt-3 pt-sm-0 ps-sm-3">
 					<h3 class="h5 mb-2">${loginMember.name}<i
 							class="ai-circle-check-filled fs-base text-success ms-2"></i>
@@ -64,8 +64,15 @@
 		<div class="ms-3">
 			<p class="text-large text-bold">${item.plantname}</p>
 			<p class="text-large2 text-bold">${item.petname}</p>
-			<p class=" text-bold">${item.startdate}</p>
-			<p class=" text-bold">${item.waterdate}</p>
+			
+						<p class=" text-bold">키우기 시작한지${startDay}&nbsp;일째
+			<p class=" text-bold"><fmt:formatDate  type="both" value="${item.startdate }"/>
+			
+			</p>
+			<p class=" text-bold">최근 물 준날${diffDay}&nbsp;일째
+
+			</p>
+			<p class=" text-bold"><fmt:formatDate type="both" value="${item.waterdate }"/></p>
 		</div>
 	</div>
 
