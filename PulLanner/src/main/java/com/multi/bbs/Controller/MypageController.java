@@ -19,6 +19,8 @@ import com.multi.bbs.shop.model.service.ShopService;
 import com.multi.bbs.shop.model.vo.Product;
 import com.multi.bbs.member.model.service.MyproudService;
 import com.multi.bbs.communityBoard.model.vo.ProudBoard;
+import com.multi.bbs.manage.model.service.ManageBoardService;
+import com.multi.bbs.manage.model.vo.Managelist;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -33,18 +35,6 @@ public class MypageController {
 	
 	@Autowired
 	private ShopService shopService;
-
-	@RequestMapping(value = "/mypage/mypullanner", method = RequestMethod.GET)
-	public String mypullanner(Model model, HttpSession session) {
-		Member member = (Member) session.getAttribute("loginMember");
-		if(member == null) {
-			model.addAttribute("msg", "로그인이 필요합니다.");
-			model.addAttribute("location", "/login");
-			return "common/msg";
-		}
-		
-		return "0.1.2_account-sellinglist";
-	}
 	
 	@RequestMapping(value = "/mypage/mywriting", method = RequestMethod.GET)
 	public String mywriting(Model model, HttpSession session) {
@@ -85,6 +75,24 @@ public class MypageController {
 //		model.addAttribute("proudBoardCount", proudBoardCount);
 //		return "0.1.2_account-sellinglist";
 //	}
+
+	@Autowired
+	private ManageBoardService myplantservice;
+	@RequestMapping(value = "/mypage/mypullanner", method = RequestMethod.GET)
+	public String mypullanner(Model model, HttpSession session) {
+		Member member = (Member) session.getAttribute("loginMember");
+		if(member == null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("location", "/login");
+			return "common/msg";
+		}
+		
+		logger.info("account pullanner page");
+		List<Managelist> mlist = myplantservice.selectMANAGELISTList(member.getMNo());
+		model.addAttribute("mlist", mlist);
+		
+		return "0.1.3_account-pullanner";
+	}
 
 	@RequestMapping(value = "/mypage/shoppingbag", method = RequestMethod.GET)
 	public String shoppingbag(Locale locale, Model model, HttpSession session) {
