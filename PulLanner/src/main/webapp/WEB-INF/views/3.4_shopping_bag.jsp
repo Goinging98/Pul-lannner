@@ -33,7 +33,8 @@ function findAddr(){
 <!-- Page content-->
 <div style="background: linear-gradient(to right, #F6F9FC 55%,  #ffffff 45%);">
 <form class="needs-validation container position-relative zindex-2 pt-5 pb-lg-5 pb-md-4 pb-2" 
-	action="${path}/shopping/payment/order" novalidate>
+	action="${path}/shopping/payment/order" method="post" novalidate>
+	<input type="hidden" name="mno" value="${loginMember.MNo}"> 
 	<div class="row">
 		<div class="col-lg-6">
 			<nav aria-label="breadcrumb"></nav>
@@ -58,7 +59,7 @@ function findAddr(){
 					<label class="form-label fs-base" for="c-email">이메일</label>
 					<div class="position-relative">
 						<i class="ai-mail fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-						<input class="form-control form-control-lg ps-5" type="email" value="${loginMember.id}" required id="c-email" name="id">
+						<input class="form-control form-control-lg ps-5" type="email" value="${loginMember.id}" required id="c-email" name="email">
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -84,13 +85,13 @@ function findAddr(){
 			<!-- 결제수단 -->
 			<h3 class="h4">결제수단</h3>
 			<div class="form-check mb-4">
-				<input class="form-check-input" type="radio" name="payment" checked id="card" value="card"> 
+				<input class="form-check-input" type="radio" name="payment" checked id="card" value="1"> 
 				<label class="form-check-label" for="card">
 					<span class="d-block fs-base text-dark fw-medium mb-1">카카오페이</span>
 				</label>
 			</div>
 			<div class="form-check mb-4">
-				<input class="form-check-input" type="radio" name="payment" id="cash" value="cash"> 
+				<input class="form-check-input" type="radio" name="payment" id="cash" value="2"> 
 				<label class="form-check-label" for="cash">
 				<span class="d-block fs-base text-dark fw-medium mb-1">배송 후 직접결제</span></label>
 			</div>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.bbs.shop.model.mapper.OrderMapper">
+
+	<!-- 주문내역 삽입 -->
+	<insert id="insertOrderlist" parameterType="map">
+		<selectKey keyProperty="oNO" resultType="int" order="AFTER">
+			SELECT @@IDENTITY AS id
+		</selectKey>
+		INSERT INTO ORDERLIST(oNO, mNO, NAME, EMAIL, PHONE,
+							 ADDR1, ADDR2, ADDR3, MEMO, PAYMENT, ORDERDATE)
+		VALUES (0, #{mNO}, #{name}, #{email}, #{phone},
+				#{addr1}, #{addr2}, #{addr3}, #{memo}, #{payment}, default)
+	</insert>
+		
+	<!-- 주문상품 삽입 -->
+	<insert id="insertOrderProductlist">
+		INSERT INTO ORDERPRODUCT(oNO, pNO, AMOUNT) 
+		SELECT (SELECT @@IDENTITY), pNO, AMOUNT 
+		FROM CART
+		WHERE mNO = #{mNO} 
+	</insert>
+	
+	
+	<!-- 주문내역 출력 -->
+	<select id="selectOrderList" resultType="Orderlist" parameterType="int">
+		SELECT OL.* FROM ORDERLIST OL WHERE OL.mNO = #{mNO}
+	</select>
+	<select id="selectOrderId" resultType="int">
+		SELECT oNO FROM ORDERLIST WHERE mNO = #{mNO}
+	</select>
+	<!-- 주문상품 출력 -->
+	<select id="selectOrderProduct" resultType="Map" parameterType="int">
+		SELECT O.*, P.*
+		FROM ORDERPRODUCT O
+			LEFT JOIN PRODUCT P ON P.pNO = O.pNO 
+		WHERE oNO = #{oNO}
+	</select>
+	
+	
+	<!-- 장바구니 내역 삭제 -->	
+	<delete id="deleteCart" parameterType="int">
+		DELETE FROM CART 
+		WHERE mNO = #{mNO} 
+	</delete>
+	
+	
+</mapper>
