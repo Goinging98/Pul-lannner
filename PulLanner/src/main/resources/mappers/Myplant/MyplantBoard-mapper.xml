@@ -78,8 +78,8 @@
 		<result property="bno" column="bNo" />
 		<result property="mno" column="mNO" />
 		<result property="working" column="WORKING"/>
-		<result property="waterdate" column="WATER_DATE" />
-		<result property="createdate" column="CREATE_DATE" />
+		<result property="waterrdate" column="WATER_DATE" />
+		<result property="createedate" column="CREATE_DATE" />
 		<result property="content" column="CONTENT" />
 	</resultMap>
 	
