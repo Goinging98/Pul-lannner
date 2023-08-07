@@ -2,6 +2,7 @@ package com.multi.bbs.Controller;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -66,25 +67,33 @@ public class PlantShopController {
 	// /board/list
 //	@GetMapping("list") // /board/list
 	@GetMapping("/PlantShop")
-	public String list(Model model, @RequestParam Map<String, Object> param) {
+	public String list(Model model, @RequestParam Map<String, Object> param, @RequestParam(required = false) String[] parceltype) {
 		log.info("PlantShop 요청, param : " + param);
 		
 		int page = 1;
+		System.out.println(Arrays.toString(parceltype));
 		try {
 			if(param.get("searchType") != null) {
 				param.put((String) param.get("searchType"), param.get("searchValue"));
 				// title - 아이폰
 				// content - 삽니다
 			}
-			
 			// page 파라메터를 숫자로 바꿔주는 코드, 항상 try 끝에 존재해야한다.
 			page = Integer.parseInt((String) param.get("page"));
 		} catch (Exception e) {}
 		
+		if(parceltype != null && parceltype.length > 0) {
+			param.put("parceltype", Arrays.asList(parceltype));
+		}else {
+			param.remove("parceltype");
+		}
+		
 		int plantshopCount = plantShopService.getPlantShopCount(param);
 //		PageInfo pageInfo = new PageInfo(page, 10, boardCount, 15); // 게시글이 보여지는 갯수 = 15
 		PageInfo pageInfo = new PageInfo(page, 10, plantshopCount, 10); // 게시글이 보여지는 갯수 = 10
+		
 		List<Plantshop> list = plantShopService.getPlantShopList(pageInfo, param);
+		
 		System.out.println("plantshopCount : " + plantshopCount);
 		System.out.println("list : " + list.toString().replace("),", "),\n"));
 		
@@ -211,6 +220,12 @@ public class PlantShopController {
 		return "/3.5_selling_plant";
 	}
 
+	@GetMapping("/selling_seed")
+	public String sellingseed() { // xxxPage = 단순 html을 연결만 시켜주는 핸들러 메소드
+		
+		return "3.5_selling_seed";
+	}
+	// selling_plant 작성
 	// 게시글 처리 + 파일 업로드
 	@PostMapping("/selling_plant")
 	public String write(Model model, HttpSession session,
@@ -228,8 +243,8 @@ public class PlantShopController {
 		 * return "common/msg"; }
 		 */
 		
-		plantshop.setPlanttype(type1);
-		plantshop.setPlantno(type2);
+//		plantshop.setPlanttype(type1);
+//		plantshop.setPlantno(type2);
 		plantshop.setMno(loginMember.getMNo());
 		
 		// 파일 저장 로직
@@ -253,6 +268,46 @@ public class PlantShopController {
 		}
 		return "common/msg";
 	}
+	
+	// selling_seed 작성
+	@PostMapping("/selling_seed")
+	public String writeseed(Model model, HttpSession session,
+			@SessionAttribute(name="loginMember", required = false) Member loginMember,
+			@ModelAttribute Plantshop plantshop,
+			@RequestParam("upfile") MultipartFile upfile
+			) {
+		log.info("selling_seed 요청, plantshop : " + plantshop);
+		
+		/*
+		 * // 보안코드 예시 if(loginMember.getId().equals(plantshop.getWriterId()) == false) {
+		 * model.addAttribute("msg","잘못된 접근입니다."); model.addAttribute("location","/");
+		 * return "common/msg"; }
+		 */
+		
+		plantshop.setMno(loginMember.getMNo());
+		
+		// 파일 저장 로직
+		if(upfile != null && upfile.isEmpty() == false) {
+			String parcelimgedt = plantShopService.saveFile(upfile, savePath); // 실제 파일 저장로직
+			
+			if(parcelimgedt != null) {
+				plantshop.setParcelimgedt(parcelimgedt);
+				plantshop.setParcelimg(upfile.getOriginalFilename());
+			}
+		}
+		log.debug(" plantshop : " + plantshop);
+		int result = plantShopService.savePlantshop(plantshop);
+		
+		if(result > 0) {
+			model.addAttribute("msg", "게시글이 등록 되었습니다.");
+			model.addAttribute("location", "/PlantShop");
+		}else {
+			model.addAttribute("msg", "게시글 작성에 실패하였습니다.");
+			model.addAttribute("location", "/PlantShop");
+		}
+		return "common/msg";
+	}
+	//----------------------------------
 	
 	// -- selling_plant_update 기존 코드--
 	@GetMapping("/selling_plant_update")

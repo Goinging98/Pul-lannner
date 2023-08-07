@@ -60,96 +60,111 @@
               </div>
               <!-- Color button selector-->
               <!-- <div class="h6">Color:<span class="text-muted fw-normal ms-1" id="colorOption">Gray concrete</span></div> -->
-              <div class="d-flex pb-3">
-                <div class="accordion-item mb-0">
-                  <h4 class="accordion-header">
-                    <button class="accordion-button fs-xl fw-medium py-2" type="button" data-bs-toggle="collapse" data-bs-target="#difficulty" aria-expanded="true" aria-controls="difficulty"><span class="fs-base">
-                      <i class="ai-chevrons-down"></i>&nbsp;상세 정보</span></button>
-                  </h4>
-                  <div class="accordion-collapse collapse show" id="difficulty" data-bs-parent="#shopCategories">
-                    <div class="accordion-body py-1 mb-1">
-                    <!-- 실내정원 -->
-                        <c:if test="${plantshop.planttype == 'P1'}">
-                      <div class="form-check">
-					<h3 class="h5 ai-cloud-rain"> 물주기</h3>
-					<div class="fs-6" style="margin-bottom: 20px;">
-						봄 : ${item.watercycleSprng} <br> 여름 :
-						${item.watercycleSummer} <br> 가을 :
-						${item.watercycleAutumn} <br> 겨울 :
-						${item.watercycleWinter} <br>
-					</div>
-					<div class="row row-cols-1 row-cols-sm-2 g-4">
-						<div class="col">
-							<h3 class="h5 ai-chart"> 관리 수준</h3>
-							<p class="mb-1">${item.manageleveltext}</p>
-						</div>
-						<div class="col">
-							<h3 class="h5 ai-award"> 성장 속도</h3>
-							<p class="mb-1">${item.growthrate}</p>
-						</div>
-						<div class="col">
-							<h3 class="h5 ai-cloud-rain"> 알맞은 습도</h3>
-							<p class="mb-1">${item.humidity}</p>
-						</div>
-						<div class="col">
-							<h3 class="h5 ai-bulb-alt"> 잘 자라는 온도</h3>
-							<p class="mb-1">${item.growthTemperature}</p>
-						</div>
-					</div>
-                      </div>
-                      </c:if>
-                      <!-- 꽃 -->
-                      <c:if test="${plantshop.planttype == 'P2'}">
-                      <div>
-						<h3 class="h5 ai-message-minus"> 꽃말</h3>
-						<p class="mb-3">${item.flowLang}</p>
+				<div class="d-flex pb-3">
+					<div class="accordion-item mb-0">
+					<!-- 실내정원 -->
+						<c:if test="${plantshop.planttype == 'P1'}">
+							<h4 class="accordion-header">
+								<button class="accordion-button fs-xl fw-medium py-2"
+									type="button" data-bs-toggle="collapse"
+									data-bs-target="#difficulty" aria-expanded="true"
+									aria-controls="difficulty">
+									<span class="fs-base"> <i class="ai-chevrons-down"></i>&nbsp;상세 정보
+										
+									</span>
+								</button>
+							</h4>
+							<div class="accordion-collapse collapse show" id="difficulty"
+								data-bs-parent="#shopCategories">
+								<div class="accordion-body py-1 mb-1">
 
-						<h3 class="h5 ai-sun"> 기르는 방법</h3>
-						<p class="mb-3">${item.fGrow}</p>
+									<div class="form-check">
+										<h3 class="h5 ai-circle-info">${item.cntntsSj}</h3><br>
+										<h3 class="h5 ai-cloud-rain">물주기</h3>
+										<div class="fs-6" style="margin-bottom: 20px;">
+											봄 : ${item.watercycleSprng} <br> 여름 :
+											${item.watercycleSummer} <br> 가을 :
+											${item.watercycleAutumn} <br> 겨울 :
+											${item.watercycleWinter} <br>
+										</div>
+										<div class="row row-cols-1 row-cols-sm-2 g-4">
+											<div class="col">
+												<h3 class="h5 ai-chart">관리 수준</h3>
+												<p class="mb-1">${item.manageleveltext}</p>
+											</div>
+											<div class="col">
+												<h3 class="h5 ai-award">성장 속도</h3>
+												<p class="mb-1">${item.growthrate}</p>
+											</div>
+											<div class="col">
+												<h3 class="h5 ai-cloud-rain">알맞은 습도</h3>
+												<p class="mb-1">${item.humidity}</p>
+											</div>
+											<div class="col">
+												<h3 class="h5 ai-bulb-alt">잘 자라는 온도</h3>
+												<p class="mb-1">${item.growthTemperature}</p>
+											</div>
+										</div>
+									</div>
+						</c:if>
+						<!-- 꽃 -->
+						<c:if test="${plantshop.planttype == 'P2'}">
+							<h4 class="accordion-header">
+								<button class="accordion-button fs-xl fw-medium py-2"
+									type="button" data-bs-toggle="collapse"
+									data-bs-target="#difficulty" aria-expanded="true"
+									aria-controls="difficulty">
+									<span class="fs-base"> <i class="ai-chevrons-down"></i>&nbsp;상세 정보
+									</span>
+								</button>
+							</h4>
+							<div class="accordion-collapse collapse show" id="difficulty"
+								data-bs-parent="#shopCategories">
+								<div class="accordion-body py-1 mb-1">
+									<div>
+										<h3 class="h5 ai-circle-info">${item.flowNm}</h3><br>
+										
+										<h3 class="h5 ai-message-minus">꽃말</h3>
+										<p class="mb-3">${item.flowLang}</p>
 
-						<h3 class="h5 ai-tag"> 자생지</h3>
-						<p class="mb-3">${item.fType}</p>
+										<h3 class="h5 ai-sun">기르는 방법</h3>
+										<p class="mb-3">${item.fGrow}</p>
+
+										<h3 class="h5 ai-tag">자생지</h3>
+										<p class="mb-3">${item.fType}</p>
+									</div>
+						</c:if>
+						<!-- 다육이 -->
+						<c:if test="${plantshop.planttype == 'P3'}">
+							<h4 class="accordion-header">
+								<button class="accordion-button fs-xl fw-medium py-2"
+									type="button" data-bs-toggle="collapse"
+									data-bs-target="#difficulty" aria-expanded="true"
+									aria-controls="difficulty">
+									<span class="fs-base"> <i class="ai-chevrons-down"></i>&nbsp;상세 정보
+										
+									</span>
+								</button>
+							</h4>
+							<div class="accordion-collapse collapse show" id="difficulty"
+								data-bs-parent="#shopCategories">
+								<div class="accordion-body py-1 mb-1">
+									<div>
+										<h3 class="h5 ai-circle-info">${item.cntntsSj}</h3><br>
+										<h3 class="h5 ai-message-minus">관리 수준</h3>
+										<p class="mb-3">${item.manageLevelNm}</p>
+
+										<h3 class="h5 ai-sun">성장 속도</h3>
+										<p class="mb-3">${item.grwtseVeNm}</p>
+
+										<h3 class="h5 ai-tag">특성</h3>
+										<p class="mb-3">${item.chartrInfo}</p>
+									</div>
+						</c:if>
 					</div>
-                      </c:if>
-                      <!-- 다육이 -->
-                      <c:if test="${plantshop.planttype == 'P3'}">
-                     <div>
-						<h3 class="h5 ai-message-minus">관리 수준</h3>
-						<p class="mb-3">${item.manageLevelNm}</p>
+				</div>
 
-						<h3 class="h5 ai-sun">성장 속도</h3>
-						<p class="mb-3">${item.grwtseVeNm}</p>
-
-						<h3 class="h5 ai-tag">특성</h3>
-						<p class="mb-3">${item.chartrInfo}</p>
-					</div>
-                      </c:if>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- <div class="me-2 mb-2">
-                  <input class="btn-check" type="radio" name="color" data-binded-label="colorOption" value="Gray concrete" checked id="color1">
-                  <label class="btn btn-icon btn-sm btn-outline-secondary rounded-circle" for="color1"><span class="d-block bg-size-cover bg-position-center rounded-circle" style="width: 1.5rem; height: 1.5rem; background-color: #c0c0c0; background-image: url(../assets/img/shop/pattern/marble.jpg);"></span></label>
-                </div>
-                <div class="me-2 mb-2">
-                  <input class="btn-check" type="radio" name="color" data-binded-label="colorOption" value="Soft beige" id="color2">
-                  <label class="btn btn-icon btn-sm btn-outline-secondary rounded-circle" for="color2"><span class="d-block rounded-circle" style="width: 1.5rem; height: 1.5rem; background-color: #d9c9a1;"></span></label>
-                </div>
-                <div class="me-2 mb-2">
-                  <input class="btn-check" type="radio" name="color" data-binded-label="colorOption" value="Bluish sky" id="color3">
-                  <label class="btn btn-icon btn-sm btn-outline-secondary rounded-circle" for="color3"><span class="d-block rounded-circle" style="width: 1.5rem; height: 1.5rem; background-color: #a1b7d9;"></span></label>
-                </div>
-                <div class="me-2 mb-2">
-                  <input class="btn-check" type="radio" name="color" data-binded-label="colorOption" value="Green grass" id="color4">
-                  <label class="btn btn-icon btn-sm btn-outline-secondary rounded-circle" for="color4"><span class="d-block rounded-circle" style="width: 1.5rem; height: 1.5rem; background-color: #74947d;"></span></label>
-                </div>
-                <div class="me-2 mb-2">
-                  <input class="btn-check" type="radio" name="color" data-binded-label="colorOption" value="Woody brown" id="color5">
-                  <label class="btn btn-icon btn-sm btn-outline-secondary rounded-circle" for="color5"><span class="d-block bg-size-cover bg-position-center rounded-circle" style="width: 1.5rem; height: 1.5rem; background-color: #af8352; background-image: url(../assets/img/shop/pattern/wood.jpg);"></span></label>
-                </div> -->
-              </div>
-              <!-- Weight button selector-->
+				<!-- Weight button selector-->
               <!-- <div class="h6">Weight</div> -->
               <div class="d-flex">
                 <!-- <div class="me-3">
@@ -215,7 +230,7 @@
                   <div class="border-bottom py-4 mt-2 mb-4">
                     <div class="d-flex align-items-center pb-1 mb-3"><!-- <img class="rounded-circle" src="assets/img/avatar/08.jpg" width="48" alt="Comment author"> -->
                       <div class="ps-3">
-                        <h6 class="mb-0">${reply.writerId}</h6>
+                        <h6 class="mb-0">${reply.writername}</h6>
                         <span class="fs-sm text-muted"><fmt:formatDate type="both" value="${reply.rcrtDate}"/></span>
                         <c:if test="${ !empty loginMember && (loginMember.id == reply.writerId 	|| loginMember.role == 'ROLE_ADMIN') }">
 						<button class="btn btn-outline-danger btn-icon" onclick="deleteReply('${reply.parcelrno}','${plantshop.parcelno}');" ><i class="ai-trash"></i></button>
@@ -255,11 +270,12 @@
 
             </section>
             <c:if test="${loginMember != null }">
-              <div class="col-sm-12 pt-2 text-end" style="padding-right: 300px;">
-                <button class="btn btn-lg btn-primary" type="button" id="btnUpdate">수정</button>
+              <div class="col-sm-12 pt-2 text-end" style="padding-right: 290px;">
+                <!-- <button class="btn btn-lg btn-primary" type="button" id="btnUpdate">수정</button> -->
                 <button class="btn btn-lg btn-danger" type="button" id="btnDelete">삭제</button>
               </div>
               </c:if>
+              <br>
       <!-- <section class="container pb-4 pb-md-5 mb-lg-4">
         <div class="bg-size-cover bg-repeat-0 bg-position-center rounded-1 mb-md-2 py-xl-4 py-xxl-5" style="background-image: url(assets/img/shop/single/01.jpg);">
           <div class="row py-lg-5">

@@ -27,6 +27,7 @@
 		<result property="parcelno" column="PARCELNO" />
 		<result property="mno" column="mNO" />
 		<result property="writerId" column="ID"/>
+		<result property="writername" column="NAME"/>
 		<result property="parcelrcontent" column="PARCELRCONTENT" />
 		<result property="rstatus" column="RSTATUS" />
 		<result property="rcrtDate" column="RCRTDATE" />
@@ -62,6 +63,13 @@
 		<if test="parcelcontent != null">
 			AND P.PARCELCONTENT LIKE '%${parcelcontent}%'
 		</if>
+		<if test="parceltype != null">
+			AND (
+				<foreach collection="parceltype" item="parceltype" separator="or">
+					P.PARCELTYPE LIKE '%${parceltype}%'
+				</foreach>
+			)
+		</if>	
 		ORDER BY P.PARCELNO DESC LIMIT ${limit} OFFSET ${offset}
 	</select>
 
@@ -81,6 +89,13 @@
 		<if test="parcelcontent != null">
 			AND P.PARCELRCONTENT LIKE '%${parcelcontent}%'
 		</if>
+		<if test="parceltype != null">
+			AND (
+				<foreach collection="parceltype" item="parceltype" separator="or">
+					P.PARCELTYPE LIKE '%${parceltype}%'
+				</foreach>
+			)
+		</if>	
 	</select>
 	
 	<select id="selectPlantshopByNo" parameterType="int" resultMap="plantshopDetailResultMap">
@@ -89,6 +104,7 @@
 		        R.PARCELNO as R_PARCELNO, 
 		        R.PARCELRCONTENT as R_PARCELRCONTENT, 
 		        M2.ID as R_ID, 
+		        M2.NAME as R_NAME, 
 		        R.RCRTDATE as R_RCRTDATE, 
 		        R.RMDFDATE as R_RMDFDATE
 		FROM PLANTSHOP P
@@ -102,11 +118,11 @@
 		INSERT INTO PLANTSHOP(
 			PARCELNO, mNO, PARCELTITLE, PARCELCONTENT, PARCELTYPE,	
 			PARCELIMG, PARCELIMGEDT, PARCELPRICE, CRTDATE, MDFDATE, 
-			PARCELSTATUS, PLANTTYPE, PLANTNO, NAME
+			PARCELSTATUS, PLANTTYPE, PLANTNO
 		) VALUES (
 			default, #{mno}, #{parceltitle}, #{parcelcontent}, #{parceltype},		
 			#{parcelimg}, #{parcelimgedt}, #{parcelprice}, default, default, 
-			default, #{planttype}, #{plantno}, #{name}
+			default, #{planttype}, #{plantno}
 		)
 	</insert>
 		

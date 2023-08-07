@@ -7,10 +7,10 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="식물분양" name="title" />
 </jsp:include>
-
+<form name="searchForm" action="${path}/PlantShop" method="get">
 <c:set var="searchType" value="${param.searchType}" />
 <c:if test="${empty searchType}">
-	<c:set var="searchType" value="${'title'}" />
+	<c:set var="searchType" value="${'parceltitle'}" />
 </c:if>
 
 <!-- Page content-->
@@ -38,11 +38,19 @@
 	<!-- Page title-->
 	<div class="row pt-xl-3 mt-n1 mt-sm-0">
 		<div class="col-lg-9 offset-lg-3 pt-lg-3">
-			<h1 class="pb-2 pb-sm-3" style="display: inline;">식물 분양</h1>
+			<h1 class="pb-2 pb-sm-3" style="display: inline;">식물 판매</h1>
 			<c:if test="${loginMember != null }">
-				<button type="button" class="btn btn-primary btn-icon" style="margin-left: 75%; margin-bottom: 1%; width: 55px; height: 55px;" onclick="location.href='${path}/selling_plant'">
-					<i class="ai-edit-alt"></i>
-				</button>
+			<!-- 기존버튼 -->
+			<!-- 새로운 버튼 -->
+			<div class="btn-group dropstart" style="margin-left: 73%; margin-bottom: 1%; width: 55px; height: 55px;">
+			  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    <i class="ai-edit-alt"></i>
+			  </button>
+			  <div class="dropdown-menu mx-1">
+			    <a href="${path}/selling_plant" class="dropdown-item" data-toggle="tooltip"  title="식물판매">식물</a>
+			    <a href="${path}/selling_seed" class="dropdown-item" data-toggle="tooltip"  title="씨앗판매">씨앗</a>
+			  </div>
+			</div>	
 			</c:if>
 		</div>
 	</div>
@@ -56,45 +64,46 @@
 					<button class="btn-close" type="button" data-bs-dismiss="offcanvas" data-bs-target="#shopSidebar"></button>
 				</div>
 				<div class="offcanvas-body pt-2 pt-lg-0 pe-lg-4">
-					<form name="searchForm" action="${path}/Plantshop" method="get">
 						<!-- 검색 -->
 						<div class="col-8" style="height: 70px;">
 							<input type="hidden" name="page" value="1"> 
-							<label>
-								<input type="radio" name="searchType" value="title"
-								${searchType == 'title' ? 'checked' : ''}> 제목
+<%-- 							<label>
+								<input type="radio" name="searchType" value="parceltitle"
+								${searchType == 'parceltitle' ? 'checked' : ''}> 제목
 							</label> 
 							<label> 
-								<input type="radio" name="searchType" value="content" 
-								${searchType == 'content' ? 'checked' : ''}> 내용
+								<input type="radio" name="searchType" value="parcelcontent" 
+								${searchType == 'parcelcontent' ? 'checked' : ''}> 내용
 							</label> 
 							<label> 
-								<input type="radio" name="searchType" value="writer" 
-								${searchType == 'writer' ? 'checked' : ''}> 작성자
-							</label> 
+								<input type="radio" name="searchType" value="writername" 
+								${searchType == 'writername' ? 'checked' : ''}> 작성자
+							</label>  --%>
 							<div class="input-group input-group-sm rounded-pill" style="width: 280px;">
 								<span class="input-group-text"><i class="ai-search"></i></span>
-								<input type="text" id="searchValue" name="searchValue"
+								<input type="text" id="searchValue" name="parceltitle"
 									value="${param.searchValue}" class="form-control rounded"
-									placeholder="검색">
+									placeholder="제목을 입력하세요">
 								<button type="submit" class="btn btn-primary rounded-pill">검색</button>
 							</div>
 						</div>
 						<br/><br/>
-						<h3 class="h5">분양 종류</h3>
+						<h3 class="h5">판매 종류</h3>
 						<div class="accordion accordion-alt pb-2 mb-4" id="shopCategories">
 							<!-- 식물 종류 -->
 							<div class="accordion-item mb-0">
 								<div class="accordion-collapse collapse show" data-bs-parent="#shopCategories">
 									<div class="accordion-body py-1 mb-1">
 										<div class="form-check">
-											<input class="form-check-input" type="checkbox" id="plant">
+											<input class="form-check-input" type="checkbox" id="plant" name="parceltype" value="B1"
+											${fn:contains(param.parceltype, 'B1') ? 'checked':'' }>
 											<label class="form-check-label d-flex align-items-center" for="plant">
 												<span class="text-nav fw-medium">식물</span>
 											</label>
 										</div>
 										<div class="form-check">
-											<input class="form-check-input" type="checkbox" id="seed">
+											<input class="form-check-input" type="checkbox" id="seed" name="parceltype" value="B2"
+											${fn:contains(param.parceltype, 'B2') ? 'checked':'' }>
 											<label class="form-check-label d-flex align-items-center" for="seed">
 												<span class="text-nav fw-medium">씨앗</span>
 											</label>
@@ -103,7 +112,6 @@
 								</div>
 							</div>
 						</div>
-					</form>
 				</div>
 			</div>
 		</aside>
@@ -236,7 +244,7 @@
 		</div>
 	</div>
 </div>
-
+</form>
 <!-- Sidebar toggle button-->
 <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#shopSidebar">
 	<i class="ai-filter me-2"></i>Filters

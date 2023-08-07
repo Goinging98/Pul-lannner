@@ -14,7 +14,7 @@
       <!-- Page title + contact form-->
       <section class="container pt-3 pb-lg-2 pb-xl-4  my-5">
         <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
-          <h2 class="h4 mb-0">내 식물 분양하기</h2>
+          <h2 class="h4 mb-0">식물 판매</h2>
         </div>
 
         <!-- Breadcrumb-->
@@ -39,15 +39,11 @@
                  placeholder="내용" required id="message"></textarea>
               </div>
 
-              <div class="alert alert-primary d-flex mb-4"><i class="ai-bell fs-xl me-2"></i>
-                <p class="mb-0"></p>
-              </div>
               
-           	<label class="form-label fs-base" for="category">분류를 선택하세요</label>   
+           	<label class="form-label fs-base" for="category">분류</label>   
 			<select name="parceltype" class="form-select" aria-label="Default select example" id="category" required>
 			<option value="">${plantshop.parceltype}</option>
-			  <option value="B1">식물</option>
-			  <option value="B2">씨앗</option>
+			  <option value="B1" selected>식물</option>
 			</select>
 <%-- 			<div class="btn-group dropdown">
 			  <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,7 +56,8 @@
 			  </div>
 			  </c:forEach>
 			</div> --%>
-           	<label class="form-label fs-base " for="category">분양하고자 하는 식물을 선택하세요</label>   
+			
+           	<label class="form-label fs-base " for="category">판매하고자 하는 식물을 선택하세요</label>   
 			
 	        <select name="type1" id="type1" class="form-select" aria-label="Default select example"></select>
  			<select name="type2" id="type2" class="form-select" aria-label="Default select example"></select>
@@ -120,40 +117,6 @@
                   <input class="form-control form-control-lg"  type="file" placeholder="사진첨부"  id="picture" name="upfile">
               </div>
 
-
-
-
-              <div class="col-sm-12 inline-col">
-                <label class="form-label fs-base " for="picture" style="width: 9%;">물주기</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="물주기 정보"  id="water" name="water">
-              </div>
-                
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="originInformation">관리 수준</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="관리 수준"  id="management" name="management">
-              </div>
-              
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="originInformation">성장 속도</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="성장 속도"  id="growspeed" name="growspeed">
-              </div>
-
-
-
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="temperature">알맞은 습도</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="알맞은 습도"  id="humidity" name="humidity">
-              </div>
-
-              <div class="col-sm-6 inline-col">
-                <label class="form-label fs-base" for="height">잘 자라는 온도</label>
-                <input class="form-control form-control-lg"  type="text" placeholder="잘 자라는 온도"  id="temperature" name="temperature">
-              </div>
-
-
-              
 
               <div class="col-sm-12 pt-2 text-end">
                 <button class="btn btn-lg btn-primary" type="submit">저장하기</button>

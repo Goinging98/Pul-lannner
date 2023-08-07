@@ -30,21 +30,17 @@
 		</ol>
 	</nav>
 	<!-- Banner-->
-	<div class="ignore-dark-mode rounded-1 overflow-hidden mb-5" style="background-color: #e3e5e9;">
-		<div class="row align-items-center g-0">
-			<div class="col-md-6 offset-xl-1 text-center text-md-start">
-				<div class="py-4 px-4 px-sm-5 pe-md-0 ps-xl-4">
-					<p class="fs-xs text-uppercase pt-3 pt-md-0 mb-3 mb-lg-4">Best selling</p>
-					<h2 class="h1 pb-2 pb-xl-3">
-						Cozy corner for the living room at a <span class='text-primary'>discount up to 40%</span>
-					</h2>
-				</div>
-			</div>
-			<div class="col-md-6 col-xl-5 d-flex justify-content-end">
-				<img src="/resources/assets/img/shop/banner.jpg" width="491" alt="Banner">
-			</div>
-		</div>
-	</div>
+		<div class="ignore-dark-mode rounded-1 overflow-hidden mb-5" style="background-color: #E2E0E1;">
+          <div class="row align-items-center g-0">
+            <div class="col-md-6 offset-xl-1 text-center text-md-start">
+              <div class="py-4 px-4 px-sm-5 pe-md-0 ps-xl-4">
+
+                <h2 class="h1 pb-2 pb-xl-3">식물들의 성장을 담은 페이지<br><span class='text-primary'>Pul-lannner</span></h2>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-5 d-flex justify-content-end"><img src="https://cdn.imweb.me/upload/S2017101359e025984d346/bff36a6d2ced4.jpg" width="491" alt="Banner"></div>
+          </div>
+        </div>
 	<!-- Page title-->
 	<div class="row pt-xl-3 mt-n1 mt-sm-0">
 		<div class="col-lg-12">

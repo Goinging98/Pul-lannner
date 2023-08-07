@@ -14,6 +14,7 @@ public class PlantparcelReply {
 	private int parcelno;			// bNO 			INT,
 	private int mno;			// mNO 			INT,
 	private String writerId;		// writerId 	String,
+	private String writername;
 	private String parcelrcontent;		// CONTENT 		VARCHAR(1000),
 	private String rstatus;		// STATUS 		VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN ('Y', 'N')),
 	private Date rcrtDate;	// CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,

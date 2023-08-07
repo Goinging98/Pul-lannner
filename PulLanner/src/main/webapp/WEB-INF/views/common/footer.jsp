@@ -5,11 +5,12 @@
 		<div class="row pb-3 pb-md-3 pt-sm-2 mb-lg-2">
 			<div class="col-md-4 col-lg-3 pb-2 pb-md-0 mb-4 mb-md-0">
 				<a class="navbar-brand text-nav py-0 mb-3 mb-md-4" href="index.html"><span
-					class="text-primary flex-shrink-0 me-2"> <svg version="1.1"
-							width="35" height="32" viewBox="0 0 36 33"
-							xmlns="http://www.w3.org/2000/svg">
+					class="text-primary flex-shrink-0 me-2"> 
+					 <!--<svg version="1.1" width="35" height="32" viewBox="0 0 36 33" xmlns="http://www.w3.org/2000/svg">
                   <path fill="currentColor" d="M35.6,29c-1.1,3.4-5.4,4.4-7.9,1.9c-2.3-2.2-6.1-3.7-9.4-3.7c-3.1,0-7.5,1.8-10,4.1c-2.2,2-5.8,1.5-7.3-1.1c-1-1.8-1.2-4.1,0-6.2l0.6-1.1l0,0c0.6-0.7,4.4-5.2,12.5-5.7c0.5,1.8,2,3.1,3.9,3.1c2.2,0,4.1-1.9,4.1-4.2s-1.8-4.2-4.1-4.2c-2,0-3.6,1.4-4,3.3H7.7c-0.8,0-1.3-0.9-0.9-1.6l5.6-9.8c2.5-4.5,8.8-4.5,11.3,0L35.1,24C36,25.7,36.1,27.5,35.6,29z"></path>
-                </svg></span><span>PUL-LANNER</span></a>
+							</svg> -->
+							<img src="https://media.discordapp.net/attachments/1122688492263178340/1138021806977056848/AAaa.png?width=40&height=40">
+                </span><span>PUL-LANNER</span></a>
 				<p class="fs-sm pb-2 pb-md-3 mb-3">건강한 반려식물을 키우는 습관</p>
 				<div class="d-flex">
 					<a class="btn btn-icon btn-sm btn-secondary btn-facebook rounded-circle me-3"
@@ -48,11 +49,9 @@
 					</div>
 					<div class="col">
 						<ul class="nav flex-column mb-0">
-							<li class="nav-item mb-2"><h5>식물분양</h5></li>
+							<li class="nav-item mb-2"><h5>식물판매</h5></li>
 							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
 								href="${path}/pharm/search">식물판매</a></li>
-							<li class="nav-item mb-2"><a class="nav-link p-0 fw-normal"
-								href="${path}/aidkit_k/asearch">씨앗분양</a></li>
 						</ul>
 					</div>
 					<div class="col">
