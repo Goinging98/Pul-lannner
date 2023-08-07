@@ -51,14 +51,89 @@
 						<span class='fw-bold'>pul-<br>Lanner
 						</span>
 					</h1>
-					<div class="mx-auto mx-md-0" style="max-width: 400px;">
+					<div class="mx-auto mx-md-0" style="max-width: 500px;">
 						<!-- 검색창 -->
-						<div class="input-group">
-							<span class="input-group-text text-muted"> <i
-								class="ai-flower"></i>
-							</span> <input class="form-control" type="text" placeholder="Search">
-							<button class="btn btn-outline-warning" type="button">검색</button>
+						<div class="input-group rounded-pill">
+							<!-- 드롭다운 메뉴 아이콘 버튼 -->
+							<div class="input-group-prepend">
+								<button id="dropdownMenuButton"
+									class="btn btn-secondary dropdown-toggle rounded-pill"
+									type="button" data-bs-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">식물 유형</button>
+								<div class="dropdown-menu">
+									<!-- 드롭다운 메뉴 아이템들 -->
+									<a class="dropdown-item"
+										onclick="selectSearchType('${path}/PlantSearch')">실내 식물</a> <a
+										class="dropdown-item"
+										onclick="selectSearchType('${path}/FlowerSearch')">꽃</a> <a
+										class="dropdown-item"
+										onclick="selectSearchType('${path}/DryGardenSearch')">다육이</a>
+									<!-- 필요에 따라 추가 메뉴 아이템들을 넣어주세요 -->
+								</div>
+							</div>
+							<span class="input-group-text"> <i class="ai-search"></i>
+							</span> <input id="searchInput" type="search" class="form-control"
+								placeholder="Search..." onkeydown="handleSearchKeyPress(event)">
+
+							<!-- 검색 버튼 -->
+							<div class="input-group-append">
+								<button id="searchButton" type="button"
+									class="btn btn-primary rounded-pill"
+									onclick="submitSearchForm()">검색</button>
+							</div>
 						</div>
+
+						<!-- JavaScript 스크립트 -->
+						<script type="text/javascript">
+							var selectedSearchType = ""; // 초기값은 빈 문자열로 설정
+
+							// 예시 항목을 클릭했을 때 이벤트 처리
+							function selectSearchType(searchType) {
+								selectedSearchType = searchType;
+								document.getElementById('dropdownMenuButton').innerText = event.target.innerText;
+								document.getElementById('searchInput').value = '';
+							}
+
+							// 검색 버튼 클릭 이벤트 처리
+							function submitSearchForm() {
+								var searchValue = document
+										.getElementById("searchInput").value;
+
+								// 검색 유형이 선택되지 않았을 경우 메시지 띄우기
+								if (selectedSearchType === "") {
+									alert("식물 유형을 선택하세요");
+									return;
+								}
+
+								var form = document.createElement("form");
+								form.action = selectedSearchType;
+								form.method = "GET";
+
+								var searchParam = document
+										.createElement("input");
+								searchParam.type = "hidden";
+								searchParam.name = "searchValue";
+								searchParam.value = searchValue;
+								form.appendChild(searchParam);
+
+								var pageParam = document.createElement("input");
+								pageParam.type = "hidden";
+								pageParam.name = "page";
+								pageParam.value = "1";
+								form.appendChild(pageParam);
+
+								document.body.appendChild(form);
+								form.submit();
+							}
+
+							// 검색창 엔터 키 이벤트 처리
+							function handleSearchKeyPress(event) {
+								if (event.keyCode === 13) {
+									submitSearchForm();
+								}
+							}
+						</script>
+
 					</div>
 					<div class="d-none d-xxl-block" style="height: 310px;"></div>
 					<div class="d-none d-xl-block d-xxl-none" style="height: 280px;"></div>
@@ -70,11 +145,11 @@
 						data-disable-parallax-down="lg">
 						<div class="d-table bg-faded-dark rounded-1 p-2 mb-3 mb-lg-4">
 							<a class="nav-link  text-warning" style="font-size: 30px;"
-								href="#"> <i class="ai-search fa-5x"></i>
+								href="${path}/PlantSearch"> <i class="ai-search fa-5x"></i>
 							</a>
 						</div>
 
-						<a href="http://www.naver.com">
+						<a href="${path}/PlantSearch">
 							<h2 class="h4 text-white mb-2 mb-lg-3">검색 서비스</h2>
 						</a>
 						<p class="text-white opacity-80 mb-0">식물 검색 서비스는 사용자들에게 식물에 관한
@@ -176,7 +251,7 @@
 			</ul>
 			<!-- Tab content-->
 			<div class="tab-content">
-			
+
 				<!-- Beginers A-->
 				<div class="tab-pane fade show active" id="plantparcel"
 					role="tabpanel">
@@ -184,32 +259,32 @@
 
 						<!-- Item-->
 						<c:forEach var="item" items="${parcellist}">
-						<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
-							data-groups="[&quot;a&quot;]">
-							<div class="card-hover zoom-effect mx-auto">
-								<div class="zoom-effect-wrapper rounded-5"
-									style="max-width: 300px;">
-									<div class="zoom-effect-img">
-										<img
-											src="${path}/plant/file/${item.parcelimgedt}"
-											alt="Image"
-											style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
+							<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2"
+								data-groups="[&quot;a&quot;]">
+								<div class="card-hover zoom-effect mx-auto">
+									<div class="zoom-effect-wrapper rounded-5"
+										style="max-width: 300px;">
+										<div class="zoom-effect-img">
+											<img src="${path}/plant/file/${item.parcelimgedt}"
+												alt="Image"
+												style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
+										</div>
+									</div>
+									<div class="pt-4 mt-lg-2">
+										<h2 class="h5 mb-2" style="text-align: center;">
+											<a class="stretched-link text-nav"
+												href="${path}/plant-parcel-out?parcelno=${item.parcelno}"><c:out
+													value="${item.parceltitle}" /></a>
+										</h2>
+
 									</div>
 								</div>
-								<div class="pt-4 mt-lg-2">
-									<h2 class="h5 mb-2" style="text-align: center;">
-										<a class="stretched-link text-nav"
-											href="${path}/plant-parcel-out?parcelno=${item.parcelno}"><c:out value="${item.parceltitle}" /></a>
-									</h2>
-
-								</div>
 							</div>
-						</div>
 						</c:forEach>
 
 					</div>
 				</div>
-				
+
 			</div>
 	</div>
 
@@ -224,11 +299,11 @@
 		<div class="row align-items-lg-center">
 			<!-- Accordion-->
 			<div class="col-md-7 col-lg-7 pb-2 pb-lg-0 mb-4 mb-md-0">
-			<h1>오늘의 꽃</h1>
+				<h1>오늘의 꽃</h1>
 				<c:forEach var="todayFlower" items="${todayFlower}">
-					<img class="rounded-5"
-						src="${todayFlower.imgUrl1}"
-						alt="Image">
+					<a href="${path}/FlowerDetail?id=${todayFlower.dataNo}" target="_blank"> <img
+						class="rounded-5" src="${todayFlower.imgUrl1}" alt="Image">
+					</a>
 					<div class="accordion accordion-alt" id="industries">
 						<div class="accordion-item mb-n3 mb-lg-n2 mb-xl-1 mt-sm-3">
 							<h2 class="accordion-header" style="color: rgb(0, 0, 0);">
@@ -272,7 +347,8 @@
 									<a class="stretched-link"
 										href="${path}/arboretumDetail?id=${random.contentid}">${random.title}</a>
 								</h4>
-								<span class="text-muted" style="font-size: 16px;">휴무일: ${random.restdate}</span>
+								<span class="text-muted" style="font-size: 16px;">휴무일:
+									${random.restdate}</span>
 							</div>
 						</div>
 					</c:forEach>
@@ -284,7 +360,8 @@
 	<!-- Resources (Blog) 식물 자랑하기-->
 	<section class="bg-faded-primary py-5 mt-5">
 		<div class="container py-sm-2 pt-md-3 py-lg-2 py-xl-4 py-xxl-5">
-			<h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-3 mb-lg-4">식물 자랑하기</h3>
+			<h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-3 mb-lg-4">식물
+				자랑하기</h3>
 			<!-- Swiper-->
 			<div class="swiper"
 				data-swiper-options="
@@ -301,38 +378,41 @@
         }
       ">
 				<div class="swiper-wrapper">
-				<c:forEach var="proud" items="${proudList}">
-					<!-- Item-->
-					<article class="swiper-slide h-auto">
-						<div class="card border-0 h-100">
-							<div class="card-body pb-4">
-								<div class="d-flex align-items-center mb-4 mt-n1">
-									<span class="fs-sm text-muted"><fmt:formatDate
-											type="both" dateStyle="full" value="${proud.createDate}"/></span><span
-										class="fs-xs opacity-20 mx-3">|</span>
+					<c:forEach var="proud" items="${proudList}">
+						<!-- Item-->
+						<article class="swiper-slide h-auto">
+							<div class="card border-0 h-100">
+								<div class="card-body pb-4">
+									<div class="d-flex align-items-center mb-4 mt-n1">
+										<span class="fs-sm text-muted"><fmt:formatDate
+												type="both" dateStyle="full" value="${proud.createDate}" /></span><span
+											class="fs-xs opacity-20 mx-3">|</span>
+									</div>
+									<h3 class="h4 card-title">
+										<a href="#">${proud.title}</a>
+									</h3>
+									<p class="card-text">${proud.content}</p>
 								</div>
-								<h3 class="h4 card-title">
-									<a href="#">${proud.title}</a>
-								</h3>
-								<p class="card-text">${proud.content}</p>
+								<div class="card-footer pt-3">
+									<a class="d-flex align-items-center text-decoration-none pb-2"
+										href="#"><img class="rounded-circle"
+										src="resources/assets/img/avatar/10.jpg" width="48"
+										alt="Post author">
+										<h6 class="ps-3 mb-0">${proud.name}</h6></a>
+								</div>
 							</div>
-							<div class="card-footer pt-3">
-								<a class="d-flex align-items-center text-decoration-none pb-2"
-									href="#"><img class="rounded-circle"
-									src="resources/assets/img/avatar/10.jpg" width="48" alt="Post author">
-									<h6 class="ps-3 mb-0">${proud.name}</h6></a>
-							</div>
-						</div>
-					</article>
+						</article>
 					</c:forEach>
 				</div>
-				
+
 				<!-- Pagination (bullets)-->
-				<div class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
+				<div
+					class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
 			</div>
 			<!-- Read more button-->
 			<div class="text-center pt-4 pb-sm-2 pb-md-4 py-lg-5 my-2 mt-lg-0">
-				<a class="btn btn-outline-primary" href="${path}/PlantProud">식물자랑 더보기</a>
+				<a class="btn btn-outline-primary" href="${path}/PlantProud">식물자랑
+					더보기</a>
 			</div>
 
 
@@ -377,27 +457,32 @@
         }
       }
     }">
-    
-    
-    <!-- Item-->
-						
-    
+
+
+					<!-- Item-->
+
+
 					<div class="swiper-wrapper">
 						<c:forEach var="item" items="${plist1}">
-						 <!-- Item-->
-				            <div class="swiper-slide h-auto">
-				            <a class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1" href="${path}/shop/product?pno=${item.pno}">
-				                <div class="card-body p-4 px-sm-3 px-md-4">
-				                  <div class="d-flex align-items-center">
-				                  <img src="${item.image}" width="97" alt="Product">
-				                    <div class="ps-3 ps-md-4">
-				                      <h3 class="fs-sm mb-2">${item.title}</h3>
-				                      <p class="fs-sm mb-0"><fmt:formatNumber value="${item.lprice }" pattern="#,###" />원</p>
-				                    </div>
-				                  </div>
-				                </div>
-				              </a>
-				            </div>
+							<!-- Item-->
+							<div class="swiper-slide h-auto">
+								<a
+									class="card h-100 border-0 rounded-1 text-decoration-none px-xxl-1"
+									href="${path}/shop/product?pno=${item.pno}">
+									<div class="card-body p-4 px-sm-3 px-md-4">
+										<div class="d-flex align-items-center">
+											<img src="${item.image}" width="97" alt="Product">
+											<div class="ps-3 ps-md-4">
+												<h3 class="fs-sm mb-2">${item.title}</h3>
+												<p class="fs-sm mb-0">
+													<fmt:formatNumber value="${item.lprice }" pattern="#,###" />
+													원
+												</p>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
 						</c:forEach>
 					</div>
 				</div>
@@ -406,3 +491,6 @@
 	</section>
 </body>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+
+
