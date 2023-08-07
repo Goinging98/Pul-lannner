@@ -40,7 +40,6 @@ public class KakaoPayService {
 		params.add("cid", "TC0ONETIME");
 		params.add("partner_order_id", "1001");
 		params.add("partner_user_id", "test12");
-		params.add("item_name", param.get("item_name"));
 		params.add("quantity", param.get("quantity"));
 		params.add("total_amount", param.get("total_amount"));
 		params.add("tax_free_amount", "500");

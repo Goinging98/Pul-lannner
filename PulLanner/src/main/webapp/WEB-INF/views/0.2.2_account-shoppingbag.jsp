@@ -76,11 +76,11 @@
 								</td>
 								<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
 									<div class="fs-sm text-muted mb-2">가격</div>
-									<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${item.lprice}" pattern="#,###"/></div>
+									<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${item.lprice}" pattern="#,###"/>원</div>
 								</td>
 								<td class="border-0 text-end py-1 pe-0 ps-3 ps-sm-4">
 									<div class="fs-sm text-muted mb-2">총합</div>
-									<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${item.lprice * item.amount}" pattern="#,###"/></div>
+									<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${item.lprice * item.amount}" pattern="#,###"/>원</div>
 								</td>
 							</tr>
 						</table>

@@ -95,51 +95,6 @@ public class KaKaoController {
         return "redirect:" + kakaopay.kakaoPayReady(param);
  
     }
-//	@PostMapping("/shopping/payment/order")
-//	public String sendOrder(Model model, HttpSession session, int mno
-//			, String name, String email, String phone, String addr1, String addr2, String addr3
-//			, String memo, int payment) {
-//		System.out.println("send order");
-//		Member member = (Member) session.getAttribute("loginMember");
-//		if(member == null) {
-//			model.addAttribute("msg", "로그인이 필요합니다.");
-//			model.addAttribute("location", "/");
-//			return "common/msg";
-//		}
-//		
-//		Map<String, String> map = new HashMap<String, String>();
-//		map.put("oNO", null);
-//		map.put("mNO", "" + member.getMNo());
-//		map.put("name", name);
-//		map.put("email", email);
-//		map.put("phone", phone);
-//		map.put("addr1", addr1);
-//		map.put("addr2", addr2);
-//		map.put("addr3", addr3);
-//		map.put("memo", memo);
-//		map.put("payment", "" + payment);
-//		map.put("ORDERDATE", null);
-//		System.out.println(map);
-//		
-//		
-//		int result = service.insertOrderlist(map);
-//		int result2 = service.insertOrderProductlist(member.getMNo());
-//		int result3 = service.deleteCart(member.getMNo());
-//		if(result > 0 && payment == 1) {
-//			model.addAttribute("msg", "주문이 완료되었습니다.");
-//			model.addAttribute("location", "/kakaopay");
-//		} else if (result > 0){
-//			model.addAttribute("msg", "주문이 완료되었습니다.");
-//			model.addAttribute("location", "/mypage/orders");			
-//		}
-//		else {
-//			model.addAttribute("msg", "주문을 실패하였습니다.");
-//			model.addAttribute("location", "/mypage/orders");
-//		}
-//		
-//		return "common/msg";
-//	}
-    
     @GetMapping("/kakaoPaySuccess")
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model, HttpSession session) {
         log.info("kakaoPaySuccess get............................................");

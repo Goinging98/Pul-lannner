@@ -77,9 +77,9 @@ public class OrderController {
 	
 	
 	@PostMapping("/shopping/payment/order")
-	public String sendOrder(Model model, HttpSession session, int mno
+	public String sendOrder(@RequestParam Map<String, String> param, Model model, HttpSession session, int mno
 			, String name, String email, String phone, String addr1, String addr2, String addr3
-			, String memo, int payment) {
+			, String memo, int payment, int total_amount, int quantity) {
 		System.out.println("send order");
 		Member member = (Member) session.getAttribute("loginMember");
 		if(member == null) {
@@ -106,7 +106,13 @@ public class OrderController {
 		int result = service.insertOrderlist(map);
 		int result2 = service.insertOrderProductlist(member.getMNo());
 		int result3 = service.deleteCart(member.getMNo());
-		if (result > 0){
+		if(result > 0 && payment == 1) {
+	        System.out.println("kakaoPay post............................................");
+			model.addAttribute("msg", "카카오페이 결제를 시작합니다.");
+	        session.setAttribute("param", param);
+	        System.out.println(param);
+			model.addAttribute("location", "\"redirect:\" + kakaopay.kakaoPayReady(param)");
+		} else if (result > 0){
 			model.addAttribute("msg", "주문이 완료되었습니다.");
 			model.addAttribute("location", "/mypage/orders");			
 		}
@@ -117,6 +123,5 @@ public class OrderController {
 		
 		return "common/msg";
 	}
-	
 	
 }
