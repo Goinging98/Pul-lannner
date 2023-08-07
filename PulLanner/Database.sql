@@ -506,22 +506,31 @@ where Member.mno = 1;
 ------------------------------------------------------------------
 ------------------------- 주문내역 관련 테이블 -------------------------
 ------------------------------------------------------------------
--- 주문내역 
+DROP TABLE ORDERLIST;
+# 주문내역 
 CREATE TABLE ORDERLIST (
 	oNO INT PRIMARY KEY AUTO_INCREMENT,
     mNO INT,
-    ORDERDATE DATETIME DEFAULT CURRENT_TIMESTAMP,
-    PAYMENT INT # 1 KAKAO 2 CASH 
+    NAME VARCHAR(30),
+    EMAIL VARCHAR(30),
+    PHONE VARCHAR(13),
+    ADDR1  VARCHAR(100),
+    ADDR2  VARCHAR(100),
+    ADDR3  VARCHAR(100),
+    MEMO VARCHAR(500),
+    PAYMENT VARCHAR(10), # kakao
+    ORDERDATE DATETIME DEFAULT CURRENT_TIMESTAMP
 );
--- 주문상품목록 
+# 주문상품목록 
 CREATE TABLE ORDERPRODUCT (
     oNO INT,
-    FOREIGN KEY (oNO) REFERENCES ORDERLIST(oNO),
     pNO INT,
-    FOREIGN KEY (pNO) REFERENCES PRODUCT(pNO),
-    AMOUNT INT
+    AMOUNT INT,
+    PRIMARY KEY (oNO, pNO),
+    FOREIGN KEY (oNO) REFERENCES ORDERLIST(oNO)
 );
 
+DROP TABLE ORDERPRODUCT;
 
 
 ------------------------------------------------------------------
