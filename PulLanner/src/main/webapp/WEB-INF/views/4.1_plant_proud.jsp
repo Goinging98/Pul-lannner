@@ -94,16 +94,16 @@
 								</p>
 								<div class="d-flex flex-wrap align-items-center mt-n2">
 									<button class="nav-link text-muted fs-sm fw-normal p-0 mt-2" type="button">
-										<i class="ai-heart fs-xl" style="color: var(--ar-gray-500)" onclick="addLike(this, ${item.BNo})"></i>
+										<div class="heart" id="heart${item.BNo}" value="${item.isLike}" onclick="onClickHeart('heart${item.BNo}', '${item.BNo}');"></div>
 									</button>
-									<span class="fs-xs opacity-20 mt-2 mx-3">|</span> <span
-										class="fs-sm text-muted mt-2"><fmt:formatDate
-											type="both" dateStyle="full" value="${item.createDate}" /></span> <span
-										class="fs-xs opacity-20 mt-2 mx-3">|</span> <a
-										class="badge text-nav fs-xs border mt-2" href="#">"${item.name}"</a><span
-										class="fs-xs opacity-20 mt-2 mx-3">|</span>
+									<span class="fs-xs opacity-70 mt-2 mx-2">${item.likeCount}</span>
+									<span class="fs-xs opacity-20 mt-2 mx-3">|</span> 
+									<span class="fs-sm text-muted mt-2"><fmt:formatDate type="both" dateStyle="full" value="${item.createDate}" /></span>
+									<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
+										<a class="badge text-nav fs-xs border mt-2" href="${path}/PlantProud">${item.name}</a>
+									<span class="fs-xs opacity-20 mt-2 mx-3">|</span>
 										<c:if	test="${!empty loginMember && (loginMember.id == item.id || loginMember.role == 'ROLE_ADMIN') }">
-											<button type="button" id="btnDelete" class="btn btn-icon btn-sm btn-outline-danger rounded-circle">
+											<button type="button" id="btnDelete" onClick="deleteProudBoard(${item.BNo})" class="btn btn-icon btn-sm btn-outline-danger rounded-circle">
 												<i class="ai-trash"></i>
 											</button>
 										</c:if>
@@ -202,6 +202,7 @@
 
 						<!-- Featured posts widget-->
 						<h4 class="pt-3 pt-lg-0 pb-1">인기글</h4>
+						<c:forEach var="like" items="${likeList}">
 						<div class="mb-lg-5 mb-4">
 							<article class="position-relative d-flex align-items-center mb-4">
 								<img class="rounded"
@@ -209,37 +210,13 @@
 									alt="Post image">
 								<div class="ps-3">
 									<h4 class="h6 mb-2">
-										<a class="stretched-link" href="blog-single-v1.html">Instagram
-											trends that will definitely work</a>
+										<a class="stretched-link" href="blog-single-v1.html">${like.title}</a>
 									</h4>
-									<span class="fs-sm text-muted">13 hours ago</span>
-								</div>
-							</article>
-							<article class="position-relative d-flex align-items-center mb-4">
-								<img class="rounded"
-									src="resources/assets/img/blog/sidebar/02.jpg" width="92"
-									alt="Post image">
-								<div class="ps-3">
-									<h4 class="h6 mb-2">
-										<a class="stretched-link" href="blog-single-v2.html">A
-											session with a psychologist</a>
-									</h4>
-									<span class="fs-sm text-muted">May 12, 2022</span>
-								</div>
-							</article>
-							<article class="position-relative d-flex align-items-center">
-								<img class="rounded"
-									src="resources/assets/img/blog/sidebar/03.jpg" width="92"
-									alt="Post image">
-								<div class="ps-3">
-									<h4 class="h6 mb-2">
-										<a class="stretched-link" href="blog-single-v3.html">How
-											to look for inspiration for new goals</a>
-									</h4>
-									<span class="fs-sm text-muted">June 10, 2022</span>
+									<span class="fs-sm text-muted">${like.createDate}</span>
 								</div>
 							</article>
 						</div>
+						</c:forEach>
 						<!-- Banner-->
 						<div class="position-relative mb-3">
 							<div
@@ -290,17 +267,11 @@
 		searchForm.submit();
 	}
 	
-	$(document).ready(() => {
-		$("#btnUpdate").click((e) => {
-			location.href = "${path}/PlantProud/update?no=${proudBoard.BNo}";
-		});
-		
-		$("#btnDelete").click((e) => {
-			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
-				location.replace("${path}/PlantProud/delete?proudBoardNo=${proudBoard.BNo}");
-			}
-		});
-	});
+	function deleteProudBoard(bNo) {
+		if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
+			location.replace("${path}/delete?proudBoardNo=" + bNo);
+		}
+	}
 	
 	function fileDownload(oriname, rename) {
 		const url = "/board/fileDown";
@@ -309,29 +280,54 @@
 		location.assign(url + "?oriname=" + oName + "&rename=" + rName);
 	}
 	
-	function addLike(proudLike, bno) {
-		console.log('bno: ', bno);
-		var $proudLike = $(proudLike)
-		$.ajax({
-			type: "POST",
-			url: "/PlantProud/Like",
-			data: JSON.stringify({proudBoardNo: bno}),
-			dataType: "json",
-			contentType: "application/json;charset=UTF-8",
-			success: function (response){
-				alert(response.message);
-				
-				if(response.message === "좋아요 성공!"){
-					$proudLike.attr("class", "ai-heart-filled fs-xl");
-					$proudLike.css("color", "var(--ar-warning)");
-				}
-				if(response.message === "좋아요를 취소합니다!"){
-					$proudLike.attr("class", "ai-heart fs-xl");
-					$proudLike.css("color", "var(--ar-gray-500)");
-				}
+	 // 초기화 문구
+    $(function(){
+        // 하트 class 초기화
+        heartItems = document.getElementsByClassName('heart');
+        for(i = 0; i < heartItems.length; i++){
+            heartValue = JSON.parse(heartItems[i].getAttribute('value'));
+
+           console.log('heartValue : ', heartValue);
+            
+            if(heartValue == 1){
+                heartItems[i].innerHTML = '<img src="/resources/images/heart-fill.svg">';
+            }else{
+                heartItems[i].innerHTML = '<img src="/resources/images/heart.svg">';
+            }
+        }
+    });
+
+    function onClickLike(id, addLike){
+        likeValue = new Number($('#'+id).text());
+        likeValue += new Number(addLike);
+        // 여기에 AJAX로 DB 업데이트하는 코드 있어야함!!
+
+        $('#'+id).text((likeValue > 0 ? '+' : '') + likeValue);
+    }
+
+    function onClickHeart(id, bNo){
+        heartValue = JSON.parse($('#'+id).attr('value'));
+        if(heartValue == 0){
+        	heartValue = 1;
+        }else{
+        	heartValue = 0;
+        }
+        // 여기에 AJAX로 DB 업데이트하는 코드 있어야함!!
+        $.ajax({
+			method:'get',
+			url:'/PlantProud/like?bNo=' + bNo +'&isLike=' + heartValue ,
+			contentType: 'application/json',
+			dataType : 'json',
+			success: (result) =>{
+				$('#'+id).attr('value', ''+result);
+		        if(result == 1){
+		            $('#'+id).html('<img src="/resources/images/heart-fill.svg">');
+		        }else{
+		            $('#'+id).html('<img src="/resources/images/heart.svg">');
+		        }
 			},
-			error: function (xhr, status, error){
-				console.log("에러 발생:" , error);
+			error : (e) => {
+				alert('전송 실패');
 			}
 		});
 	}

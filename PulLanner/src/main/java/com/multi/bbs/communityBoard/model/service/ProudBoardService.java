@@ -3,6 +3,7 @@ package com.multi.bbs.communityBoard.model.service;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +69,10 @@ public class ProudBoardService {
 		return mapper.selectProudBoardList(param);
 	}
 	
+	public List<ProudBoard> getProudBoardLikeList(Map<String, Object> Map){
+		return mapper.selectProudBoardLikeList(Map);
+	}
+	
 	public List<ProudBoard> getProudBoardRandomList(Map<String, Object> param){
 		return mapper.selectRandomList(param);
 	}
@@ -102,22 +107,38 @@ public class ProudBoardService {
 	
 	//좋아요 기능 서비스
 	
-	@Transactional()
-	public int insertProudBoardLike(Map<String, Object> map) {
-		return mapper.insertProudBoardLike(map);
+	@Transactional(rollbackFor = Exception.class)
+	public int likeBoard(int mNo, int bNo) {
+		Map<String, String> map = new HashMap<>();
+		map.put("mNo", ""+mNo);
+		map.put("bNo", ""+bNo);
+		return mapper.likeBoard(map);
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
+	public int unLikeBoard(int mNo, int bNo) {
+		Map<String, String> map = new HashMap<>();
+		map.put("mNo", ""+mNo);
+		map.put("bNo", ""+bNo);
+		return mapper.unLikeBoard(map);
+	}
+	
+//	@Transactional()
+//	public int insertProudBoardLike(Map<String, Object> map) {
+//		return mapper.insertProudBoardLike(map);
+//	}
+//	
 	public int getProudBoardLikeCount(Map<String, Object> param) {
 		return mapper.selectProudBoardLikeCount(param);
 	}
-	
-	public int getProudBoardLikeMemberCount(Map<String, Object> param) {
-		return mapper.selectProudBoardLikeMemberCount(param);
-	}
-	
-	public int removeProudBoardLike(Map<String, Object> param) {
-		return mapper.deleteProudBoardLike(param);
-	}
+//	
+//	public int getProudBoardLikeMemberCount(Map<String, Object> param) {
+//		return mapper.selectProudBoardLikeMemberCount(param);
+//	}
+//	
+//	public int removeProudBoardLike(Map<String, Object> param) {
+//		return mapper.deleteProudBoardLike(param);
+//	}
 	
 	
 

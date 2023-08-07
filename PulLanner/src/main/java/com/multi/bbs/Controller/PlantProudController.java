@@ -49,7 +49,7 @@ public class PlantProudController {
 	final static private String savePath = "/Users/kimjoohwan/Desktop/Dev/";	
 	
 	@GetMapping("/PlantProud")
-	public String list(Model model, @RequestParam Map<String, String> paramMap) {
+	public String list(Model model, @RequestParam Map<String, String> paramMap, Map<String, Object> map) {
 		int page = 1;
 
 		Map<String, String> searchMap = new HashMap<String, String>();
@@ -68,6 +68,7 @@ public class PlantProudController {
 		int honeyBoardCount = service.getHoneyBoardCount(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 10, proudBoardCount, 5); // 게시글이 보여지는 갯수 = 10
 		List<ProudBoard> list = service.getProudBoardList(pageInfo, searchMap);
+		List<ProudBoard> likeList = service.getProudBoardLikeList(map);
 		System.out.println("list : " + list);
 		
 		model.addAttribute("list", list);
@@ -75,6 +76,7 @@ public class PlantProudController {
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("proudBoardCount", proudBoardCount);
 		model.addAttribute("honeyBoardCount", honeyBoardCount);
+		model.addAttribute("likeList", likeList);
 		
 		return "/4.1_plant_proud";
 	}
@@ -187,44 +189,23 @@ public class PlantProudController {
 		
 		
 	// 좋아요 기능 부분
-		@ResponseBody
-		@PostMapping(value = "/PlantProud/Like", produces = "application/json;charset=UTF-8")
-		public ResponseEntity<Map<String, Object>> addLike(HttpSession session,
-				@RequestBody Map<String, Object> request){
-			Member member = (Member) session.getAttribute("loginMember");
-			if(member == null) {
-				Map<String, Object> response = new HashMap<>();
-				response.put("message", "로그인이 필요합니다.");
-				return ResponseEntity.badRequest().body(response);
+		@GetMapping("/PlantProud/like") 
+		public ResponseEntity<Integer> boardLike(
+				@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+				int bNo, int isLike)
+		{
+			int result = 0;
+			if(isLike == 1) {
+				result = service.likeBoard(loginMember.getMNo(), bNo);	
+			}else {
+				result = service.unLikeBoard(loginMember.getMNo(), bNo);	
 			}
 			
-			int mno = member.getMNo();
-			int proudBoardNo = Integer.parseInt(request.get("proudBoardNo").toString());
-			
-			Map<String, Object> map = new HashMap<>();
-		    map.put("mNo", mno);
-		    map.put("bNo", proudBoardNo);
-		    
-		    if(service.getProudBoardLikeMemberCount(map) > 0) {
-		    	service.removeProudBoardLike(map);
-		    	Map<String, Object> response = new HashMap<>();
-		    	response.put("message", "좋아요를 취소합니다!");
-		    	response.put("liked", "true");
-		    	
-		    	return ResponseEntity.ok(response);
-		    } else {
-		    	if(service.insertProudBoardLike(map) > 0) {
-		    		Map<String, Object> response = new HashMap<>();
-		    		response.put("message", "좋아요 성공!");
-		    		response.put("liked", "false");
-		    		
-		    		return ResponseEntity.ok(response);
-		    	} else {
-		    		Map<String, Object> response = new HashMap<>();
-		    		response.put("message", "좋아요 실패! 다시 확인해주세요!");
-		    		return ResponseEntity.ok(response);
-		    	}
-		    }
+			if(result > 0) {
+				return ResponseEntity.status(HttpStatus.OK).body(isLike);
+			}else {
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			}
 			
 			
 		

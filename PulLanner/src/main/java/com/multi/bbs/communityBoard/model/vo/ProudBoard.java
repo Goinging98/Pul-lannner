@@ -24,4 +24,6 @@ public class ProudBoard {
 	private String type;
 	private Date createDate;
 	private Date modifyDate;
+	private int likeCount;
+	private int isLike;
 }
