@@ -79,10 +79,10 @@ public class ProudBoardService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	public ProudBoard findByNo(int no, int mNo) {
-		Map<String, String> map = new HashMap<>();
-		map.put("bNo", ""+no);
-		map.put("mNo", ""+mNo);
-		ProudBoard proudBoard = mapper.selectProudBoardByNo(map); 
+//		Map<String, String> map = new HashMap<>();
+//		map.put("bNo", ""+no);
+//		map.put("mNo", ""+mNo);
+		ProudBoard proudBoard = mapper.selectProudBoardByNo(no); 
 		proudBoard.setReadCount(proudBoard.getReadCount() + 1);  
 		mapper.updateProudReadCount(proudBoard);
 		return proudBoard; 
@@ -97,8 +97,8 @@ public class ProudBoardService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	public int deleteProudBoard(int no, String rootPath) {
-		Map<String, String> map = new HashMap<>();
-		ProudBoard proudBoard = mapper.selectProudBoardByNo(map);
+//		Map<String, String> map = new HashMap<>();
+		ProudBoard proudBoard = mapper.selectProudBoardByNo(no);
 		deleteFile(rootPath + "\\" + proudBoard.getRenamedFileName());
 		return mapper.deleteProudBoard(no);
 	}
