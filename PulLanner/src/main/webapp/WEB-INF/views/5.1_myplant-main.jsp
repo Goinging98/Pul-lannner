@@ -33,9 +33,10 @@
 	</nav>
 
 	<!-- 프로필 -->
-	<section class="card border-3 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4" style="max-width: 1000px;">
-		<div class="card-body">
-			<div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
+	<div class="container row" style="float: none; margin:100 auto;">
+	<section class="card border-3 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4 col-9 d-flex justify-content-center" style="float: none; margin:0 auto;">
+		<div class="card-body d-flex align-items-center">
+			<div class=" mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
 				<i class="ai-user text-primary lead pe-1 me-2"></i>
 				<h2 class="h4 mb-0">${loginMember.name}</h2>
 				<a class="btn btn-sm btn-secondary ms-auto" href="${path}/Plantwrite"><i class="ai-edit ms-n1 me-2"></i>식물등록</a>
@@ -52,17 +53,18 @@
 			</div>
 		</div>
 	</section>
-
+</div>
 
 
 	<!-- Page title-->
-	<div class="row pt-xl-3 mt-n1 mt-sm-0">
-		<div class="col-lg-9 offset-lg-3 pt-lg-3">
+	<div class="container row pt-xl-3 mt-n1 mt-sm-0" style="float: none; margin:100 auto;">
+		<div class="col-lg-9 offset-lg-3 pt-lg-3"  style="float: none; margin:0 auto;">
 			<h1 class="pb-2 pb-sm-3">${loginMember.name}님의 정원</h1>
 		</div>
 	</div>
 
-	<div class="col-lg-9">
+<div class="container row pt-xl-3 mt-n1 mt-sm-0" style="float: none; margin:100 auto;">
+	<div class="col-lg-9" style="float: none; margin:0 auto;">
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 			<!-- Item-->
 			<c:if test="${not empty list}">
