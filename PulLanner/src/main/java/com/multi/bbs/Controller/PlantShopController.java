@@ -90,7 +90,7 @@ public class PlantShopController {
 		
 		int plantshopCount = plantShopService.getPlantShopCount(param);
 //		PageInfo pageInfo = new PageInfo(page, 10, boardCount, 15); // 게시글이 보여지는 갯수 = 15
-		PageInfo pageInfo = new PageInfo(page, 10, plantshopCount, 10); // 게시글이 보여지는 갯수 = 10
+		PageInfo pageInfo = new PageInfo(page, 10, plantshopCount, 9); // 게시글이 보여지는 갯수 = 10
 		
 		List<Plantshop> list = plantShopService.getPlantShopList(pageInfo, param);
 		
@@ -243,8 +243,8 @@ public class PlantShopController {
 		 * return "common/msg"; }
 		 */
 		
-//		plantshop.setPlanttype(type1);
-//		plantshop.setPlantno(type2);
+	    plantshop.setPlanttype(type1);
+		plantshop.setPlantno(type2);
 		plantshop.setMno(loginMember.getMNo());
 		
 		// 파일 저장 로직

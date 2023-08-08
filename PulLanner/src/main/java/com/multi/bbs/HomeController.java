@@ -73,7 +73,7 @@ public class HomeController {
 		int parcelpage = 1;
 		Map<String, Object> paramMap1 = new HashMap<>();
 		int count1 = plantShopService.getPlantShopCount(paramMap1);
-		PageInfo pageInfo1 = new PageInfo(page, 5, count1, 6);
+		PageInfo pageInfo1 = new PageInfo(page, 12, count1, 12);
 		List<Plantshop> parcellist = plantShopService.getPlantShopList(pageInfo1, paramMap1);
 		model.addAttribute("parcellist", parcellist);
 		//=============랜덤으로 장소 추천=====================

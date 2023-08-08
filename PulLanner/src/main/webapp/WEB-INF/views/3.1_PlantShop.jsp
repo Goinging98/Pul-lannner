@@ -38,10 +38,10 @@
 	<!-- Page title-->
 	<div class="row pt-xl-3 mt-n1 mt-sm-0">
 		<div class="col-lg-9 offset-lg-3 pt-lg-3">
-			<h1 class="pb-2 pb-sm-3" style="display: inline;">식물 판매</h1>
+			<h2 class="pb-2 pb-sm-3" style="display: inline;">식물 판매</h1>
+			
+			<!-- 글 작성 버튼 -->
 			<c:if test="${loginMember != null }">
-			<!-- 기존버튼 -->
-			<!-- 새로운 버튼 -->
 			<div class="btn-group dropstart" style="margin-left: 73%; margin-bottom: 1%; width: 55px; height: 55px;">
 			  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			    <i class="ai-edit-alt"></i>
@@ -52,6 +52,8 @@
 			  </div>
 			</div>	
 			</c:if>
+			<!-- 글 작성 버튼 끝 -->
+			
 		</div>
 	</div>
 	<br/><br/>
@@ -66,6 +68,14 @@
 				<div class="offcanvas-body pt-2 pt-lg-0 pe-lg-4">
 						<!-- 검색 -->
 						<br/><br/>
+						<div style="margin-top: -180px;">
+							<div class="input-group input-group-sm rounded-pill" style="width: 280px;">
+								<span class="input-group-text"><i class="ai-search"></i></span>
+								<input type="text" id="searchValue" name="parceltitle"
+									value="${param.searchValue}" class="form-control rounded" placeholder="검색">
+								<button type="submit" class="btn btn-primary rounded-pill">검색</button>
+							</div>
+							<br>
 						<h3 class="h5">판매 종류</h3>
 						<div class="accordion accordion-alt pb-2 mb-4" id="shopCategories">
 							<!-- 식물 종류 -->
@@ -90,26 +100,10 @@
 								</div>
 							</div>
 						</div>
+						
 						<div class="col-8" style="height: 70px;">
 							<input type="hidden" name="page" value="1"> 
-<%-- 							<label>
-								<input type="radio" name="searchType" value="parceltitle"
-								${searchType == 'parceltitle' ? 'checked' : ''}> 제목
-							</label> 
-							<label> 
-								<input type="radio" name="searchType" value="parcelcontent" 
-								${searchType == 'parcelcontent' ? 'checked' : ''}> 내용
-							</label> 
-							<label> 
-								<input type="radio" name="searchType" value="writername" 
-								${searchType == 'writername' ? 'checked' : ''}> 작성자
-							</label>  --%>
-							<div class="input-group input-group-sm rounded-pill" style="width: 280px;">
-								<span class="input-group-text"><i class="ai-search"></i></span>
-								<input type="text" id="searchValue" name="parceltitle"
-									value="${param.searchValue}" class="form-control rounded" placeholder="검색">
-								<button type="submit" class="btn btn-primary rounded-pill">검색</button>
-							</div>
+
 						</div>
 					</form>
 				</div>
@@ -125,26 +119,26 @@
 						<!-- Item-->
 						<div class="col pb-2 pb-sm-3">
 							<div class="card-hover position-relative bg-secondary rounded-2 p-3 mb-4">
-								<button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
+								<!-- <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
 									<i class="ai-heart fs-xl d-dark-mode-none"> </i> 
 									<i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"> </i>
-								</button>
+								</button> -->
 								<div class="swiper swiper-nav-onhover d-flex justify-content-center" style="max-width: 100%; max-height: 300px;"
 									data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
-									<a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html"> <!-- Item -->
+									<a class="swiper-wrapper" href="${path}/plant-parcel-out?parcelno=${item.parcelno}"> <!-- Item -->
 										<div class="swiper-slide rounded-2">
 											<div class="rounded-2" style="background-image: url('/plant/file/${item.parcelimgedt}' ); background-size: cover; 
 												background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product"></div>
 										</div>
 									</a>
-									<button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button">
+<!-- 									<button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button">
 										<i class="ai-chevron-left fs-xl d-dark-mode-none"></i>
 										<i class="ai-chevron-left text-nav fs-xl d-none d-dark-mode-block"></i>
 									</button>
 									<button class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0" type="button">
 										<i class="ai-chevron-right fs-xl d-dark-mode-none"></i>
 										<i class="ai-chevron-right text-nav fs-xl d-none d-dark-mode-block"></i>
-									</button>
+									</button> -->
 								</div>
 							</div>
 							<div class="d-flex mb-1">

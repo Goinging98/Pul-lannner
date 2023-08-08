@@ -175,25 +175,24 @@
 
 	<!-- 직접 엄선한 반려식물-->
 	<div class="masonry-filterable py-5 mt-5">
-		<h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-5 mb-lg-4">직접 엄선한반려식물</h3>
+		<h3 class="h1 text-center pt-2 pt-sm-3 pb-3 mb-5 mb-lg-4">직접 엄선한 반려식물</h3>
 
 
 		<!-- Classes (Tabs)-->
 		<section class="container">
 			<!-- Nav tabs-->
 			<ul class="nav nav-tabs flex-nowrap overflow-auto text-nowrap fs-sm flex-nowrap overflow-auto text-nowrap w-100 mx-auto pb-4 mb-5 mb-sm-3" style="max-width: 250px;">
-				<li class="nav-item mb-0"><a class="nav-link active bor" href="#plantparcel" data-bs-toggle="tab" role="tab">식물분양</a></li>
-				<li class="nav-item mb-0"><a class="nav-link " href="#stretching" data-bs-toggle="tab" role="tab">씨앗분양</a></li>
+				<li class="nav-item mb-0"><a class="nav-link active bor" href="#plant" data-bs-toggle="tab" role="tab">식물판매</a></li>
+				<li class="nav-item mb-0"><a class="nav-link " href="#seed" data-bs-toggle="tab" role="tab">씨앗판매</a></li>
 
 			</ul>
 			<!-- Tab content-->
 			<div class="tab-content">
-				<!-- Beginers A-->
-				<div class="tab-pane fade show active" id="plantparcel" role="tabpanel">
+				<!-- 식물판매-->
+				<div class="tab-pane fade show active" id="plant" role="tabpanel">
 					<div class="masonry-grid " data-columns="4" id="a">
-
-						<!-- Item-->
 						<c:forEach var="item" items="${parcellist}">
+						<c:if test="${item.parceltype == 'B1'}">
 							<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2" data-groups="[&quot;a&quot;]">
 								<div class="card-hover zoom-effect mx-auto">
 									<div class="zoom-effect-wrapper rounded-5" style="max-width: 300px;">
@@ -209,8 +208,32 @@
 									</div>
 								</div>
 							</div>
+							</c:if>
 						</c:forEach>
-
+					</div>
+				</div>
+				<!-- 씨앗판매 -->
+				<div class="tab-pane fade show active" id="seed" role="tabpanel">
+					<div class="masonry-grid " data-columns="4" id="a">
+						<c:forEach var="item" items="${parcellist}">
+						<c:if test="${item.parceltype == 'B2'}">
+							<div class="masonry-grid-item pb-lg-5 mb-3 mb-lg-0 mb-xl-2" data-groups="[&quot;a&quot;]">
+								<div class="card-hover zoom-effect mx-auto">
+									<div class="zoom-effect-wrapper rounded-5" style="max-width: 300px;">
+										<div class="zoom-effect-img">
+											<img src="${path}/plant/file/${item.parcelimgedt}" alt="Image" style="max-width: 300px; max-height: 300px; min-width: 300px; min-height: 300px;">
+										</div>
+									</div>
+									<div class="pt-4 mt-lg-2">
+										<h2 class="h5 mb-2" style="text-align: center;">
+											<a class="stretched-link text-nav" href="${path}/plant-parcel-out?parcelno=${item.parcelno}">
+											<c:out value="${item.parceltitle}" /></a>
+										</h2>
+									</div>
+								</div>
+							</div>
+							</c:if>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

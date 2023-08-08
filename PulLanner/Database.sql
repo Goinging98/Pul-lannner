@@ -417,8 +417,8 @@ CREATE TABLE PLANTSHOP (
     
     CONSTRAINT FK_PLANTSHOP_WRITER FOREIGN KEY(mNO) REFERENCES MEMBER(mNO) ON DELETE SET NULL
 );    
-INSERT INTO PLANTSHOP 
-VALUES(0, 1, '선인장 분양합니다', '애지중지 2년동안 키운 선인장 분양합니다', '식물', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 5000, 'Y', DEFAULT, 'P1', 12901);
+-- INSERT INTO PLANTSHOP 
+-- VALUES(0, 1, '선인장 분양합니다', '애지중지 2년동안 키운 선인장 분양합니다', '식물', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 5000, 'Y', DEFAULT, 'P1', 12901);
 
 COMMIT;
 

@@ -25,22 +25,26 @@
         <div class="row pb-sm-1 pb-md-4">
         
           <!-- 이미지 시작-->
-          <div class="col-md-6 gallery mb-3 mb-md-0">
-            <!-- IMAGE -->
-<div class="gallery">
-<c:if test="${not empty plantshop.parcelimg 
+		<div class="col-md-6 gallery mb-3 mb-md-0">
+			<!-- IMAGE -->
+			<div class="gallery">
+				<c:if
+					test="${not empty plantshop.parcelimg 
 								and (fn:contains(plantshop.parcelimg,'.jpg')
 									 or fn:contains(plantshop.parcelimg,'.png')
 									  or fn:contains(plantshop.parcelimg,'.jpeg'))}">
-				<a href="${path}/plant/file/${plantshop.parcelimgedt}" class="gallery-item d-block card-hover fit-cover">
-				<img src="${path}/plant/file/${plantshop.parcelimgedt}" class="d-block rounded-4 fit-cover" alt="Image #1" style="width: 500px;">
-				</a>
-</c:if>
-</div>
+					<a href="${path}/plant/file/${plantshop.parcelimgedt}"
+						class="gallery-item d-block card-hover fit-cover"> <img
+						src="${path}/plant/file/${plantshop.parcelimgedt}"
+						class="d-block rounded-4 fit-cover" alt="Image #1"
+						style="width: 500px;">
+					</a>
+				</c:if>
+			</div>
 
 
-          </div>
-          <!-- 이미지 끝 -->
+		</div>
+		<!-- 이미지 끝 -->
           
           <!-- Product details-->
           <div class="col-md-6 col-xl-5 offset-xl-1">
