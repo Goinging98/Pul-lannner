@@ -59,7 +59,7 @@
               <h1 class="d-none d-md-inline-block pb-1 mb-2"><c:out value="${plantshop.parceltitle}" /></h1>
               <p class="fs-sm mb-4"><c:out value="${plantshop.parcelcontent}" /></p>
               <div class="d-none d-md-flex align-items-center pb-3 mb-3">
-                <div class="h4 mb-0 me-3">가격&nbsp;<c:out value="${plantshop.parcelprice}" />원</div>
+                <div class="h4 mb-0 me-3">가격&nbsp;<%-- <c:out value="${plantshop.parcelprice}" />원 --%><fmt:formatNumber value="${plantshop.parcelprice }" pattern="#,###" />원</div>
                 <!--  <del class="fs-5 fw-medium text-muted">\$19.00</del>-->
               </div>
               <!-- Color button selector-->
@@ -350,10 +350,10 @@
             <!-- Item-->
             <div class="swiper-slide">
             <div class="card-hover position-relative bg-secondary rounded-1  mb-4">
-              <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
+<!--               <button class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 zindex-5 opacity-0" type="button">
                 <i class="ai-heart fs-xl d-dark-mode-none"></i><i class="ai-heart text-nav fs-xl d-none d-dark-mode-block"></i>
-              </button>
-              <a class="d-block " href="shop-single.html">
+              </button> -->
+              <a class="d-block " href="${path}/plant-parcel-out?parcelno=${item.parcelno}">
                 <img class="d-block mx-auto object-fit: cover;" src="${path}/plant/file/${item.parcelimgedt}"  style="max-width: 280px; max-height: 280px; min-width: 280px; min-height: 280px;" alt="Product">
               </a>
             </div>

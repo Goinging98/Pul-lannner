@@ -149,7 +149,7 @@
 								<div class="d-flex ps-2 mt-n1 ms-auto"></div>
 							</div>
 							<div class="d-flex align-items-center">
-								<span class="me-2"><c:out value="${item.parcelprice}" />&nbsp;원</span>
+								<span class="me-2"><%-- <c:out value="${item.parcelprice}" /> --%><fmt:formatNumber value="${item.parcelprice }" pattern="#,###" />&nbsp;원</span>
 								<div class="nav ms-auto" data-bs-toggle="" data-bs-template="&lt;div class=&quot;tooltip fs-xs&quot; role=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-inner bg-light text-muted p-0&quot;&gt;&lt;/div&gt;&lt;/div&gt;"
 									data-bs-placement="left">
 									<a class="nav-link fs-lg py-2 px-1" style=" font-weight: bold;">${item.writername}</a>
