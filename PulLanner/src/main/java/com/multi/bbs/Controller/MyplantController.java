@@ -1,9 +1,9 @@
 package com.multi.bbs.Controller;
 
+
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,20 +26,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.multi.bbs.board.model.vo.Board;
-import com.multi.bbs.board.model.vo.Reply;
-import com.multi.bbs.common.util.PageInfo;
-import com.multi.bbs.manage.model.vo.Managelist;
 import com.multi.bbs.manage.model.service.ManageBoardService;
+import com.multi.bbs.manage.model.vo.Managelist;
+import com.multi.bbs.manage.model.vo.Plantreply;
 import com.multi.bbs.member.model.vo.Member;
 
-import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 
 @Controller
 public class MyplantController{
@@ -122,6 +121,7 @@ public class MyplantController{
 	
 	
 	
+	
 	@GetMapping("/MyplantView")
 	public String MyplantView(Model model, int bno,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
@@ -142,10 +142,14 @@ public class MyplantController{
 		// 댓글 리스트 코드 추가 필요
 		System.out.println(item);
 		model.addAttribute("item", item);
+		model.addAttribute("replyList", item.getPlantreplylist());
+
 		return "5.3_plant-main-in";
 		
 		
 	}
+	
+	
 	
 	
 	
@@ -182,5 +186,43 @@ public class MyplantController{
     }
 
 	
+    @RequestMapping("/pplantreply")
+	public String writePlantReply(Model model, 
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+			@ModelAttribute Plantreply plantreply
+			) {
+    	plantreply.setBno(loginMember.getMNo());
+		
+		log.info("리플 작성 요청 plantreply : " + plantreply);
+		
+		int result = service.savePlantReply(plantreply);
+		
+		if(result > 0) {
+			model.addAttribute("msg", "리플이 등록되었습니다.");
+		}else {
+			model.addAttribute("msg", "리플 등록에 실패하였습니다.");
+		}
+		model.addAttribute("location", "/MyPlantview?bno="+plantreply.getBno());
+		return "common/msg";
+	}
+    
+    @RequestMapping("/pplantreplyDel")
+	public String deletePlantReply(Model model, 
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+			int pno, int bno
+			){
+		log.info("리플 삭제 요청 : "+ pno);
+		int result = service.deletePlantReply(pno);
+		
+		if(result > 0) {
+			model.addAttribute("msg", "리플 삭제가 정상적으로 완료되었습니다.");
+		}else {
+			model.addAttribute("msg", "리플 삭제에 실패하였습니다.");
+		}
+		model.addAttribute("location", "/MyPlantview/view?bno=" + bno);
+		return "/common/msg";
+	}
+    
+    
 }
 	

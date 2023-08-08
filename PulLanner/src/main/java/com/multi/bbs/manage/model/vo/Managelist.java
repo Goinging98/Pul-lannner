@@ -22,5 +22,6 @@ public class Managelist {
 	private Date startdate;
 	private Date waterdate;
 	private Date createdate;
+	private List<Plantreply> plantreplylist;
 }
 

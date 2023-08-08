@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.bbs.manage.model.mapper.ManageBoardMapper;
 import com.multi.bbs.manage.model.vo.Managelist;
+import com.multi.bbs.manage.model.vo.Plantmanage;
+import com.multi.bbs.manage.model.vo.Plantreply;
 
 
 @Service
@@ -32,6 +34,8 @@ public class ManageBoardService {
 	}
 	
 	private static int count = 0;
+	
+	
 
 	public String saveFile(MultipartFile upFile, String savePath) {
 		File folder = new File(savePath);
@@ -60,6 +64,47 @@ public class ManageBoardService {
 		return renamedimg;
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
+	public int savePlantReply(Plantreply plantreply) {
+		return mapper.insertPlantReply(plantreply);
+	}
+	
+	
+	/*public String saveFile(MultipartFile upFile, String savePath) {
+		File folder = new File(savePath);
+		
+		// 폴더 없으면 만드는 코드
+		if(folder.exists() == false) {
+			folder.mkdir();
+		}
+		System.out.println("savePath : " + savePath);
+		
+		// 파일이름을 랜덤하게 바꾸는 코드, test.txt -> 20221213_1728291212.txt
+		String originalFileName = upFile.getOriginalFilename();
+		String reNameFileName = 
+					LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmssSSS"));
+		reNameFileName += originalFileName.substring(originalFileName.lastIndexOf("."));
+		String reNamePath = savePath + "/" + reNameFileName;
+		
+		try {
+			// 실제 파일이 저장되는 코드
+			upFile.transferTo(new File(reNamePath));
+		} catch (Exception e) {
+			return null;
+		}
+		return reNameFileName;
+		} */
+	
+		@Transactional(rollbackFor = Exception.class)
+		public int deleteHoneyReply(int no) {
+			return mapper.deletePlantReply(no);
+			
+		} 
+		
+	
+	
+	
+	
 	
 	public int selectMANAGELISTCount(int mno) {
 		return mapper.selectMANAGELISTCount(mno);
@@ -78,6 +123,25 @@ public class ManageBoardService {
 		if(file.exists()) {
 			file.delete();
 		}
+	
+
+
 	}
-		
+
+
+	public int savePlantmanage(Plantmanage plantmanage) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int deletePlantReply(int plantReplyNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+
+
+
+	
 }

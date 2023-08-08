@@ -20,6 +20,22 @@
 	
 	</resultMap>
 
+<resultMap type="Plantreply" id="PlantreplyResultMap">
+		<result property="pno" column="pNo" />
+		<result property="bno" column="bNo" />
+		<result property="mno" column="mNo" />
+		<result property="poption" column="POPTION"/>
+		<result property="content" column="CONTENT" />
+		<result property="status" column="STATUS" />
+		<result property="waterdate" column="WATER_DATE" />
+		<result property="createdate" column="CREATE_DATE" />
+	</resultMap>
+
+
+<resultMap type="Managelist" id="ManagelistdetailResultMap" extends="ManagelistResultMap">
+        <collection property="plantreplylist" javaType="arrayList" columnPrefix="R_" resultMap="PlantreplyResultMap"/>
+    </resultMap>
+
 	
 	<select id="selectMANAGELISTCount" resultType="int" parameterType="int">
 		SELECT COUNT(*) FROM MANAGELIST WHERE STATUS = 'Y' and mNo = #{mno}
@@ -32,10 +48,24 @@
 	</select>
 		
 	
-	<select id="selectMANAGELIST" parameterType="int" resultMap="ManagelistResultMap">
+	<select id="selectMANAGELIST" parameterType="int" resultMap="ManagelistdetailResultMap">
 		SELECT 
-			*
-		 FROM MANAGELIST WHERE STATUS = 'Y' and bno = #{bno}
+			P.bNo, M.ID, P.STATUS, P.PLANTNAME, P.PETNAME, P.LOCATION, P.CONTENT, P.ORIGINAL_IMG, P.RENAMED_IMG, P.START_DATE, P.WATER_DATE, M.NAME, 
+			P.CREATE_DATE,
+                R.pNo as R_pNo, 
+                R.bNo as R_bNo, 
+                R.POPTION as R_POPTION, 
+                R.CONTENT as R_CONTENT, 
+                R.STATUS as R_STATUS,
+                R.WATER_DATE as R_WATER_DATE,
+                R.CREATE_DATE as R_CREATE_DATE,
+                M2.ID as R_ID
+		 FROM MANAGELIST P 
+        JOIN MEMBER M ON(P.mNO = M.mNO)
+        LEFT OUTER JOIN PLANTREPLY R ON(R.bNo = P.bNo)
+        LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
+        WHERE P.STATUS = 'Y' AND  P.bNo= #{bno}
+		 
 	</select>
 		
 		
@@ -76,13 +106,18 @@
 	<resultMap type="Plantmanage" id="PlantmanageResultMap">
 		<result property="cno" column="cNo" />
 		<result property="bno" column="bNo" />
-		<result property="mno" column="mNO" />
+		<result property="mno" column="mNo" />
 		<result property="working" column="WORKING"/>
 		<result property="waterrdate" column="WATER_DATE" />
 		<result property="createedate" column="CREATE_DATE" />
 		<result property="content" column="CONTENT" />
 	</resultMap>
-	
+
+<select id="selectPLANTMANAGECount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM PLANTMANAGE WHERE STATUS = 'Y' and mNo = #{mno}
+	</select>
+
+
 	<insert id="insertPLANTMANAGE" parameterType="Plantmanage">
 		INSERT INTO PLANTMANAGE VALUES(
 			0, #{bno}, #{mno}, #{working}, 
@@ -90,10 +125,49 @@
 			#{content}
 		);
 	</insert>
+	
+	
+	<select id="selectPLANTMANAGE" parameterType="map" resultMap="PlantmanageResultMap">
+		SELECT 
+			*
+		 FROM MANAGELIST WHERE STATUS = 'Y' and bno = #{bno}
+	</select>
+	
 
-	<select id="selectPlantmanageList" parameterType="map" resultMap="PlantmanageResultMap">
+	<select id="selectPLANTMANAGEList" parameterType="map" resultMap="PlantmanageResultMap">
 		select * from PLANTMANAGE where mNo = #{mno} and bNo = #{bno}
 	
 	</select>
+	
+	<update id="updatePLANTMANAGE" parameterType="Managelist">
+		UPDATE MANAGELIST
+		SET
+		cNo = 0
+		bNo = #{bno}
+		mNO = #{mno}
+		WORKING = #{working}
+		WATER_DATE = #{waterrdate}
+		CREATE_DATE = #{default}
+		CONTENT = #{content}
+		
+		
+	</update>
+	
+	<insert id="insertPlantReply" parameterType="Plantreply">
+		INSERT INTO PlantREPLY(
+				pNo, bNo, mNo, POPTION,
+				CONTENT, STATUS, WATER_DATE, CREATE_DATE
+		) VALUES(
+				0, #{bno}, #{mno}, #{poption}, #{content},
+				default, default, default
+			)
+	</insert>
+	
+	<delete id="deletePlantReply" parameterType="int">
+		DELETE FROM PlantREPLY WHERE RNO=#{rNo}
+	</delete>
+	
+	
+	
 
 </mapper>

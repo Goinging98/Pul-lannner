@@ -33,8 +33,7 @@
 	</nav>
 
 	<!-- 프로필 -->
-	<section class="card border-3 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4"
-		style="max-width: 1000px;">
+	<section class="card border-3 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4" style="max-width: 1000px;">
 		<div class="card-body">
 			<div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
 				<i class="ai-user text-primary lead pe-1 me-2"></i>

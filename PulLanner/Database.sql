@@ -443,20 +443,6 @@ SELECT * FROM PLANTPARCELREPLY;
 ------------------------------------------------------------------
 ------------------------- PLANT MANAGE 관련 테이블 -------------------------
 ------------------------------------------------------------------
-drop table PLANTMANAGE;
-CREATE TABLE PLANTMANAGE ( 
-	cNo INT PRIMARY KEY AUTO_INCREMENT, #이 테이블 주키
-    bNo INT, #식물 번호
-    mNo INT, #회원번호 
-    WORKING INT, # 1=환기하기 2=물주기~ 
-    WATERDATE DATETIME, 
-    CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP, 
-    CONTENT VARCHAR(2000),  
-    CONSTRAINT FK_MANAGELIST_WRITER FOREIGN KEY(mNo) REFERENCES MEMBER(mNo) ON DELETE SET NULL
-);   
-    
-select * from PLANTMANAGE;
-
 # 식물 리스트 
 drop table MANAGELIST;
 CREATE TABLE MANAGELIST ( 
@@ -478,6 +464,20 @@ CREATE TABLE MANAGELIST (
  INSERT INTO MANAGELIST VALUES(0, 3,'Y', '민들레', '들레1세', '실내', '들레 집에서 관찰하기!', '변경된파일명.txt','변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
  COMMIT;
 
+CREATE TABLE PLANTMANAGE ( 
+	cNo INT PRIMARY KEY AUTO_INCREMENT, #이 테이블 주키
+    bNo INT, #식물 번호
+    mNo INT, #회원번호 
+    WORKING INT, # 1=환기하기 2=물주기~ 
+    WATER_DATE DATETIME, 
+    CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    CONTENT VARCHAR(2000),  
+    CONSTRAINT FK_MANAGELIST_WRITER FOREIGN KEY(mNo) REFERENCES MEMBER(mNo) ON DELETE SET NULL
+    );   
+    
+COMMIT;
+
+select * from PLANTMANAGE;
  
  ------------------------------------------------------------------
 ------------------------- tour 관련 테이블 -------------------------
