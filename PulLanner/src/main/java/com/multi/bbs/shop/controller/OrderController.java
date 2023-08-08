@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.bbs.common.util.PageInfo;
+import com.multi.bbs.kakao.KakaoPayService;
 import com.multi.bbs.member.model.vo.Member;
 import com.multi.bbs.shop.model.service.OrderService;
 import com.multi.bbs.shop.model.service.ShopService;
@@ -39,6 +40,10 @@ public class OrderController {
 	OrderService service;
 	@Autowired
 	ShopService shopService;
+	
+	@Autowired
+    private KakaoPayService kakaopay;
+
 	
 	@RequestMapping(value = "/mypage/orders", method = RequestMethod.GET)
 	public String orders(Locale locale, Model model, HttpSession session) {
@@ -79,7 +84,7 @@ public class OrderController {
 	@PostMapping("/shopping/payment/order")
 	public String sendOrder(@RequestParam Map<String, String> param, Model model, HttpSession session, int mno
 			, String name, String email, String phone, String addr1, String addr2, String addr3
-			, String memo, int payment, int total_amount, int quantity) {
+			, String memo, int payment, String item_name, int total_amount, int quantity) {
 		System.out.println("send order");
 		Member member = (Member) session.getAttribute("loginMember");
 		if(member == null) {
@@ -110,8 +115,8 @@ public class OrderController {
 	        System.out.println("kakaoPay post............................................");
 			model.addAttribute("msg", "카카오페이 결제를 시작합니다.");
 	        session.setAttribute("param", param);
-	        System.out.println(param);
-			model.addAttribute("location", "\"redirect:\" + kakaopay.kakaoPayReady(param)");
+	        return "redirect:" + kakaopay.kakaoPayReady(param);
+	        
 		} else if (result > 0){
 			model.addAttribute("msg", "주문이 완료되었습니다.");
 			model.addAttribute("location", "/mypage/orders");			

@@ -52,18 +52,18 @@
 		SELECT 
 			P.bNo, M.ID, P.STATUS, P.PLANTNAME, P.PETNAME, P.LOCATION, P.CONTENT, P.ORIGINAL_IMG, P.RENAMED_IMG, P.START_DATE, P.WATER_DATE, M.NAME, 
 			P.CREATE_DATE,
-                R.pNo as R_pNo, 
-                R.bNo as R_bNo, 
-                R.POPTION as R_POPTION, 
-                R.CONTENT as R_CONTENT, 
-                R.STATUS as R_STATUS,
-                R.WATER_DATE as R_WATER_DATE,
-                R.CREATE_DATE as R_CREATE_DATE,
-                M2.ID as R_ID
-		 FROM MANAGELIST P 
-        JOIN MEMBER M ON(P.mNO = M.mNO)
-        LEFT OUTER JOIN PLANTREPLY R ON(R.bNo = P.bNo)
-        LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
+            R.pNo as R_pNo, 
+            R.bNo as R_bNo, 
+            R.POPTION as R_POPTION, 
+            R.CONTENT as R_CONTENT, 
+            R.STATUS as R_STATUS,
+            R.WATER_DATE as R_WATER_DATE,
+            R.CREATE_DATE as R_CREATE_DATE,
+            M2.ID as R_ID
+		FROM MANAGELIST P 
+	        JOIN MEMBER M ON(P.mNO = M.mNO)
+	        LEFT OUTER JOIN PLANTREPLY R ON(R.bNo = P.bNo)
+	        LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
         WHERE P.STATUS = 'Y' AND  P.bNo= #{bno}
 		 
 	</select>

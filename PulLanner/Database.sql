@@ -478,6 +478,19 @@ CREATE TABLE PLANTMANAGE (
 COMMIT;
 
 select * from PLANTMANAGE;
+
+CREATE TABLE PLANTREPLY(
+  pNo INT PRIMARY KEY AUTO_INCREMENT,
+  bNo INT,
+  mNo INT,
+  POPTION INT,
+  CONTENT VARCHAR(1000),
+  STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN ('Y', 'N')),
+  WATER_DATE DATETIME, 
+  CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP
+ -- FOREIGN KEY (bNo) REFERENCES MANAGELIST(bNo),
+  -- FOREIGN KEY (mNo) REFERENCES MEMBER(mNo)
+);
  
  ------------------------------------------------------------------
 ------------------------- tour 관련 테이블 -------------------------

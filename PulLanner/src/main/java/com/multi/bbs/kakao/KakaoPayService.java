@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public class KakaoPayService {
 	private static final String HOST = "https://kapi.kakao.com";
 	// 카카오 Admin 키
-	private static final String kakaoKey = "29e4bb541225f6d36d61f9413c2d79a0";
+	private static final String kakaoKey = "3643d796ff87b9dd77eb8f57abcd1370";
 
 	private KakaoPayReadyVO kakaoPayReadyVO;
 	private KakaoPayApprovalVO kakaoPayApprovalVO;
@@ -40,6 +40,7 @@ public class KakaoPayService {
 		params.add("cid", "TC0ONETIME");
 		params.add("partner_order_id", "1001");
 		params.add("partner_user_id", "test12");
+		params.add("item_name", param.get("item_name"));
 		params.add("quantity", param.get("quantity"));
 		params.add("total_amount", param.get("total_amount"));
 		params.add("tax_free_amount", "500");

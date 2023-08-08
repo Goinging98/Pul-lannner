@@ -26,7 +26,7 @@
 	
 	<!-- 주문내역 출력 -->
 	<select id="selectOrderList" resultType="Orderlist" parameterType="int">
-		SELECT OL.* FROM ORDERLIST OL WHERE OL.mNO = #{mNO}
+		SELECT OL.* FROM ORDERLIST OL WHERE OL.mNO = #{mNO} ORDER BY OL.oNO DESC;
 	</select>
 	
 	<select id="selectOrderId" resultType="int">

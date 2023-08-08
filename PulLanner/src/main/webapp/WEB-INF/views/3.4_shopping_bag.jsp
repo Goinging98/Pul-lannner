@@ -146,6 +146,7 @@ function findAddr(){
 					<span class="text-muted">주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.</span></label>
 					<input type="hidden" name="total_amount" value="${totalPrice}"><br>
 					<input type="hidden" name="quantity" value="${totalAmount}"><br> 
+					<input type="hidden" name="item_name" value="상품"><br>
 				</div>
 				<button class="btn btn-lg btn-primary" type="submit">주문하기</button>
 			</div>

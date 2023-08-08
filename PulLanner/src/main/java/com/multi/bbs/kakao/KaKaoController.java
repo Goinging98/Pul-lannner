@@ -99,10 +99,10 @@ public class KaKaoController {
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model, HttpSession session) {
         log.info("kakaoPaySuccess get............................................");
         log.info("kakaoPaySuccess pg_token : " + pg_token);
-        @SuppressWarnings("unchecked")
-		Map<String, String> param = (Map<String, String>) session.getAttribute("param");
-        model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token, param));
-        return "kakao/kakaoPaySuccess";
+//        @SuppressWarnings("unchecked")
+//		Map<String, String> param = (Map<String, String>) session.getAttribute("param");
+//        model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token, param));
+        return "redirect:" + "/mypage/orders";
     }
 	
 }

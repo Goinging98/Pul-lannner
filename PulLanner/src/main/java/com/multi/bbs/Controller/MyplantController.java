@@ -6,6 +6,8 @@ import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -131,18 +133,19 @@ public class MyplantController{
 			return "common/msg";
 		}
 		Managelist item = service.selectMANAGELIST(bno);
+		LocalDate now = LocalDate.now();
 		
-		 Date date = item.getStartdate();
-		 Date date2 = item.getWaterdate();
-		 long diffDay = (date2.getTime() - date.getTime()) / (24*60*60*1000);
-		 long startDay = (date2.getTime() - date.getTime()) / (24*60*60*1000);
+		Date date = item.getStartdate();
+		Date date2 = item.getWaterdate();
+		long diffDay = (date2.getTime() - date.getTime()) / (24*60*60*1000);
+		long startDay = (date2.getTime() - date.getTime()) / (24*60*60*1000);
 
-		 model.addAttribute("diffDay", diffDay);
-		 model.addAttribute("startDay", startDay);
+		model.addAttribute("diffDay", diffDay);
+		model.addAttribute("startDay", startDay);
 		// 댓글 리스트 코드 추가 필요
 		System.out.println(item);
 		model.addAttribute("item", item);
-		model.addAttribute("replyList", item.getPlantreplylist());
+//		model.addAttribute("replyList", item.getPlantreplylist());
 
 		return "5.3_plant-main-in";
 		
@@ -187,11 +190,12 @@ public class MyplantController{
 
 	
     @RequestMapping("/pplantreply")
-	public String writePlantReply(Model model, 
+	public String writePlantReply(Model model, int bno,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			@ModelAttribute Plantreply plantreply
 			) {
-    	plantreply.setBno(loginMember.getMNo());
+    	plantreply.setBno(bno);
+    	plantreply.setMno(loginMember.getMNo());
 		
 		log.info("리플 작성 요청 plantreply : " + plantreply);
 		
@@ -202,7 +206,7 @@ public class MyplantController{
 		}else {
 			model.addAttribute("msg", "리플 등록에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/MyPlantview?bno="+plantreply.getBno());
+		model.addAttribute("location", "/MyplantView?bno="+plantreply.getBno());
 		return "common/msg";
 	}
     
@@ -219,7 +223,7 @@ public class MyplantController{
 		}else {
 			model.addAttribute("msg", "리플 삭제에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/MyPlantview/view?bno=" + bno);
+		model.addAttribute("location", "/MyplantView?bno=" + bno);
 		return "/common/msg";
 	}
     
