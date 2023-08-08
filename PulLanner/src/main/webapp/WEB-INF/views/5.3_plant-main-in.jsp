@@ -56,10 +56,10 @@
 				<p class="text-large2 text-bold">${item.plantname}</p>
 				<p class=" text-bold">
 					${item.petname}를 키우기 시작한지 ${startDay}&nbsp;일째
-					<p>- <fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.startdate}"/>부터 키움</p>
+					<p><i class="ai-calendar-check"></i> <fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.startdate}"/>부터 키움</p>
 				</p>
 				<p class=" text-bold">최근에 물 준지 ${diffDay}&nbsp;일째</p>
-				<p>- <fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.waterdate}"/>에 물 줌</p>
+				<p><i class="ai-calendar-check"></i> <fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.waterdate}"/>에 물 줌</p>
 			</div>
 		</div>
 	</section>
