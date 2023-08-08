@@ -90,7 +90,7 @@
 							<div class="col-sm-7 col-lg-8">
 								<div class="pt-4 pb-sm-4 ps-sm-4 pe-lg-4">
 									<h3>
-											<a href="/plantshop/view?no=${item.parcelno}"><c:out value="${item.parceltitle}"></c:out></a>
+											<a href="/plant-parcel-out?parcelno=${item.parcelno}"><c:out value="${item.parceltitle}"></c:out></a>
 									</h3>
 									<p class="d-sm-none d-md-block">
 										<c:out value="${item.parcelcontent}"></c:out>

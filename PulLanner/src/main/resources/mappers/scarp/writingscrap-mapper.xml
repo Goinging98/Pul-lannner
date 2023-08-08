@@ -28,7 +28,7 @@
 		SELECT SW.*, C.TITLE, C.TYPE, C.RENAMED_FILENAME
 		FROM SCRAP_WRITING SW
 			LEFT JOIN COMMBOARD C ON C.bNo = SW.NUM
-        WHERE SW.mNO = #{mNO}
+        WHERE STATUS = 'Y' AND SW.mNO = #{mNO}
 	</select>
 		
 </mapper>

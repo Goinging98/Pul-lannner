@@ -59,7 +59,7 @@ public class PlantShopController {
 	private ResourceLoader resourceLoader; // 파일 다운로드 기능시 활용하는 loader
 	
 	
-	final static private String savePath = "c:\\bbs\\"; // 게시글 작성중 이미지 파일 첨부시 파일이 저장되는 실제 경로
+	final static private String savePath = "/Users/kimjoohwan/Desktop/Dev/"; // 게시글 작성중 이미지 파일 첨부시 파일이 저장되는 실제 경로
 	
 	
 //	http://localhost/mvc/board/list?page=1&searchType=title&searchValue=%EC%95%84%EC%9D%B4%ED%8F%B0

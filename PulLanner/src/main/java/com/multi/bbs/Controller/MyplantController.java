@@ -45,7 +45,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class MyplantController{
 	private static final Logger logger = LoggerFactory.getLogger(PlantShopController.class);
-	final static private String savePath = "c:\\bbs\\";
+	final static private String savePath = "/Users/kimjoohwan/Desktop/Dev/";
 	
 	@Autowired
 	private ManageBoardService service;

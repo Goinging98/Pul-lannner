@@ -61,7 +61,7 @@
 							<div class="card">
 								<div class="image-container">
 									<c:if test="${not empty switem.RENAMED_FILENAME}">
-										<img src="${switem.RENAMED_FILENAME}" class="card-img-top fit-cover" alt="image"
+										<img src="/honey/file/${switem.RENAMED_FILENAME}" class="card-img-top fit-cover" alt="image"
 											style="max-height: 180px; min-height: 180px; object-fit : cover;">
 									</c:if>
 									<c:if test="${empty switem.RENAMED_FILENAME}">
