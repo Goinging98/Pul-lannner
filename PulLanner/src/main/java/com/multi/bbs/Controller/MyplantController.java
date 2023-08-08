@@ -116,7 +116,6 @@ public class MyplantController{
 			return "common/msg";
 		}
 		List<Managelist> list = service.selectMANAGELISTList(loginMember.getMNo());
-		System.out.println(list);
 		model.addAttribute("list", list);
 		return "5.1_myplant-main";
 	}
@@ -125,27 +124,27 @@ public class MyplantController{
 	
 	
 	@GetMapping("/MyplantView")
-	public String MyplantView(Model model, int bno,
-			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
+	public String MyplantView(Model model, int bno, @SessionAttribute(name = "loginMember", required = false) Member loginMember) {
 		if(loginMember == null) {
 			model.addAttribute("msg", "로그인이 필요합니다.");
 			model.addAttribute("location", "/");
 			return "common/msg";
 		}
 		Managelist item = service.selectMANAGELIST(bno);
-		LocalDate now = LocalDate.now();
+		System.out.println("!!!"+item);
+		model.addAttribute("item", item);
+		model.addAttribute("replyList", item.getPlantreplylist());
+		
+		var now = new Date();
 		
 		Date date = item.getStartdate();
 		Date date2 = item.getWaterdate();
-		long diffDay = (date2.getTime() - date.getTime()) / (24*60*60*1000);
-		long startDay = (date2.getTime() - date.getTime()) / (24*60*60*1000);
+		long diffDay = (now.getTime() - date2.getTime()) / (24*60*60*1000);
+		long startDay = (now.getTime() - date.getTime()) / (24*60*60*1000);
 
 		model.addAttribute("diffDay", diffDay);
 		model.addAttribute("startDay", startDay);
 		// 댓글 리스트 코드 추가 필요
-		System.out.println(item);
-		model.addAttribute("item", item);
-//		model.addAttribute("replyList", item.getPlantreplylist());
 
 		return "5.3_plant-main-in";
 		

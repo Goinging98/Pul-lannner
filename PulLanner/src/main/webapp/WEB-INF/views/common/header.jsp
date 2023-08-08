@@ -206,11 +206,7 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="${path}/Myplant" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">풀래너</a>
-							<ul class="dropdown-menu" style="font-size: 18px;">
-								<li><a class="dropdown-item" href="${path}/Myplant">내 풀레너</a></li>
-								<li><a class="dropdown-item" href="${path}/MyplantMain">풀래너스</a></li>
-							</ul>
+							<a class="nav-link" href="${path}/Myplant">풀래너</a>
 						</li>
 					</ul>
 				</nav>

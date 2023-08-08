@@ -58,7 +58,7 @@
 	<!-- Page title-->
 	<div class="row pt-xl-3 mt-n1 mt-sm-0">
 		<div class="col-lg-9 offset-lg-3 pt-lg-3">
-			<h1 class="pb-2 pb-sm-3">${loginMember.name}님의정원</h1>
+			<h1 class="pb-2 pb-sm-3">${loginMember.name}님의 정원</h1>
 		</div>
 	</div>
 
@@ -97,12 +97,5 @@
 </button>
 </main>
 
-<!-- Vendor scripts: js libraries and plugins-->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="assets/vendor/nouislider/dist/nouislider.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<!-- Main theme script-->
-<script src="assets/js/theme.min.js"></script>
 </body>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

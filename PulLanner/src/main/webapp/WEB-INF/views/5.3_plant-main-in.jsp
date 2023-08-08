@@ -47,38 +47,55 @@
 			<li class="breadcrumb-item active">${item.petname}</li>
 		</ol>
 	</nav>
-
-	<div class="d-flex align-items-center">
-		<img src="${path}/Managelist/file/${item.renamedimg}" class="rounded-5" alt="Rounded image" style="width: 200px; height: 200px;">
-		<div class="ms-3">
-			<p class="text-large text-bold">${item.petname}</p>
-			<p class="text-large2 text-bold">${item.plantname}</p>
-			<p class=" text-bold">
-				${item.petname}를 키우기 시작한지 ${startDay}&nbsp;일째
-				<p>- <fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.startdate}"/>부터 키움</p>
-			</p>
-			<p class=" text-bold">최근에 물 준지 ${diffDay}&nbsp;일째</p>
-			<p>- <fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.waterdate}"/>에 물 줌</p>
+	<section class="card border-3 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4" style="max-width: 1000px;">
+		<div class="d-flex align-items-center">
+			<img src="${path}/Managelist/file/${item.renamedimg}" class="rounded-5" alt="Rounded image" style="width: 300px;">
+			<div class="ms-3">
+				<p class="text-large text-bold">${item.petname}</p>
+				<p class="text-large2 text-bold">${item.plantname}</p>
+				<p class=" text-bold">
+					${item.petname}를 키우기 시작한지 ${startDay}&nbsp;일째
+					<p>- <fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.startdate}"/>부터 키움</p>
+				</p>
+				<p class=" text-bold">최근에 물 준지 ${diffDay}&nbsp;일째</p>
+				<p>- <fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.waterdate}"/>에 물 줌</p>
+			</div>
 		</div>
-	</div>
-
-
-
-
-	<!-- Page title-->
-	<div class="row pt-xl-3 mt-n1 mt-sm-0">
-		<div class="col-lg-9 offset-lg-3 pt-lg-3">
-			<div class="d-flex justify-content-between align-items-center">
-				<h1 class="pb-2 pb-sm-3"></h1>
-
+	</section>
 				<c:if test="${loginMember != null}">
 					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
 						style="margin-left: 60%">등록하기 <i class="ai-edit-alt"></i>
 					</button>
 				</c:if>
+	
+    <!-- 리플출력 -->
+	<div class="col-lg-12">
+		<c:if test="${not empty item}">
+			<c:forEach var="item" items="${replyList}">
+				<div class="border-bottom pt-3 pb-2">
+					<div class="d-flex align-items-center pb-1 mb-3">
+						<div class="ps-3">
+							<span class="fs-sm text-muted"><fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.createdate}" /></span>
+							<c:if test="${item.poption == 1}"><span>환기하기</span></c:if>
+							<c:if test="${item.poption == 2}"><span>물주기</span></c:if>
+							<c:if test="${item.poption == 3}"><span>분무하기</span></c:if>
+							<c:if test="${item.poption == 4}"><span>가지치기</span></c:if>
+							<c:if test="${item.poption == 5}"><span>분갈이하기</span></c:if>
+							<c:if test="${item.poption == 6}"><span>영양관리</span></c:if>
+							<c:if test="${item.poption == 7}"><span>화분교체</span></c:if>
+						</div>
+					</div>
+					<p class="pb-2 ps-3 mb-0">${item.content}</p>
+				</div>
+			</c:forEach>
+		</c:if>
+	</div>
 
+	<!-- Page title-->
+	<div class="row pt-xl-3 mt-n1 mt-sm-0">
+		<div class="col-lg-9 offset-lg-3 pt-lg-3">
+			<div class="d-flex justify-content-between align-items-center">
 				<!-- Modal -->
-
 				<form action="${path}/pplantreply" method="post" class="row needs-validation">
 					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
@@ -87,20 +104,18 @@
 								<label class="form-label mt-3">
 									<h3>플래너 간단히 기록하기</h3>
 								</label>
-
 								<div class="btn-group">
 									<input type="radio" class="btn btn-outline-primary" name="poption" value="1">환기하기
 									<input type="radio" class="btn btn-outline-primary" name="poption" value="2">물주기
 									<input type="radio" class="btn btn-outline-primary" name="poption" value="3">분무하기
-									<input type="radio" class="btn btn-outline-primary" name="poption" value="4">가지 치기
+									<input type="radio" class="btn btn-outline-primary" name="poption" value="4">가지치기
 								</div>
 								<div class="btn-group">
-									<input type="radio" class="btn btn-outline-primary" name="poption" value="5">분갈이 하기
-									<input type="radio" class="btn btn-outline-primary" name="poption" value="6">영양 관리
-									<input type="radio" class="btn btn-outline-primary" name="poption" value="7">화분 교체
+									<input type="radio" class="btn btn-outline-primary" name="poption" value="5">분갈이하기
+									<input type="radio" class="btn btn-outline-primary" name="poption" value="6">영양관리
+									<input type="radio" class="btn btn-outline-primary" name="poption" value="7">화분교체
 								</div>
 								<br/><br/>
-
 								<input type="hidden" name="bno" value="${item.bno}" readonly class="input-text">
 								<label class="form-label">어느 날짜로 기록해드릴까요?</label>
 								<div class="form-floating">
@@ -125,23 +140,9 @@
 </div>
 
 
-<c:if test="${not empty list}">
-	<c:forEach var="item" items="${list}">
-	<div class="border-bottom py-4 mt-2 mb-4">
-    	<div class="d-flex align-items-center pb-1 mb-3"><!-- <img class="rounded-circle" src="assets/img/avatar/08.jpg" width="48" alt="Comment author"> -->
-	        <div class="ps-3">
-	          <span class="fs-sm text-muted"></span>
-	        </div>
-      	</div>
-      	<p class="pb-2 mb-0"><c:out value="${item.content}"/></p>
-    </div>
-	</c:forEach>
-</c:if>
-
-
 <!-- Product grid 이거 지우면 3칸짜리 넓히고 좁히고 차이-->
 <!-- Event calendar example -->
-<script>
+<!--  <script>
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
 			header : {
@@ -165,7 +166,7 @@
         console.log("poption 변수에 1이 할당되었습니다.");
     });
 </script>
-<!--  <div id='calendar'></div>
+<div id='calendar'></div>
 <!-- Event calendar example 	
 <div class="calendar"
 	data-calendar-options='{
@@ -218,10 +219,8 @@
 <!-- 위에가 달력 html에 저장해도 페이지에는 화면 안뜸-->
 
 <!-- Sidebar toggle button-->
-<button
-	class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom"
-	data-bs-toggle="offcanvas" data-bs-target="#shopSidebar">
-	<i class="ai-filter me-2"></i>Filters
+<button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#shopSidebar">
+	<i class="ai-filter me-2"></i>
 </button>
 </main>
 
@@ -230,12 +229,5 @@
 <svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"></circle>
 </svg><i class="ai-arrow-up"></i></a>
-<!-- Vendor scripts: js libraries and plugins-->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="assets/vendor/nouislider/dist/nouislider.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<!-- Main theme script-->
-<script src="assets/js/theme.min.js"></script>
 </body>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
