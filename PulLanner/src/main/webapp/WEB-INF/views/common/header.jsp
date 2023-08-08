@@ -173,11 +173,11 @@
 				<button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 					<span class="navbar-toggler-icon"> </span>
 				</button>
-				<nav class="collapse navbar-collapse" id="navbarNav">
+				<nav class="collapse navbar-collapse" id="navbarNav" style="font-size: 20px;">
 					<ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
-						<li class="nav-item dropdown">
+						<li class="nav-item dropdown" >
 							<a class="nav-link dropdown-toggle" href="${path}/PlantSearch" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물검색</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu" style="font-size: 18px;">
 								<li><a class="dropdown-item" href="${path}/PlantSearch">실내정원</a></li>
 								<li><a class="dropdown-item" href="${path}/FlowerSearch">꽃</a></li>
 								<li><a class="dropdown-item" href="${path}/DryGardenSearch">다육이</a></li>
@@ -185,7 +185,7 @@
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="${path}/arboretumList" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">식물명소</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu" style="font-size: 18px;">
 								<li><a class="dropdown-item" href="${path}/arboretumList">식물원</a></li>
 								<li><a class="dropdown-item" href="${path}/mountainList">숲/산</a></li>
 								<li><a class="dropdown-item" href="${path}/parkList">국립공원</a></li>
@@ -200,14 +200,14 @@
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="${path}/PlantProud" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">커뮤니티</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu" style="font-size: 18px;">
 								<li><a class="dropdown-item" href="${path}/PlantProud">식물 자랑하기</a></li>
 								<li><a class="dropdown-item" href="${path}/HoneyTip/list">식물 기르기 꿀팁</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="${path}/Myplant" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">풀래너</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu" style="font-size: 18px;">
 								<li><a class="dropdown-item" href="${path}/Myplant">내 풀레너</a></li>
 								<li><a class="dropdown-item" href="${path}/MyplantMain">풀래너스</a></li>
 							</ul>
