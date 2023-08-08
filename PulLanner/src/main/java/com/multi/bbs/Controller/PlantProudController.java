@@ -49,7 +49,8 @@ public class PlantProudController {
 	final static private String savePath = "/Users/kimjoohwan/Desktop/Dev/";	
 	
 	@GetMapping("/PlantProud")
-	public String list(Model model, @RequestParam Map<String, String> paramMap, Map<String, Object> map) {
+	public String list(@SessionAttribute(name = "loginMember", required = false) Member loginMember, 
+			Model model, @RequestParam Map<String, String> paramMap) {
 		int page = 1;
 
 		Map<String, String> searchMap = new HashMap<String, String>();
@@ -64,11 +65,15 @@ public class PlantProudController {
 			page = Integer.parseInt(paramMap.get("page"));
 		} catch (Exception e) {}
 		
+		if(loginMember != null) {
+			searchMap.put("mNo", ""+loginMember.getMNo());
+		}
+		
 		int proudBoardCount = service.getProudBoardCount(searchMap);
 		int honeyBoardCount = service.getHoneyBoardCount(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 10, proudBoardCount, 5); // 게시글이 보여지는 갯수 = 10
 		List<ProudBoard> list = service.getProudBoardList(pageInfo, searchMap);
-		List<ProudBoard> likeList = service.getProudBoardLikeList(map);
+		List<ProudBoard> likeList = service.getProudBoardLikeList(paramMap);
 		System.out.println("list : " + list);
 		
 		model.addAttribute("list", list);
@@ -82,8 +87,11 @@ public class PlantProudController {
 	}
 	
 	@RequestMapping("/view")
-	public String view(Model model, @RequestParam("no") int no) {
-		ProudBoard proudBoard = service.findByNo(no);
+	public String view(Model model, @RequestParam("no") int no,
+			@SessionAttribute(name = "loginMember", required = false) Member loginMember
+			) {
+		int mNo = 0;
+		ProudBoard proudBoard = service.findByNo(no, mNo);
 		if(proudBoard == null) {
 			return "redirect:error";
 		}
@@ -198,7 +206,7 @@ public class PlantProudController {
 			if(isLike == 1) {
 				result = service.likeBoard(loginMember.getMNo(), bNo);	
 			}else {
-				result = service.unLikeBoard(loginMember.getMNo(), bNo);	
+				result = service.unLikeBoard(loginMember.getMNo(), bNo);
 			}
 			
 			if(result > 0) {

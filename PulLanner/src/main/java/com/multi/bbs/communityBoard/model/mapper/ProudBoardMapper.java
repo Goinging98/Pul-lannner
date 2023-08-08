@@ -12,7 +12,7 @@ import com.multi.bbs.communityBoard.model.vo.ProudBoard;
 public interface ProudBoardMapper {
 	List<ProudBoard> selectProudBoardList(Map<String, String> map);
 	int selectProudBoardCount(Map<String, String> map);
-	ProudBoard selectProudBoardByNo(int no);
+	ProudBoard selectProudBoardByNo(Map<String, String> map);
 	int insertProudBoard(ProudBoard proudBoard);
 	int updateProudBoard(ProudBoard proudBoard);
 	int updateProudReadCount(ProudBoard proudBoard);
@@ -24,7 +24,7 @@ public interface ProudBoardMapper {
 	int selectProudBoardLikeCount(Map<String, Object> param);
 //	int selectProudBoardLikeMemberCount(Map<String, Object> param);
 	List<ProudBoard> selectRandomList(Map<String, Object> Map);
-	List<ProudBoard> selectProudBoardLikeList(Map<String, Object> Map);
+	List<ProudBoard> selectProudBoardLikeList(Map<String, String> param);
 	int likeBoard(Map<String, String> map);
 	int unLikeBoard(Map<String, String> map);
 	

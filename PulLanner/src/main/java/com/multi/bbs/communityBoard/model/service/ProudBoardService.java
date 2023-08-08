@@ -69,8 +69,8 @@ public class ProudBoardService {
 		return mapper.selectProudBoardList(param);
 	}
 	
-	public List<ProudBoard> getProudBoardLikeList(Map<String, Object> Map){
-		return mapper.selectProudBoardLikeList(Map);
+	public List<ProudBoard> getProudBoardLikeList(Map<String, String> param){
+		return mapper.selectProudBoardLikeList(param);
 	}
 	
 	public List<ProudBoard> getProudBoardRandomList(Map<String, Object> param){
@@ -78,8 +78,11 @@ public class ProudBoardService {
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
-	public ProudBoard findByNo(int proudBoardNo) {
-		ProudBoard proudBoard = mapper.selectProudBoardByNo(proudBoardNo); 
+	public ProudBoard findByNo(int no, int mNo) {
+		Map<String, String> map = new HashMap<>();
+		map.put("bNo", ""+no);
+		map.put("mNo", ""+mNo);
+		ProudBoard proudBoard = mapper.selectProudBoardByNo(map); 
 		proudBoard.setReadCount(proudBoard.getReadCount() + 1);  
 		mapper.updateProudReadCount(proudBoard);
 		return proudBoard; 
@@ -94,7 +97,8 @@ public class ProudBoardService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	public int deleteProudBoard(int no, String rootPath) {
-		ProudBoard proudBoard = mapper.selectProudBoardByNo(no);
+		Map<String, String> map = new HashMap<>();
+		ProudBoard proudBoard = mapper.selectProudBoardByNo(map);
 		deleteFile(rootPath + "\\" + proudBoard.getRenamedFileName());
 		return mapper.deleteProudBoard(no);
 	}
