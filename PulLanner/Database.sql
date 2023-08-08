@@ -207,35 +207,11 @@ CREATE TABLE MEMBER (
 
 
 INSERT INTO MEMBER (
-    mNo, 
-    ID, 
-    PASSWORD, 
-    ROLE,
-    NAME, 
-    PHONE, 
-    EMAIL, 
-    ADDR1, 
-    ADDR2, 
-    ADDR3, 
-    HOBBY, 
-    STATUS, 
-    ENROLL_DATE, 
-    MODIFY_DATE
+    mNo,     ID,     PASSWORD,     ROLE,    NAME,     PHONE,     EMAIL, 
+    ADDR1,     ADDR2,     ADDR3,     HOBBY,     STATUS,     ENROLL_DATE,     MODIFY_DATE
 ) VALUES(
-    0, 
-    'admin', 
-    '1234', 
-    'ROLE_ADMIN', 
-    '관리자', 
-    '010-1234-4341', 
-    'admin@test.com', 
-    '',
-    '',
-    '',
-    DEFAULT,
-    DEFAULT,
-    DEFAULT,
-    DEFAULT
+    0,     'admin',     '1234',     'ROLE_ADMIN',     '관리자',     '010-1234-4341',     'admin@test.com', 
+    '',    '',    '',    DEFAULT,    DEFAULT,    DEFAULT,    DEFAULT
 );
 
 COMMIT;
@@ -258,26 +234,6 @@ CREATE TABLE SCRAP_WRITING (
 );
 
 
--------------------------------------------------
---------------- Board 관련 테이블 ------------------
--------------------------------------------------
-CREATE TABLE BOARD (	
-    bNo INT PRIMARY KEY AUTO_INCREMENT,
-    mNo INT, 
-	TITLE VARCHAR(1000), 
-	CONTENT VARCHAR(2000), 
-	TYPE VARCHAR(100), 
-	ORIGINAL_FILENAME VARCHAR(100), 
-	RENAMED_FILENAME VARCHAR(100), 
-	READCOUNT INT DEFAULT 0, 
-    STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN('Y', 'N')),
-    CREATE_DATE DATETIME  DEFAULT CURRENT_TIMESTAMP, 
-    MODIFY_DATE DATETIME  DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT FK_BOARD_WRITER FOREIGN KEY(mNo) REFERENCES MEMBER(mNo) ON DELETE SET NULL
-);
-
-COMMIT;
-SELECT * FROM BOARD;
 
 -------------------------------------------------
 ---------- Community Board 관련 테이블 -------------
@@ -339,23 +295,6 @@ CREATE TABLE BOARDLIKE(
 
 SELECT * FROM BOARDLIKE;
 
-------------------------------------------------------------------
-------------------------- REPLY 관련 테이블 -------------------------
-------------------------------------------------------------------
-CREATE TABLE REPLY(
-  rNo INT PRIMARY KEY AUTO_INCREMENT,
-  bNo INT,
-  mNo INT,
-  CONTENT VARCHAR(1000),
-  STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN ('Y', 'N')),
-  CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
-  MODIFY_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (bNo) REFERENCES BOARD(bNo),
-  FOREIGN KEY (mNo) REFERENCES MEMBER(mNo)
-);
-
-COMMIT;
-SELECT * FROM REPLY;
 
 
 ------------------------------------------------------------------
@@ -403,26 +342,6 @@ create table Product
       scoreAVG double
 );
 
-create table News
-(
-	nNo int auto_increment primary key,
-	title varchar(1000),
-	originallink varchar(1000),
-	link varchar(1000),
-	description varchar(1000),
-	pubDate datetime
-);
-
-create table Cart
-(
-	mNo int,
-    pNo int,
-    amount int,
-	foreign key (mNo) references Member(mNo),
-	foreign key (pNo) references Product(pNo),
-    primary key (mNo, pNo)
-);
-
 
 create table ProductReply
 (
@@ -437,76 +356,19 @@ create table ProductReply
 );
 
 
--- DML  시작
-insert into Member (mNo, id, password, name, email) values(0, 'admin', '1212', '홍길동', 'admin@email.com');
-insert into Member (mNo, id, password, name, email) values(0, 'test1', '1212', '최길동', 'test2@email.com');
-insert into Member (mNo, id, password, name, email) values(0, 'test2', '1212', '박길동', 'test2@email.com');
-select * from Member;
-
-
-
--- 여기까지만 초기화로 돌리세요!!
-
-insert into Product 
-	(pNo, title, link, image, lprice, hprice, mallName, 
-	productId, productType, maker, brand, category1, category2, category3, category4) 
-values(0, '키보드1', null,  null, 50000, 0, '키보드 전문샵', 'test1', '1', '웨이코스', '씽크웨이', 
-'디지털/가전','주변기기','키보드','유선키보드');
-
-insert into Product 
-	(pNo, title, link, image, lprice, hprice, mallName, 
-	productId, productType, maker, brand, category1, category2, category3, category4) 
-values(0, '키보드2', null,  null, 50000, 0, '키보드 전문샵', 'test1', '1', '웨이코스', '씽크웨이', 
-'디지털/가전','주변기기','키보드','유선키보드');
-select * from Product;
-select * from Product LIMIT 0, 10; 
-
-insert into News (nNo, title, originallink, link, description, pubDate) values(0, '뉴스1', null, null, '뉴스 내용1', sysdate());
-insert into News (nNo, title, originallink, link, description, pubDate) values(0, '뉴스2', null, null, '뉴스 내용2', sysdate());
-select * from News;
-
-
-insert into CART (mNo, pNo, amount) values (1,1,1);
-UPDATE CART set amount = 2 where mNo = 1 and pNo = 1;
-SELECT * FROM CART;
-
-SELECT * FROM Cart 
-INNER JOIN Product ON Cart.pNo = Product.pNo
-INNER JOIN Member ON Cart.mNo = Member.mNo;
-
-insert into ProductReply (rNo, mNo, pNo, content, score, createDate) values (0,1,1, '좋은 제품입니다.', 5, default);
-SELECT * FROM ProductReply;
-
-SELECT * FROM ProductReply 
-INNER JOIN Member ON Reply.mNo = Member.mNo
-WHERE pNo = 1;
-
-commit;
-
-
-SELECT AVG(score) FROM ProductReply where pno = 1;
-
-UPDATE product set scoreAVG = (SELECT AVG(score) FROM ProductReply where pno = 1) where pNo = 1;
-
-select * from product where pno = 1;
-
-SELECT  
-	*
-FROM Product 
-left outer JOIN Cart  ON Cart.pno = Product.pno
-left outer JOIN Member ON Cart.mNo = Member.mNo
-where Cart.mNo = 1;
-
-
-SELECT * FROM Cart 
-INNER JOIN Product ON Cart.pNo = Product.pNo
-INNER JOIN Member ON Cart.mNo = Member.mNo
-where Member.mno = 1;
-
-
 ------------------------------------------------------------------
 ------------------------- 주문내역 관련 테이블 -------------------------
 ------------------------------------------------------------------
+create table Cart
+(
+	mNo int,
+    pNo int,
+    amount int,
+	foreign key (mNo) references Member(mNo),
+	foreign key (pNo) references Product(pNo),
+    primary key (mNo, pNo)
+);
+
 DROP TABLE ORDERLIST;
 # 주문내역 
 CREATE TABLE ORDERLIST (
@@ -561,7 +423,6 @@ VALUES(0, 1, '선인장 분양합니다', '애지중지 2년동안 키운 선인
 COMMIT;
 
 SELECT * FROM PLANTSHOP;
-
 CREATE TABLE PLANTPARCELREPLY (
 	PARCELRNO INT PRIMARY KEY AUTO_INCREMENT,
 	PARCELNO INT,
@@ -578,39 +439,6 @@ COMMIT;
 
 SELECT * FROM PLANTPARCELREPLY;
 
--- 검색용 쿼리 3 종 세트
--- 리스트용 쿼리 완성
-SELECT  P.PARCELNO, P.PARCELTITLE, M.ID, P.CRTDATE, P.PARCELIMG, P.PARCELCOUNT, P.PARCELSTATUS, P.PLANTTYPE, P.PLANTNO, M.NAME
-FROM PLANTSHOP P JOIN MEMBER M ON(P.PARCELNO = M.mNO)
-WHERE 1 = 1 
-AND P.PARCELSTATUS = 'Y'
--- AND M.ID LIKE '%admin%' 
--- AND B.TITLE LIKE '%구매%' 
- AND P.PARCELCONTENT LIKE '%선인장%' 
-ORDER BY P.PARCELNO DESC LIMIT 10 OFFSET 0;
-
-SELECT COUNT(*)
-FROM PLANTSHOP P JOIN MEMBER M ON(P.PARCELNO = M.mNO)
-WHERE 1 = 1 
-AND P.PARCELSTATUS = 'Y'
--- AND M.ID LIKE '%admin%' 
--- AND B.TITLE LIKE '%구매%' 
- AND P.PARCELCONTENT LIKE '%선인장%';
-
-SELECT  P.PARCELNO, P.PARCELTITLE, M.ID, P.PARCELCOUNT, P.PARCELIMG, P.PARCELIMGEDT, P.PARCELCONTENT, P.CRTDATE, P.MDFDATE, P.PLANTTYPE, P.PLANTNO, M.NAME,
-		R.PARCELRNO as R_PARCELRNO, 
-        R.PARCELNO as R_PARCELNO, 
-        R.PARCELRCONTENT as R_PARCELRCONTENT, 
-        M2.ID as R_ID, 
-        R.RCRTDATE as R_RCRTDATE, 
-        R.RMDFDATE as R_RMDFDATE
-FROM PLANTSHOP P
-JOIN MEMBER M ON(P.mNO = M.mNO)
-LEFT OUTER JOIN PLANTPARCELREPLY R ON(R.PARCELNO = P.PARCELNO)
-LEFT OUTER JOIN MEMBER M2 ON(R.mNO = M2.mNO)
-WHERE P.PARCELSTATUS = 'Y' AND  P.PARCELNO=1;
-
-
 
 ------------------------------------------------------------------
 ------------------------- PLANT MANAGE 관련 테이블 -------------------------
@@ -625,10 +453,8 @@ CREATE TABLE PLANTMANAGE (
     CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP, 
     CONTENT VARCHAR(2000),  
     CONSTRAINT FK_MANAGELIST_WRITER FOREIGN KEY(mNo) REFERENCES MEMBER(mNo) ON DELETE SET NULL
-    );   
+);   
     
-COMMIT;
-
 select * from PLANTMANAGE;
 
 # 식물 리스트 
@@ -698,3 +524,50 @@ DESC Tourlist;
 
 select * from Tourlist;
 
+
+-------------------------------------------------
+--------------- 미사용 테이블 ------------------
+-------------------------------------------------
+CREATE TABLE BOARD (	
+    bNo INT PRIMARY KEY AUTO_INCREMENT,
+    mNo INT, 
+	TITLE VARCHAR(1000), 
+	CONTENT VARCHAR(2000), 
+	TYPE VARCHAR(100), 
+	ORIGINAL_FILENAME VARCHAR(100), 
+	RENAMED_FILENAME VARCHAR(100), 
+	READCOUNT INT DEFAULT 0, 
+    STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN('Y', 'N')),
+    CREATE_DATE DATETIME  DEFAULT CURRENT_TIMESTAMP, 
+    MODIFY_DATE DATETIME  DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT FK_BOARD_WRITER FOREIGN KEY(mNo) REFERENCES MEMBER(mNo) ON DELETE SET NULL
+);
+
+COMMIT;
+SELECT * FROM BOARD;
+
+CREATE TABLE REPLY(
+  rNo INT PRIMARY KEY AUTO_INCREMENT,
+  bNo INT,
+  mNo INT,
+  CONTENT VARCHAR(1000),
+  STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN ('Y', 'N')),
+  CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
+  MODIFY_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (bNo) REFERENCES BOARD(bNo),
+  FOREIGN KEY (mNo) REFERENCES MEMBER(mNo)
+);
+
+COMMIT;
+SELECT * FROM REPLY;
+
+-- 뉴스 
+create table News
+(
+	nNo int auto_increment primary key,
+	title varchar(1000),
+	originallink varchar(1000),
+	link varchar(1000),
+	description varchar(1000),
+	pubDate datetime
+);
