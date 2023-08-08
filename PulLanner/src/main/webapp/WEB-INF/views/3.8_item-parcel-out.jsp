@@ -9,14 +9,6 @@
 
 <!-- Page content-->
 <section class="container py-5 mt-5 mb-sm-2 mb-lg-3 mb-xl-4 mb-xxl-5">
-	<!-- Breadcrumb-->
-	<nav aria-label="breadcrumb">
-		<ol class="pt-lg-3 pb-2 pb-md-4 breadcrumb">
-			<li class="breadcrumb-item"><a href="${path}/ItemShop">아이템쇼핑</a></li>
-			<li class="breadcrumb-item active" aria-current="page">${product.title}</li>
-		</ol>
-	</nav>
-	
 	<div class="row pb-sm-1 pb-md-4">
 		<!-- Gallery-->
 		<div class="col-md-6 gallery mb-3 mb-md-0">

@@ -11,8 +11,8 @@
 	<!-- Breadcrumb-->
 	<nav aria-label="breadcrumb">
 		<ol class="pt-lg-3 pb-2 breadcrumb">
-			<li class="breadcrumb-item">풀레너</li>
-			<li class="breadcrumb-item"><a href="/Myplant">내 풀레너</a></li>
+			<li class="breadcrumb-item">풀래너</li>
+			<li class="breadcrumb-item"><a href="/Myplant">내 풀래너</a></li>
 			<li class="breadcrumb-item active">내 식물 등록하기</li>
 		</ol>
 	</nav>

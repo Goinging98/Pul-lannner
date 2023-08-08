@@ -148,10 +148,10 @@
 					<div class="mb-5 mx-auto me-sm-0 pb-lg-2 pb-xl-4" style="max-width: 340px;" data-aos="fade-left"
 						data-aos-offset="250" data-aos-delay="400" data-aos-easing="ease-out-back" data-disable-parallax-down="lg">
 						<div class="d-table bg-faded-dark rounded-1 p-2 mb-3 mb-lg-4">
-							<a class="nav-link  text-warning" style="font-size: 30px;" href="${path}/Myplant"> <i class="ai-cart fa-5x"></i></a>
+							<a class="nav-link  text-warning" style="font-size: 30px;" href="${path}/PlantShop"> <i class="ai-cart fa-5x"></i></a>
 						</div>
 
-						<a href="${path}/Myplant">
+						<a href="${path}/PlantShop">
 							<h2 class="h4 text-white mb-2 mb-lg-3">식물, 씨앗 구매</h2>
 						</a>
 						<p class="text-white opacity-80 mb-0">식물 판매 서비스는 사람들에게 다양한 종류의

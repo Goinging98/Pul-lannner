@@ -10,12 +10,6 @@
 	<input type="hidden" name="page">
 	<!-- Page content-->
 	<div class="container py-5 mt-5 mb-lg-4 mb-xl-5">
-		<!-- Breadcrumb-->
-		<nav aria-label="breadcrumb">
-			<ol class="pt-lg-3 pb-2 pb-md-4 breadcrumb">
-				<li class="breadcrumb-item">아이템쇼핑</li>
-			</ol>
-		</nav>
 		<!-- Banner-->
 		<div class="ignore-dark-mode rounded-1 overflow-hidden mb-5"
 			style="background-color: #F2F2DF;">

@@ -191,10 +191,12 @@ public class MyplantController{
     @RequestMapping("/pplantreply")
 	public String writePlantReply(Model model, int bno,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			@ModelAttribute Plantreply plantreply
+			@ModelAttribute Plantreply plantreply,
+			@RequestParam("waterdate_date") @DateTimeFormat(iso = ISO.DATE) Date waterdate
 			) {
     	plantreply.setBno(bno);
-    	plantreply.setMno(loginMember.getMNo());
+    	plantreply.setMno(loginMember.getMNo());	
+    	plantreply.setWaterdate(waterdate);
 		
 		log.info("리플 작성 요청 plantreply : " + plantreply);
 		

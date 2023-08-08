@@ -49,7 +49,9 @@
 		
 	
 	<select id="selectMANAGELIST" parameterType="int" resultMap="ManagelistdetailResultMap">
-		SELECT P.*, M.ID, R.mNO as R_mNO, R.pNo as R_pNo, R.POPTION as R_POPTION, R.CONTENT as R_CONTENT,  R.STATUS as R_STATUS, R.CREATE_DATE as R_CREATE_DATE
+		SELECT P.*, M.ID, R.mNO as R_mNO, R.pNo as R_pNo, R.POPTION as R_POPTION, R.CONTENT as R_CONTENT,  R.STATUS as R_STATUS
+			, R.WATER_DATE as R_WATER_DATE
+			, R.CREATE_DATE as R_CREATE_DATE
 		FROM MANAGELIST P 
 			JOIN MEMBER M ON P.mNo = M.mNo
 			LEFT OUTER JOIN PLANTREPLY R ON R.bNo = P.bNo

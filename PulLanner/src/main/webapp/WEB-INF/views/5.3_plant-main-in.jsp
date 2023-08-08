@@ -42,11 +42,12 @@
 	<!-- Breadcrumb-->
 	<nav aria-label="breadcrumb">
 		<ol class="pt-lg-3 pb-2 breadcrumb">
-			<li class="breadcrumb-item">풀레너</li>
-			<li class="breadcrumb-item"><a href="/Myplant">내 풀레너</a></li>
+			<li class="breadcrumb-item">풀래너</li>
+			<li class="breadcrumb-item"><a href="/Myplant">내 풀래너</a></li>
 			<li class="breadcrumb-item active">${item.petname}</li>
 		</ol>
 	</nav>
+	<div class="container row" style="float: none; margin:100 auto;">
 	<section class="card border-3 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4" style="max-width: 1000px;">
 		<div class="d-flex align-items-center">
 			<img src="${path}/Managelist/file/${item.renamedimg}" class="rounded-5" alt="Rounded image" style="width: 300px;">
@@ -62,6 +63,7 @@
 			</div>
 		</div>
 	</section>
+	</div>
 				<c:if test="${loginMember != null}">
 					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
 						style="margin-left: 60%">등록하기 <i class="ai-edit-alt"></i>
@@ -91,7 +93,7 @@
 		</c:if>
 	</div>
 
-	<!-- Page title-->
+	<!-- 일지 쓰기 -->
 	<div class="row pt-xl-3 mt-n1 mt-sm-0">
 		<div class="col-lg-9 offset-lg-3 pt-lg-3">
 			<div class="d-flex justify-content-between align-items-center">
