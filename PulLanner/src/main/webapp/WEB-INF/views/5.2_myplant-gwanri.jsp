@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -9,28 +8,28 @@
 
 <!-- Page content-->
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
+	<!-- Breadcrumb-->
+	<nav aria-label="breadcrumb">
+		<ol class="pt-lg-3 pb-2 breadcrumb">
+			<li class="breadcrumb-item">풀레너</li>
+			<li class="breadcrumb-item"><a href="/Myplant">내 풀레너</a></li>
+			<li class="breadcrumb-item active">내 식물 등록하기</li>
+		</ol>
+	</nav>
+
 	<div class="row pt-sm-2 pt-lg-0">
-
-
 		<form action="${path}/Plantwrite" method="post"
 			enctype="multipart/form-data">
 			<!-- Page content-->
 			<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
-				<h1 class="h2 mb-4">식물관리</h1>
+				<h1 class="h2 mb-4">내 식물 등록하기</h1>
 				<!-- Basic info-->
-				<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4"
-					style="max-width: 1000px;">
+				<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4" style="max-width: 1000px;">
 					<div class="card-body">
-						<div
-							class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
-							<i class="ai-user text-primary lead pe-1 me-2"></i>
-							<h2 class="h4 mb-0">내 식물 등록하기</h2>
-						</div>
 						<div class="d-flex align-items-center">
 							<div class="dropdown">
 								<input id="upfile" type="file" name="upfile"
-									style="display: none;">
-									 <label for="upfile"
+									style="display: none;"> <label for="upfile"
 									class="d-flex flex-column justify-content-end position-relative overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0"
 									style="width: 80px; height: 80px; background-image: url(${path}/Managelist/file/${Managelist.renamedimg});
 ">

@@ -19,10 +19,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon and Touch Icons-->
 <link rel="apple-touch-icon" sizes="180x180" href="/resources/assets/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/resources/assets/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/resources/assets/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn-icons-png.flaticon.com/512/5775/5775998.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cdn-icons-png.flaticon.com/512/5775/5775998.png">
 <link rel="manifest" href="/resources/assets/favicon/site.webmanifest">
-<link rel="mask-icon" color="#6366f1" href="/resources/assets/favicon/safari-pinned-tab.svg">
+<link rel="mask-icon" color="#6366f1" href="https://cdn-icons-png.flaticon.com/512/5775/5775998.png">
 <meta name="msapplication-TileColor" content="#080032">
 <meta name="msapplication-config" content="/resources/assets/favicon/browserconfig.xml">
 <meta name="theme-color" content="white">
@@ -158,7 +158,6 @@
 
 	<!-- Page wrapper-->
 	<main class="page-wrapper">
-		<!-- Navbar. Remove 'fixed-top' class to make the navigation bar scrollable with the page-->
 		<header class="navbar navbar-expand-lg fixed-top" style="background-color: #ffffff;">
 			<div class="container">
 				<a class="navbar-brand pe-sm-3" href="/main">
@@ -209,7 +208,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="${path}/Myplant" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">풀래너</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="${path}/Myplant">내 식물 관리</a></li>
+								<li><a class="dropdown-item" href="${path}/Myplant">내 풀레너</a></li>
 								<li><a class="dropdown-item" href="${path}/MyplantMain">풀래너스</a></li>
 							</ul>
 						</li>

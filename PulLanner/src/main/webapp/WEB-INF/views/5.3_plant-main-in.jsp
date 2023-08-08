@@ -1,94 +1,75 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+<style>
+	.text-large {
+		font-size: 28px;
+		/* 원하는 크기로 조정하세요 */
+	}
+	
+	.text-bold {
+		font-weight: bold;
+		/* 두께를 bold로 조정합니다 */
+	}
+	
+	.text-large2 {
+		font-size: 20px;
+		color: rgb(80, 121, 80);
+	}
+
+	.col-lg-9.offset-lg-3 {
+		margin-left: 0;
+	}
+	
+	.col-lg-9 h1 {
+		font-size: 25px;
+		font-weight: bold;
+	}
+	
+	.col-lg-9 p {
+		color: rgb(65, 128, 65);
+		font-size: 20px;
+		font-weight: bold;
+	}
+</style>
+
 <!-- Page content-->
 <div class="container py-5 mt-5 mb-lg-4 mb-xl-5">
 	<!-- Breadcrumb-->
 	<nav aria-label="breadcrumb">
 		<ol class="pt-lg-3 pb-2 breadcrumb">
-			<li class="breadcrumb-item"><a href="index.html">식물관리</a></li>
-			<li class="breadcrumb-item active" aria-current="page">개인 식물저장소</li>
+			<li class="breadcrumb-item">풀레너</li>
+			<li class="breadcrumb-item"><a href="/Myplant">내 풀레너</a></li>
+			<li class="breadcrumb-item active">${item.petname}</li>
 		</ol>
 	</nav>
-
-	<!-- 프로필정보-->
-	<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4"
-		style="max-width: 1100px; height: 200px;">
-		<div class="card-body" style="padding-left: 10px;"></div>
-		<div class="d-md-flex align-items-center">
-			<div class="d-sm-flex align-items-center">
-				<div
-					class="rounded-circle bg-size-cover bg-position-center flex-shrink-0"
-					style="width: 65px; height: 65px; background-image: url(assets/img/avatar/01.jpg);"></div>
-				<div class="pt-3 pt-sm-0 ps-sm-3">
-					<h3 class="h5 mb-2">${loginMember.name}<i
-							class="ai-circle-check-filled fs-base text-success ms-2"></i>
-					</h3>
-					<div
-						class="text-muted fw-medium d-flex flex-wrap flex-sm-nowrap align-iteems-center">
-						<div class="d-flex align-items-center me-3">
-							<i class="ai-mail me-1"></i>${loginMember.id}</div>
-						<div class="d-flex align-items-center text-nowrap">
-							<i class="ai-map-pin me-1"></i>Korea
-						</div>
-					</div>
-				</div>
-			</div>
-	</section>
-	<style>
-.text-large {
-	font-size: 28px;
-	/* 원하는 크기로 조정하세요 */
-}
-
-.text-bold {
-	font-weight: bold;
-	/* 두께를 bold로 조정합니다 */
-}
-
-.text-large2 {
-	font-size: 20px;
-	color: rgb(80, 121, 80);
-}
-</style>
-
+	
 	<div class="d-flex align-items-center">
-		<img src="${path}/Managelist/file/${item.renamedimg}"
-			class="rounded-5" alt="Rounded image"
-			style="width: 200px; height: 200px;">
+		<img src="${path}/Managelist/file/${item.renamedimg}" class="rounded-5" alt="Rounded image" style="width: 200px; height: 200px;">
 		<div class="ms-3">
 			<p class="text-large text-bold">${item.plantname}</p>
 			<p class="text-large2 text-bold">${item.petname}</p>
-			
-						<p class=" text-bold">키우기 시작한지${startDay}&nbsp;일째
-			<p class=" text-bold"><fmt:formatDate  type="both" value="${item.startdate }"/>
-			
-			</p>
-			<p class=" text-bold">최근 물 준날${diffDay}&nbsp;일째
+			<p class=" text-bold">키우기 시작한지 ${startDay}&nbsp;일째</p>
+			<p class=" text-bold"><fmt:formatDate  type="both" pattern="y년 M월 d일 E요일" value="${item.startdate}"/></p>
+			<p class=" text-bold">마지막으로 물 준지 ${diffDay}&nbsp;일째
 
 			</p>
-			<p class=" text-bold"><fmt:formatDate type="both" value="${item.waterdate }"/></p>
+			<p class=" text-bold"><fmt:formatDate type="both" pattern="y년 M월 d일 E요일" value="${item.waterdate }"/></p>
 		</div>
 	</div>
 
-
-
-
-	<!-- Page title-->
 	<div class="row pt-xl-3 mt-n1 mt-sm-0">
 		<div class="col-lg-9 offset-lg-3 pt-lg-3">
 			<div class="d-flex justify-content-between align-items-center">
 				<h1 class="pb-2 pb-sm-3"></h1>
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-					data-bs-target="#exampleModal" style="margin-left: 60%">
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 60%">
 					등록하기 <i class="ai-edit-alt"></i>
 				</button>
-				>
 
 				<!-- Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -116,60 +97,31 @@
 
 							</div>
 
-							<form method="post" action="${path}/MyplantView"
-								enctype="multipart/form-data">
-								<input type="hidden" name="id" value="${loginMember.id}"
-									readonly class="input-text"> <label class="form-label">어느날짜로
-									기록해드릴까요?</label>
+							<form method="post" action="${path}/MyplantView" enctype="multipart/form-data">
+								<input type="hidden" name="id" value="${loginMember.id}" readonly class="input-text"> 
+								<label class="form-label">어느날짜로 기록해드릴까요?</label>
 								<div class="form-floating">
 									<div class="form-floating">
-										<input class="form-control" type="date"
-											placeholder="choose date" id="waterdate_date"
-											name="waterdate_date">
+										<input class="form-control" type="date" placeholder="choose date" id="waterdate_date" name="waterdate_date">
 									</div>
 								</div>
 								<label class="form-label">내용</label>
-								<textarea class="form-control" name="content" id="fl-textarea"
-									style="height: 100px;" placeholder="내 식물을 위한 한마디!"></textarea>
-
-
-
+								<textarea class="form-control" name="content" id="fl-textarea" style="height: 100px;" placeholder="내 식물을 위한 한마디!"></textarea>
 								<div class="modal-footer">
-									<button type="reset" class="btn btn-secondary"
-										data-bs-dismiss="modal">취소</button>
+									<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 									<button type="submit" class="btn btn-primary">등록</button>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-				
-
 			</div>
 		</div>
 	</div>
-	<!-- This is the registration button -->
-</div>
-</div>
 </div>
 <div class="row pb-2 pb-sm-4">
 	<div class="col-lg-9">
-		<style>
-.col-lg-9.offset-lg-3 {
-	margin-left: 0;
-}
-
-.col-lg-9 h1 {
-	font-size: 25px;
-	font-weight: bold;
-}
-
-.col-lg-9 p {
-	color: rgb(65, 128, 65);
-	font-size: 20px;
-	font-weight: bold;
-}
-</style>
+		
 
 		<p>.</p>
 

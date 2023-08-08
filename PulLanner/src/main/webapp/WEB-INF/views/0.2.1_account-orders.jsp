@@ -78,7 +78,7 @@
 											</div>
 											<div class="me-3 me-sm-4">
 												<div class="d-none d-sm-block fs-sm text-muted mb-2">주문날짜</div>
-												<div class="fs-sm fw-medium text-dark"><fmt:formatDate value="${item.orderdate}" pattern="y년 M월 d일 E요일 H시 m분" type="date"/></div>
+												<div class="fs-sm fw-medium text-dark"><fmt:formatDate value="${item.orderdate}" dateStyle="full" type="date"/></div>
 											</div>
 											<div class="me-3 me-sm-4">
 												<div class="fs-sm text-muted mb-2">결제금액</div>

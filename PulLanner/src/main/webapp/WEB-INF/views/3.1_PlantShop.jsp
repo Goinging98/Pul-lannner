@@ -7,12 +7,12 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="식물분양" name="title" />
 </jsp:include>
+
 <form name="searchForm" action="${path}/PlantShop" method="get">
 <c:set var="searchType" value="${param.searchType}" />
 <c:if test="${empty searchType}">
 	<c:set var="searchType" value="${'parceltitle'}" />
 </c:if>
-
 <!-- Page content-->
 <div class="container py-5 mt-5 mb-lg-4 mb-xl-5">
 	<!-- Banner-->
@@ -65,28 +65,6 @@
 				</div>
 				<div class="offcanvas-body pt-2 pt-lg-0 pe-lg-4">
 						<!-- 검색 -->
-						<div class="col-8" style="height: 70px;">
-							<input type="hidden" name="page" value="1"> 
-<%-- 							<label>
-								<input type="radio" name="searchType" value="parceltitle"
-								${searchType == 'parceltitle' ? 'checked' : ''}> 제목
-							</label> 
-							<label> 
-								<input type="radio" name="searchType" value="parcelcontent" 
-								${searchType == 'parcelcontent' ? 'checked' : ''}> 내용
-							</label> 
-							<label> 
-								<input type="radio" name="searchType" value="writername" 
-								${searchType == 'writername' ? 'checked' : ''}> 작성자
-							</label>  --%>
-							<div class="input-group input-group-sm rounded-pill" style="width: 280px;">
-								<span class="input-group-text"><i class="ai-search"></i></span>
-								<input type="text" id="searchValue" name="parceltitle"
-									value="${param.searchValue}" class="form-control rounded"
-									placeholder="제목을 입력하세요">
-								<button type="submit" class="btn btn-primary rounded-pill">검색</button>
-							</div>
-						</div>
 						<br/><br/>
 						<h3 class="h5">판매 종류</h3>
 						<div class="accordion accordion-alt pb-2 mb-4" id="shopCategories">
@@ -112,42 +90,34 @@
 								</div>
 							</div>
 						</div>
+						<div class="col-8" style="height: 70px;">
+							<input type="hidden" name="page" value="1"> 
+<%-- 							<label>
+								<input type="radio" name="searchType" value="parceltitle"
+								${searchType == 'parceltitle' ? 'checked' : ''}> 제목
+							</label> 
+							<label> 
+								<input type="radio" name="searchType" value="parcelcontent" 
+								${searchType == 'parcelcontent' ? 'checked' : ''}> 내용
+							</label> 
+							<label> 
+								<input type="radio" name="searchType" value="writername" 
+								${searchType == 'writername' ? 'checked' : ''}> 작성자
+							</label>  --%>
+							<div class="input-group input-group-sm rounded-pill" style="width: 280px;">
+								<span class="input-group-text"><i class="ai-search"></i></span>
+								<input type="text" id="searchValue" name="parceltitle"
+									value="${param.searchValue}" class="form-control rounded" placeholder="검색">
+								<button type="submit" class="btn btn-primary rounded-pill">검색</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</aside>
 		
 		<!-- Product grid-->
 		<div class="col-lg-9">
-			<!-- Active filters + Sorting-->
-			  
-			<%-- <div class="d-flex align-items-start justify-content-between mb-4">
-				<!--              <a href="/Around/03_2.html"> <button class="btn btn-lg btn-primary" type="submit">내 식물분양</button></a>
-             <a href="/Around/03_3.html"> <button class="btn btn-lg btn-primary mx-3" type="submit">내 씨앗분양</button></a> -->
-				<div class="input-group">
-					<div class="col-8" style="height: 70px;">
-						<form name="searchForm" action="${path}/Plantshop" method="get">
-							<input type="hidden" name="page" value="1"> <label>
-								<input type="radio" name="searchType" value="title"
-								${searchType == 'title' ? 'checked' : ''}> 제목
-							</label> <label> <input type="radio" name="searchType"
-								value="content" ${searchType == 'content' ? 'checked' : ''}>
-								내용
-							</label> <label> <input type="radio" name="searchType"
-								value="writer" ${searchType == 'writer' ? 'checked' : ''}>
-								작성자
-							</label> <input type=text id="searchValue" name="searchValue"
-								class="form-control rounded" placeholder="검색어를 입력해주세요"
-								aria-label="Search" aria-describedby="search-addon"
-								value="${param.searchValue}" />
-					</div>
-					<span class="col-4">
-						<button type="button" class="btn btn-outline-primary "
-							style="float: right; height: 65px">검색</button>
-					</span>
-					</form>
-				</div>
-			</div> --%>
-			
 			<!-- 리스트 시작 -->
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 				<c:if test="${not empty list}">
@@ -163,8 +133,8 @@
 									data-swiper-options="{&quot;loop&quot;: true, &quot;navigation&quot;: {&quot;prevEl&quot;: &quot;.btn-prev&quot;, &quot;nextEl&quot;: &quot;.btn-next&quot;}}">
 									<a class="swiper-wrapper" href="/Around/02_2seed-parcel-out.html"> <!-- Item -->
 										<div class="swiper-slide rounded-2">
-											<div class="rounded-2" style="background-image: url('/plant/file/${item.parcelimgedt}' ); background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;"
-												alt="Product"></div>
+											<div class="rounded-2" style="background-image: url('/plant/file/${item.parcelimgedt}' ); background-size: cover; 
+												background-repeat: no-repeat; background-position: center; width: 100%; height: 300px;" alt="Product"></div>
 										</div>
 									</a>
 									<button class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0" type="button">
@@ -198,16 +168,6 @@
 			</div>
 			<!-- Pagination-->
 			<div class="row gy-3 align-items-center pt-3 pt-sm-4 mt-md-2">
-				<!--               <div class="col col-md-4 col-6 order-md-1 order-1">
-                <div class="d-flex align-items-center"><span class="text-muted fs-sm">Show</span>
-                  <select class="form-select form-select-flush w-auto">
-                    <option value="12">12</option>
-                    <option value="18">18</option>
-                    <option value="24">24</option>
-                    <option value="30">30</option>
-                  </select>
-                </div>
-              </div> -->
 				<div class="col col-md-4 col-12 order-md-2 order-3 text-center">
 					<!-- <button class="btn btn-primary w-md-auto w-100" type="button">Load more products</button> -->
 				</div>
@@ -223,20 +183,15 @@
 							<c:forEach begin="${pageInfo.startPage}"
 								end="${pageInfo.endPage}" varStatus="status" step="1">
 								<c:if test="${status.current == pageInfo.currentPage}">
-									<li class="page-item active" aria-current="page"><span
-										class="page-link">${status.current}<span
-											class="visually-hidden">(current)</span></span></li>
+									<li class="page-item active" aria-current="page">
+									<span class="page-link">${status.current}<span class="visually-hidden">(current)</span></span></li>
 								</c:if>
 								<c:if test="${status.current != pageInfo.currentPage}">
 									<li class="page-item"><a class="page-link" href="#">${status.current}</a></li>
 								</c:if>
 							</c:forEach>
-							<li class="page-item"><a href="javascript:void(0);"
-								onclick="movePage(${pageInfo.nextPage}); return false;"
-								class="page-link">Next</a></li>
-							<li class="page-item"><a href="javascript:void(0);"
-								onclick="movePage(${pageInfo.maxPage}); return false;"
-								class="page-link">&gt;&gt;</a></li>
+							<li class="page-item"><a href="javascript:void(0);" onclick="movePage(${pageInfo.nextPage}); return false;" class="page-link">Next</a></li>
+							<li class="page-item"><a href="javascript:void(0);" onclick="movePage(${pageInfo.maxPage}); return false;" class="page-link">&gt;&gt;</a></li>
 						</ul>
 					</nav>
 				</div>

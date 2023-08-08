@@ -13,8 +13,8 @@
         <!-- Breadcrumb-->
         <nav aria-label="breadcrumb">
           <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="${path}/HoneyTip/list">기르기 꿀팁</a></li>
+            <li class="breadcrumb-item">커뮤니티</li>
+            <li class="breadcrumb-item"><a href="${path}/HoneyTip/list">식물 기르기 꿀팁</a></li>
             <li class="breadcrumb-item active" aria-current="page">글보기</li>
           </ol>
         </nav>
@@ -53,7 +53,7 @@
             
             <!-- Comments-->
             <div class="pt-4 pt-xl-5 mt-4" id="comments">
-              <h2 class="h1 py-lg-1 py-xl-3">comments</h2>
+              <h2 class="h1 py-lg-1 py-xl-3">댓글</h2>
               
               <!-- 리플출력 -->
 				<c:if test="${!empty honeyReplyList}">
@@ -85,19 +85,19 @@
               
               <div class="card border-0 bg-secondary pt-2 p-md-2 p-xl-3 p-xxl-4 mt-n3 mt-md-2 mb-2">
                 <div class="card-body">
-                  <h2 class="pb-2 pb-lg-3 pb-xl-4">Leave a comment</h2>
+                  <h2 class="pb-2 pb-lg-3 pb-xl-4">댓글 남기기</h2>
                   <form class="row needs-validation g-4" action="${path}/HoneyTip/reply" method="post" novalidate>
                     <div class="col-12">
-                      <label class="form-label" for="c-comment">Comment</label>
+                      <label class="form-label" for="c-comment">댓글</label>
 	                  <input type="hidden" name="BNo" value="${honeyBoard.BNo}" />
 	                  <input type="hidden" name="id" value="${loginMember.id}" />
 	                  <input type="hidden" name="name" value="${loginMember.name}" />
                       <textarea class="form-control"  name="content" id="replyContent" rows="4" placeholder="Type your comment here..." required id="c-comment"></textarea>
-                      <div class="invalid-feedback">Please enter a comment message!</div>
+                      <div class="invalid-feedback">댓글을 남겨주세요</div>
                     </div>
                     <div class="col-12">
                     <c:if test="${loginMember != null}">
-                      <button class="btn btn-primary" type="submit" id="btn-insert">Post a comment</button>
+                      <button class="btn btn-primary" type="submit" id="btn-insert">등록하기</button>
                       </c:if>
                     </div>
                   </form>
@@ -107,6 +107,7 @@
           </div>
         </div>
       </section>
+      <br/><br/><br/><br/><br/><br/>
 
     <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll>
       <svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
