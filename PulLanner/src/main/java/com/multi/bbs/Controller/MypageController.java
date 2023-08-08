@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.bbs.member.model.vo.Member;
+import com.multi.bbs.shop.model.service.OrderService;
 import com.multi.bbs.shop.model.service.ShopService;
+import com.multi.bbs.shop.model.vo.Orderlist;
+import com.multi.bbs.shop.model.vo.Orderproduct;
 import com.multi.bbs.shop.model.vo.Product;
 import com.multi.bbs.member.model.service.MyproudService;
 import com.multi.bbs.communityBoard.model.vo.ProudBoard;
@@ -120,9 +123,36 @@ public class MypageController {
 		return "0.2.3_account-favorites";
 	}
 
+	@Autowired
+	OrderService orderservice;
 	@RequestMapping(value = "/mypage/overview", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("account overview page");
+		Member member = (Member) session.getAttribute("loginMember");
+		if(member == null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			model.addAttribute("location", "/login");
+			return "common/msg";
+		}
+		int totalAmount;
+		int totalPrice;
+		
+		List<Orderlist> olist = orderservice.getOrderList(member.getMNo());
+		for(Orderlist order : olist) {
+			totalAmount = 0;
+			totalPrice = 0;
+			List<Orderproduct> list = orderservice.getOrderProduct(order.getONO());
+			order.setProductList(list);
+			for(Orderproduct item : list) {
+				totalPrice += item.getLprice() * item.getAmount(); 
+				totalAmount += item.getAmount();
+			}
+			totalPrice += 3000;
+			order.setTotalAmount(totalAmount);
+			order.setTotalPrice(totalPrice);
+			
+		}
+		model.addAttribute("olist", olist);
 		return "0.4.1_account-overview";
 	}
 	

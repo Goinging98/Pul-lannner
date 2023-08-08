@@ -9,7 +9,7 @@
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
 		<!-- Sidebar -->
-		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
+		<aside class="col-lg-2 pe-lg-4 pe-xl-5 mt-n3" style="background-color: #F6F9FC;">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
 				<div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
@@ -49,12 +49,13 @@
 		
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
-			<div class="d-flex align-items-center mb-4">
-				<h1 class="h2 mb-0">장바구니</h1>
-			</div>
 			<div class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4">
 				<div class="card-body pb-4">
 					<!-- Orders accordion-->
+					<div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
+						<i class="ai-cart text-primary lead pe-1 me-2"></i>
+						<h2 class="h4 mb-0">장바구니</h2>
+					</div>
 					<c:forEach var="item" items="${list}">
 					<div class="accordion accordion-alt accordion-orders" id="orders">
 						<table class="table align-middle w-100" style="min-width: 450px;">

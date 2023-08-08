@@ -9,7 +9,7 @@
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
 		<!-- Side bar -->
-		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
+		<aside class="col-lg-2 pe-lg-4 pe-xl-5 mt-n3" style="background-color: #F6F9FC;">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
 				<div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
@@ -50,10 +50,8 @@
 		
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
-			<h1 class="h2 mb-4">내 글 관리</h1>
-			<!-- Basic info-->
-			<!-- Page title + filters-->
 			<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4">
+				<h1 class="h2 mb-4">내 판매글</h1>
 				<div class="row align-items-center gy-2 mb-4 pb-1 pb-sm-2 pb-lg-3">
 					<div class="col-lg-5">
 						<h1 class="mb-lg-0"></h1>

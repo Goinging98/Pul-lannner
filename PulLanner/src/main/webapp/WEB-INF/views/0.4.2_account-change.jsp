@@ -54,8 +54,8 @@ function findAddr(){
 
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
-		<!-- Sidebar (offcanvas on sreens < 992px)-->
-		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
+		<!-- Sidebar -->
+		<aside class="col-lg-2 pe-lg-4 pe-xl-5 mt-n3" style="background-color: #F6F9FC;">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
 				<div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
@@ -81,7 +81,7 @@ function findAddr(){
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">스크랩</h4>
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a> 
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/starplant"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a> 
-							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/stargarden"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물원</a>
+							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/starplace"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물원</a>
 						</nav>
 						<nav class="nav flex-column pb-2 pb-lg-4 mb-3">
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">내 정보 관리</h4>
@@ -98,13 +98,12 @@ function findAddr(){
 
 		<!-- 기본 정보 변경 -->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
-			<h1 class="h2 mb-4">설정</h1>
 			<!-- Basic info-->
 			<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4">
 				<div class="card-body">
 					<div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
 						<i class="ai-user text-primary lead pe-1 me-2"></i>
-						<h2 class="h4 mb-0">내 정보</h2>
+						<h2 class="h4 mb-0">내 정보 수정</h2>
 					</div>
 					<form id="enroll-container" name="memberEnrollFrm" action="${path}/mypage/update" method="post">
 						<div class="row g-3 g-sm-4 mt-0 mt-lg-2">

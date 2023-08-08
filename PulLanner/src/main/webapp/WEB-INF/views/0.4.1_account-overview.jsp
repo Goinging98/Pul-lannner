@@ -8,8 +8,8 @@
 
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
-		<!-- Sidebar (offcanvas on sreens < 992px)-->
-		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
+		<!-- Sidebar -->
+		<aside class="col-lg-2 pe-lg-4 pe-xl-5 mt-n3" style="background-color: #F6F9FC;">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
 				<div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
@@ -34,7 +34,7 @@
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">스크랩</h4>
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/stararticle"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 글</a> 
 							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/starplant"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물</a> 
-							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/stargarden"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물명소</a>
+							<a class="nav-link fw-semibold py-2 px-0" href="/mypage/starplace"><i class="ai-star-filled fs-5 opacity-60 me-2"></i>관심 식물명소</a>
 						</nav>
 						<nav class="nav flex-column pb-2 pb-lg-4 mb-3">
 							<h4 class="fs-xs fw-medium text-muted text-uppercase pb-1 mb-2">내 정보 관리</h4>
@@ -49,7 +49,6 @@
 		
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
-			<h1 class="h2 mb-4">내 정보 관리</h1>
 			<!-- Basic info-->
 			<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-1">
 				<div class="card-body">
@@ -97,87 +96,101 @@
 						<a class="btn btn-sm btn-secondary ms-auto" href="/mypage/orders">모두 보기</a>
 					</div>
 					<!-- Orders accordion-->
+					
 					<div class="accordion accordion-alt accordion-orders" id="orders">
-						<!-- Order-->
-						<div class="accordion-item border-top mb-0">
-							<div class="accordion-header">
-								<a class="accordion-button d-flex fs-4 fw-normal text-decoration-none py-3 collapsed"
-									href="#orderOne" data-bs-toggle="collapse" aria-expanded="false" aria-controls="orderOne">
-									<div class="d-flex justify-content-between w-100" style="max-width: 440px;">
-										<div class="me-3 me-sm-4">
-											<div class="fs-sm text-muted">#78A6431D409</div>
-											<span class="badge bg-faded-info text-info fs-xs">배송 준비중</span>
-											<span class="badge bg-faded-primary text-primary fs-xs">배송중</span>
-											<span class="badge bg-faded-danger text-danger fs-xs">주문취소</span>
-										</div>
-										<div class="me-3 me-sm-4">
-											<div class="d-none d-sm-block fs-sm text-muted mb-2">주문 날짜</div>
-											<div class="d-sm-none fs-sm text-muted mb-2">Date</div>
-											<div class="fs-sm fw-medium text-dark">Jan 27, 2022</div>
-										</div>
-										<div class="me-3 me-sm-4">
-											<div class="fs-sm text-muted mb-2">합계</div>
-											<div class="fs-sm fw-medium text-dark">$16.00</div>
-										</div>
-									</div>
-									<div class="accordion-button-img d-none d-sm-flex ms-auto">
-										<div class="mx-1">
-											<img src="/resources/assets/img/account/orders/01.png" width="48" alt="Product">
-										</div>
-									</div>
-								</a>
-							</div>
-							<div class="accordion-collapse collapse" id="orderOne" data-bs-parent="#orders">
-								<div class="accordion-body">
-									<div class="table-responsive pt-1">
-										<table class="table align-middle w-100" style="min-width: 450px;">
-											<tr>
-												<td class="border-0 py-1 px-0">
-													<div class="d-flex align-items-center">
-														<a class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3" href="shop-single.html">
-															<img src="/resources/assets/img/shop/cart/01.png" width="110" alt="Product">
-														</a>
-														<div class="ps-3 ps-sm-4">
-															<h4 class="h6 mb-2">
-																<a href="shop-single.html">Candle in concrete bowl</a>
-															</h4>
-														</div>
-													</div>
-												</td>
-												<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
-													<div class="fs-sm text-muted mb-2">수량</div>
-													<div class="fs-sm fw-medium text-dark">1</div>
-												</td>
-												<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
-													<div class="fs-sm text-muted mb-2">가격</div>
-													<div class="fs-sm fw-medium text-dark">$16</div>
-												</td>
-												<td class="border-0 text-end py-1 pe-0 ps-3 ps-sm-4">
-													<div class="fs-sm text-muted mb-2">합계</div>
-													<div class="fs-sm fw-medium text-dark">$16</div>
-												</td>
-											</tr>
-										</table>
-									</div>
-									<div class="bg-secondary rounded-1 p-4 my-2">
-										<div class="row">
-											<div class="col-sm-7 col-md-9 mb-4 mb-md-0">
-												<div class="fs-sm fw-medium text-dark mb-1">배송지:</div>
-												<div class="fs-sm">
-													401 Magnetic Drive Unit 2,<br>Toronto, Ontario, M3J 3H9, Canada
-												</div>
+						<c:forEach var="item" items="${olist}">
+							<div class="accordion-item border-top mb-0">
+								<div class="accordion-header">
+									<a class="accordion-button d-flex fs-4 fw-normal text-decoration-none py-3 collapsed"
+										href="#order${item.ONO}" data-bs-toggle="collapse" aria-expanded="false" aria-controls="order${item.ONO}">
+										<div class="d-flex justify-content-between w-100" style="max-width: 440px;">
+											<div class="me-3 me-sm-4">
+												<div class="fs-sm text-muted"></div>
+												<span class="badge bg-faded-info text-info fs-xs">주문완료</span>
 											</div>
-											<div class="col-md-4 col-lg-3 text-md-end">
-												<button class="btn btn-sm btn-outline-primary w-100 w-md-auto" type="button">
-													<i class="ai-star me-2 ms-n1"></i>리뷰 작성
-												</button>
+											<div class="me-3 me-sm-4">
+												<div class="d-none d-sm-block fs-sm text-muted mb-2">주문날짜</div>
+												<div class="fs-sm fw-medium text-dark"><fmt:formatDate value="${item.orderdate}" dateStyle="full" type="date"/></div>
+											</div>
+											<div class="me-3 me-sm-4">
+												<div class="fs-sm text-muted mb-2">결제금액</div>
+												<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${item.totalPrice}" pattern="#,###" />원</div>
+											</div>
+											<div class="me-3 me-sm-4">
+												<div class="fs-sm text-muted mb-2">주문수량</div>
+												<div class="fs-sm fw-medium text-dark">${item.totalAmount}</div>
+											</div>
+										</div>
+										<div class="accordion-button-img d-none d-sm-flex ms-auto">
+											<div class="mx-1"></div>
+										</div>
+									</a>
+								</div>
+								
+								
+								<div class="accordion-collapse collapse" id="order${item.ONO}" data-bs-parent="#orders">
+									<div class="accordion-body">
+										<div class="table-responsive pt-1">
+											<table class="table align-middle w-100" style="min-width: 450px;">
+											<c:forEach var="product" items="${item.productList}">
+												<tr>
+													<td class="border-0 py-1 px-0">
+														<div class="d-flex align-items-center">
+															<a class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-md-2 p-lg-3"
+																href="/shop/product?pno=${product.PNo}">
+															<img src="${product.image}" width="110" alt="Product"></a>
+															<div class="ps-3 ps-sm-4">
+																<h4 class="h6 mb-2">
+																	<a href="/shop/product?pno=${product.PNo}">${product.title}</a>
+																</h4>
+															</div>
+														</div>
+													</td>
+													<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
+														<div class="fs-sm text-muted mb-2">수량</div>
+														<div class="fs-sm fw-medium text-dark">${product.amount}</div>
+													</td>
+													<td class="border-0 py-1 pe-0 ps-3 ps-sm-4">
+														<div class="fs-sm text-muted mb-2">가격</div>
+														<div class="fs-sm fw-medium text-dark"><fmt:formatNumber value="${product.lprice}" pattern="#,###" />원</div>
+													</td>
+												</tr>
+												
+											</c:forEach>
+											</table>
+										</div>
+										<div class="bg-secondary rounded-1 p-4 my-2">
+											<div class="row">
+												<div class="col-sm-5 col-md-3 col-lg-4 mb-3 mb-md-0">
+													<div class="fs-sm fw-medium text-dark mb-1">결제수단</div>
+													<c:if test="${item.payment == 1 }">
+														<div class="fs-sm">카카오페이</div>
+													</c:if>
+													<c:if test="${item.payment == 2 }">
+														<div class="fs-sm">계좌이체</div>
+													</c:if>
+												</div>
+												<div class="col-sm-7 col-md-5 mb-4 mb-md-0">
+													<div class="fs-sm fw-medium text-dark mb-1">배달주소</div>
+													<div class="fs-sm">
+														(${item.addr1}) ${item.addr2}, ${item.addr3}
+													</div>
+												</div>
+												<div class="col-md-4 col-lg-3 text-md-end">
+													<a href="/shop/product?pno=${product.PNo}">
+														<button class="btn btn-sm btn-outline-primary w-100 w-md-auto" type="button">
+															<i class="ai-star me-2 ms-n1"></i>리뷰를 남기세요
+														</button>
+													</a>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</c:forEach>
 					</div>
+					
 				</div>
 			</section>
 		</div>

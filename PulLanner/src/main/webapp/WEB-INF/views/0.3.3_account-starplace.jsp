@@ -8,8 +8,8 @@
 
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
-		<!-- Sidebar (offcanvas on sreens < 992px)-->
-		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
+		<!-- Sidebar -->
+		<aside class="col-lg-2 pe-lg-4 pe-xl-5 mt-n3" style="background-color: #F6F9FC;">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
 				<div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
@@ -49,8 +49,11 @@
 		
 		<!-- Page content-->
 		<div class="col-lg-9 pt-4 pb-2 pb-sm-4">
-			<h1 class="h2 mb-4">관심 장소</h1>
 			<section class="card border-0 py-1 p-md-2 p-xl-3 p-xxl-4 mb-4">
+				<div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
+					<i class="ai-star-filled text-primary lead pe-1 me-2"></i>
+					<h2 class="h4 mb-0">관심 장소</h2>
+				</div>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 					<!-- Item-->
 					<c:forEach var = "scitem" items = "${sclist}">

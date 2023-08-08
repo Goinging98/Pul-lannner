@@ -10,7 +10,7 @@
 <div class="container py-5 mt-4 mt-lg-5 mb-lg-4 my-xl-5">
 	<div class="row pt-sm-2 pt-lg-0">
 		<!-- Sidebar -->
-		<aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
+		<aside class="col-lg-2 pe-lg-4 pe-xl-5 mt-n3" style="background-color: #F6F9FC;">
 			<div class="position-lg-sticky top-0">
 				<div class="d-none d-lg-block" style="padding-top: 105px;"></div>
 				<div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
@@ -62,8 +62,8 @@
 				<div class="card-body pb-4">
 					<!-- Orders accordion-->
 					<div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
-						<i class="ai-cart text-primary lead pe-1 me-2"></i>
-						<h2 class="h4 mb-0">주문 목록</h2>
+						<i class="ai-note text-primary lead pe-1 me-2"></i>
+						<h2 class="h4 mb-0">주문내역</h2>
 					</div>
 					<div class="accordion accordion-alt accordion-orders" id="orders">
 						<c:forEach var="item" items="${olist}">
