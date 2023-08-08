@@ -206,11 +206,11 @@
 						<div class="mb-lg-5 mb-4">
 							<article class="position-relative d-flex align-items-center mb-4">
 								<img class="rounded"
-									src="resources/assets/img/blog/sidebar/01.jpg" width="92"
+									src="proud/file/${like.renamedFileName}" width="92"
 									alt="Post image">
 								<div class="ps-3">
 									<h4 class="h6 mb-2">
-										<a class="stretched-link" href="blog-single-v1.html">${like.title}</a>
+										<a class="stretched-link">${like.title}</a>
 									</h4>
 									<span class="fs-sm text-muted">${like.createDate}</span>
 								</div>
@@ -218,7 +218,7 @@
 						</div>
 						</c:forEach>
 						<!-- Banner-->
-						<div class="position-relative mb-3">
+<!-- 						<div class="position-relative mb-3">
 							<div
 								class="ignore-dark-mode position-absolute w-100 text-center top-0 start-50 translate-middle-x pt-4"
 								style="max-width: 15rem;">
@@ -226,7 +226,7 @@
 							</div>
 							<img class="rounded-5"
 								src="resources/assets/img/blog/sidebar/banner.jpg" alt="Banner">
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</form>

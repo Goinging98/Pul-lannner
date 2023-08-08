@@ -162,11 +162,11 @@
                 </div>
                 </c:forEach>
                 <!-- Banner-->
-                <div class="position-relative mb-3">
+<!--                 <div class="position-relative mb-3">
                   <div class="ignore-dark-mode position-absolute w-100 text-center top-0 start-50 translate-middle-x pt-4" style="max-width: 15rem;">
                     <h3 class="h2 pt-3 mb-0">Your banner here!</h3>
                   </div><img class="rounded-5" src="assets/img/blog/sidebar/banner.jpg" alt="Banner">
-                </div>
+                </div> -->
               </div>
             </div>
           </aside>

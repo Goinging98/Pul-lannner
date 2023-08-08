@@ -210,7 +210,7 @@
 	
 	<select id="selectProudBoardLikeList" resultMap="proudBoardListResultMap" parameterType="map">
 		SELECT * FROM COMMBOARD
-		WHERE TYPE = 'PROUD' ORDER BY likeCount DESC;
+		WHERE TYPE = 'PROUD' AND STATUS = 'Y' ORDER BY likeCount DESC LIMIT 3
 	</select>
 
 </mapper>
