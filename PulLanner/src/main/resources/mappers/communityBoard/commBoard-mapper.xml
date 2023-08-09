@@ -204,7 +204,7 @@
 	<select id="selectRandomList" parameterType="map" resultMap="proudBoardListResultMap">
 		SELECT * FROM COMMBOARD B
 		LEFT OUTER JOIN MEMBER M1 ON B.MNO = M1.MNO
-		WHERE TYPE = 'PROUD'
+		WHERE TYPE = 'PROUD' AND B.STATUS = 'Y'
 		ORDER BY RAND() LIMIT 6
 	</select>
 	
