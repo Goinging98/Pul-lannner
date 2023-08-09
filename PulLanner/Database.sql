@@ -1,4 +1,4 @@
- DROP SCHEMA garden;
+DROP SCHEMA garden;
 CREATE SCHEMA garden;
 USE garden;
 
@@ -65,6 +65,7 @@ create table flowerList(
     PRIMARY KEY (dataNo)
 );
 
+COMMIT;
 SELECT * FROM flowerList;
 
 create table flowerDetail(
@@ -87,6 +88,8 @@ create table flowerDetail(
 	imgUrl3 VARCHAR(1000),
     PRIMARY KEY (dataNo)
 );
+
+COMMIT;
 select * from flowerDetail;
 
 -- 실내 정원용 식물 
@@ -256,35 +259,16 @@ CREATE TABLE COMMBOARD (
     CONSTRAINT FK_COMMBOARD_WRITER FOREIGN KEY(mNo) REFERENCES MEMBER(mNo) ON DELETE SET NULL
 );
 
-INSERT INTO COMMBOARD VALUES(0, 1, '내 식물은 너무 멋져!', '내가 키운 선인장 너무 멋있는듯 정말 최고의 선인장이야! 선인장은 정말 멋져', 'PROUD', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '선인장은 이렇게 키우는게 정석', '선인장에게 물을 준다면 그것은 사치다. 강하게 키워야 한다. 물을 최대한 주지 말고 사막의 오아시스 처럼 주자', 'HONEY', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 'Y', DEFAULT, DEFAULT);
-INSERT INTO COMMBOARD VALUES(0, 1, '가시가 더 길어진다..', '이번 기간에는 선인장의 가시가 더 두껍고 길어졌다. 손끝을 살짝 대봤는데 엄청 따갑다..', 'OBSERVE', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 'Y', DEFAULT, DEFAULT);
 
 COMMIT;
 SELECT * FROM COMMBOARD;
-SELECT * FROM COMMBOARD WHERE TYPE = 'PROUD' ORDER BY likeCount DESC;
-SELECT	B.bNO, B.TYPE, B.TITLE, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
-		FROM COMMBOARD B
-		JOIN MEMBER M ON(C.mNO = M.mNO)
-		WHERE B.TYPE = 'PROUD'
-		AND B.STATUS = 'Y';
-        
-INSERT INTO COMMBOARD(
-			BNO, MNO, TITLE,
-			CONTENT, ORIGINAL_FILENAME,
-			RENAMED_FILENAME, READCOUNT, STATUS,
-			CREATE_DATE, MODIFY_DATE, TYPE	
-		) VALUES (
-			0, 1, 'abc', 
-			'content', 'original', 
-			'renamedFileName', DEFAULT, DEFAULT, 
-			DEFAULT, DEFAULT, 'PROUD'			
-		);
-        
+
+
         
 ------------------------------------------------------------------
 ------------------- BOARDLIKE 관련 테이블 -------------------------
 ------------------------------------------------------------------
+-- DROP TABLE BOARDLIKE;
 CREATE TABLE BOARDLIKE(
 	mNo INT,
     bNo INT,
@@ -300,6 +284,7 @@ SELECT * FROM BOARDLIKE;
 ------------------------------------------------------------------
 ------------------------- COMMREPLY 관련 테이블 -------------------------
 ------------------------------------------------------------------
+-- drop table COMMREPLY;
 CREATE TABLE COMMREPLY(
   rNo INT PRIMARY KEY AUTO_INCREMENT,
   bNo INT,
@@ -399,6 +384,7 @@ DROP TABLE ORDERPRODUCT;
 ------------------------------------------------------------------
 ------------------------- PLANTSHOP 관련 테이블 -------------------------
 ------------------------------------------------------------------
+-- drop table PLANTSHOP;
 CREATE TABLE PLANTSHOP (
 	PARCELNO INT PRIMARY KEY AUTO_INCREMENT,
     mNO INT,
@@ -417,12 +403,11 @@ CREATE TABLE PLANTSHOP (
     
     CONSTRAINT FK_PLANTSHOP_WRITER FOREIGN KEY(mNO) REFERENCES MEMBER(mNO) ON DELETE SET NULL
 );    
--- INSERT INTO PLANTSHOP 
--- VALUES(0, 1, '선인장 분양합니다', '애지중지 2년동안 키운 선인장 분양합니다', '식물', '원본파일명.txt', '변경된파일명.txt', DEFAULT, DEFAULT, 5000, 'Y', DEFAULT, 'P1', 12901);
+
 
 COMMIT;
-
 SELECT * FROM PLANTSHOP;
+
 CREATE TABLE PLANTPARCELREPLY (
 	PARCELRNO INT PRIMARY KEY AUTO_INCREMENT,
 	PARCELNO INT,
@@ -460,9 +445,8 @@ CREATE TABLE MANAGELIST (
     CREATE_DATE DATETIME DEFAULT CURRENT_TIMESTAMP 
  );
  
- INSERT INTO MANAGELIST VALUES(0, 3,'Y', '선인장', '인장이', '실내', '인장이 분양했어요!!', '변경된파일명.txt','변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
- INSERT INTO MANAGELIST VALUES(0, 3,'Y', '민들레', '들레1세', '실내', '들레 집에서 관찰하기!', '변경된파일명.txt','변경된파일명.txt', DEFAULT, DEFAULT, DEFAULT);
- COMMIT;
+COMMIT;
+SELECT * FROM MANAGELIST;
 
 CREATE TABLE PLANTMANAGE ( 
 	cNo INT PRIMARY KEY AUTO_INCREMENT, #이 테이블 주키
