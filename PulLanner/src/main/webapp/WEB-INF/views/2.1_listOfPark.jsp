@@ -64,8 +64,8 @@
 				<div class="ps-md-3 ps-lg-0">
 					<div class="d-flex align-items-center">
 						<h2 class="h4">${pList.title}</h2>
-						<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4">
-							<i class="ai ai-bookmark"></i>
+						<button type="button" class="btn btn-outline-info btn-icon rounded-pill btn-sm ms-auto mb-4" 
+							onclick="location.href='${path}/scrapplace?num=${pList.contentid}'"><i class="ai ai-bookmark"></i>
 						</button>
 					</div>
 					<div style="width: 550px; height: 250px; overflow: auto; margin-bottom: 15px;">
