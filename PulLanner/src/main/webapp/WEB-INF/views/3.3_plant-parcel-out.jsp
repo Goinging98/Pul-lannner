@@ -273,7 +273,7 @@
               </div>
 
             </section>
-            <c:if test="${loginMember != null }">
+            <c:if	test="${!empty loginMember && (loginMember.id == plantshop.writerId || loginMember.role == 'ROLE_ADMIN') }">
               <div class="col-sm-12 pt-2 text-end" style="padding-right: 290px;">
                 <!-- <button class="btn btn-lg btn-primary" type="button" id="btnUpdate">수정</button> -->
                 <button class="btn btn-lg btn-danger" type="button" id="btnDelete">삭제</button>
