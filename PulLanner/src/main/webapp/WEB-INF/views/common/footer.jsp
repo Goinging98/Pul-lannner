@@ -14,11 +14,11 @@
 				<p class="fs-sm pb-2 pb-md-3 mb-3">건강한 반려식물을 키우는 습관</p>
 				<div class="d-flex">
 					<a class="btn btn-icon btn-sm btn-secondary btn-facebook rounded-circle me-3"
-						href="#"> <i class="ai-slack"></i></a> <a
+						href="https://slack.com/intl/ko-kr/"> <i class="ai-slack"></i></a> <a
 						class="btn btn-icon btn-sm btn-secondary btn-instagram rounded-circle me-3"
-						href="#"><i class="ai-discord"></i></a> <a
+						href="https://discord.com/"><i class="ai-discord"></i></a> <a
 						class="btn btn-icon btn-sm btn-secondary btn-linkedin rounded-circle"
-						href="#"><i class="ai-github"></i></a>
+						href="https://github.com/"><i class="ai-github"></i></a>
 				</div>
 			</div>
 			<div class="col-xl-8 offset-xl-1 col-lg-9">
