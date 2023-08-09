@@ -78,12 +78,12 @@
 					<c:forEach var="item" items="${list}">
 						<article class="row g-0 border-0 pt-3 pt-sm-0 mb-4">
 							<a class="col-sm-5 col-lg-4 bg-repeat-0 bg-size-cover bg-position-center rounded-5"
-								style="background-image: url(/resources/assets/img/blog/list/01.jpg); min-height: 16rem">
+								style="background-image: url('/proud/file/${item.renamedFileName}'); min-height: 16rem">
 								<c:if test="${not empty board.originalFileName 
 									and (fn:contains(board.originalFileName,'.jpg')
 										 or fn:contains(board.originalFileName,'.png')
 										  or fn:contains(board.originalFileName,'.jpeg'))}">
-								<img src="${path}/resources/static/upload/board/${board.renamedFileName}" width="100%" height="100%"/>
+								<img src="${path}/proud/file/${item.renamedFileName}" width="100%" height="100%"/>
 								</c:if>
 							</a>
 								
@@ -114,6 +114,7 @@
 									</div>
 								</div>
 							</div>
+							<hr><br>
 						</article>
 					</c:forEach>
 				</c:if>				
