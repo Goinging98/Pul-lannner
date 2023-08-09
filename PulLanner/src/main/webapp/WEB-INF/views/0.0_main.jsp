@@ -321,7 +321,7 @@
 										<span class="fs-xs opacity-20 mx-3">|</span>
 									</div>
 									<h3 class="h4 card-title">
-										<a href="#">${proud.title}</a>
+										<a href="${path}/PlantProud?page=1&searchType=title&searchValue=${proud.title}">${proud.title}</a>
 									</h3>
 									<p class="card-text">${proud.content}</p>
 								</div>
