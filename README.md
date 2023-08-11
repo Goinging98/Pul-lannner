@@ -32,4 +32,3 @@
 ### 🖼️ UI PLAN
 ![UI흐름도](https://github.com/Goinging98/Pul-lannner/assets/38778937/4afc5943-4a4b-4bcd-85e0-058d1db1923e)
 <br/><br/>
-## 👀 PREVIEW
