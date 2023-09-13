@@ -16,7 +16,10 @@
 - 김민준
 - 임윤정
 - 홍세이
-- 이승훈
+- 이승훈<br/>
+
+![최우수상](https://github.com/Goinging98/Pul-lannner/assets/38778937/a87bc6d8-8666-44c7-974e-1f962dfd3ab0)
+
 <br/><br/>
 
 ## PROJECT DEVELOPMENT
